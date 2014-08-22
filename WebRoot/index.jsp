@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-	String path = request.getContextPath();
+String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
@@ -16,23 +16,21 @@
 <meta name="keywords" content="">
 <meta name="author" content="">
 
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700'
-	rel='stylesheet' type='text/css'>
+<!-- <link rel='stylesheet' href='<%=basePath %>style/fonts_googleapi.css'> -->
 
 <!-- Stylesheets -->
-<link href="style/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="<%=basePath %>style/bootstrap.css" >
 <!-- Font awesome icon -->
-<link rel="stylesheet" href="style/font-awesome.css">
+<link rel="stylesheet" href="<%=basePath %>style/font-awesome.css">
 <!-- Flexslider -->
-<link rel="stylesheet" href="style/flexslider.css">
+<link rel="stylesheet" href="<%=basePath %>style/flexslider.css">
 <!-- prettyPhoto -->
-<link rel="stylesheet" href="style/prettyPhoto.css">
+<link rel="stylesheet" href="<%=basePath %>style/prettyPhoto.css">
 <!-- Main stylesheet -->
-<link href="style/style.css" rel="stylesheet">
+<link rel="stylesheet" href="<%=basePath %>style/style.css" >
 
 <!-- Bootstrap responsive -->
-<link href="style/bootstrap-responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="<%=basePath %>style/bootstrap-responsive.css" >
 
 <!-- HTML5 Support for IE -->
 <!--[if lt IE 9]>
@@ -76,8 +74,7 @@
 
 	<!-- Navbar ends -->
 
-
-	<!-- Sliding box starts -->
+<!-- Sliding box starts -->
 	<div class="slide-box">
 		<div class="bor"></div>
 		<div class="padd">
@@ -128,45 +125,12 @@
                 <li><a href="#">Submenu #3</a></li>
               </ul>--></li>
 
-					<li class="has_sub"><a href="#" class="br-green"><i
-							class="icon-list-alt"></i> 会员专区 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-							<li><a href="pricing.html">保单查询</a></li>
-							<li><a href="404.html">资料下载</a></li>
-							<li><a href="gallery.html">理赔咨询</a></li>
-						</ul></li>
-					<li class="has_sub"><a href="#" class="br-green"><i
-							class="icon-list-alt"></i> 在线投保专区 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-							<li><a href="pricing.html">私家车辆保险</a></li>
-							<li><a href="404.html">旅游短期意外保险</a></li>
-							<li><a href="gallery.html">特殊风险短意险</a></li>
-							<li><a href="gallery.html">短期货运险</a></li>
-							<li><a href="gallery.html">驴友出行保险</a></li>
-						</ul></li>
-					<li class="has_sub"><a href="#" class="br-green"><i
-							class="icon-list-alt"></i> 经纪服务专区 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-							<li><a href="pricing.html">服务1</a></li>
-							<li><a href="404.html">服务2</a></li>
-						</ul></li>
-					<li><a href="aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 现场图片上传</a></li>
-					<li class="has_sub"><a href="#" class="br-green"><i
-							class="icon-list-alt"></i> 保险超市 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-							<li><a href="pricing.html">企业员工记提成系统</a></li>
-							<li><a href="404.html">银行客户经理记提成系统</a></li>
-						</ul></li>
-					<li><a href="aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 核心流程</a></li>
-					<li><a href="aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 积分兑换</a></li>
-					<li><a href="aboutus.html" class="br-blue"><i
+					
+					<li><a href="<%=basePath %>jsp/user/login.jsp" class="br-blue"><i
+							class="icon-user"></i> 登陆系统</a></li>
+					<li><a href="<%=basePath %>jsp/user/userRegister.jsp" class="br-blue"><i
+							class="icon-user"></i> 注册用户</a></li>
+					<li><a href="<%=basePath %>error.jsp" class="br-blue"><i
 							class="icon-user"></i> 更多</a></li>
 				</ul>
 				<div class="s-widget">

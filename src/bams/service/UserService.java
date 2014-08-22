@@ -8,7 +8,6 @@ import java.util.List;
 
 import bams.dao.UserDAO;
 import bams.impl.UserDAOImpl;
-import bams.util.MailUtil;
 import bams.util.Database;
 import bams.entity.User;
 
@@ -22,22 +21,22 @@ public class UserService {
 	public void addUser(User user, String basePath) throws Exception {
 		Connection connection = null;
 
-		StringBuffer body = new StringBuffer();
-		StringBuffer link = new StringBuffer();
-		body.append("您在银保直通车网站新注册的用户名是：");
-		body.append(user.getId());
-		body.append(",请点击以下链接激活帐号！\n");
-		link.append(basePath);
-		link.append("activeUser.jsp?id=");
-		link.append(user.getId());
-		
-		body.append(link.toString());
+//		StringBuffer body = new StringBuffer();
+//		StringBuffer link = new StringBuffer();
+//		body.append("您在银保直通车网站新注册的用户名是：");
+//		body.append(user.getId());
+//		body.append(",请点击以下链接激活帐号！\n");
+//		link.append(basePath);
+//		link.append("activeUser.jsp?id=");
+//		link.append(user.getId());
+//		
+//		body.append(link.toString());
 		try {
 			connection = Database.getConnection();
 			userDAO.setConnection(connection);
 			userDAO.addUser(user);
-			MailUtil.sendEmail(user.getEmail(), "银保直通车网站用户注册激活码",
-					body.toString());
+//			MailUtil.sendEmail(user.getEmail(), "银保直通车网站用户注册激活码",
+//					body.toString());
 			Database.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,12 +47,12 @@ public class UserService {
 		}
 	}
 
-	public void deleteUser(String uid) throws Exception {
+	public void deleteUser(String name) throws Exception {
 		Connection connection = null;
 		try {
 			connection = Database.getConnection();
 			userDAO.setConnection(connection);
-			userDAO.deleteUser(uid);
+			userDAO.deleteUser(name);
 			Database.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -112,20 +111,22 @@ public class UserService {
 		return user;
 	}
 
-	public boolean login(String uid, String password) throws Exception {
+	public boolean login(int role, String name, String password) throws Exception {
+		System.out.println("user service name-----"+name);
+      	System.out.println("user service password-----"+password);
 		User user = null;
 		boolean result = false;
 		Connection connection = null;
 		try {
 			connection = Database.getConnection();
 			userDAO.setConnection(connection);
-			user = userDAO.getUser(uid);
+			user = userDAO.getUser(name);
 			if (user != null) {
 				if (user.getPassword().equals(password)) {
-					
-					userDAO.updateUser(user);
-					Database.commit();
-					result = true;
+					if(user.getRole()==role)
+						result = true;
+					else
+						result = false;
 				} else {
 					result = false;
 				}

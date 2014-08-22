@@ -28,16 +28,26 @@ public class LoginServlet extends HttpServlet {
 
         response.setContentType("text/html;charset=utf-8");
         try{
+        	int role = Integer.parseInt(request.getParameter("role"));
+        	System.out.println("login servlet role-----"+role);
 	      	String name=request.getParameter("name");
 	      	String password=request.getParameter("password");
+	      	System.out.println("login servlet name-----"+name);
+	      	System.out.println("login servlet password-----"+password);
 	      	UserService userService=new UserService();
 	      	HttpSession session=request.getSession();
 	        PrintWriter out = response.getWriter();
-	      	if(userService.login(name,password)){
+	      	if(userService.login(role,name,password)){
+	      		session.setAttribute("role",role);
 	    	  	session.setAttribute("name",name);
-		        out.println("<center><font color='blue'>你已登录成功！</font></center>");
+	    	  	this.getServletContext()
+	    	  	.getRequestDispatcher("/jsp/user/loginAction.jsp?name="+name+"&password="+password)
+	    	  	.forward(request,response);
+		        //out.println("<center><font color='blue'>你已登录成功！</font></center>");
 	      	}else{
-		        out.println("<center><font color='red'>用户名或密码错误!</font><a href='#' onclick='history.back();'>返回</a></center>");
+	      		this.getServletContext()
+	    	  	.getRequestDispatcher("/jsp/user/login.jsp?error=yes")
+	    	  	.forward(request,response);
 	      	}
         }catch(Exception e){
         	e.printStackTrace();

@@ -81,14 +81,15 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 			ps = connection
-					.prepareStatement("update user set name=?,role=?,password=?,phone=?,realname=?,socialid=?,email=? where id=? ");
-			ps.setString(1, user.getName());
-			ps.setInt(2, user.getRole());
-			ps.setString(3, user.getPassword());
-			ps.setString(4, user.getPhone());
-			ps.setString(5, user.getRealname());
-			ps.setString(6, user.getSocialid());
-			ps.setString(7, user.getEmail());
+					.prepareStatement("update user set role=?,password=?,phone=?,realname=?,socialid=?,email=? where name=? ");
+			//
+			ps.setInt(1, user.getRole());
+			ps.setString(2, user.getPassword());
+			ps.setString(3, user.getPhone());
+			ps.setString(4, user.getRealname());
+			ps.setString(5, user.getSocialid());
+			ps.setString(6, user.getEmail());
+			ps.setString(7, user.getName());
 			ps.executeUpdate();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -103,13 +104,13 @@ public class UserDAOImpl implements UserDAO {
 	 * 
 	 * @see bams.dao.UserDAO#deleteUser(java.lang.String)
 	 */
-	public void deleteUser(String id) throws Exception {
+	public void deleteUser(String name) throws Exception {
 		
 		PreparedStatement ps = null;
 
 		try {
-			ps = connection.prepareStatement("delete from user where id=?");
-			ps.setString(1, id);
+			ps = connection.prepareStatement("delete from user where name=?");
+			ps.setString(1, name);
 			ps.executeUpdate();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -164,14 +165,14 @@ public class UserDAOImpl implements UserDAO {
 	 * 
 	 * @see bams.dao.UserDAO#getUser(java.lang.String)
 	 */
-	public User getUser(String uid) throws Exception {
+	public User getUser(String name) throws Exception {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		User user = null;
 
 		try {
-			ps = connection.prepareStatement("select * from user where id=?");
-			ps.setString(1, uid);
+			ps = connection.prepareStatement("select * from user where name=?");
+			ps.setString(1, name);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				user = new User();

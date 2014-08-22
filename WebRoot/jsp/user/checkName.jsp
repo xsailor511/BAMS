@@ -23,9 +23,10 @@ margin-left: 0
     <td width="100%" height="119" background="img/user/t2.gif" ><div align="center"><font color="#FFFFFF"><strong><font size="4"> </font></strong>             
 	<br>
 	<%if(isExist){%>
-		此用户名已经存在，请选用一个新用户名！
+		<font color="red">此用户名已经存在，请选用一个新用户名！</font>
 	<%}else{%>
-		此用户名尚未被使用！
+	
+		<font color="green">此用户名尚未被使用！</font>
 	<%}%>
     </font></div><br>
 	<p align="center"> <a href="javascript:window.close()" >关 闭</a><br>
