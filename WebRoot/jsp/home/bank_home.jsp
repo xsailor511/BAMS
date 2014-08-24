@@ -4,11 +4,16 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String session_name = (String)session.getAttribute("name");
 Integer role_int = (Integer)session.getAttribute("role");
-int role = role_int.intValue();
-if(null==session_name||role!=2){//the user is not login or a bank user.
-	String url = basePath+"jsp/user/login.jsp";
+String url = basePath+"jsp/user/login.jsp";//then go back to login page
+if(null==role_int){
 	response.setHeader("refresh","0;URL="+url) ;
-	//response.sendRedirect(basePath+"jsp/user/login.jsp");
+}else{
+	int role = role_int.intValue();
+	if(null==session_name||role!=2){//if the user is not login or a manager.
+		
+		response.setHeader("refresh","0;URL="+url) ;
+		//response.sendRedirect(basePath+"jsp/user/login.jsp");
+	}
 }
 %>
 
@@ -58,14 +63,13 @@ if(null==session_name||role!=2){//the user is not login or a bank user.
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="<%=basePath %>login.html">加入收藏</a></li>
-						<li><a href="<%=basePath %>login.html">设为主页</a></li>
+
 						<li><a href="<%=basePath %>login.html">投保必读</a></li>
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="<%=basePath %>contactus.html">联系我们</a></li>
-								<li><a href="<%=basePath %>login.html">注销</a></li>
+								<li><a href="<%=basePath %>Logout">注销</a></li>
 							</ul></li>
 
 
@@ -122,7 +126,7 @@ if(null==session_name||role!=2){//the user is not login or a bank user.
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li><a href="<%=basePath %>index.html" class="open br-red"><i
-							class="icon-home"></i> Home</a> <!-- Sub menu markup 
+							class="icon-home"></i>银行用户</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>

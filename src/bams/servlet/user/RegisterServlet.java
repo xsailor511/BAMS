@@ -17,7 +17,7 @@ import bams.service.UserService;
 import bams.entity.User;
 
 /**
- * @author Administrator
+ * @author xsailor
  *
  */
 public class RegisterServlet extends HttpServlet {

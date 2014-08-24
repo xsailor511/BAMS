@@ -4,11 +4,16 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String session_name = (String)session.getAttribute("name");
 Integer role_int = (Integer)session.getAttribute("role");
-int role = role_int.intValue();
-if(null==session_name||role!=5){//if the user is not login or a manager.
-	String url = basePath+"jsp/user/login.jsp";//then go back to login page
+String url = basePath+"jsp/user/login.jsp";//then go back to login page
+if(null==role_int){
 	response.setHeader("refresh","0;URL="+url) ;
-	//response.sendRedirect(basePath+"jsp/user/login.jsp");
+}else{
+	int role = role_int.intValue();
+	if(null==session_name||role!=5){//if the user is not login or a manager.
+		
+		response.setHeader("refresh","0;URL="+url) ;
+		//response.sendRedirect(basePath+"jsp/user/login.jsp");
+	}
 }
 %>
 
@@ -43,7 +48,21 @@ if(null==session_name||role!=5){//if the user is not login or a manager.
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
+<style type="text/css">
+table.dotted {border-style: dotted}
+table.dashed {border-style: dashed}
+table.solid {border-style: solid}
+table.double {border-style: double}
+table.groove {border-style: groove}
+table.ridge {border-style: ridge}
+table.inset {border-style: inset}
+table.outset {border-style: outset}
 
+input.user_goal{
+width:50px;
+height:15px;
+}
+</style>
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 </head>
@@ -54,16 +73,14 @@ if(null==session_name||role!=5){//if the user is not login or a manager.
 		<div class="navbar-inner">
 			<div class="container-fluid">
 			    <div id="logo">
-				<a href="<%=basePath %>index.html"><img src="<%=basePath %>img/b-logo.png" alt="mainlogo" /></a>
+				<a href="<%=basePath %>index.jsp"><img src="<%=basePath %>img/b-logo.png" alt="mainlogo" /></a>
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="<%=basePath %>login.html">加入收藏</a></li>
-						<li><a href="<%=basePath %>login.html">设为主页</a></li>
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>login.html">注销</a></li>
+								<li><a href="<%=basePath %>Logout">注销</a></li>
 							</ul></li>
 
 
@@ -119,28 +136,14 @@ if(null==session_name||role!=5){//if the user is not login or a manager.
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
-							class="icon-home"></i> 所有用户</a> <!-- Sub menu markup 
-              <ul>
-                <li><a href="<%=basePath %>#">Submenu #1</a></li>
-                <li><a href="<%=basePath %>#">Submenu #2</a></li>
-                <li><a href="<%=basePath %>#">Submenu #3</a></li>
-              </ul>--></li>
+					<li ><a class="open br-red"><i class="icon-home"></i> 查找用户</a></li>
+					<li><a href="javascript:allUsers()" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
 
 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
 							class="icon-user"></i> 批量打印word文档</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 批量修改积分</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 批量删除用户</a></li>
+					
 				</ul>
-				<div class="s-widget">
-					<h6>咨询热线</h6>
-					<p>TEL:0532-88886666</p>
-					<p>8:30-24:00(周一到周五)</p>
-					<p>9:00-18:00(周六到周日)</p>
-					<p></p>
-				</div>
+				
 			</div>
 
 
@@ -155,26 +158,38 @@ if(null==session_name||role!=5){//if the user is not login or a manager.
 
 					<!-- Element -->
 					<div class="box-body">
-						<div class="flexslider">
-							<ul class="slides">
-								<!-- Each slide should be enclosed inside li tag. -->
+<!-- 						<div class="flexslider"> -->
+<!-- 						</div> -->
+					<table width="100%" border="1">
+  <tr>
+    <td colspan="2" align="center">输入用户名</td>
+  </tr>
+  <tr>
+    <td width="49%" align="right">用户名:</td>
+    <td width="51%"  style="align:left;valign:bottom">
+    <input type="text" name="name" id="name" style="margin-top:10px"/>
+    <label for="name_email"></label>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><input type="submit" name="search_button" id="search_button" value="查询" /></td>
+  </tr>
+</table>
 
-								<!-- Slide #1 -->
-								<li>
-									<!-- Image --> <img src="<%=basePath %>img/photos/s1.jpg" alt="" /> <!-- Caption -->
-								</li>
+<br/><hr/><font color='blue'>查询结果</font>
+<table width="100%" border="1">
+  <tr>
+    <th scope="col">编号</th>
+    <th scope="col">用户名</th>
+    <th scope="col">查看</th>
+  </tr>
+  <tr>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+    <td align="center">&nbsp;</td>
+  </tr>
+</table>
 
-								<!-- Slide #2 -->
-								<li><img src="<%=basePath %>img/photos/s2.jpg" alt="" />
-								</li>
-
-								<li><img src="<%=basePath %>img/photos/s3.jpg" alt="" />
-								</li>
-							</ul>
-						</div>
-
-						<h4>银保直通车</h4>
-						 <p>简介：银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内</p>
 					</div>
 				</div>
 			</div>

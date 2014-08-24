@@ -34,8 +34,18 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>bams.servlet.user.LoginServlet</servlet-class>
     </servlet>
-    
-    
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>bams.servlet.user.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Delete</servlet-name>
+        <servlet-class>bams.servlet.user.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>bams.servlet.user.SearchServlet</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
@@ -44,6 +54,20 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Delete</servlet-name>
+        <url-pattern>/Delete</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
     </servlet-mapping>
 	 <session-config>
 	    <session-timeout>120</session-timeout>

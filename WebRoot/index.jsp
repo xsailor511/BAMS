@@ -39,6 +39,35 @@ String path = request.getContextPath();
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="img/favicon/favicon.png">
+
+<script type="text/javascript" language="javascript">
+ 
+    //加入收藏
+        function AddFavorite(sURL, sTitle) {
+            sURL = encodeURI(sURL); 
+        try{   
+            window.external.addFavorite(sURL, sTitle);
+        }catch(e) {   
+            try{   
+                window.sidebar.addPanel(sTitle, sURL, "");   
+            }catch (e) {
+                alert("加入收藏失败，请使用Ctrl+D进行添加,或手动在浏览器里进行设置.");
+            }
+        }
+ 
+    }
+ 
+    //设为首页
+    function SetHome(url){
+        if (document.all) {
+            document.body.style.behavior='url(#default#homepage)';
+               document.body.setHomePage(url);
+        }else{
+            alert("您好,您的浏览器不支持自动设置页面为首页功能,请您手动在浏览器里设置该页面为首页!");
+        }
+    }
+ 
+</script>
 </head>
 
 <body>
@@ -53,17 +82,11 @@ String path = request.getContextPath();
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="login.html">加入收藏</a></li>
-						<li><a href="login.html">设为主页</a></li>
+						<li><a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a></li>
+						<li><a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a></li>
 						<li><a href="login.html">投保必读</a></li>
-						<li><a href="login.html">登录</a></li>
-						<li><a href="register.html">新会员注册</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">我的账号<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="contactus.html">联系我们</a></li>
-								<li><a href="login.html">注销</a></li>
-							</ul></li>
+						<li><a href="<%=basePath %>jsp/user/login.jsp">登录</a></li>
+						<li><a href="<%=basePath %>jsp/user/userRegister.jsp">注册</a></li>
 
 
 					</ul>
@@ -118,7 +141,7 @@ String path = request.getContextPath();
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li><a href="index.html" class="open br-red"><i
-							class="icon-home"></i> Home</a> <!-- Sub menu markup 
+							class="icon-home"></i> <font color="blue">主页</font></a> <!-- Sub menu markup 
               <ul>
                 <li><a href="#">Submenu #1</a></li>
                 <li><a href="#">Submenu #2</a></li>
@@ -127,9 +150,9 @@ String path = request.getContextPath();
 
 					
 					<li><a href="<%=basePath %>jsp/user/login.jsp" class="br-blue"><i
-							class="icon-user"></i> 登陆系统</a></li>
+							class="icon-user"></i> 登陆</a></li>
 					<li><a href="<%=basePath %>jsp/user/userRegister.jsp" class="br-blue"><i
-							class="icon-user"></i> 注册用户</a></li>
+							class="icon-user"></i> 注册</a></li>
 					<li><a href="<%=basePath %>error.jsp" class="br-blue"><i
 							class="icon-user"></i> 更多</a></li>
 				</ul>

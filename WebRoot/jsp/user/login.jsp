@@ -57,6 +57,22 @@ String path = request.getContextPath();
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
+
+<script>
+function checkForm(form){
+	if(isEmpty(form.name.value) || isEmpty(form.password.value)){
+		alert("请将必填项填写完整!");
+		return false;
+	}
+}
+function isEmpty(str){
+	if(str==null || str.length==0)
+		return true;
+	else 
+		return false;
+}
+
+</script>
 </head>
 
 <body>
@@ -67,15 +83,13 @@ String path = request.getContextPath();
 		<div class="navbar-inner">
 			<div class="container-fluid">
 			    <div id="logo">
-				<a href="<%=basePath %>index.html"><img src="<%=basePath %>img/b-logo.png" alt="mainlogo" /></a>
+				<a href="<%=basePath %>index.jsp"><img src="<%=basePath %>img/b-logo.png" alt="mainlogo" /></a>
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="<%=basePath %>login.html">加入收藏</a></li>
-						<li><a href="<%=basePath %>login.html">设为主页</a></li>
 						<li><a href="<%=basePath %>login.html">投保必读</a></li>
 						
-						<li><a href="<%=basePath %>register.html">新会员注册</a></li>
+						<li><a href="<%=basePath %>jsp/user/userRegister.jsp">注册</a></li>
 						
 
 
@@ -130,8 +144,8 @@ String path = request.getContextPath();
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
-							class="icon-home"></i> 登陆</a> <!-- Sub menu markup 
+					<li><a  class="open br-red"><i
+							class="icon-home"></i><font color="blue"> 登陆</font></a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>
@@ -167,13 +181,13 @@ String path = request.getContextPath();
 						<div class="flexslider">
 							
   <span id="error_message"></span>
-  	<form name="loginForm" method="post" action="<%=basePath %>Login">
+  	<form name="loginForm" method="post" action="<%=basePath %>Login" onsubmit="return checkForm(this)">
   	<br/>
   	<br/>
   	<br/>
     <table width="50%"  border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
       <caption>
-      <span class="style1">      登 录      </span><br>
+      <span class="style1">   <font color="blue">登 录</font></span><br>
       </caption>
       <tr align="left">
         <th width="40%" height="35" align="center" scope="row">用户名:</th>
@@ -204,8 +218,7 @@ String path = request.getContextPath();
     </form>
 						</div>
 
-						<h4>银保直通车</h4>
-						 <p>简介：银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内</p>
+						
 					</div>
 				</div>
 			</div>

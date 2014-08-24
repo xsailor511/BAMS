@@ -47,17 +47,18 @@ public class UserService {
 		}
 	}
 
-	public void deleteUser(String name) throws Exception {
+	public boolean deleteUser(String name) throws Exception {
 		Connection connection = null;
 		try {
 			connection = Database.getConnection();
 			userDAO.setConnection(connection);
 			userDAO.deleteUser(name);
 			Database.commit();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			Database.rollback();
-			throw e;
+			return false;
 		} finally {
 			Database.releaseConnection(connection);
 		}

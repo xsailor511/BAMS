@@ -4,7 +4,7 @@
 package bams.servlet.user;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 	      	System.out.println("login servlet password-----"+password);
 	      	UserService userService=new UserService();
 	      	HttpSession session=request.getSession();
-	        PrintWriter out = response.getWriter();
+	       // PrintWriter out = response.getWriter();
 	      	if(userService.login(role,name,password)){
 	      		session.setAttribute("role",role);
 	    	  	session.setAttribute("name",name);
@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request,response);
 	}
 }

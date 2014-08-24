@@ -118,14 +118,12 @@ String path = request.getContextPath();
 		<div class="navbar-inner">
 			<div class="container-fluid">
 			    <div id="logo">
-				<a href="index.html"><img src="<%=basePath %>img/b-logo.png" alt="mainlogo" /></a>
+				<a href="<%=basePath %>index.jsp"><img src="<%=basePath %>img/b-logo.png" alt="mainlogo" /></a>
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="login.html">加入收藏</a></li>
-						<li><a href="login.html">设为主页</a></li>
 						<li><a href="login.html">投保必读</a></li>
-						<li><a href="login.html">登录</a></li>
+						<li><a href="<%=basePath %>jsp/user/login.jsp">登录</a></li>
 
 
 					</ul>
@@ -179,13 +177,8 @@ String path = request.getContextPath();
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="index.html" class="open br-red"><i
-							class="icon-home"></i> 注册</a> <!-- Sub menu markup 
-              <ul>
-                <li><a href="#">Submenu #1</a></li>
-                <li><a href="#">Submenu #2</a></li>
-                <li><a href="#">Submenu #3</a></li>
-              </ul>--></li>
+					<li><a  class="open br-red"><i
+							class="icon-home"></i> <font color="blue">注册</font></a> </li>
 
 					<li><a href="<%=basePath %>jsp/user/login.jsp" class="br-blue"><i
 							class="icon-user"></i> 登陆</a></li>
@@ -285,8 +278,7 @@ String path = request.getContextPath();
 </form>
 						</div>
 
-						<h4>银保直通车</h4>
-						 <p>简介：银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内</p>
+						
 					</div>
 				</div>
 			</div>

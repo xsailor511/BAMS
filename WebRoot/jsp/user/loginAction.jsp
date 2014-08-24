@@ -29,7 +29,7 @@ String path = request.getContextPath();
 	  	
 	  	
   %>
-  		<font color="blue">你已登录成功！2秒后跳转</font>
+  		<font color="blue">你已登录成功！1秒后跳转</font>
   <%
   Integer str_role = (Integer)session.getAttribute("role");
 	int role = str_role.intValue();
