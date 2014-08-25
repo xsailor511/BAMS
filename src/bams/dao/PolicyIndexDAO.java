@@ -3,15 +3,16 @@ package bams.dao;
 import java.sql.Connection;
 import java.util.List;
 
-import bams.entity.Picture;
+
+import bams.entity.PolicyIndex;
 
 public interface PolicyIndexDAO {
 	
-	public boolean addPolicyIndex(Picture picture)throws Exception;
+	public boolean addPolicyIndex(PolicyIndex policyIndex)throws Exception;
 	
-	public Picture getPolicyIndex(String picture_name)throws Exception;
+	public List<PolicyIndex> getPolicyIndexByUserName(String username)throws Exception;
 	
-	public List<Picture> listAllPolicyIndex()throws Exception;
+	public List<PolicyIndex> listAllPolicyIndex()throws Exception;
 	
 	public Connection getConnection()throws Exception;
 	
