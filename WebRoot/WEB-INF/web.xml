@@ -46,6 +46,63 @@
         <servlet-name>Search</servlet-name>
         <servlet-class>bams.servlet.user.SearchServlet</servlet-class>
     </servlet>
+  <servlet>
+    <servlet-name>AddPictureServlet</servlet-name>
+    
+    <servlet-class>bams.servlet.picture.AddPictureServlet</servlet-class>
+    <init-param>
+            <param-name>filepath</param-name> 
+            <param-value>upload_image</param-value>
+        </init-param> 
+        <init-param> 
+            <param-name>temppath</param-name>
+            <param-value>temp</param-value>
+        </init-param> 
+    
+  </servlet>
+  <servlet>
+    <servlet-name>ListPictureByUserServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.ListPictureByUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddAllPropertyServlet</servlet-name>
+    <servlet-class>bams.servlet.policy.AddAllPropertyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddEmployerDutyServlet</servlet-name>
+    <servlet-class>bams.servlet.policy.AddEmployerDutyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddFreightServlet</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>bams.servlet.policy.AddFreightServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddVehicleServlet</servlet-name>
+    <servlet-class>bams.servlet.policy.AddVehicleServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddFamilyServlet</servlet-name>
+    <servlet-class>bams.servlet.policy.AddFamilyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddOfficeServlet</servlet-name>
+    <servlet-class>bams.servlet.policy.AddOfficeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddEnterprisePackageServlet</servlet-name>
+    <servlet-class>bams.servlet.policy.AddEnterprisePackageServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
     
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
@@ -69,6 +126,42 @@
         <servlet-name>Search</servlet-name>
         <url-pattern>/Search</url-pattern>
     </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddPictureServlet</servlet-name>
+    <url-pattern>/AddPictureServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListPictureByUserServlet</servlet-name>
+    <url-pattern>/ListPictureByUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddAllPropertyServlet</servlet-name>
+    <url-pattern>/AddAllPropertyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddEmployerDutyServlet</servlet-name>
+    <url-pattern>/AddEmployerDutyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddFreightServlet</servlet-name>
+    <url-pattern>/AddFreightServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddVehicleServlet</servlet-name>
+    <url-pattern>/AddVehicleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddFamilyServlet</servlet-name>
+    <url-pattern>/AddFamilyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddOfficeServlet</servlet-name>
+    <url-pattern>/AddOfficeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddEnterprisePackageServlet</servlet-name>
+    <url-pattern>/AddEnterprisePackageServlet</url-pattern>
+  </servlet-mapping>
 	 <session-config>
 	    <session-timeout>120</session-timeout>
 	 </session-config>

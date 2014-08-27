@@ -14,7 +14,7 @@ public interface PictureDAO {
 	
 	public Picture getPicture(String picture_name)throws Exception;
 	
-	public List<Picture> listPictureByUser(String username)throws Exception;
+	public List<Picture> listPictureByUser(String picture_name)throws Exception;
 	
 	public Connection getConnection()throws Exception;
 	

@@ -17,7 +17,7 @@ import bams.service.UserService;
 public class ListAllUserServlet extends HttpServlet {
 
 	/**
-	 * 
+	 * @author xsailor
 	 */
 	private static final long serialVersionUID = 1L;
 

@@ -43,11 +43,11 @@ public class PictureService {
 	}
 	
 	
-	public List<Picture> listPictureByUser(String username){
+	public List<Picture> listPictureByUser(String picture_name){
 		Connection connection = null;
 		try {
 			connection = Database.getConnection();
-			List<Picture> pictures = pictureDAO.listPictureByUser(username);
+			List<Picture> pictures = pictureDAO.listPictureByUser(picture_name);
 			return pictures;
 		} catch (Exception e) {
 			e.printStackTrace();
