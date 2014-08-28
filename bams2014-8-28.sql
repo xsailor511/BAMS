@@ -129,7 +129,7 @@ CREATE TABLE `family` (
   `menjizhen` tinyint(1) DEFAULT NULL COMMENT '门急诊',
   `jibingzhuyuan` tinyint(1) DEFAULT NULL COMMENT '疾病住院',
   `startdate` date DEFAULT NULL COMMENT '保险开始时间',
-  `endtime` date DEFAULT NULL COMMENT '保险结束时间',
+  `enddate` date DEFAULT NULL COMMENT '保险结束时间',
   `baoxianfeizongji` double DEFAULT NULL COMMENT '保险费总计',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -158,7 +158,7 @@ CREATE TABLE `freight` (
   `feilv` double DEFAULT NULL COMMENT '费率',
   `baoxianfei` double DEFAULT NULL COMMENT '保险费',
   `chuanming` varchar(64) DEFAULT NULL COMMENT '船名',
-  `jianzaonianfen` year(4) DEFAULT NULL COMMENT '建造年份',
+  `jianzaonianfen` char(4) DEFAULT NULL COMMENT '建造年份',
   `chuanqi` varchar(32) DEFAULT NULL COMMENT '船旗',
   `qiyunriqi` date DEFAULT NULL COMMENT '起运日期',
   `qiyungang` varchar(64) DEFAULT NULL COMMENT '起运港',
@@ -302,7 +302,7 @@ CREATE TABLE `vehicle` (
   `heji` double DEFAULT NULL COMMENT '合计',
   `shangyebaoxianstartdate` date DEFAULT NULL COMMENT '商业保险开始时间',
   `shangyebaoxianenddate` date DEFAULT NULL COMMENT '商业保险结束时间',
-  `jiaoqiangbaoxianstartdate` date DEFAULT NULL COMMENT '较强保险开始时间',
+  `jiaoqiangbaoxianstartdate` date DEFAULT NULL COMMENT '交强保险开始时间',
   `jiaoqiangbaoxianenddate` date DEFAULT NULL COMMENT '交强保险结束时间',
   `zhengyijiejue` varchar(128) DEFAULT NULL COMMENT '争议解决方式',
   `jiashiyuanxinxi` varchar(256) DEFAULT NULL COMMENT '驾驶员信息',
