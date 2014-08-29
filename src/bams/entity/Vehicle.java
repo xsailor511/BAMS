@@ -1,6 +1,5 @@
 package bams.entity;
 
-import java.sql.Date;
 
 public class Vehicle {
 
@@ -51,7 +50,7 @@ public class Vehicle {
 	//（车辆）号牌号码
 	private String haopaihaoma;
 	//（车辆）初次登记日期
-	private Date chucidengjiriqi;
+	private String chucidengjiriqi;
 	//（车辆）识别代码
 	private String shibiedaima;
 	//（车辆）发动机型号
@@ -59,7 +58,7 @@ public class Vehicle {
 	//（车辆）新车购置价格
 	private double xinchejiage;
 	//（车辆）整备质量
-	private String zhengbeizhiliang;
+	private double zhengbeizhiliang;
 	//（车辆）排气量
 	private double paiqiliang;
 	//上年交强险投保公司
@@ -80,13 +79,13 @@ public class Vehicle {
 	private double heji;
 
 	//商业保险开始时间
-	private Date shangyebaoxianstartdate;
+	private String shangyebaoxianstartdate;
 	//商业保险结束时间
-	private Date shangyebaoxianenddate;
+	private String shangyebaoxianenddate;
 	//交强保险开始时间
-	private Date jiaoqiangbaoxianstartdate;
+	private String jiaoqiangbaoxianstartdate;
 	//交强保险结束时间
-	private Date jiaoqiangbaoxianenddate;
+	private String jiaoqiangbaoxianenddate;
 	//争议解决方式
 	private String zhengyijiejue;
 	//驾驶员信息
@@ -217,12 +216,7 @@ public class Vehicle {
 	public void setHaopaihaoma(String haopaihaoma) {
 		this.haopaihaoma = haopaihaoma;
 	}
-	public Date getChucidengjiriqi() {
-		return chucidengjiriqi;
-	}
-	public void setChucidengjiriqi(Date chucidengjiriqi) {
-		this.chucidengjiriqi = chucidengjiriqi;
-	}
+	
 	public String getShibiedaima() {
 		return shibiedaima;
 	}
@@ -241,12 +235,7 @@ public class Vehicle {
 	public void setXinchejiage(double xinchejiage) {
 		this.xinchejiage = xinchejiage;
 	}
-	public String getZhengbeizhiliang() {
-		return zhengbeizhiliang;
-	}
-	public void setZhengbeizhiliang(String zhengbeizhiliang) {
-		this.zhengbeizhiliang = zhengbeizhiliang;
-	}
+	
 	public double getPaiqiliang() {
 		return paiqiliang;
 	}
@@ -301,30 +290,7 @@ public class Vehicle {
 	public void setHeji(double heji) {
 		this.heji = heji;
 	}
-	public Date getShangyebaoxianstartdate() {
-		return shangyebaoxianstartdate;
-	}
-	public void setShangyebaoxianstartdate(Date shangyebaoxianstartdate) {
-		this.shangyebaoxianstartdate = shangyebaoxianstartdate;
-	}
-	public Date getShangyebaoxianenddate() {
-		return shangyebaoxianenddate;
-	}
-	public void setShangyebaoxianenddate(Date shangyebaoxianenddate) {
-		this.shangyebaoxianenddate = shangyebaoxianenddate;
-	}
-	public Date getJiaoqiangbaoxianstartdate() {
-		return jiaoqiangbaoxianstartdate;
-	}
-	public void setJiaoqiangbaoxianstartdate(Date jiaoqiangbaoxianstartdate) {
-		this.jiaoqiangbaoxianstartdate = jiaoqiangbaoxianstartdate;
-	}
-	public Date getJiaoqiangbaoxianenddate() {
-		return jiaoqiangbaoxianenddate;
-	}
-	public void setJiaoqiangbaoxianenddate(Date jiaoqiangbaoxianenddate) {
-		this.jiaoqiangbaoxianenddate = jiaoqiangbaoxianenddate;
-	}
+	
 	public String getZhengyijiejue() {
 		return zhengyijiejue;
 	}
@@ -337,5 +303,42 @@ public class Vehicle {
 	public void setJiashiyuanxinxi(String jiashiyuanxinxi) {
 		this.jiashiyuanxinxi = jiashiyuanxinxi;
 	}
+	public String getChucidengjiriqi() {
+		return chucidengjiriqi;
+	}
+	public void setChucidengjiriqi(String chucidengjiriqi) {
+		this.chucidengjiriqi = chucidengjiriqi;
+	}
+	public double getZhengbeizhiliang() {
+		return zhengbeizhiliang;
+	}
+	public void setZhengbeizhiliang(double zhengbeizhiliang) {
+		this.zhengbeizhiliang = zhengbeizhiliang;
+	}
+	public String getShangyebaoxianstartdate() {
+		return shangyebaoxianstartdate;
+	}
+	public void setShangyebaoxianstartdate(String shangyebaoxianstartdate) {
+		this.shangyebaoxianstartdate = shangyebaoxianstartdate;
+	}
+	public String getShangyebaoxianenddate() {
+		return shangyebaoxianenddate;
+	}
+	public void setShangyebaoxianenddate(String shangyebaoxianenddate) {
+		this.shangyebaoxianenddate = shangyebaoxianenddate;
+	}
+	public String getJiaoqiangbaoxianstartdate() {
+		return jiaoqiangbaoxianstartdate;
+	}
+	public void setJiaoqiangbaoxianstartdate(String jiaoqiangbaoxianstartdate) {
+		this.jiaoqiangbaoxianstartdate = jiaoqiangbaoxianstartdate;
+	}
+	public String getJiaoqiangbaoxianenddate() {
+		return jiaoqiangbaoxianenddate;
+	}
+	public void setJiaoqiangbaoxianenddate(String jiaoqiangbaoxianenddate) {
+		this.jiaoqiangbaoxianenddate = jiaoqiangbaoxianenddate;
+	}
 
+	
 }

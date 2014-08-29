@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bams.entity.Freight;
+import bams.service.PolicyService;
+
 public class AddFreightServlet extends HttpServlet {
 
 	/**
@@ -42,20 +45,76 @@ public class AddFreightServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		Freight freight = new Freight();
+		PrintWriter writer = response.getWriter();
+		String fax_from = request.getParameter("fax_from");
+		String fax_to = request.getParameter("fax_to");
+		String beibaoxianren = request.getParameter("beibaoxianren");
+		String fapiaohao = request.getParameter("fapiaohao");
+		String fapiaoriqi = request.getParameter("fapiaoriqi");
+		String jinkouhetonghao = request.getParameter("jinkouhetonghao");
+		String xinyongzhenghao = request.getParameter("xinyongzhenghao");
+		int baozhuangshuliang = Integer.parseInt(request.getParameter("baozhuangshuliang"));
+		
+		freight.setFax_from(fax_from);
+		freight.setFax_to(fax_to);
+		freight.setBeibaoxianren(beibaoxianren);
+		freight.setFapiaohao(fapiaohao);
+		freight.setFapiaoriqi(fapiaoriqi);
+		freight.setJinkouhetonghao(jinkouhetonghao);
+		freight.setXinyongzhenghao(xinyongzhenghao);
+		freight.setBaozhuangshuliang(baozhuangshuliang);
+		
+		String baoxianhuowumingcheng = request.getParameter("baoxianhuowumingcheng");
+		String biaoji = request.getParameter("biaoji");
+		String jiagetiaojian = request.getParameter("jiagetiaojian");
+		double fapiaojine = Double.parseDouble(request.getParameter("fapiaojine"));
+		double baoxianjine = Double.parseDouble(request.getParameter("baoxianjine"));
+		double feilv = Double.parseDouble(request.getParameter("feilv"));
+		double baoxianfei = Double.parseDouble(request.getParameter("baoxianfei"));
+		
+		freight.setBaoxianhuowumingcheng(baoxianhuowumingcheng);
+		freight.setBiaoji(biaoji);
+		freight.setJiagetiaojian(jiagetiaojian);
+		freight.setFapiaojine(fapiaojine);
+		freight.setBaoxianjine(baoxianjine);
+		freight.setFeilv(feilv);
+		freight.setBaoxianfei(baoxianfei);
+		
+		String chuanming = request.getParameter("chuanming");
+		String jianzaonianfen = request.getParameter("jianzaonianfen");
+		String chuanqi = request.getParameter("chuanqi");
+		String qiyunriqi = request.getParameter("qiyunriqi");
+		String qiyungang = request.getParameter("qiyungang");
+		String via = request.getParameter("via");
+		String mudigang = request.getParameter("mudigang");
+		String chengbaoxianbie = request.getParameter("chengbaoxianbie");
+		String note = request.getParameter("note");
+		String toubaorenqiangzhang = request.getParameter("toubaorenqiangzhang");
+		String tianbiaoriqi = request.getParameter("tianbiaoriqi");
+		
+		freight.setChuanming(chuanming);
+		freight.setJianzaonianfen(jianzaonianfen);
+		freight.setChuanqi(chuanqi);
+		freight.setQiyunriqi(qiyunriqi);
+		freight.setQiyungang(qiyungang);
+		freight.setVia(via);
+		freight.setMudigang(mudigang);
+		freight.setChengbaoxianbie(chengbaoxianbie);
+		freight.setNote(note);
+		freight.setToubaorenqiangzhang(toubaorenqiangzhang);
+		freight.setTianbiaoriqi(tianbiaoriqi);
+		
+		PolicyService service = new PolicyService();
+		if(service.addFreight(freight)){
+			this.getServletContext()
+			.getRequestDispatcher("/success.jsp")
+			.forward(request, response);
+		}else{
+			writer.write("failed");
+			writer.flush();
+			writer.close();
+		}
 	}
 
 	/**
@@ -71,19 +130,7 @@ public class AddFreightServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		doGet(request, response);
 	}
 
 	/**

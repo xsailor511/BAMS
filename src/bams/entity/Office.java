@@ -1,6 +1,5 @@
 package bams.entity;
 
-import java.sql.Date;
 
 public class Office {
 
@@ -27,7 +26,7 @@ public class Office {
 	//投保人签章
 	private String toubaorenqianzhang;
 	//投保日期
-	private Date toubaoriqi;
+	private String toubaoriqi;
 	//团体意外伤害名单（合并存储）
 	private String tuantiyiwaishanghaimingdan;
 	//
@@ -36,6 +35,7 @@ public class Office {
 	private String gaocengchailvmingdan;
 	//高层意外伤害人身份证号码（合并存储）
 	private String gaocengchailvshenfengzheng;
+	
 	public int getId() {
 		return id;
 	}
@@ -90,10 +90,11 @@ public class Office {
 	public void setToubaorenqianzhang(String toubaorenqianzhang) {
 		this.toubaorenqianzhang = toubaorenqianzhang;
 	}
-	public Date getToubaoriqi() {
+
+	public String getToubaoriqi() {
 		return toubaoriqi;
 	}
-	public void setToubaoriqi(Date toubaoriqi) {
+	public void setToubaoriqi(String toubaoriqi) {
 		this.toubaoriqi = toubaoriqi;
 	}
 	public String getTuantiyiwaishanghaimingdan() {

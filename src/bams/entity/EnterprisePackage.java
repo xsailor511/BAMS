@@ -1,6 +1,5 @@
 package bams.entity;
 
-import java.sql.Date;
 
 public class EnterprisePackage {
 
@@ -17,7 +16,7 @@ public class EnterprisePackage {
 	//联系人
 	private String lianxiren;
 	//保险到期日期
-	private Date enddate;
+	private String enddate;
 	//可选险种（合并存储）
 	private String kexuanxianzhong;
 	//保险公司
@@ -33,7 +32,7 @@ public class EnterprisePackage {
 	//委托人签章
 	private String weituorenqianzhang;
 	//填表日期
-	private Date tianbiaoriqi;
+	private String tianbiaoriqi;
 	public int getId() {
 		return id;
 	}
@@ -58,12 +57,7 @@ public class EnterprisePackage {
 	public void setLianxiren(String lianxiren) {
 		this.lianxiren = lianxiren;
 	}
-	public Date getEnddate() {
-		return enddate;
-	}
-	public void setEnddate(Date enddate) {
-		this.enddate = enddate;
-	}
+
 	public String getKexuanxianzhong() {
 		return kexuanxianzhong;
 	}
@@ -106,12 +100,19 @@ public class EnterprisePackage {
 	public void setWeituorenqianzhang(String weituorenqianzhang) {
 		this.weituorenqianzhang = weituorenqianzhang;
 	}
-	public Date getTianbiaoriqi() {
+	public String getEnddate() {
+		return enddate;
+	}
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+	public String getTianbiaoriqi() {
 		return tianbiaoriqi;
 	}
-	public void setTianbiaoriqi(Date tianbiaoriqi) {
+	public void setTianbiaoriqi(String tianbiaoriqi) {
 		this.tianbiaoriqi = tianbiaoriqi;
 	}
+
 	
 	
 }

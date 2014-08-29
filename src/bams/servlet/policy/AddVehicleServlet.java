@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bams.entity.Vehicle;
+import bams.service.PolicyService;
+
 public class AddVehicleServlet extends HttpServlet {
 
 	/**
@@ -42,20 +45,103 @@ public class AddVehicleServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Vehicle vehicle = new Vehicle();
+		PrintWriter writer = response.getWriter();
+		
+		String beibaoxianrenmingcheng = request.getParameter("beibaoxianrenmingcheng");
+		String beibaoxianrenzhengjianhaoma = request.getParameter("beibaoxianrenzhengjianhaoma");
+		String beibaoxianrentongxundizhi = request.getParameter("beibaoxianrentongxundizhi");
+		String beibaoxianrenyoubian = request.getParameter("beibaoxianrenyoubian");
+		String beibaoxianlianxiren = request.getParameter("beibaoxianlianxiren");
+		String beibaoxianrendianhua = request.getParameter("beibaoxianrendianhua");
+		String beibaoxianrenbangongdianhua = request.getParameter("beibaoxianrenbangongdianhua");
+		String beibaoxianrenemail = request.getParameter("beibaoxianrenemail");
+		String toubaorenmingcheng = request.getParameter("toubaorenmingcheng");
+		String toubaorenzhengjianhaoma = request.getParameter("toubaorenzhengjianhaoma");
+		String toubaorentongxundizhi = request.getParameter("toubaorentongxundizhi");
+		String toubaorenyoubian = request.getParameter("toubaorenyoubian");
+		
+		vehicle.setBeibaoxianrenmingcheng(beibaoxianrenmingcheng);
+		vehicle.setBeibaoxianrenzhengjianhaoma(beibaoxianrenzhengjianhaoma);
+		vehicle.setBeibaoxianrentongxundizhi(beibaoxianrentongxundizhi);
+		vehicle.setBeibaoxianrenyoubian(beibaoxianrenyoubian);
+		vehicle.setBeibaoxianlianxiren(beibaoxianlianxiren);
+		vehicle.setBeibaoxianrendianhua(beibaoxianrendianhua);
+		vehicle.setBeibaoxianrenbangongdianhua(beibaoxianrenbangongdianhua);
+		vehicle.setBeibaoxianrenemail(beibaoxianrenemail);
+		vehicle.setToubaorenmingcheng(toubaorenmingcheng);
+		vehicle.setToubaorenzhengjianhaoma(toubaorenzhengjianhaoma);
+		vehicle.setToubaorentongxundizhi(toubaorentongxundizhi);
+		vehicle.setToubaorenyoubian(toubaorenyoubian);
+		
+		String toubaorenlianxiren = request.getParameter("toubaorenlianxiren");
+		String toubaorendianhua = request.getParameter("toubaorendianhua");
+		String toubaorenbangongdianhua = request.getParameter("toubaorenbangongdianhua");
+		String toubaorenemail = request.getParameter("toubaorenemail");
+		String xingshizhengchezhu = request.getParameter("xingshizhengchezhu");
+		String changpaixinghao = request.getParameter("changpaixinghao");
+		int hedingzaike = Integer.parseInt(request.getParameter("hedingzaike"));
+		String haopaihaoma = request.getParameter("haopaihaoma");
+		String chucidengjiriqi = request.getParameter("chucidengjiriqi");
+		String shibiedaima = request.getParameter("shibiedaima");
+		String fadongjixinghao = request.getParameter("fadongjixinghao");
+		
+		vehicle.setToubaorenlianxiren(toubaorenlianxiren);
+		vehicle.setToubaorendianhua(toubaorendianhua);
+		vehicle.setToubaorenbangongdianhua(toubaorenbangongdianhua);
+		vehicle.setToubaorenemail(toubaorenemail);
+		vehicle.setXingshizhengchezhu(xingshizhengchezhu);
+		vehicle.setChangpaixinghao(changpaixinghao);
+		vehicle.setHedingzaike(hedingzaike);
+		vehicle.setHaopaihaoma(haopaihaoma);
+		vehicle.setChucidengjiriqi(chucidengjiriqi);
+		vehicle.setShibiedaima(shibiedaima);
+		vehicle.setFadongjixinghao(fadongjixinghao);
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		double xinchejiage = Double.parseDouble(request.getParameter("xinchejiage"));
+		double zhengbeizhiliang = Double.parseDouble(request.getParameter("zhengbeizhiliang"));
+		double paiqiliang = Double.parseDouble(request.getParameter("paiqiliang"));
+		String shangnianjiaoqiangxian = request.getParameter("shangnianjiaoqiangxian");
+		String jiaoqiangxianbaodanhao = request.getParameter("jiaoqiangxianbaodanhao");
+		String shangnianshangyexian = request.getParameter("shangnianshangyexian");
+		String shangyexianbaodanhao = request.getParameter("shangyexianbaodanhao");	
+		double shangyebaoxianfeiheji = Double.parseDouble(request.getParameter("shangyebaoxianfeiheji"));
+		double chechuanshui = Double.parseDouble(request.getParameter("chechuanshui"));
+		double heji = Double.parseDouble(request.getParameter("heji"));
+		String shangyebaoxianstartdate = request.getParameter("shangyebaoxianstartdate");
+		String shangyebaoxianenddate = request.getParameter("shangyebaoxianenddate");
+		String jiaoqiangbaoxianstartdate = request.getParameter("jiaoqiangbaoxianstartdate");
+		String jiaoqiangbaoxianenddate = request.getParameter("jiaoqiangbaoxianenddate");
+		String zhengyijiejue = request.getParameter("zhengyijiejue");
+		String jiashiyuanxinxi = request.getParameter("jiashiyuanxinxi");
+		
+		vehicle.setXinchejiage(xinchejiage);
+		vehicle.setZhengbeizhiliang(zhengbeizhiliang);
+		vehicle.setPaiqiliang(paiqiliang);
+		vehicle.setShangnianjiaoqiangxian(shangnianjiaoqiangxian);
+		vehicle.setJiaoqiangxianbaodanhao(jiaoqiangxianbaodanhao);
+		vehicle.setShangnianshangyexian(shangnianshangyexian);
+		vehicle.setShangyexianbaodanhao(shangyexianbaodanhao);
+		vehicle.setShangyebaoxianfeiheji(shangyebaoxianfeiheji);
+		vehicle.setChechuanshui(chechuanshui);
+		vehicle.setHeji(heji);
+		vehicle.setShangyebaoxianstartdate(shangyebaoxianstartdate);
+		vehicle.setShangyebaoxianenddate(shangyebaoxianenddate);
+		vehicle.setJiaoqiangbaoxianstartdate(jiaoqiangbaoxianstartdate);
+		vehicle.setJiaoqiangbaoxianenddate(jiaoqiangbaoxianenddate);
+		vehicle.setZhengyijiejue(zhengyijiejue);
+		vehicle.setJiashiyuanxinxi(jiashiyuanxinxi);
+		
+		PolicyService service = new PolicyService();
+		if(service.addVehicle(vehicle)){
+			this.getServletContext()
+			.getRequestDispatcher("/success.jsp")
+			.forward(request, response);
+		}else{
+			writer.write("failed");
+			writer.flush();
+			writer.close();
+		}
 	}
 
 	/**
@@ -71,19 +157,7 @@ public class AddVehicleServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		doGet(request, response);
 	}
 
 	/**

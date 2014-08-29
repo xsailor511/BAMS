@@ -2,8 +2,6 @@ package bams.servlet.policy;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -70,6 +68,10 @@ public class AddAllPropertyServlet extends HttpServlet {
 		int toubaofujianshuliang = Integer.parseInt(request.getParameter("toubaofujianshuliang"));
 		String toubaorenqianzhang = request.getParameter("toubaorenqianzhang");
 		String baoxianfeichina = request.getParameter("baoxianfeichina");
+		String start_time = request.getParameter("start_time");
+		String end_time = request.getParameter("end_time");
+		String jiaofeishijian= request.getParameter("jiaofeishijian");
+		String toubaoriqi = request.getParameter("toubaoriqi");
 		
 		allproperty.setToubaorenmingcheng(toubaorenmingcheng);
 		allproperty.setToubaorendizhi(toubaorendizhi);
@@ -92,23 +94,11 @@ public class AddAllPropertyServlet extends HttpServlet {
 		allproperty.setToubaorenqianzhang(toubaorenqianzhang);
 		allproperty.setToubaofujianshuliang(toubaofujianshuliang);
 		allproperty.setBaoxianfeichina(baoxianfeichina);
-		try {
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			java.util.Date start = format.parse(request.getParameter("start_time"));
-			java.sql.Date start_time= new java.sql.Date(start.getTime());
-			java.util.Date end = format.parse(request.getParameter("end_time"));
-			java.sql.Date end_time= new java.sql.Date(end.getTime());
-			java.util.Date jiaofei= format.parse(request.getParameter("jiaofeishijian"));
-			java.sql.Date jiaofeishijian = new java.sql.Date(jiaofei.getTime());
-			java.util.Date toubaodate = format.parse(request.getParameter("toubaoriqi"));
-			java.sql.Date toubaoriqi = new java.sql.Date(toubaodate.getTime());
-			allproperty.setStart_time(start_time);
-			allproperty.setEnd_time(end_time);
-			allproperty.setJiaofeishijian(jiaofeishijian);
-			allproperty.setToubaoriqi(toubaoriqi);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		allproperty.setStart_time(start_time);
+		allproperty.setEnd_time(end_time);
+		allproperty.setJiaofeishijian(jiaofeishijian);
+		allproperty.setToubaoriqi(toubaoriqi);
+
 		PolicyService service = new PolicyService();
 		if(service.addAllProperty(allproperty)){
 			this.getServletContext()

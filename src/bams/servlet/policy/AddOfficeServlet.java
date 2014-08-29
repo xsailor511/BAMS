@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bams.entity.Office;
+import bams.service.PolicyService;
+
 public class AddOfficeServlet extends HttpServlet {
 
 	/**
@@ -42,20 +45,42 @@ public class AddOfficeServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Office office = new Office();
+		PrintWriter writer = response.getWriter();
+		String toubaorenmingcheng = request.getParameter("toubaorenmingcheng");
+		String toubaorendizhi = request.getParameter("toubaorendizhi");
+		double caichansunshixianadd = Double.parseDouble(request.getParameter("caichansunshixianadd"));
+		double caichansunshixianaddbaoe = Double.parseDouble(request.getParameter("caichansunshixianaddbaoe"));
+		double tuantiyiwaixianzengjiabaofei = Double.parseDouble(request.getParameter("tuantiyiwaixianzengjiabaofei"));
+		double zongbaofei = Double.parseDouble(request.getParameter("zongbaofei"));
+		int tuantiyiwaixianzengjiarenshu = Integer.parseInt(request.getParameter("tuantiyiwaixianzengjiarenshu"));
+		String toubaorenqianzhang = request.getParameter("toubaorenqianzhang");
+		String toubaoriqi = request.getParameter("toubaoriqi");
+//		String tuantiyiwaishanghaimingdan = request.getParameter("tuantiyiwaishanghaimingdan");
+//		String tuantiyiwaishanghaishenfenzheng = request.getParameter("tuantiyiwaishanghaishenfenzheng");
+//		String gaocengchailvmingdan = request.getParameter("gaocengchailvmingdan");
+//		String gaocengchailvshenfengzheng = request.getParameter("gaocengchailvshenfengzheng");
+		
+		office.setToubaorenmingcheng(toubaorenmingcheng);
+		office.setToubaorendizhi(toubaorendizhi);
+		office.setCaichansunshixianadd(caichansunshixianadd);
+		office.setCaichansunshixianaddbaoe(caichansunshixianaddbaoe);
+		office.setTuantiyiwaixianzengjiabaofei(tuantiyiwaixianzengjiabaofei);
+		office.setZongbaofei(zongbaofei);
+		office.setTuantiyiwaixianzengjiarenshu(tuantiyiwaixianzengjiarenshu);
+		office.setToubaorenqianzhang(toubaorenqianzhang);
+		office.setToubaoriqi(toubaoriqi);
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		PolicyService service = new PolicyService();
+		if(service.addOffice(office)){
+			this.getServletContext()
+			.getRequestDispatcher("/success.jsp")
+			.forward(request, response);
+		}else{
+			writer.write("failed");
+			writer.flush();
+			writer.close();
+		}
 	}
 
 	/**
@@ -71,19 +96,7 @@ public class AddOfficeServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		doGet(request, response);
 	}
 
 	/**

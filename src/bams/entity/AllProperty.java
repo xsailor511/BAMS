@@ -1,6 +1,6 @@
 package bams.entity;
 
-import java.sql.Date;
+
 
 public class AllProperty {
 
@@ -45,13 +45,13 @@ public class AllProperty {
 	//保险金额小计(大写中文数字)
 	private String baoxianjinexiaoji;
 	//保险开始时间
-	private Date start_time;
+	private String start_time;
 	//保险结束时间
-	private Date end_time;
+	private String end_time;
 	//保险费大写
 	private String baoxianfeichina;
 	//缴费时间
-	private Date jiaofeishijian;
+	private String jiaofeishijian;
 	//缴费方式
 	private String jiaofeifangshi;
 	//附加条款
@@ -71,7 +71,7 @@ public class AllProperty {
 	//投保人签章
 	private String toubaorenqianzhang;
 	//投保日期
-	private Date toubaoriqi;
+	private String toubaoriqi;
 	public int getId() {
 		return id;
 	}
@@ -180,30 +180,15 @@ public class AllProperty {
 	public void setBaoxianjinexiaoji(String baoxianjinexiaoji) {
 		this.baoxianjinexiaoji = baoxianjinexiaoji;
 	}
-	public Date getStart_time() {
-		return start_time;
-	}
-	public void setStart_time(Date start_time) {
-		this.start_time = start_time;
-	}
-	public Date getEnd_time() {
-		return end_time;
-	}
-	public void setEnd_time(Date end_time) {
-		this.end_time = end_time;
-	}
+	
+
 	public String getBaoxianfeichina() {
 		return baoxianfeichina;
 	}
 	public void setBaoxianfeichina(String baoxianfeichina) {
 		this.baoxianfeichina = baoxianfeichina;
 	}
-	public Date getJiaofeishijian() {
-		return jiaofeishijian;
-	}
-	public void setJiaofeishijian(Date jiaofeishijian) {
-		this.jiaofeishijian = jiaofeishijian;
-	}
+	
 	public String getJiaofeifangshi() {
 		return jiaofeifangshi;
 	}
@@ -258,12 +243,31 @@ public class AllProperty {
 	public void setToubaorenqianzhang(String toubaorenqianzhang) {
 		this.toubaorenqianzhang = toubaorenqianzhang;
 	}
-	public Date getToubaoriqi() {
+	public String getStart_time() {
+		return start_time;
+	}
+	public void setStart_time(String start_time) {
+		this.start_time = start_time;
+	}
+	public String getEnd_time() {
+		return end_time;
+	}
+	public void setEnd_time(String end_time) {
+		this.end_time = end_time;
+	}
+	public String getJiaofeishijian() {
+		return jiaofeishijian;
+	}
+	public void setJiaofeishijian(String jiaofeishijian) {
+		this.jiaofeishijian = jiaofeishijian;
+	}
+	public String getToubaoriqi() {
 		return toubaoriqi;
 	}
-	public void setToubaoriqi(Date toubaoriqi) {
+	public void setToubaoriqi(String toubaoriqi) {
 		this.toubaoriqi = toubaoriqi;
 	}
+	
 	
 	
 }

@@ -1,6 +1,5 @@
 package bams.entity;
 
-import java.sql.Date;
 
 public class Family {
 
@@ -26,9 +25,9 @@ public class Family {
 	//疾病住院
 	private boolean jibingzhuyuan ;
 	//保险开始时间
-	private Date startdate;
+	private String startdate;
 	//保险结束时间
-	private Date enddate;
+	private String enddate;
 	//保险费总计
 	private double baoxianfeizongji;
 	public int getId() {
@@ -79,16 +78,17 @@ public class Family {
 	public void setJibingzhuyuan(boolean jibingzhuyuan) {
 		this.jibingzhuyuan = jibingzhuyuan;
 	}
-	public Date getStartdate() {
+	
+	public String getStartdate() {
 		return startdate;
 	}
-	public void setStartdate(Date startdate) {
+	public void setStartdate(String startdate) {
 		this.startdate = startdate;
 	}
-	public Date getEnddate() {
+	public String getEnddate() {
 		return enddate;
 	}
-	public void setEnddate(Date enddate) {
+	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
 	public double getBaoxianfeizongji() {

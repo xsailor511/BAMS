@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bams.entity.EnterprisePackage;
+import bams.service.PolicyService;
+
 public class AddEnterprisePackageServlet extends HttpServlet {
 
 	/**
@@ -43,19 +46,48 @@ public class AddEnterprisePackageServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		EnterprisePackage enterprisepackage = new EnterprisePackage();
+		
+		PrintWriter writer = response.getWriter();
+		
+		String weituoren = request.getParameter("weituoren");
+		String dianhua = request.getParameter("dianhua");
+		String lianxiren = request.getParameter("lianxiren");
+		String baoxiangongsi = request.getParameter("baoxiangongsi");
+		String weituorenzhucedizhi = request.getParameter("weituorenzhucedizhi");
+		String weituorenfadingdaibiaoren = request.getParameter("weituorenfadingdaibiaoren");
+		String shoutuorenzhucedizhi = request.getParameter("shoutuorenzhucedizhi");
+		String shoutuorenfadingdaibiao = request.getParameter("shoutuorenfadingdaibiao");
+		String weituorenqianzhang = request.getParameter("weituorenqianzhang");
+		
+		enterprisepackage.setWeituoren(weituoren);
+		enterprisepackage.setDianhua(dianhua);
+		enterprisepackage.setLianxiren(lianxiren);
+		enterprisepackage.setBaoxiangongsi(baoxiangongsi);
+		enterprisepackage.setWeituorenzhucedizhi(weituorenzhucedizhi);
+		enterprisepackage.setWeituorenfadingdaibiaoren(weituorenfadingdaibiaoren);
+		enterprisepackage.setShoutuorenzhucedizhi(shoutuorenzhucedizhi);
+		enterprisepackage.setShoutuorenfadingdaibiao(shoutuorenfadingdaibiao);
+		enterprisepackage.setWeituorenqianzhang(weituorenqianzhang);
+		
+
+		String enddate = request.getParameter("start_time");
+		String tianbiaoriqi = request.getParameter("start_time");
+		
+		enterprisepackage.setEnddate(enddate);
+		enterprisepackage.setTianbiaoriqi(tianbiaoriqi);
+	
+		PolicyService service = new PolicyService();
+		if(service.addEnterprisePackage(enterprisepackage)){
+			this.getServletContext()
+			.getRequestDispatcher("/success.jsp")
+			.forward(request, response);
+		}else{
+			writer.write("failed");
+			writer.flush();
+			writer.close();
+		}
+		
 	}
 
 	/**
@@ -71,19 +103,7 @@ public class AddEnterprisePackageServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		doGet(request,response);
 	}
 
 	/**

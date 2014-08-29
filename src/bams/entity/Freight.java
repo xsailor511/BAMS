@@ -1,6 +1,5 @@
 package bams.entity;
 
-import java.sql.Date;
 
 public class Freight {
 
@@ -19,7 +18,7 @@ public class Freight {
 	//发票号
 	private String fapiaohao;
 	//发票日期
-	private Date fapiaoriqi;
+	private String fapiaoriqi;
 	//进口合同号
 	private String jinkouhetonghao;
 	//信用证号
@@ -47,7 +46,7 @@ public class Freight {
 	//船旗
 	private String chuanqi;
 	//起运日期
-	private Date qiyunriqi;
+	private String qiyunriqi;
 	//起运港
 	private String qiyungang;
 	//经由
@@ -61,7 +60,7 @@ public class Freight {
 	//投保人签章
 	private String toubaorenqiangzhang;
 	//投保填单日期
-	private Date tianbiaoriqi;
+	private String tianbiaoriqi;
 	public int getId() {
 		return id;
 	}
@@ -92,12 +91,7 @@ public class Freight {
 	public void setFapiaohao(String fapiaohao) {
 		this.fapiaohao = fapiaohao;
 	}
-	public Date getFapiaoriqi() {
-		return fapiaoriqi;
-	}
-	public void setFapiaoriqi(Date fapiaoriqi) {
-		this.fapiaoriqi = fapiaoriqi;
-	}
+	
 	public String getJinkouhetonghao() {
 		return jinkouhetonghao;
 	}
@@ -176,12 +170,7 @@ public class Freight {
 	public void setChuanqi(String chuanqi) {
 		this.chuanqi = chuanqi;
 	}
-	public Date getQiyunriqi() {
-		return qiyunriqi;
-	}
-	public void setQiyunriqi(Date qiyunriqi) {
-		this.qiyunriqi = qiyunriqi;
-	}
+	
 	public String getQiyungang() {
 		return qiyungang;
 	}
@@ -218,11 +207,24 @@ public class Freight {
 	public void setToubaorenqiangzhang(String toubaorenqiangzhang) {
 		this.toubaorenqiangzhang = toubaorenqiangzhang;
 	}
-	public Date getTianbiaoriqi() {
+	public String getFapiaoriqi() {
+		return fapiaoriqi;
+	}
+	public void setFapiaoriqi(String fapiaoriqi) {
+		this.fapiaoriqi = fapiaoriqi;
+	}
+	public String getQiyunriqi() {
+		return qiyunriqi;
+	}
+	public void setQiyunriqi(String qiyunriqi) {
+		this.qiyunriqi = qiyunriqi;
+	}
+	public String getTianbiaoriqi() {
 		return tianbiaoriqi;
 	}
-	public void setTianbiaoriqi(Date tianbiaoriqi) {
+	public void setTianbiaoriqi(String tianbiaoriqi) {
 		this.tianbiaoriqi = tianbiaoriqi;
 	}
+	
 
 }
