@@ -19,6 +19,7 @@ public class DeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String name = request.getParameter("name");
+		System.out.println("delete name---"+name);
 		UserService userService=new UserService();
 		try {
 			if(userService.deleteUser(name)){

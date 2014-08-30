@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 
 import bams.entity.User;
 import bams.service.UserService;
@@ -22,27 +21,26 @@ public class ListAllUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int start = 0 ;
+		String str_start = request.getParameter("start");
+		if(null!=str_start)
+			start = Integer.parseInt(str_start);
 		UserService service = new UserService();
 		List<User> list;
-		PrintWriter writer = response.getWriter();
+	
 		try {
-			list = service.listAllUser();
-			Gson gson  = new Gson();
-			if(null==list){
-				writer.write("none");
-			}else{
-				String json = gson.toJson(list);
-				writer.write(json);
-			}
+			list = service.listAllUser(start);
+			request.setAttribute("userlist", list);
+			this.getServletContext()
+    	  	.getRequestDispatcher("/jsp/manage/all_user.jsp?start="+start)
+    	  	.forward(request,response);
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 
-		writer.flush();
-		writer.close();
 		
 	}
 

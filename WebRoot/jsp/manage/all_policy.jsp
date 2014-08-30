@@ -15,7 +15,6 @@ if(null==role_int){
 		//response.sendRedirect(basePath+"jsp/user/login.jsp");
 	}
 }
-
 %>
 
 <!DOCTYPE html>
@@ -23,7 +22,7 @@ if(null==role_int){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>用户信息</title>
+<title>管理员</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -49,7 +48,21 @@ if(null==role_int){
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
+<style type="text/css">
+table.dotted {border-style: dotted}
+table.dashed {border-style: dashed}
+table.solid {border-style: solid}
+table.double {border-style: double}
+table.groove {border-style: groove}
+table.ridge {border-style: ridge}
+table.inset {border-style: inset}
+table.outset {border-style: outset}
 
+input.user_goal{
+width:50px;
+height:15px;
+}
+</style>
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 </head>
@@ -64,11 +77,10 @@ if(null==role_int){
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>login.html">注销</a></li>
+								<li><a href="<%=basePath %>Logout">注销</a></li>
 							</ul></li>
 
 
@@ -79,6 +91,32 @@ if(null==role_int){
 	</div>
 
 	<!-- Navbar ends -->
+
+
+	<!-- Sliding box starts -->
+	<div class="slide-box">
+		<div class="bor"></div>
+		<div class="padd">
+			<div class="slide-box-button">
+				<i class="icon-chevron-left"></i>
+			</div>
+			<h5>欢迎</h5>
+			银保直通车为您服务。
+
+			<hr />
+
+			<div class="social">
+				<a href="<%=basePath %>"><i class="icon-facebook facebook"></i></a> 
+				<a href="<%=basePath %>"><i class="icon-twitter twitter"></i></a> 
+				<a href="<%=basePath %>"><i class="icon-linkedin linkedin"></i></a> 
+				<a href="<%=basePath %>"><i class="icon-google-plus google-plus"></i></a> 
+				<a href="<%=basePath %>"><i class="icon-pinterest pinterest"></i></a>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Sliding box ends -->
 
 	<!-- Main content starts -->
 
@@ -98,15 +136,12 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
-							class="icon-home"></i>管理单个用户信息</a> <!-- Sub menu markup 
-              <ul>
-                <li><a href="<%=basePath %>#">Submenu #1</a></li>
-                <li><a href="<%=basePath %>#">Submenu #2</a></li>
-                <li><a href="<%=basePath %>#">Submenu #3</a></li>
-              </ul>--></li>
+					<li ><a href="<%=basePath %>jsp/home/bams_manager.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
+					<li><a href="<%=basePath %>jsp/manage/all_user.jsp" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
 
-
+					<li><a  class="br-blue"><i
+							class="icon-user"></i><font color="blue"> 批量打印word文档</font></a></li>
+					
 				</ul>
 				
 			</div>
@@ -123,41 +158,22 @@ if(null==role_int){
 
 					<!-- Element -->
 					<div class="box-body">
-						
+<!-- 						<div class="flexslider"> -->
+<!-- 						</div> -->
 <table width="100%" border="1">
   <tr>
-    <td width="20%" align="right">用户名：</td>
-    <td width="30%" align="left">xsailor</td>
-    <td width="17%" align="right">邮箱：</td>
-    <td width="33%" align="left">xsailor@153.com</td>
+    <th align="center" scope="col">编号</th>
+    <th align="center" scope="col">选择</th>
+    <th align="center" scope="col">保单</th>
+    <th align="center" scope="col"><a href="http|//localhost|8080/BAMS/">批量下载</a></th>
   </tr>
   <tr>
-    <td align="right">真实姓名：</td>
-    <td align="left">王二</td>
-    <td align="right">电话：</td>
-    <td align="left">18327827324</td>
-  </tr>
-  <tr>
-    <td align="right">用户身份：</td>
-    <td align="left">代理人</td>
-    <td align="right">身份证号码：</td>
-    <td align="left">123456789123456789</td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">上传的图片</td>
-    <td colspan="2" align="center">所有保单</td>
-  </tr>
-  <tr>
-    <td height="461" colspan="2" align="left" valign="top">用户名_时间戳_图片名称</td>
-    <td colspan="2" align="left" valign="top">用户名_邮箱_时间戳_保单名称</td>
-  </tr>
-  <tr>
-    <td colspan="4" align="center"><a href="http://localhost:8080/BAMS/"><font color="red">删除该用户</font></a></td>
+    <td align="center">1</td>
+    <td align="center"><input type="checkbox" name="baodan_check" id="baodan_check" /></td>
+    <td align="center">用户名_邮箱_时间戳_保单名称</td>
+    <td align="center"><a href="http://localhost:8080/BAMS/">下载</a></td>
   </tr>
 </table>
-					
-
-						
 					</div>
 				</div>
 			</div>

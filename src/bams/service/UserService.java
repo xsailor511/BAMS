@@ -4,6 +4,7 @@
 package bams.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import bams.dao.UserDAO;
@@ -80,19 +81,22 @@ public class UserService {
 		}
 	}
 
-	public List<User> listAllUser() throws Exception {
+	public List<User> listAllUser(int start) throws Exception {
 		List<User> userList = null;
 		Connection connection = null;
+		//System.out.println("testqwe======================");
 		try {
 			connection = Database.getConnection();
 			userDAO.setConnection(connection);
-			userList = userDAO.listAllUser();
+			userList = userDAO.listAllUser(start);
+			//System.out.println("test======================");
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		} finally {
 			Database.releaseConnection(connection);
 		}
+		
 		return userList;
 	}
 
@@ -154,6 +158,24 @@ public class UserService {
 		} catch (Exception e) {
 			throw e;
 		}
+	}
+	
+	public boolean updateUserGoal(int goal, String name){
+		boolean result = false;
+		Connection connection = null;
+		try {
+			connection = Database.getConnection();
+			userDAO.setConnection(connection);
+			result = userDAO.updateUserGoal(goal, name);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			Database.releaseConnection(connection);
+		}
+		return result;
 	}
 
 //	public boolean validateUser(String uid, String validateCode)

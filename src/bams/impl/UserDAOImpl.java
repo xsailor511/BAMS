@@ -104,20 +104,22 @@ public class UserDAOImpl implements UserDAO {
 	 * 
 	 * @see bams.dao.UserDAO#deleteUser(java.lang.String)
 	 */
-	public void deleteUser(String name) throws Exception {
+	public boolean deleteUser(String name) throws Exception {
 		
 		PreparedStatement ps = null;
-
+		boolean result = false;
 		try {
 			ps = connection.prepareStatement("delete from user where name=?");
 			ps.setString(1, name);
 			ps.executeUpdate();
+			result = true;
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
-			throw sqle;
+			result = false;
 		} finally {
 			closeStatement(ps);
 		}
+		return result;
 	}
 
 	/*
@@ -125,7 +127,7 @@ public class UserDAOImpl implements UserDAO {
 	 * 
 	 * @see bams.dao.UserDAO#listAllUser()
 	 */
-	public List<User> listAllUser() throws Exception {
+	public List<User> listAllUser(int start) throws Exception {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -133,7 +135,9 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 			ps = connection
-					.prepareStatement("select * from user order by id asc");
+					.prepareStatement("select * from user order by id asc limit ?,10");
+			ps.setInt(1, start);
+			System.out.println(ps.toString());
 			rs = ps.executeQuery();
 			User user = null;
 			result = new ArrayList<User>();
@@ -147,7 +151,7 @@ public class UserDAOImpl implements UserDAO {
 				user.setRealname(rs.getString("realname"));
 				user.setSocialid(rs.getString("socialid"));
 				user.setEmail(rs.getString("email"));
-				
+				user.setGoal(rs.getInt("goal"));
 				result.add(user);
 			}
 		} catch (SQLException sqle) {
@@ -215,5 +219,27 @@ public class UserDAOImpl implements UserDAO {
 				sqle.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public boolean updateUserGoal(int goal, String name) throws Exception {
+		PreparedStatement ps = null;
+		boolean result = false;
+		String sql = "update bams.user set goal=? where user.name=?";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, goal);
+			ps.setString(2, name);
+			System.out.println(ps.executeUpdate());
+			System.out.println(ps.toString());
+			//Database.commit();
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = false;
+		}finally {
+			closeStatement(ps);
+		}
+		return result;
 	}
 }

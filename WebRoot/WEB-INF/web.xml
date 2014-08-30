@@ -94,6 +94,20 @@
     <servlet-name>AddEnterprisePackageServlet</servlet-name>
     <servlet-class>bams.servlet.policy.AddEnterprisePackageServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetUserServlet</servlet-name>
+    <servlet-class>bams.servlet.user.GetUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ListAllUserServlet</servlet-name>
+    <servlet-class>bams.servlet.user.ListAllUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateUserGoalServlet</servlet-name>
+    <servlet-class>bams.servlet.user.UpdateUserGoalServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -161,6 +175,18 @@
   <servlet-mapping>
     <servlet-name>AddEnterprisePackageServlet</servlet-name>
     <url-pattern>/AddEnterprisePackageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetUserServlet</servlet-name>
+    <url-pattern>/GetUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListAllUserServlet</servlet-name>
+    <url-pattern>/ListAllUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateUserGoalServlet</servlet-name>
+    <url-pattern>/UpdateUserGoalServlet</url-pattern>
   </servlet-mapping>
 	 <session-config>
 	    <session-timeout>120</session-timeout>

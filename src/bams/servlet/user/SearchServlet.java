@@ -25,6 +25,7 @@ public class SearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String name = request.getParameter("name");
+		System.out.println("search-user name----"+name);
 		UserService userService=new UserService();
 		
 		try {
@@ -33,6 +34,7 @@ public class SearchServlet extends HttpServlet {
 			Gson gson = new Gson();
 			String json = gson.toJson(user);//user in json string.
 			PrintWriter writer = response.getWriter();
+			System.out.println("json-user----"+json);
 			writer.write(json);
 			writer.flush();
 			writer.close();

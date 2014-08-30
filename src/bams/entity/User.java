@@ -21,6 +21,8 @@ public class User {
 	private String phone;
 	//用户类型
 	private int role;
+	//积分
+	private int goal;
 	public int getId() {
 		return id;
 	}
@@ -68,6 +70,12 @@ public class User {
 	}
 	public void setRole(int role) {
 		this.role = role;
+	}
+	public int getGoal() {
+		return goal;
+	}
+	public void setGoal(int goal) {
+		this.goal = goal;
 	}
 
 	

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="bams.entity.User" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -68,7 +69,7 @@ height:15px;
 </head>
 <body>
 	<!-- Navbar starts -->
-${pageContext.request.contextPath}
+
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -136,8 +137,8 @@ ${pageContext.request.contextPath}
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li ><a class="open br-red"><i class="icon-home"></i><font color="blue">查找用户</font> </a></li>
-					<li><a href="<%=basePath %>ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
+					<li ><a href="<%=basePath %>jsp/home/bams_manager.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
+					<li><a  class="open br-red"><i class="icon-home"></i> <font color="blue">所有用户</font></a></li>
 
 					<li><a href="<%=basePath %>jsp/manage/all_policy.jsp" class="br-blue"><i
 							class="icon-user"></i> 批量打印word文档</a></li>
@@ -159,27 +160,73 @@ ${pageContext.request.contextPath}
 					<!-- Element -->
 					<div class="box-body">
 <!-- 						<div class="flexslider"> -->
-<!-- 						</div> -->
-					<table width="100%" border="1">
+<!-- 						</div> --><table width="100%" border="0" id="mytable">
   <tr>
-    <td colspan="2" align="center">输入用户名</td>
+    <th align="center" valign="middle" scope="col">编号</th>
+    <th align="center" valign="middle" scope="col"><input type="checkbox" name="checkall" id="checkall" /></th>
+    <th align="center" valign="middle" scope="col">用户名</th>
+    <th align="center" valign="middle" scope="col">积分:</th>
+    <th align="center" valign="bottom" scope="col"></th>
+    <th align="center" valign="middle" scope="col">修改积分</th>
+    <th align="center" valign="middle" scope="col">删除</th>
+    <th align="center" valign="middle" scope="col">查看</th>
   </tr>
+  <%
+  List<User> list = (List)request.getAttribute("userlist");
+  if(null==list){
+	  this.getServletContext()
+	  	.getRequestDispatcher("/error.jsp")
+	  	.forward(request,response);
+  }
+  int start = 0 ;
+	String str_start = request.getParameter("start");
+	if(null!=str_start)
+		start = Integer.parseInt(str_start);
+	int pageSize = 10;
+	int pageCount = start/10+1;
+  Iterator<User> it = list.iterator();
+  int rowCount = 0 ;
+  while(it.hasNext()){
+	  rowCount++;
+	  User user = it.next();
+		String name = user.getName();
+		int goal = user.getGoal();
+		int id = user.getId();
+  %>
   <tr>
-    <td width="49%" align="right">用户名:</td>
-    <td width="51%"  style="align:left;valign:bottom">
-    <input type="text" name="name" id="name" style="margin-top:10px"/>
-    <label for="name_email"></label>
+    <td height="25" align="center"><%=rowCount %></td>
+    <td align="center"><input type="checkbox" name="mycheck" id="mycheck" />
+    <label for="mycheck"></label></td>
+    <td align="center"><%=name %></td>
+    <td colspan="2" align="center" valign="middle"><label for="xsailor_goal"></label>
+    <input name="xsailor_goal" type="text" id="xsailor_goal<%=id %>" value="<%=goal %>" style="width:50px;height:15px" value="22"/>&nbsp;&nbsp;</td>
+    <td align="center"><input type="button" name="goal_set_button" id="goal_set_button" value="确认修改" onclick="updategoal('<%=id %>','<%=name %>')"/></td>
+    <td align="center"><div id='<%=id%>'></div><a href="javascript:void(0)" onclick="deleteuser('<%=name %>','<%=rowCount %>')">删除</a>
+    <input   type= "hidden"  name= "mc<%=rowCount %>"   value= " <%=name%> ">
     </td>
+    <td align="center"><a href="<%=basePath%>GetUserSevlet?name=<%=name %>" target="_blank">查看</a></td>
   </tr>
-  <tr>
-    <td colspan="2" align="center"><input type="button" name="search_button" id="search_button" value="查询" onclick="search()"/></td>
-  </tr>
+  <%
+  
+  }
+  %>
 </table>
 
-<br/><hr/><font color='blue'>查询结果</font>
-<div id="result">
+<a href = "all_user.jsp?start=0" >首页</a>
+<%
+if(start==0){
+%>
+上一页
 
-</div>
+<%
+}else{
+%>
+<a href = "all_user.jsp?start=<%=start+pageSize%>" >上一页</a>
+<%
+}
+%>
+<a href = "all_user.jsp?start=<%=start+pageSize%>" >下一页</a>
+第<%=pageCount%>页
 					</div>
 				</div>
 			</div>
@@ -274,10 +321,7 @@ ${pageContext.request.contextPath}
 
 	<!-- Scroll to top -->
 	<span class="totop"><a href="<%=basePath %>#"><i class="icon-chevron-up"></i></a></span>
-<script type="text/javascript">
 
-
-</script>
 	<!-- JS -->
 	<script src="<%=basePath %>js/jquery.js"></script>
 	<script src="<%=basePath %>js/bootstrap.js"></script>
@@ -291,8 +335,101 @@ ${pageContext.request.contextPath}
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
-	<script src="<%=basePath %>js/manage/search_user.js"></script>
 	<!-- Main js file -->
+	<script type="text/javascript">
+	var xmlhttp;
+	function loadXMLDoc(url, cfunc) {
+		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else {// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xmlhttp.open("POST", url, false);
+		xmlhttp.onreadystatechange = cfunc;
+		xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
+		xmlhttp.send();
+	}
+
+	//获取应用绝对路径
+	var localObj = window.location;
+
+	var contextPath = localObj.pathname.split("/")[1];
+
+	var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+
+	var server_context=basePath;
+	function deleteuser(name,rowCount){
+		alert("test");
+		var url = server_context+"/Delete?name="+name;
+		loadXMLDoc(url, function() {
+			
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				resultstring = xmlhttp.responseText;//json 字符串
+				if(resultstring=="success"){
+					alert("删除成功");
+					var mytable = document.getElementById("mytable");
+					mytable.deleteRow(rowCount);
+				}else{
+					alert("删除失败");
+					
+				}
+			}
+		});
+	}
+	
+	function setglobal(){
+		var global_goal = document.getElementById("global_goal").value;
+		var checkboxes = document.getElementsByName("mycheck");
+		var xsailor_goals= document.getElementsByName("xsailor_goal");
+		for(var i=0;i<checkboxes.length;i++){
+			if(checkboxes[i].checked)
+				xsailor_goals.value = global_goal;
+		}
+	}
+	
+	function updategoal(id,name){
+		var goal = document.getElementById('xsailor_goal'+id).value;
+		var url = server_context+"/UpdateUserGoalServlet?goal="+goal+"&name="+name;
+		loadXMLDoc(url, function() {
+			
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				resultstring = xmlhttp.responseText;//json 字符串
+				if(resultstring=="success"){
+					alert("更新成功");
+				}else{
+					alert("更新失败");
+					
+				}
+			}
+		});
+	}
+	
+	$(function() {
+	    $("#checkall").click(function() {
+	        if ($(this).attr("checked")) {
+	            $("input[name=mycheck]").each(function() {
+	                $(this).attr("checked", true);
+	            });
+	        } else {
+	            $("input[name=mycheck]").each(function() {
+	                $(this).attr("checked", false);
+	            });
+	        }
+	    });
+	    //得到选中的值，ajax操作使用
+	    $("#submit").click(function() {
+	        var text="";
+	        $("input[name=items]").each(function() {
+	            if ($(this).attr("checked")) {
+	                text += ","+$(this).val();
+	            }
+	        });
+	         alert(text);
+	    });
+	});
+
+	</script>
 </body>
 </html>
 
