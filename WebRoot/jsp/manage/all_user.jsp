@@ -199,20 +199,20 @@ height:15px;
     <label for="mycheck"></label></td>
     <td align="center"><%=name %></td>
     <td colspan="2" align="center" valign="middle"><label for="xsailor_goal"></label>
-    <input name="xsailor_goal" type="text" id="xsailor_goal<%=id %>" value="<%=goal %>" style="width:50px;height:15px" value="22"/>&nbsp;&nbsp;</td>
-    <td align="center"><input type="button" name="goal_set_button" id="goal_set_button" value="确认修改" onclick="updategoal('<%=id %>','<%=name %>')"/></td>
+    <input name="xsailor_goal" type="text" id="xsailor_goal<%=rowCount %>" value="<%=goal %>" style="width:50px;height:15px" value="22"/>&nbsp;&nbsp;</td>
+    <td align="center"><input type="button" name="goal_set_button" id="goal_set_button" value="确认修改" onclick="updategoal('<%=rowCount %>','<%=name %>')"/></td>
     <td align="center"><div id='<%=id%>'></div><a href="javascript:void(0)" onclick="deleteuser('<%=name %>','<%=rowCount %>')">删除</a>
-    <input   type= "hidden"  name= "mc<%=rowCount %>"   value= " <%=name%> ">
+    <input type= "hidden" name= "username" value= "<%=name%>">
     </td>
-    <td align="center"><a href="<%=basePath%>GetUserSevlet?name=<%=name %>" target="_blank">查看</a></td>
+    <td align="center"><a href="<%=basePath%>GetUserServlet?name=<%=name %>" target="_blank">查看</a></td>
   </tr>
   <%
   
   }
   %>
 </table>
-
-<a href = "all_user.jsp?start=0" >首页</a>
+<p align="center">
+<a href = "<%=basePath%>ListAllUserServlet?start=0" >首页</a>
 <%
 if(start==0){
 %>
@@ -221,12 +221,27 @@ if(start==0){
 <%
 }else{
 %>
-<a href = "all_user.jsp?start=<%=start+pageSize%>" >上一页</a>
+<a href = "<%=basePath%>ListAllUserServlet?start=<%=start-pageSize%>" >上一页</a>
 <%
 }
 %>
-<a href = "all_user.jsp?start=<%=start+pageSize%>" >下一页</a>
-第<%=pageCount%>页
+
+<%
+if(list.size()<10){
+%>
+下一页
+<%
+}else{
+%>
+<a href = "<%=basePath%>ListAllUserServlet?start=<%=start+pageSize%>" >下一页</a>
+<%
+}
+%>
+第<%=pageCount%>页</p>
+
+<p align="center">
+<a href="javascript:void(0)" onclick="deleteManyUsers()"><font color="red">批量删除</font></a>
+</p>
 					</div>
 				</div>
 			</div>
@@ -360,7 +375,7 @@ if(start==0){
 
 	var server_context=basePath;
 	function deleteuser(name,rowCount){
-		alert("test");
+		//alert("test");
 		var url = server_context+"/Delete?name="+name;
 		loadXMLDoc(url, function() {
 			
@@ -368,14 +383,44 @@ if(start==0){
 				resultstring = xmlhttp.responseText;//json 字符串
 				if(resultstring=="success"){
 					alert("删除成功");
-					var mytable = document.getElementById("mytable");
-					mytable.deleteRow(rowCount);
+					location.reload();
 				}else{
 					alert("删除失败");
-					
+					location.reload();
 				}
 			}
 		});
+	}
+	
+	function deleteManyUsers(){
+		 var    bln    =    window.confirm("批量删除将会删除所有被选中的用户，不可修复！");
+		 if(blm){
+			 var checkboxes = document.getElementsByName("mycheck");
+				var usernames = document.getElementsByName("username");
+				var param = "";
+				for(var i=0;i<checkboxes.length;i++){
+					if(checkboxes[i].checked)
+						param=param+usernames[i].value+";";
+				}
+				var url = server_context+"/DeleteManyUserServlet?usernames="+param;
+				loadXMLDoc(url, function() {
+					
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						resultstring = xmlhttp.responseText;//json 字符串
+						if(resultstring=="success"){
+							alert("删除成功");
+							location.reload();
+							
+						}else if(resultstring=="failed"){
+							alert("全部删除失败");
+						}else{
+							alert("发生未知错误");
+						}
+					}
+				});
+		 }
+		
+		
 	}
 	
 	function setglobal(){

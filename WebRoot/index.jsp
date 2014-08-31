@@ -38,7 +38,7 @@ String path = request.getContextPath();
   <![endif]-->
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="img/favicon/favicon.png">
+<link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 
 <script type="text/javascript" language="javascript">
  
@@ -78,7 +78,7 @@ String path = request.getContextPath();
 		<div class="navbar-inner">
 			<div class="container-fluid">
 			    <div id="logo">
-				<a href="index.html"><img src="img/b-logo.png" alt="mainlogo" /></a>
+				<a href="<%=basePath %>index.jsp"><img src="<%=basePath %>img/b-logo.png" alt="mainlogo" /></a>
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
@@ -140,7 +140,7 @@ String path = request.getContextPath();
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="index.html" class="open br-red"><i
+					<li><a href="<%=basePath %>index.jsp" class="open br-red"><i
 							class="icon-home"></i> <font color="blue">主页</font></a> <!-- Sub menu markup 
               <ul>
                 <li><a href="#">Submenu #1</a></li>

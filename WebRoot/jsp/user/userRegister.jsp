@@ -38,7 +38,7 @@ String path = request.getContextPath();
   <![endif]-->
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="img/favicon/favicon.png">
+<link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 <script language="javascript">
 	function checkForm(form){
 		if(isEmpty(form.name.value) || isEmpty(form.password.value) || 
@@ -264,7 +264,6 @@ String path = request.getContextPath();
 					  <option value ="2">银行</option>
 					  <option value="3">经济服务</option>
 					  <option value="4">代理人</option>
-					  <option value="5">管理员</option>
 					  </select>
 						</td>
 						<td>*(选择合适的用户身份)</td>

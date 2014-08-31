@@ -50,21 +50,43 @@ public class UserService {
 
 	public boolean deleteUser(String name) throws Exception {
 		Connection connection = null;
+		boolean result = false;
 		try {
 			connection = Database.getConnection();
 			userDAO.setConnection(connection);
-			userDAO.deleteUser(name);
+			result = userDAO.deleteUser(name);
 			Database.commit();
-			return true;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			Database.rollback();
-			return false;
+			result = false;
 		} finally {
 			Database.releaseConnection(connection);
 		}
+		return result;
 	}
 
+	public boolean deleteManyUser(String names[]){
+		Connection connection = null;
+		boolean result = false;
+		
+		try {
+			
+			connection = Database.getConnection();
+			userDAO.setConnection(connection);
+			result = userDAO.deleteManyUser(names);
+			Database.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			Database.rollback();
+			result = false;
+		}finally {
+			Database.releaseConnection(connection);
+		}
+		return result;
+	}
 	public void updateUser(User user) throws Exception {
 		Connection connection = null;
 		try {
@@ -167,6 +189,7 @@ public class UserService {
 			connection = Database.getConnection();
 			userDAO.setConnection(connection);
 			result = userDAO.updateUserGoal(goal, name);
+			Database.commit();
 		} catch (SQLException e) {
 
 			e.printStackTrace();

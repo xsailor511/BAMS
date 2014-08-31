@@ -135,7 +135,7 @@ public class UserDAOImpl implements UserDAO {
 
 		try {
 			ps = connection
-					.prepareStatement("select * from user order by id asc limit ?,10");
+					.prepareStatement("select * from user where role!=5 order by id asc limit ?,10");
 			ps.setInt(1, start);
 			System.out.println(ps.toString());
 			rs = ps.executeQuery();
@@ -240,6 +240,32 @@ public class UserDAOImpl implements UserDAO {
 		}finally {
 			closeStatement(ps);
 		}
+		return result;
+	}
+
+	@Override
+	public boolean deleteManyUser(String[] names) throws Exception {
+		boolean result = false;
+		PreparedStatement ps = null;
+		
+		try {
+			String sql = "delete from bams.user where user.name=?";
+			
+			ps = connection.prepareStatement(sql);
+			for(int i=0;i<names.length;i++){
+				ps.setString(1, names[i].trim());
+				ps.addBatch();
+			}
+			System.out.println(ps.toString());
+			ps.executeBatch();
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = false;
+		}finally {
+			closeStatement(ps);
+		}
+		
 		return result;
 	}
 }

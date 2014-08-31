@@ -1,27 +1,21 @@
 package bams.servlet.user;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bams.entity.User;
 import bams.service.UserService;
 
-public class GetUserServlet extends HttpServlet {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class DeleteManyUserServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public GetUserServlet() {
+	public DeleteManyUserServlet() {
 		super();
 	}
 
@@ -46,20 +40,22 @@ public class GetUserServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String name = request.getParameter("name");
+		String usernames = request.getParameter("usernames");
+		String names[] = usernames.split(";");
+		for(int i=0;i<names.length;i++)
+			System.out.print(" "+names[i]);
 		UserService service = new UserService();
-		try {
-			User user= service.getUser(name);
-			//HttpSession session = request.getSession();
-	        request.setAttribute("user", user);
-	        if(user!=null)
-	        	request.setAttribute("mark", "notnull");
-	        RequestDispatcher rd;
-	        rd = getServletContext().getRequestDispatcher("/jsp/manage/about_user.jsp");
-	        rd.forward(request, response);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		PrintWriter out = response.getWriter();
+			try {			
+				if(service.deleteManyUser(names))
+				out.write("success");
+			} catch (Exception e) {
+				out.write("failed");
+			}
+		out.flush();
+		out.close();
+		
+		
 	}
 
 	/**

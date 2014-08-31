@@ -25,5 +25,6 @@ public interface UserDAO {
 	public Connection getConnection()throws Exception;
 	
 	public void setConnection(Connection connection)throws Exception;
+	public boolean deleteManyUser(String names[]) throws Exception;
 	
 }

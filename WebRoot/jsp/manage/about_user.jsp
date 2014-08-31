@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="bams.entity.User" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -15,7 +16,10 @@ if(null==role_int){
 		//response.sendRedirect(basePath+"jsp/user/login.jsp");
 	}
 }
-
+String mark = (String)request.getAttribute("mark");
+if(null==mark){
+	response.setHeader("refresh","0;URL="+basePath+"/error.jsp") ;
+}
 %>
 
 <!DOCTYPE html>
@@ -68,7 +72,7 @@ if(null==role_int){
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>login.html">注销</a></li>
+								<li><a href="<%=basePath %>Logout">注销</a></li>
 							</ul></li>
 
 
@@ -127,7 +131,8 @@ if(null==role_int){
 <table width="100%" border="1">
   <tr>
     <td width="20%" align="right">用户名：</td>
-    <td width="30%" align="left"><jsp:getProperty name="user" property="name" /></td>
+    <td width="30%" align="left"><jsp:getProperty name="user" property="name" />
+    <input type="hidden" id="name" value=<jsp:getProperty name="user" property="name"/> /> </td>
     <td width="17%" align="right">邮箱：</td>
     <td width="33%" align="left"><jsp:getProperty name="user" property="email" /></td>
   </tr>
@@ -153,11 +158,10 @@ if(null==role_int){
   </tr>
   <tr>
     <td colspan="4" align="center">
-    <a href="<%=basePath%>Delete?name=<jsp:getProperty name="user" property="name" />">
-    <font color="red">
+    
+    <a href="javascript:void(0)" onclick="deleteuser()"><font color="red">
     删除该用户
-    </font>
-    </a>
+    </font></a>
     </td>
   </tr>
 </table>
@@ -272,6 +276,49 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	
+	<script type="text/javascript">
+	var xmlhttp;
+	function loadXMLDoc(url, cfunc) {
+		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else {// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xmlhttp.open("POST", url, false);
+		xmlhttp.onreadystatechange = cfunc;
+		xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
+		xmlhttp.send();
+	}
+	//获取应用绝对路径
+	var localObj = window.location;
+
+	var contextPath = localObj.pathname.split("/")[1];
+
+	var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+
+	var server_context=basePath;
+	function deleteuser(){
+		var name = document.getElementById("name").value;
+		//alert(name);
+		var url = server_context+"/Delete?name="+name;
+		loadXMLDoc(url, function() {
+			
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				resultstring = xmlhttp.responseText;//json 字符串
+				if(resultstring=="success"){
+					alert("删除成功");
+					//parent.location.reload();
+					window.close();
+				}else{
+					alert("删除失败");
+					
+				}
+			}
+		});
+	}
+	</script>
 	<!-- Main js file -->
 </body>
 </html>

@@ -68,7 +68,6 @@ height:15px;
 </head>
 <body>
 	<!-- Navbar starts -->
-${pageContext.request.contextPath}
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="bams.entity.User" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,12 +10,13 @@ if(null==role_int){
 	response.setHeader("refresh","0;URL="+url) ;
 }else{
 	int role = role_int.intValue();
-	if(null==session_name||role!=2){//if the user is not login or a manager.
+	if(null==session_name){//if the user is not login or a manager.
 		
 		response.setHeader("refresh","0;URL="+url) ;
 		//response.sendRedirect(basePath+"jsp/user/login.jsp");
 	}
 }
+
 %>
 
 <!DOCTYPE html>
@@ -22,7 +24,7 @@ if(null==role_int){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>银行</title>
+<title>机动车投保单</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -54,7 +56,6 @@ if(null==role_int){
 </head>
 <body>
 	<!-- Navbar starts -->
-
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -64,11 +65,9 @@ if(null==role_int){
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
 
-						<li><a href="<%=basePath %>login.html">投保必读</a></li>
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>contactus.html">联系我们</a></li>
 								<li><a href="<%=basePath %>Logout">注销</a></li>
 							</ul></li>
 
@@ -80,32 +79,6 @@ if(null==role_int){
 	</div>
 
 	<!-- Navbar ends -->
-
-
-	<!-- Sliding box starts -->
-	<div class="slide-box">
-		<div class="bor"></div>
-		<div class="padd">
-			<div class="slide-box-button">
-				<i class="icon-chevron-left"></i>
-			</div>
-			<h5>欢迎</h5>
-			银保直通车为您服务。
-
-			<hr />
-
-			<div class="social">
-				<a href="<%=basePath %>"><i class="icon-facebook facebook"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-twitter twitter"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-linkedin linkedin"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-google-plus google-plus"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-pinterest pinterest"></i></a>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Sliding box ends -->
 
 	<!-- Main content starts -->
 
@@ -126,45 +99,16 @@ if(null==role_int){
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li><a href="<%=basePath %>index.html" class="open br-red"><i
-							class="icon-home"></i>银行用户</a> <!-- Sub menu markup 
+							class="icon-home"></i>机动车投保单</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>
                 <li><a href="<%=basePath %>#">Submenu #3</a></li>
               </ul>--></li>
 
-					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i
-							class="icon-list-alt"></i> 会员专区 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-						<li><a href="<%=basePath %>pricing.html">理赔报案</a></li>
-							<li><a href="<%=basePath %>pricing.html">保单查询</a></li>
-							<li><a href="<%=basePath %>404.html">资料下载</a></li>
-							<li><a href="<%=basePath %>gallery.html">理赔咨询</a></li>
-						</ul></li>
-					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i
-							class="icon-list-alt"></i> 在线投保专区 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-							<li><a href="<%=basePath %>pricing.html">个人</a></li>
-							<li><a href="<%=basePath %>404.html">对公</a></li>
-							
-						</ul></li>
-					
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 核心流程</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 积分兑换</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 更多</a></li>
+
 				</ul>
-				<div class="s-widget">
-					<h6>咨询热线</h6>
-					<p>TEL:0532-88886666</p>
-					<p>8:30-24:00(周一到周五)</p>
-					<p>9:00-18:00(周六到周日)</p>
-					<p></p>
-				</div>
+				
 			</div>
 
 
@@ -179,26 +123,11 @@ if(null==role_int){
 
 					<!-- Element -->
 					<div class="box-body">
-						<div class="flexslider">
-							<ul class="slides">
-								<!-- Each slide should be enclosed inside li tag. -->
+						
 
-								<!-- Slide #1 -->
-								<li>
-									<!-- Image --> <img src="<%=basePath %>img/photos/s1.jpg" alt="" /> <!-- Caption -->
-								</li>
+					
 
-								<!-- Slide #2 -->
-								<li><img src="<%=basePath %>img/photos/s2.jpg" alt="" />
-								</li>
-
-								<li><img src="<%=basePath %>img/photos/s3.jpg" alt="" />
-								</li>
-							</ul>
-						</div>
-
-						<h4>银保直通车</h4>
-						 <p>简介：银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内</p>
+						
 					</div>
 				</div>
 			</div>
@@ -307,6 +236,7 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	
 	<!-- Main js file -->
 </body>
 </html>

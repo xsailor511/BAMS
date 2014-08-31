@@ -60,7 +60,7 @@ if(null==role_int){
 		<div class="navbar-inner">
 			<div class="container-fluid">
 			    <div id="logo">
-				<a href="<%=basePath %>index.html"><img src="<%=basePath %>img/b-logo.png" alt="mainlogo" /></a>
+				<a href="<%=basePath %>index.jsp"><img src="<%=basePath %>img/b-logo.png" alt="mainlogo" /></a>
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
