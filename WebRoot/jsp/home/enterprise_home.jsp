@@ -29,7 +29,7 @@ if(null==role_int){
 <meta name="keywords" content="">
 <meta name="author" content="">
 
-<link rel='stylesheet' href='<%=basePath %>style/fonts_googleapi.css'>
+
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap.css" >
@@ -49,6 +49,48 @@ if(null==role_int){
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
+<style type="text/css">
+    .description {
+		width: 5%;
+		height:100%;
+		font-size: 20px; 
+		word-wrap: break-word; 
+		letter-spacing: 2px;
+		float:left;
+		border:1px solid #000;
+		text-align:center;
+		}
+	.section{
+		display:inline-block;
+		width:609px;
+		height:150px;
+		border:1px solid #000;
+	}
+	.content{
+		float:right;
+		width:94%;
+		height:98%;
+		border:1px solid #000;
+	}
+	.policy{
+		float:right;width:30%;height:94%;border:1px solid #000;
+		margin:1%;
+		}
+	.image{
+		width:98%;
+		height:80%;
+		margin:1px;
+		border:1px solid #000;
+		}
+	.showtext{
+		width:98%;
+		height:16%;
+		margin:1%;
+		border:1px solid #000;
+		text-align:center;
+		overflow: hidden
+	}
+   </style>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
@@ -178,8 +220,8 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
-						<div class="flexslider">
+					<div class="box-body" id="box-body">
+						<div class="flexslider" id="flexslider">
 							<ul class="slides">
 								<!-- Each slide should be enclosed inside li tag. -->
 
@@ -197,6 +239,45 @@ if(null==role_int){
 							</ul>
 						</div>
 
+
+
+
+
+<div class="section">
+<div class="description">黄金对公专区</div>
+<div class="content">
+<div class="policy">
+<div class="image"><img alt="test" src="<%=basePath %>img/test.jpg" width="75%"></div>
+<div class="showtext">雇主责任保险</div>
+</div>
+<div class="policy">
+<div class="image"></div>
+<div class="showtext">货运险</div>
+</div>
+<div class="policy">
+<div class="image"></div>
+<div class="showtext">企业财产险</div>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="description">邮政对公专区</div>
+<div class="content">
+<div class="policy">
+<div class="image"></div>
+<div class="showtext">atas</div>
+</div>
+<div class="policy">
+<div class="image"></div>
+<div class="showtext">货运险</div>
+</div>
+<div class="policy">
+<div class="image"></div>
+<div class="showtext">办公室综合保险</div>
+</div>
+
+</div>
+</div>
 						<h4>银保直通车</h4>
 						 <p>简介：银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内</p>
 					</div>
@@ -294,6 +375,10 @@ if(null==role_int){
 	<!-- Scroll to top -->
 	<span class="totop"><a href="<%=basePath %>#"><i class="icon-chevron-up"></i></a></span>
 
+<script type="text/javascript">
+//var width = document.getElementById("flexslider").offsetWidth;
+//alert("flexslider width: "+width);
+</script>
 	<!-- JS -->
 	<script src="<%=basePath %>js/jquery.js"></script>
 	<script src="<%=basePath %>js/bootstrap.js"></script>

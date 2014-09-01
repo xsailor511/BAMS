@@ -33,7 +33,7 @@ if(null==mark){
 <meta name="keywords" content="">
 <meta name="author" content="">
 
-<link rel='stylesheet' href='<%=basePath %>style/fonts_googleapi.css'>
+
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap.css" >

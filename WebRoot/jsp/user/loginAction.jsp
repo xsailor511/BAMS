@@ -12,6 +12,7 @@ String path = request.getContextPath();
   <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>用户登录</title> 
+    <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
   </head>  
   <body >
   <center>

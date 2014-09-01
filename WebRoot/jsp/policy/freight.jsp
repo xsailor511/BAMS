@@ -30,7 +30,7 @@ if(null==role_int){
 <meta name="keywords" content="">
 <meta name="author" content="">
 
-<link rel='stylesheet' href='<%=basePath %>style/fonts_googleapi.css'>
+
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap.css" >
@@ -125,7 +125,147 @@ if(null==role_int){
 					<div class="box-body">
 						
 
-					
+					<form name="baodan" action="html_form_action.asp" method="get">
+
+		<table width="1235" height="530" border="1">
+  <caption>
+    货物运输保险投保单
+  <br />
+  APPLICATION FOR CARGO TRANSPORTATION INSURANCE<br />
+  </caption>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td colspan="2">FAX</td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td width="192">From</td>
+    <td width="210"><label for="faxfrom"></label>
+    <input type="text" name="faxfrom" id="faxfrom"></td>
+  </tr>
+  <tr>
+    <td colspan="7">&nbsp;</td>
+    <td>To</td>
+    <td><label for="faxto"></label>
+    <input type="text" name="faxto" id="faxto"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>被保险人</p>
+    <p>INSURED</p></td>
+    <td colspan="7"><label for="beibaoxianren"></label>
+    <input type="text" name="beibaoxianren" id="beibaoxianren"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>发票号</p>
+    <p>INVOICE NO.</p></td>
+    <td colspan="3"><label for="fapiaohao"></label>
+    <input type="text" name="fapiaohao" id="fapiaohao"></td>
+    <td colspan="2"><p>发票日期</p>
+    <p>INVOICE DATE</p></td>
+    <td colspan="2"><input type="text" name="fapiaoriqi" id="fapiaoriqi" onClick="WdatePicker()"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>进口合同号</p>
+    <p>IMP.CONTRACT NO. </p></td>
+    <td colspan="3"><label for="jinkouhetonghao"></label>
+    <input type="text" name="jinkouhetonghao" id="jinkouhetonghao"></td>
+    <td colspan="2"><p>信用证号</p>
+    <p>L/C NO.</p></td>
+    <td colspan="2"><label for="xinyongzhenghao"></label>
+    <input type="text" name="xinyongzhenghao" id="xinyongzhenghao"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>包装数量</p>
+    <p>保险货物名称</p>
+    <p>QUANTITY&nbsp;AND&nbsp;DESCRIPTION&nbsp;OF&nbsp;GOODS</p></td>
+    <td colspan="5"><label for="baozhuangshuliang"></label>
+    <input type="text" name="baozhuangshuliang" id="baozhuangshuliang"></td>
+    <td><p>标记</p>
+    <p>MARK&amp;NOS.</p></td>
+    <td><label for="biaoji"></label>
+    <input type="text" name="biaoji" id="biaoji"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>价格条件</p>
+    <p>PRICE TERMS</p></td>
+    <td colspan="3"><label for="jiagetiaojian"></label>
+    <input type="text" name="jiagetiaojian" id="jiagetiaojian"></td>
+    <td colspan="2" rowspan="2"><p>保险金额</p>
+    <p>AMOUNT INSURED</p></td>
+    <td colspan="2" rowspan="2"><label for="baoxianjine"></label>
+    <input type="text" name="baoxianjine" id="baoxianjine"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>发票金额</p>
+    <p>INVOICE VALUE</p></td>
+    <td colspan="3"><label for="fapiaojine"></label>
+    <input type="text" name="fapiaojine" id="fapiaojine"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>费率</p>
+    <p>INSURANCE RATE</p></td>
+    <td colspan="3"><label for="feilv"></label>
+    <input type="text" name="feilv" id="feilv"></td>
+    <td colspan="2">保险费</td>
+    <td colspan="2"><label for="baoxianfei"></label>
+    <input type="text" name="baoxianfei" id="baoxianfei"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>船名</p>
+    <p>VESSEL.NAME</p></td>
+    <td colspan="4"><label for="chuanming"></label>
+    <input type="text" name="chuanming" id="chuanming"></td>
+    <td colspan="2" rowspan="2"><p>启运日期</p>
+    <p>DATE OF COMMENCEMENT</p></td>
+    <td rowspan="2"><input type="text" name="qiyunriqi" id="qiyunriqi" onClick="WdatePicker()"></td>
+  </tr>
+  <tr>
+    <td width="160"><p>建造年份</p>
+    <p>YEAR OF BULLT</p></td>
+    <td width="149"><label for="jianzaonianfen"></label>
+    <input type="text" name="jianzaonianfen" id="jianzaonianfen"></td>
+    <td width="181"><p>船旗</p>
+    <p>FLAG</p></td>
+    <td colspan="3"><label for="chuanqi"></label>
+    <input type="text" name="chuanqi" id="chuanqi"></td>
+  </tr>
+  <tr>
+    <td><p>起运港</p>
+    <p>FROM</p></td>
+    <td colspan="2"><label for="qiyungang"></label>
+    <input type="text" name="qiyungang" id="qiyungang"></td>
+    <td width="85"><p>经由</p>
+    <p>VIA</p></td>
+    <td colspan="3"><label for="jingyou"></label>
+    <input type="text" name="jingyou" id="jingyou"></td>
+    <td><p>目的港</p>
+    <p>TO</p></td>
+    <td><label for="mudigang"></label>
+    <input type="text" name="mudigang" id="mudigang"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>承保险别</p>
+    <p>CONDITIONS</p></td>
+    <td colspan="7"><label for="chengbaoxianbie"></label>
+    <input type="text" name="chengbaoxianbie" id="chengbaoxianbie"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>备注</p>
+    <p>NOTE</p></td>
+    <td colspan="7"><label for="beizhu"></label>
+    <input type="text" name="beizhu" id="beizhu"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p>投保人签章</p>
+    <p>SIGNATURE/SEAL OF APPLICANT</p></td>
+    <td colspan="3"><label for="toubaorenqianzhang"></label>
+    <input type="text" name="toubaorenqianzhang" id="toubaorenqianzhang"></td>
+    <td colspan="2"><p>投保填单日期</p>
+    <p>ISSUED DATE</p></td>
+    <td colspan="2"><input type="text" name="toubaotiandanriqi" id="toubaotiandanriqi" onClick="WdatePicker()"></td>
+  </tr>
+</table>
+	</form>
 
 						
 					</div>
