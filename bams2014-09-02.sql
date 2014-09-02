@@ -136,6 +136,20 @@ CREATE TABLE `family` (
 
 /*Data for the table `family` */
 
+/*Table structure for table `file` */
+
+DROP TABLE IF EXISTS `file`;
+
+CREATE TABLE `file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `filename` varchar(128) NOT NULL COMMENT '上传的文件名称',
+  `fileurl` varbinary(128) NOT NULL COMMENT '文件URL',
+  `fileowner` tinyint(1) NOT NULL COMMENT '1代表用户，2代表管理员',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `file` */
+
 /*Table structure for table `freight` */
 
 DROP TABLE IF EXISTS `freight`;
@@ -206,6 +220,7 @@ CREATE TABLE `picture` (
   `picture_url` varchar(128) NOT NULL COMMENT '图片url',
   `picture_owner` varchar(64) NOT NULL COMMENT '图片所属用户',
   `picture_name` varchar(128) NOT NULL COMMENT '图片名称',
+  `description` tinytext COMMENT '图片说明',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -252,13 +267,13 @@ CREATE TABLE `user` (
   `realname` varchar(64) NOT NULL COMMENT '真实姓名',
   `socialid` char(18) NOT NULL COMMENT '身份证号码',
   `email` varchar(64) NOT NULL COMMENT '邮箱',
-  `goal` int(5) DEFAULT '0' COMMENT '用户积分',
+  `goal` int(5) DEFAULT NULL COMMENT '用户积分',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
 
-insert  into `user`(`name`,`role`,`id`,`password`,`phone`,`realname`,`socialid`,`email`,`goal`) values ('jack',1,1,'111111','18769780000','张三','123456789123456789','shit@163.com',0),('tom',2,2,'111111','18769780001','李四','123456789123456789','shit@163.com',0),('alice',3,3,'111111','18769780002','王二','123456789123456789','shit@163.com',0),('richard',5,4,'111111','18769780003','彰武','123456789123456789','shit@163.com',0),('xsailor',4,5,'111111','18769780004','吴克','123456789123456789','shit@163.com',0),('jakern',1,6,'222222','12345678900','请问','123456789987654321','xsailor511@163.com',0);
+insert  into `user`(`name`,`role`,`id`,`password`,`phone`,`realname`,`socialid`,`email`,`goal`) values ('alice',3,3,'111111','18769780002','王二','123456789123456789','shit@163.com',11),('richard',5,4,'111111','18769780003','彰武','123456789123456789','shit@163.com',9),('xsailor',4,5,'111111','18769780004','吴克','123456789123456789','shit@163.com',22),('test1',1,6,'111111','18769788016','大海','123456789123456789','sddskfj@156.com',NULL),('test6',1,11,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test9',4,14,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test14',2,19,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test15',2,20,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test26',2,31,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test27',2,32,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test31',2,36,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test32',2,37,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL);
 
 /*Table structure for table `vehicle` */
 

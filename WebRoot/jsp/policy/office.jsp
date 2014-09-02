@@ -98,7 +98,7 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
+					<li><a  class="open br-red"><i
 							class="icon-home"></i>办公室综合保险投保单</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>

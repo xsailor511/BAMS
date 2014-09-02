@@ -33,7 +33,7 @@ if(null==role_int){
 
 
 <!-- Stylesheets -->
-<link rel="stylesheet" href="<%=basePath %>style/bootstrap.css" >
+<link rel="stylesheet" href="<%=basePath %>style/testbootstrap.css" >
 <!-- Font awesome icon -->
 <link rel="stylesheet" href="<%=basePath %>style/font-awesome.css">
 <!-- Flexslider -->
@@ -98,7 +98,7 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
+					<li><a  class="open br-red"><i
 							class="icon-home"></i>财产一切险投保单</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
@@ -125,9 +125,9 @@ if(null==role_int){
 					<div class="box-body">
 						
 
-					<form name="baodan" action="html_form_action.asp" method="get">
+					<form name="baodan" action="<%=basePath %>AddAllPropertyServlet" method="get">
 
-		<table width="1528" height="571" border="1">
+		<table width="920" height="571" border="1">
   <caption>
     财产险投保单
   <br />

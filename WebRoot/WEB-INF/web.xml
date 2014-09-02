@@ -110,6 +110,38 @@
     <servlet-name>DeleteManyUserServlet</servlet-name>
     <servlet-class>bams.servlet.user.DeleteManyUserServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>UploadPictureServlet</servlet-name>
+    <servlet-class>bams.servlet.user.UploadPictureServlet</servlet-class>
+    
+    <init-param>
+            <param-name>filepath</param-name> 
+            <param-value>file/user/upload_image</param-value>
+        </init-param> 
+        <init-param> 
+            <param-name>temppath</param-name> 
+            <param-value>temp</param-value> 
+        </init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>UploadFileServlet</servlet-name>
+    <servlet-class>bams.servlet.user.UploadFileServlet</servlet-class>
+    <init-param>
+            <param-name>filepath</param-name> 
+            <param-value>file/manage</param-value>
+        </init-param> 
+        <init-param> 
+            <param-name>temppath</param-name> 
+            <param-value>temp</param-value> 
+        </init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>FileDownLoadServlet</servlet-name>
+    <servlet-class>bams.servlet.user.FileDownLoadServlet</servlet-class>
+  </servlet>
+
+
+
 
 
 
@@ -196,6 +228,18 @@
   <servlet-mapping>
     <servlet-name>DeleteManyUserServlet</servlet-name>
     <url-pattern>/DeleteManyUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UploadPictureServlet</servlet-name>
+    <url-pattern>/UploadPictureServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UploadFileServlet</servlet-name>
+    <url-pattern>/UploadFileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FileDownLoadServlet</servlet-name>
+    <url-pattern>/FileDownLoadServlet</url-pattern>
   </servlet-mapping>
 	 <session-config>
 	    <session-timeout>120</session-timeout>

@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bams.service.UserService;
-
-public class DeleteManyUserServlet extends HttpServlet {
+public class FileDownLoadServlet extends HttpServlet {
 
 	/**
 	 * 
@@ -20,7 +18,7 @@ public class DeleteManyUserServlet extends HttpServlet {
 	/**
 	 * Constructor of the object.
 	 */
-	public DeleteManyUserServlet() {
+	public FileDownLoadServlet() {
 		super();
 	}
 
@@ -45,22 +43,19 @@ public class DeleteManyUserServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String usernames = request.getParameter("usernames");
-		String names[] = usernames.split(";");
-		for(int i=0;i<names.length;i++)
-			System.out.print(" "+names[i]);
-		UserService service = new UserService();
+		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-			try {			
-				if(service.deleteManyUser(names))
-				out.write("success");
-			} catch (Exception e) {
-				out.write("failed");
-			}
+		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+		out.println("<HTML>");
+		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
+		out.println("  <BODY>");
+		out.print("    This is ");
+		out.print(this.getClass());
+		out.println(", using the GET method");
+		out.println("  </BODY>");
+		out.println("</HTML>");
 		out.flush();
 		out.close();
-		
-		
 	}
 
 	/**
@@ -76,7 +71,19 @@ public class DeleteManyUserServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doGet(request, response);
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+		out.println("<HTML>");
+		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
+		out.println("  <BODY>");
+		out.print("    This is ");
+		out.print(this.getClass());
+		out.println(", using the POST method");
+		out.println("  </BODY>");
+		out.println("</HTML>");
+		out.flush();
+		out.close();
 	}
 
 	/**

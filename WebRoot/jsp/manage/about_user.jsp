@@ -102,7 +102,7 @@ if(null==mark){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
+					<li><a  class="open br-red"><i
 							class="icon-home"></i>管理单个用户信息</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>

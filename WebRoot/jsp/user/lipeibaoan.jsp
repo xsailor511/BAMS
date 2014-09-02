@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +10,7 @@ if(null==role_int){
 	response.setHeader("refresh","0;URL="+url) ;
 }else{
 	int role = role_int.intValue();
-	if(null==session_name||role!=1){//if the user is not login or a manager.
+	if(null==session_name){//if the user is not login or a manager.
 		
 		response.setHeader("refresh","0;URL="+url) ;
 		//response.sendRedirect(basePath+"jsp/user/login.jsp");
@@ -23,7 +24,7 @@ if(null==role_int){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>企业</title>
+<title>理赔报案</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -44,7 +45,7 @@ if(null==role_int){
 
 <!-- Bootstrap responsive -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap-responsive.css" >
-<link rel="stylesheet" href="<%=basePath %>style/policy.css" >
+
 <!-- HTML5 Support for IE -->
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
@@ -52,10 +53,24 @@ if(null==role_int){
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
+
+<style type="text/css">
+.fileupload{
+height:400px;
+margin-left: auto;
+margin-right: auto;
+}
+.fileinput{
+width:608px;
+
+margin-left: auto;
+margin-right: auto;
+}
+
+</style>
 </head>
 <body>
 	<!-- Navbar starts -->
-
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -64,11 +79,10 @@ if(null==role_int){
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="<%=basePath %>login.html">投保必读</a></li>
+
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>contactus.html">联系我们</a></li>
 								<li><a href="<%=basePath %>Logout">注销</a></li>
 							</ul></li>
 
@@ -80,32 +94,6 @@ if(null==role_int){
 	</div>
 
 	<!-- Navbar ends -->
-
-
-	<!-- Sliding box starts -->
-	<div class="slide-box">
-		<div class="bor"></div>
-		<div class="padd">
-			<div class="slide-box-button">
-				<i class="icon-chevron-left"></i>
-			</div>
-			<h5>欢迎</h5>
-			银保直通车为您服务。
-
-			<hr />
-
-			<div class="social">
-				<a href="<%=basePath %>"><i class="icon-facebook facebook"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-twitter twitter"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-linkedin linkedin"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-google-plus google-plus"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-pinterest pinterest"></i></a>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Sliding box ends -->
 
 	<!-- Main content starts -->
 
@@ -125,46 +113,17 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
-							class="icon-home"></i>企业用户</a> <!-- Sub menu markup 
+					<li><a  class="open br-red"><i
+							class="icon-home"></i>理赔报案</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>
                 <li><a href="<%=basePath %>#">Submenu #3</a></li>
               </ul>--></li>
 
-					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i
-							class="icon-list-alt"></i> 会员专区 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-						<li><a href="<%=basePath %>jsp/user/lipeibaoan.jsp" target="_blank">理赔报案</a></li>
-							<li><a href="<%=basePath %>pricing.html">保单查询</a></li>
-							<li><a href="<%=basePath %>404.html">资料下载</a></li>
-							<li><a href="<%=basePath %>gallery.html">理赔咨询</a></li>
-						</ul></li>
-					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i
-							class="icon-list-alt"></i> 在线投保专区 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-							<li><a href="<%=basePath %>pricing.html">黄金</a></li>
-							<li><a href="<%=basePath %>404.html">邮政</a></li>
-							
-						</ul></li>
-					
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 核心流程</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 积分兑换</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 更多</a></li>
+
 				</ul>
-				<div class="s-widget">
-					<h6>咨询热线</h6>
-					<p>TEL:0532-88886666</p>
-					<p>8:30-24:00(周一到周五)</p>
-					<p>9:00-18:00(周六到周日)</p>
-					<p></p>
-				</div>
+				
 			</div>
 
 
@@ -178,78 +137,20 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body" id="box-body" >
-						<div class="flexslider" id="flexslider">
-							<ul class="slides">
-								<!-- Each slide should be enclosed inside li tag. -->
+					<div class="box-body">
+						
+<div class="fileupload">
+   <form name="uploadForm" method="Get" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>UploadPictureServlet" onsubmit="return checkFileSize()">
+        <div id="fileinput">
+        
+        </div>
+        <input type="button" onclick="addNewFileInput()" value="添加"/>
+        <input type="submit" name="submit"  value="提交">
+        <input type="reset" name="reset" value="重置">
+      </form>
+      </div>
+					
 
-								<!-- Slide #1 -->
-								<li>
-									<!-- Image --> <img src="<%=basePath %>img/photos/s1.jpg" alt="" /> <!-- Caption -->
-								</li>
-
-								<!-- Slide #2 -->
-								<li><img src="<%=basePath %>img/photos/s2.jpg" alt="" />
-								</li>
-
-								<li><img src="<%=basePath %>img/photos/s3.jpg" alt="" />
-								</li>
-							</ul>
-						</div>
-
-
-
-
-
-<div class="section">
-<div class="description">黄金对公专区</div>
-<div class="content">
-<div class="policy">
-<div class="image"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank">雇主责任保险</a></div>
-</div>
-<div class="policy">
-<div class="image">
-<a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
-</a>
-</div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">货运险</a></div>
-</div>
-<div class="policy">
-<div class="image">
-<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
-</a>
-</div>
-<div class="showtext">
-<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank">企业财产险</a>
-</div>
-</div>
-</div>
-</div>
-<hr/>
-<div class="section">
-<div class="description">邮政对公专区</div>
-<div class="content">
-<div class="policy">
-<div class="image"></div>
-<div class="showtext"></div>
-</div>
-<div class="policy">
-<div class="image"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">货运险</a></div>
-</div>
-<div class="policy">
-<div class="image"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank">办公室综合保险</a></div>
-</div>
-
-</div>
-</div>
 						
 					</div>
 				</div>
@@ -346,10 +247,6 @@ if(null==role_int){
 	<!-- Scroll to top -->
 	<span class="totop"><a href="<%=basePath %>#"><i class="icon-chevron-up"></i></a></span>
 
-<script type="text/javascript">
-//var width = document.getElementById("flexslider").offsetWidth;
-//alert("flexslider width: "+width);
-</script>
 	<!-- JS -->
 	<script src="<%=basePath %>js/jquery.js"></script>
 	<script src="<%=basePath %>js/bootstrap.js"></script>
@@ -363,6 +260,69 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	<script type="text/javascript">
+var count = 1;
+var fileinput = document.getElementById("fileinput");
+fileinput.appendChild(document.createElement("br"));
+var firstinput = document.createElement("input");
+firstinput.type = "file";
+firstinput.name = "commonfile";
+firstinput.accept = ".jpg,.png,.jpeg,.gif,.tiff";
+firstinput.size = 50;
+fileinput.appendChild(document.createTextNode("上传图片"+count+":"));
+fileinput.appendChild(firstinput);
+var firsttext = document.createElement("input");
+firsttext.type = "text";
+firsttext.name= "description";
+fileinput.appendChild(document.createTextNode("图片说明"+count+":"));
+fileinput.appendChild(firsttext);
+function addNewFileInput(){
+	count ++;
+	if(count>=10){
+		alert("最多添加9个应用");
+	}else{
+		var fileinput = document.getElementById("fileinput");
+		fileinput.appendChild(document.createElement("br"));
+		var newinput = document.createElement("input");
+		newinput.type = "file";
+		newinput.name = "commonfile";
+		newinput.accept = ".jpg,.png,.jpeg,.gif,.tiff";
+		newinput.size = 50;
+		
+		
+		fileinput.appendChild(document.createTextNode("上传图片"+count+":"));
+		fileinput.appendChild(newinput);
+		
+		var newtext = document.createElement("input");
+		newtext.type = "text";
+		newtext.name= "description";
+		fileinput.appendChild(document.createTextNode("图片说明"+count+":"));
+		fileinput.appendChild(newtext);
+	}
+	
+	
+}
+
+function checkFileSize(){
+	
+	
+	var commonfiles = document.getElementsByName("commonfile");
+	var maxsize = 10*1024*1024;//最大10M
+	
+	for(var i=0;i<commonfiles.length;i++){
+		var f = commonfiles[i].files;//获得单个文件
+		//alert(f[0].size);
+		if(null!=f[0]&&f[0].size>maxsize){
+			alert("存在大于10M的图片，请重新选择！");
+			return false;
+			
+		}
+
+	}
+}
+
+</script>
+	
 	<!-- Main js file -->
 </body>
 </html>

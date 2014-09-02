@@ -43,7 +43,7 @@ if(null==role_int){
 
 <!-- Bootstrap responsive -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap-responsive.css" >
-
+<link rel="stylesheet" href="<%=basePath %>style/policy.css" >
 <!-- HTML5 Support for IE -->
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
@@ -185,9 +185,102 @@ if(null==role_int){
 								</li>
 							</ul>
 						</div>
+<div class="section">
+<div class="description">个人专区</div>
+<div class="content">
+<div class="policy">
+<div class="image"></div>
+<div class="showtext"></div>
+</div>
+<div class="policy">
+<div class="image">
+<a href="<%=basePath%>jsp/policy/family.jsp" target="_blank">
+<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
+</a>
+</div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/family.jsp" target="_blank">家庭综合保险</a></div>
+</div>
+<div class="policy">
+<div class="image">
+<a href="<%=basePath%>jsp/policy/vehicle.jsp" target="_blank">
+<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
+</a>
+</div>
+<div class="showtext">
+<a href="<%=basePath%>jsp/policy/vehicle.jsp" target="_blank">私家车保险</a>
+</div>
+</div>
+</div>
+</div>
+<hr/>
+<div class="section">
+<div class="description">对公专区</div>
+<div class="content">
+<div class="policy">
+<div class="image"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank">
+<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank">雇主责任保险</a></div>
+</div>
+<div class="policy">
+<div class="image">
+<a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">
+<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
+</a>
+</div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">货运险</a></div>
+</div>
+<div class="policy">
+<div class="image">
+<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank">
+<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
+</a>
+</div>
+<div class="showtext">
+<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank">企业财产险</a>
+</div>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="description"></div>
+<div class="content">
+<div class="policy">
+<div class="image"></div>
+<div class="showtext"></div>
+</div>
+<div class="policy">
+<div class="image"></div>
+<div class="showtext"></div>
+</div>
+<div class="policy">
+<div class="image"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank">
+<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank">办公室综合保险</a></div>
+</div>
 
-						<h4>银保直通车</h4>
-						 <p>简介：银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内</p>
+</div>
+</div>
+<div class="section">
+<div class="description">经纪业务专区</div>
+<div class="content">
+<div class="policy">
+<div class="image"></div>
+<div class="showtext"></div>
+</div>
+<div class="policy">
+<div class="image"></div>
+<div class="showtext"></div>
+</div>
+<div class="policy">
+<div class="image"><a href="<%=basePath%>jsp/policy/enterprisepackage.jsp" target="_blank">
+<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/enterprisepackage.jsp" target="_blank">中小企业一揽子保险委托书</a></div>
+</div>
+
+</div>
+</div>
+
+						
 					</div>
 				</div>
 			</div>

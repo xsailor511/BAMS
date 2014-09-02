@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page language="java" import="bams.entity.User" %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -33,7 +33,7 @@ if(null==role_int){
 
 
 <!-- Stylesheets -->
-<link rel="stylesheet" href="<%=basePath %>style/bootstrap.css" >
+<link rel="stylesheet" href="<%=basePath %>style/testbootstrap.css" >
 <!-- Font awesome icon -->
 <link rel="stylesheet" href="<%=basePath %>style/font-awesome.css">
 <!-- Flexslider -->
@@ -98,7 +98,7 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
+					<li><a  class="open br-red"><i
 							class="icon-home"></i>中小企业一揽子保险委托书</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
@@ -125,11 +125,11 @@ if(null==role_int){
 					<div class="box-body">
 						
 
-					<form name="baodan" action="html_form_action.asp" method="get">
+					<form name="baodan" action="<%=basePath %>AddEnterprisePackageServlet" method="get">
 
 <table width="920" border="1" align="center">
   <tr>
-    <td colspan="7" align="center"><strong><h1>中小企业一揽子保险委托书</h1></strong></td>
+    <td colspan="7" align="center" style="font-size:10px"><strong >中小企业一揽子保险委托书</strong></td>
   </tr>
   <tr>
     <td colspan="7" align="center"><h2>委托人信息</h2></td>

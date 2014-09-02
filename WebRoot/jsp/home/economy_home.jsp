@@ -124,7 +124,7 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
+					<li><a class="open br-red"><i
 							class="icon-home"></i> <font color="blue">经济服务专区</font></a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
@@ -142,15 +142,16 @@ if(null==role_int){
 							<li><a href="<%=basePath %>gallery.html">理赔咨询</a></li>
 						</ul></li>
 					
-					
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 中小企业一揽子保险委托书</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 委托保险招标</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i>  委托保险索赔</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i>  委托日常保单审核及咨询</a></li>
+					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i
+							class="icon-list-alt"></i> 委托保险 <span class="pull-right"><i
+								class="icon-chevron-right"></i></span></a>
+						<ul>
+						<li><a href="<%=basePath %>pricing.html">委托保险招标</a></li>
+							<li><a href="<%=basePath %>pricing.html">委托保险索赔</a></li>
+							<li><a href="<%=basePath %>404.html">委托日常保单审核及咨询</a></li>
+							<li><a href="<%=basePath %>jsp/policy/enterprisepackage.jsp" target="_blank">中小企业一揽子保险委托书</a></li>
+							
+						</ul></li>
 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
 							class="icon-user"></i> 积分兑换</a></li>
 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
@@ -195,8 +196,7 @@ if(null==role_int){
 							</ul>
 						</div>
 
-						<h4>银保直通车</h4>
-						 <p>简介：银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内</p>
+					
 					</div>
 				</div>
 			</div>

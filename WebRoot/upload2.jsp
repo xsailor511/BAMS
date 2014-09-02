@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
         User Name:<input type="text" name="username" size="30"/>
         Upload File1:<input type="file" name="file1" size="30"/>
-        Upload File2:<input type="file" name="file2" size="30"/>  
+        Upload File2:<input type="file" name="file2" size="30"/>
         <input type="submit" name="submit" value="提交"> 
         <input type="reset" name="reset" value="重置">
       </form> 

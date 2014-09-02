@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+.description {
+		width: 5%;
+		height:100%;
+		font-size: 20px; 
+		word-wrap: break-word; 
+		letter-spacing: 2px;
+		float:left;
+		border:0px solid #000;
+		text-align:center;
+		margin-top:1%;
+		}
+	.section{
+		display:inline-block;
+		width:609px;
+		height:150px;
+		border:0px solid #000;
+	}
+	.content{
+		float:right;
+		width:94%;
+		height:98%;
+		border:0px solid #000;
+	}
+	.policy{
+		float:right;width:30%;height:94%;border:0px solid #000;
+		margin:1%;
+		}
+	.image{
+		width:98%;
+		height:80%;
+		margin:1px;
+		border:0px solid #000;
+		}
+	.showtext{
+		width:98%;
+		height:16%;
+		margin:1%;
+		border:0px solid #000;
+		text-align:center;
+		overflow: hidden
+	}

@@ -27,23 +27,26 @@ public class SearchServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		System.out.println("search-user name----"+name);
 		UserService userService=new UserService();
-		
+		PrintWriter writer = response.getWriter();
 		try {
 			//List<User> user_list = userService.listAllUser();
 			User user = userService.getUser(name);
-			Gson gson = new Gson();
-			String json = gson.toJson(user);//user in json string.
-			PrintWriter writer = response.getWriter();
-			System.out.println("json-user----"+json);
-			writer.write(json);
-			writer.flush();
-			writer.close();
+			if(user.getRole()==5){//不能检索管理员账户
+				writer.write("none");
+			}else{
+				Gson gson = new Gson();
+				String json = gson.toJson(user);//user in json string.
+				System.out.println("json-user----"+json);
+				writer.write(json);
+			}
+			
 		} catch (Exception e) {
-			PrintWriter writer = response.getWriter();
 			writer.write("none");
+		}finally{
 			writer.flush();
 			writer.close();
 		}
+		
 		
 	}
 

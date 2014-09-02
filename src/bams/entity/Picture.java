@@ -6,6 +6,7 @@ public class Picture {
 	private String picture_url;//图片url
 	private String picture_owner;//图片所有者
 	private String picture_name;//图片名称
+	private String description;//图片说明
 	public int getId() {
 		return id;
 	}
@@ -29,6 +30,12 @@ public class Picture {
 	}
 	public void setPicture_name(String picture_name) {
 		this.picture_name = picture_name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	
