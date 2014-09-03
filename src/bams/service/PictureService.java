@@ -14,27 +14,30 @@ public class PictureService {
 
 	public boolean addPicture(Picture picture) {
 		Connection connection = null;
+		boolean result = false;
 		try {
 			connection = Database.getConnection();
 			pictureDAO.setConnection(connection);
-			pictureDAO.addPicture(picture);
+			result =pictureDAO.addPicture(picture);
+			Database.commit();
 		}  catch (Exception e) {
 			Database.rollback();
+			result = false;
 			e.printStackTrace();
 		}finally{
 			Database.releaseConnection(connection);
 		}
-		return false;
+		return result;
 	}
 	
 	public Picture getPicture(String picture_name){
 		Connection connection = null;
 		try {
 			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
 			Picture picture = pictureDAO.getPicture(picture_name);
 			return picture;
 		} catch (Exception e) {
-			
 			e.printStackTrace();
 		}finally{
 			Database.releaseConnection(connection);
@@ -45,17 +48,38 @@ public class PictureService {
 	
 	public List<Picture> listPictureByUser(String picture_name){
 		Connection connection = null;
+		List<Picture> pictures = null;
 		try {
 			connection = Database.getConnection();
-			List<Picture> pictures = pictureDAO.listPictureByUser(picture_name);
+			pictures = pictureDAO.listPictureByUser(picture_name);
 			return pictures;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
 			Database.releaseConnection(connection);
 		}
-		return null;
+		return pictures;
 	}
+	
+	public boolean addPictures(List<Picture> picturelist){
+		Connection connection = null;
+		boolean result = false;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			result = pictureDAO.addPictures(picturelist);
+			Database.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			Database.rollback();
+			result = false;
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		
+		return result;
+	}
+	
 	public PictureDAO getPictureDAO() {
 		return pictureDAO;
 	}

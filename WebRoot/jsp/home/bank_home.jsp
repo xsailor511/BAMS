@@ -137,17 +137,17 @@ if(null==role_int){
 							class="icon-list-alt"></i> 会员专区 <span class="pull-right"><i
 								class="icon-chevron-right"></i></span></a>
 						<ul>
-						<li><a href="<%=basePath %>pricing.html">理赔报案</a></li>
+						<li><a href="<%=basePath %>jsp/user/lipeibaoan.jsp" target="_blank">理赔报案</a></li>
 							<li><a href="<%=basePath %>pricing.html">保单查询</a></li>
-							<li><a href="<%=basePath %>404.html">资料下载</a></li>
+							<li><a href="<%=basePath %>ListAllFileServlet" target="_blank">资料下载</a></li>
 							<li><a href="<%=basePath %>gallery.html">理赔咨询</a></li>
 						</ul></li>
 					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i
 							class="icon-list-alt"></i> 在线投保专区 <span class="pull-right"><i
 								class="icon-chevron-right"></i></span></a>
 						<ul>
-							<li><a href="<%=basePath %>pricing.html">个人</a></li>
-							<li><a href="<%=basePath %>404.html">对公</a></li>
+							<li><a href="#geren">个人</a></li>
+							<li><a href="#duigong">对公</a></li>
 							
 						</ul></li>
 					
@@ -196,7 +196,10 @@ if(null==role_int){
 								</li>
 							</ul>
 						</div>
-
+<a name="geren"></a>
+<hr/>
+<br/>
+<br/>
 
 <div class="section">
 <div class="description">个人专区</div>
@@ -226,6 +229,7 @@ if(null==role_int){
 </div>
 </div>
 <hr/>
+<a name="duigong"></a>
 <div class="section">
 <div class="description">对公专区</div>
 <div class="content">

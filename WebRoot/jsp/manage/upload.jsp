@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ page import="bams.entity.File" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -161,9 +161,32 @@ height:15px;
 					<!-- Element -->
 					<div class="box-body">
 <!-- 						<div class="flexslider"> -->
+<div id="uploaded_file">
+<%
+List<File> list = (List)request.getAttribute("filelist");
+if(null==list){
+	  this.getServletContext()
+	  	.getRequestDispatcher("/error.jsp")
+	  	.forward(request,response);
+}
+for(int i=0;i<list.size();i++){
+	
+String filename = list.get(i).getFilename();
+//String fileurl = list.get(i).getFileurl();
+
+%>
+<p><a href="javascript:deletefile('<%=filename %>')">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=filename %>
+<input type="hidden" name="hiddenfile" value="<%=filename %>" />
+</p>
+<%
+
+}
+
+%>
+</div>
 
 <div class="test">
-   <form name="uploadForm" method="Get" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>UploadFileSerlvet" onsubmit="return checkFileSize()">
+   <form name="uploadForm" method="POST" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>UploadFileServlet" onsubmit="return checkForm()">
         <div id="fileinput">
         </div>
         <input type="button" onclick="addNewFileInput()" value="添加"/>
@@ -318,22 +341,90 @@ function addNewFileInput(){
 	
 }
 
-function checkFileSize(){
+function checkForm(){
+	var hiddenfiles = document.getElementsByName("hiddenfile");
 	
 	var commonfiles = document.getElementsByName("commonfile");
+	var temp = 0;
+	for(var u=0;u<commonfiles.length;u++){
+		filevalue = commonfiles[u].value;
+		//alert("filevalue"+filevalue);
+		if(isEmpty(filevalue)){
+			temp++;
+		}
+	}
+	//没有选择任何图片，返回错误
+	if(temp==commonfiles.length){
+		alert("请选择文件");
+		return false;
+	}
+	
 	var maxsize = 4*1024*1024;//最大4M
 	
 	for(var i=0;i<commonfiles.length;i++){
 		var f = commonfiles[i].files;//获得单个文件
+		for(var j=0;j<hiddenfiles.length;j++){
+			if(f[0].name==hiddenfiles[j].value){
+				alert("不能上传重复的文件");
+				return false;
+			}
+		}
 		//alert(f[0].size);
 		if(null!=f[0]&&f[0].size>maxsize){
-			alert("存在大于10M的文件，请重新选择！");
+			alert("存在大于4M的文件，请重新选择！");
 			return false;
 		}
 
 	}
 }
 
+function isEmpty(str){
+	if(str==null || str.length==0)
+		return true;
+	else 
+		return false;
+}
+
+
+var xmlhttp;
+function loadXMLDoc(url, cfunc) {
+	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp = new XMLHttpRequest();
+	} else {// code for IE6, IE5
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	xmlhttp.open("POST", url, false);
+	xmlhttp.onreadystatechange = cfunc;
+	xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
+	xmlhttp.send();
+}
+
+//获取应用绝对路径
+var localObj = window.location;
+
+var contextPath = localObj.pathname.split("/")[1];
+
+var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+
+var server_context=basePath;
+function deletefile(filename){
+	//alert("test");
+	var url = server_context+"/DeleteFileServlet?filename="+filename;
+	loadXMLDoc(url, function() {
+		
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			resultstring = xmlhttp.responseText;//json 字符串
+			if(resultstring=="success"){
+				alert("删除成功");
+				location.reload();
+			}else{
+				alert("删除失败");
+				location.reload();
+			}
+		}
+	});
+}
 </script>
 </body>
 </html>

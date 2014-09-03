@@ -139,15 +139,15 @@ if(null==role_int){
 						<ul>
 						<li><a href="<%=basePath %>jsp/user/lipeibaoan.jsp" target="_blank">理赔报案</a></li>
 							<li><a href="<%=basePath %>pricing.html">保单查询</a></li>
-							<li><a href="<%=basePath %>404.html">资料下载</a></li>
+							<li><a href="<%=basePath %>ListAllFileServlet" target="_blank">资料下载</a></li>
 							<li><a href="<%=basePath %>gallery.html">理赔咨询</a></li>
 						</ul></li>
 					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i
 							class="icon-list-alt"></i> 在线投保专区 <span class="pull-right"><i
 								class="icon-chevron-right"></i></span></a>
 						<ul>
-							<li><a href="<%=basePath %>pricing.html">黄金</a></li>
-							<li><a href="<%=basePath %>404.html">邮政</a></li>
+							<li><a href="#huangjin">黄金</a></li>
+							<li><a href="#youzheng">邮政</a></li>
 							
 						</ul></li>
 					
@@ -196,12 +196,13 @@ if(null==role_int){
 								</li>
 							</ul>
 						</div>
+<a name="huangjin"></a>
+<hr/>
+<br/>
+<br/>
 
 
-
-
-
-<div class="section">
+<div class="section" >
 <div class="description">黄金对公专区</div>
 <div class="content">
 <div class="policy">
@@ -229,7 +230,9 @@ if(null==role_int){
 </div>
 </div>
 </div>
+
 <hr/>
+<a name="youzheng"></a>
 <div class="section">
 <div class="description">邮政对公专区</div>
 <div class="content">

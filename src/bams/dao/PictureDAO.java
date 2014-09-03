@@ -12,6 +12,8 @@ public interface PictureDAO {
 
 	public boolean addPicture(Picture picture)throws Exception;
 	
+	public boolean addPictures(List<Picture> picturelist);
+	
 	public Picture getPicture(String picture_name)throws Exception;
 	
 	public List<Picture> listPictureByUser(String picture_name)throws Exception;

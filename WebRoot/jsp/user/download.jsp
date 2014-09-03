@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="bams.entity.File" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -125,7 +126,30 @@ if(null==role_int){
 					<div class="box-body">
 						
 
-					
+					<div id="uploaded_file">
+<%
+List<File> list = (List)request.getAttribute("filelist");
+if(null==list){
+	  this.getServletContext()
+	  	.getRequestDispatcher("/error.jsp")
+	  	.forward(request,response);
+}
+for(int i=0;i<list.size();i++){
+	
+String filename = list.get(i).getFilename();
+String fileurl = list.get(i).getFileurl();
+
+%>
+<p><a href="<%=basePath%>FileDownLoadServlet?filename=<%=filename %>">下载</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="<%=basePath%>FileDownLoadServlet?filename=<%=filename %>" ><%=filename %></a>
+<input type="hidden" name="hiddenfile" value="<%=filename %>" />
+</p>
+<%
+
+}
+
+%>
+</div>
 
 						
 					</div>

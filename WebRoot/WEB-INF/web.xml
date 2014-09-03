@@ -52,7 +52,7 @@
     <servlet-class>bams.servlet.picture.AddPictureServlet</servlet-class>
     <init-param>
             <param-name>filepath</param-name> 
-            <param-value>upload_image</param-value>
+            <param-value>file/user/upload_image</param-value>
         </init-param> 
         <init-param> 
             <param-name>temppath</param-name>
@@ -128,7 +128,7 @@
     <servlet-class>bams.servlet.user.UploadFileServlet</servlet-class>
     <init-param>
             <param-name>filepath</param-name> 
-            <param-value>file/manage</param-value>
+            <param-value>file/manager</param-value>
         </init-param> 
         <init-param> 
             <param-name>temppath</param-name> 
@@ -138,7 +138,33 @@
   <servlet>
     <servlet-name>FileDownLoadServlet</servlet-name>
     <servlet-class>bams.servlet.user.FileDownLoadServlet</servlet-class>
+        <init-param>
+     <param-name>filepath</param-name> 
+            <param-value>file/manager</param-value>
+        </init-param> 
+        <init-param> 
+            <param-name>temppath</param-name> 
+            <param-value>temp</param-value> 
+        </init-param>
   </servlet>
+  <servlet>
+    <servlet-name>ListAllFileServlet</servlet-name>
+    <servlet-class>bams.servlet.user.ListAllFileServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteFileServlet</servlet-name>
+    <servlet-class>bams.servlet.user.DeleteFileServlet</servlet-class>
+    <init-param>
+     <param-name>filepath</param-name> 
+            <param-value>file/manager</param-value>
+        </init-param> 
+        <init-param> 
+            <param-name>temppath</param-name> 
+            <param-value>temp</param-value> 
+        </init-param>
+  </servlet>
+
+
 
 
 
@@ -240,6 +266,14 @@
   <servlet-mapping>
     <servlet-name>FileDownLoadServlet</servlet-name>
     <url-pattern>/FileDownLoadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListAllFileServlet</servlet-name>
+    <url-pattern>/ListAllFileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteFileServlet</servlet-name>
+    <url-pattern>/DeleteFileServlet</url-pattern>
   </servlet-mapping>
 	 <session-config>
 	    <session-timeout>120</session-timeout>

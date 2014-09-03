@@ -26,7 +26,7 @@ if(null==role_int){
 <!-- Title and other stuffs -->
 <title>理赔报案</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+
 <meta name="keywords" content="">
 <meta name="author" content="">
 
@@ -140,7 +140,7 @@ margin-right: auto;
 					<div class="box-body">
 						
 <div class="fileupload">
-   <form name="uploadForm" method="Get" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>UploadPictureServlet" onsubmit="return checkFileSize()">
+   <form name="uploadForm" method="POST" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>UploadPictureServlet" onsubmit="return checkForm(this)">
         <div id="fileinput">
         
         </div>
@@ -276,6 +276,7 @@ firsttext.type = "text";
 firsttext.name= "description";
 fileinput.appendChild(document.createTextNode("图片说明"+count+":"));
 fileinput.appendChild(firsttext);
+
 function addNewFileInput(){
 	count ++;
 	if(count>=10){
@@ -303,23 +304,54 @@ function addNewFileInput(){
 	
 }
 
-function checkFileSize(){
+
 	
-	
+function checkForm(form){
+		
 	var commonfiles = document.getElementsByName("commonfile");
 	var maxsize = 10*1024*1024;//最大10M
-	
+		
 	for(var i=0;i<commonfiles.length;i++){
 		var f = commonfiles[i].files;//获得单个文件
 		//alert(f[0].size);
 		if(null!=f[0]&&f[0].size>maxsize){
-			alert("存在大于10M的图片，请重新选择！");
+			alert("存在大于4M的图片，请重新选择！");
 			return false;
-			
+				
 		}
-
 	}
+	var temp = 0;
+	for(var u=0;u<commonfiles.length;u++){
+		filevalue = commonfiles[u].value;
+		if(isEmpty(filevalue)){
+			temp++;
+		}
+	}
+	//没有选择任何图片，返回错误
+	if(temp==commonfiles.length){
+		alert("请选择文件");
+		return false;
+	}
+	var descriptions = document.getElementsByName("description");
+	//如果一行上面的图片已经添加，但是没有填写说明，则不能提交
+	for(var i=0;i<descriptions.length;i++){
+		myvalue = descriptions[i].value;
+		filevalue = commonfiles[i].value;
+		if(!isEmpty(filevalue.trim())){
+			if(isEmpty(myvalue.trim())){
+				alert("文字说明不能为空!");
+				return false;
+			}
+		}
+	}
+
 }
+	function isEmpty(str){
+		if(str==null || str.length==0)
+			return true;
+		else 
+			return false;
+	}
 
 </script>
 	

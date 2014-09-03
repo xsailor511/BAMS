@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-保单提交成功
+提交成功
 </body>
 </html>

@@ -111,7 +111,28 @@ public class PictureDAOImpl implements PictureDAO {
 		return pictures;
 	}
 
-	
+	@Override
+	public boolean addPictures(List<Picture> picturelist) {
+		PreparedStatement ps = null;
+		boolean result = false;
+		String sql = "insert into picture(picture_url,picture_owner,picture_name,description) values(?,?,?,?)";
+		try {
+			ps = connection.prepareStatement(sql);
+			for(int i=0;i<picturelist.size();i++){
+				ps.setString(1, picturelist.get(i).getPicture_url());
+				ps.setString(2, picturelist.get(i).getPicture_owner());
+				ps.setString(3, picturelist.get(i).getPicture_name());
+				ps.setString(4, picturelist.get(i).getDescription());
+				ps.addBatch();
+			}
+			ps.executeBatch();
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		return result;
+	}
 	
 	public static void closeStatement(Statement st) {
 		if (st != null) {
@@ -134,4 +155,6 @@ public class PictureDAOImpl implements PictureDAO {
 			}
 		}
 	}
+
+	
 }
