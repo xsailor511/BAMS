@@ -33,6 +33,8 @@ public class EnterprisePackage {
 	private String weituorenqianzhang;
 	//填表日期
 	private String tianbiaoriqi;
+	//投保账户名称
+	private String username;
 	public int getId() {
 		return id;
 	}
@@ -111,6 +113,12 @@ public class EnterprisePackage {
 	}
 	public void setTianbiaoriqi(String tianbiaoriqi) {
 		this.tianbiaoriqi = tianbiaoriqi;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	

@@ -81,7 +81,7 @@ height:15px;
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>Logout">注销</a></li>
+								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
 
@@ -138,7 +138,7 @@ height:15px;
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li ><a href="<%=basePath %>jsp/home/bams_manager.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
-					<li><a href="<%=basePath %>ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
+					<li><a href="<%=basePath %>servlet/ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
 
 					<li><a href="<%=basePath %>jsp/manage/all_policy.jsp" class="br-blue"><i
 							class="icon-user"></i> 批量打印word文档</a></li>
@@ -186,7 +186,7 @@ String filename = list.get(i).getFilename();
 </div>
 
 <div class="test">
-   <form name="uploadForm" method="POST" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>UploadFileServlet" onsubmit="return checkForm()">
+   <form name="uploadForm" method="POST" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>servlet/UploadFileServlet" onsubmit="return checkForm()">
         <div id="fileinput">
         </div>
         <input type="button" onclick="addNewFileInput()" value="添加"/>
@@ -410,7 +410,7 @@ var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
 var server_context=basePath;
 function deletefile(filename){
 	//alert("test");
-	var url = server_context+"/DeleteFileServlet?filename="+filename;
+	var url = server_context+"/servlet/DeleteFileServlet?filename="+filename;
 	loadXMLDoc(url, function() {
 		
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

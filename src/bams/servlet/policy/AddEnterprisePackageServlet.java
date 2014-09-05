@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bams.entity.EnterprisePackage;
 import bams.service.PolicyService;
+import bams.util.StringUtil;
 
 public class AddEnterprisePackageServlet extends HttpServlet {
 
@@ -45,10 +46,11 @@ public class AddEnterprisePackageServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		//response.setContentType("text/html;charset=utf-8");
+		//request.setCharacterEncoding("UTF-8");
 		EnterprisePackage enterprisepackage = new EnterprisePackage();
-		
-		PrintWriter writer = response.getWriter();
+		String name = (String)request.getSession().getAttribute("name");
+		//PrintWriter writer = response.getWriter();
 		
 		String weituoren = request.getParameter("weituoren");
 		String dianhua = request.getParameter("dianhua");
@@ -59,33 +61,53 @@ public class AddEnterprisePackageServlet extends HttpServlet {
 		String shoutuorenzhucedizhi = request.getParameter("shoutuorenzhucedizhi");
 		String shoutuorenfadingdaibiao = request.getParameter("shoutuorenfadingdaibiao");
 		String weituorenqianzhang = request.getParameter("weituorenqianzhang");
+		System.out.println("weituorenqianzhang encoding before   "+StringUtil.getEncoding(weituorenqianzhang));//ISO-8859-1
+//		weituoren = new String(weituoren.getBytes(StringUtil.getEncoding(weituoren)), "GB2312");
+//		dianhua = new String(dianhua.getBytes(StringUtil.getEncoding(dianhua)), "GB2312");
+//		lianxiren = new String(lianxiren.getBytes(StringUtil.getEncoding(lianxiren)), "GB2312");
+//		baoxiangongsi = new String(baoxiangongsi.getBytes(StringUtil.getEncoding(baoxiangongsi)), "GB2312");
+//		weituorenzhucedizhi = new String(weituorenzhucedizhi.getBytes(StringUtil.getEncoding(weituorenzhucedizhi)), "GB2312");
+//		weituorenfadingdaibiaoren = new String(weituorenfadingdaibiaoren.getBytes(StringUtil.getEncoding(weituorenfadingdaibiaoren)), "GB2312");
+//		shoutuorenzhucedizhi = new String(shoutuorenzhucedizhi.getBytes(StringUtil.getEncoding(shoutuorenzhucedizhi)), "GB2312");
+//		shoutuorenfadingdaibiao = new String(shoutuorenfadingdaibiao.getBytes(StringUtil.getEncoding(shoutuorenfadingdaibiao)), "GB2312");
+//		weituorenqianzhang = new String(weituorenqianzhang.getBytes(StringUtil.getEncoding(weituorenqianzhang)), "GB2312");
+		
+		
 		
 		enterprisepackage.setWeituoren(weituoren);
 		enterprisepackage.setDianhua(dianhua);
 		enterprisepackage.setLianxiren(lianxiren);
-		enterprisepackage.setBaoxiangongsi(baoxiangongsi);
+		
 		enterprisepackage.setWeituorenzhucedizhi(weituorenzhucedizhi);
 		enterprisepackage.setWeituorenfadingdaibiaoren(weituorenfadingdaibiaoren);
 		enterprisepackage.setShoutuorenzhucedizhi(shoutuorenzhucedizhi);
 		enterprisepackage.setShoutuorenfadingdaibiao(shoutuorenfadingdaibiao);
 		enterprisepackage.setWeituorenqianzhang(weituorenqianzhang);
-		
+		enterprisepackage.setBaoxiangongsi(baoxiangongsi);
 
-		String enddate = request.getParameter("start_time");
-		String tianbiaoriqi = request.getParameter("start_time");
-		
+		String enddate = request.getParameter("enddate");
+		String tianbiaoriqi = request.getParameter("tianbiaoriqi");
+		enddate = new String(enddate.getBytes(StringUtil.getEncoding(enddate)), "GB2312");
+		tianbiaoriqi = new String(tianbiaoriqi.getBytes(StringUtil.getEncoding(tianbiaoriqi)), "GB2312");
 		enterprisepackage.setEnddate(enddate);
 		enterprisepackage.setTianbiaoriqi(tianbiaoriqi);
-	
+		
+		String kexuanxianzhongs[] = request.getParameterValues("kexuanxianzhong");
+		String kexuanxianzhong = "";
+		for(int i=0;i<kexuanxianzhongs.length;i++){
+			kexuanxianzhong = kexuanxianzhong+kexuanxianzhongs[i]+";";
+		}
+		enterprisepackage.setKexuanxianzhong(kexuanxianzhong);
+		enterprisepackage.setUsername(name);
 		PolicyService service = new PolicyService();
 		if(service.addEnterprisePackage(enterprisepackage)){
 			this.getServletContext()
 			.getRequestDispatcher("/success.jsp")
 			.forward(request, response);
 		}else{
-			writer.write("failed");
-			writer.flush();
-			writer.close();
+			this.getServletContext()
+			.getRequestDispatcher("/error.jsp")
+			.forward(request, response);
 		}
 		
 	}

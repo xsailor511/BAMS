@@ -72,6 +72,8 @@ public class AllProperty {
 	private String toubaorenqianzhang;
 	//投保日期
 	private String toubaoriqi;
+	//投保账户名称
+	private String username;
 	public int getId() {
 		return id;
 	}
@@ -266,6 +268,12 @@ public class AllProperty {
 	}
 	public void setToubaoriqi(String toubaoriqi) {
 		this.toubaoriqi = toubaoriqi;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	

@@ -83,7 +83,7 @@ margin-right: auto;
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>Logout">注销</a></li>
+								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
 
@@ -140,7 +140,7 @@ margin-right: auto;
 					<div class="box-body">
 						
 <div class="fileupload">
-   <form name="uploadForm" method="POST" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>UploadPictureServlet" onsubmit="return checkForm(this)">
+   <form name="uploadForm" method="POST" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>servlet/UploadPictureServlet" onsubmit="return checkForm(this)">
         <div id="fileinput">
         
         </div>

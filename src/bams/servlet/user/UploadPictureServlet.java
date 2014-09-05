@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;  
 
 import java.io.*;  
+import java.text.SimpleDateFormat;
 import java.util.*;  
 
 import org.apache.commons.fileupload.*;  
@@ -12,6 +13,7 @@ import org.apache.commons.fileupload.disk.*;
 
 import bams.entity.Picture;
 import bams.service.PictureService;
+import bams.util.StringUtil;
  
 // Servlet 文件上传  
 public class UploadPictureServlet extends HttpServlet  
@@ -117,7 +119,7 @@ public class UploadPictureServlet extends HttpServlet
         String name = item.getFieldName();
         String value = item.getString();
         //System.out.println("value encoding before   "+getEncoding(value));//ISO-8859-1
-        value = new String(value.getBytes(getEncoding(value)), "UTF-8");
+        value = new String(value.getBytes(StringUtil.getEncoding(value)), "UTF-8");
         picture.setDescription(value);
         System.out.println("-----"+name + " : " + value + "\r\n");
     }  
@@ -134,8 +136,8 @@ public class UploadPictureServlet extends HttpServlet
         //filename = new String(filename.getBytes(getEncoding(filename)), "UTF-8");
         //System.out.println("完整的文件名：" + filename);//UTF-8. we think that gb2312 is included in UTF-8, but how can this happen?
         
-        int index = filename.lastIndexOf("\\");
-        filename = filename.substring(index + 1, filename.length());
+        int index = filename.lastIndexOf(".");
+       String suffix = filename.substring(index);
  
         long fileSize = item.getSize();  
  
@@ -144,15 +146,19 @@ public class UploadPictureServlet extends HttpServlet
             System.out.println("文件名为空 ...");  
             return;  
         }
- 
-        File uploadFile = new File(filePath + "/" + name+"_"+filename);
+        Date dt = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String   fileName   =   sdf.format(dt);
+        System.out.println(fileName);
+        fileName = fileName+suffix;
+        File uploadFile = new File(filePath + "/" + name+"_"+fileName);
         item.write(uploadFile);
-        System.out.println(filename + " 文件保存完毕 ...");
+        System.out.println(fileName + " 文件保存完毕 ...");
         //System.out.println(filePath);
         System.out.println("文件大小为 ：" + fileSize + "\r\n");
         picture.setPicture_owner(name);
-        picture.setPicture_name(name+"_"+filename);
-        picture.setPicture_url(basePath + relativePath + "/"+name+"_"+filename);
+        picture.setPicture_name(name+"_"+fileName);
+        picture.setPicture_url(basePath + relativePath + "/"+name+"_"+fileName);
     }  
       
     // doGet  
@@ -163,39 +169,5 @@ public class UploadPictureServlet extends HttpServlet
     }
     
     
-    public  String getEncoding(String str) {
-        String encode = "GB2312";
-        try {
-            if (str.equals(new String(str.getBytes(encode), encode))) {
-                String s = encode;
-                return s;
-            }
-        } catch (Exception exception) {
-        }
-        encode = "ISO-8859-1";
-        try {
-            if (str.equals(new String(str.getBytes(encode), encode))) {
-                String s1 = encode;
-                return s1;
-            }
-        } catch (Exception exception1) {
-        }
-        encode = "UTF-8";
-        try {
-            if (str.equals(new String(str.getBytes(encode), encode))) {
-                String s2 = encode;
-                return s2;
-            }
-        } catch (Exception exception2) {
-        }
-        encode = "GBK";
-        try {
-            if (str.equals(new String(str.getBytes(encode), encode))) {
-                String s3 = encode;
-                return s3;
-            }
-        } catch (Exception exception3) {
-        }
-        return "";
-    }
+   
 } 

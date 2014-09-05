@@ -69,7 +69,7 @@ if(null==role_int){
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>Logout">注销</a></li>
+								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
 
@@ -140,8 +140,8 @@ String filename = list.get(i).getFilename();
 String fileurl = list.get(i).getFileurl();
 
 %>
-<p><a href="<%=basePath%>FileDownLoadServlet?filename=<%=filename %>">下载</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="<%=basePath%>FileDownLoadServlet?filename=<%=filename %>" ><%=filename %></a>
+<p><a href="<%=basePath%>servlet/FileDownLoadServlet?filename=<%=filename %>">下载</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="<%=basePath%>servlet/FileDownLoadServlet?filename=<%=filename %>" ><%=filename %></a>
 <input type="hidden" name="hiddenfile" value="<%=filename %>" />
 </p>
 <%

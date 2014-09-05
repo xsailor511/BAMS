@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <%
@@ -19,7 +20,7 @@ if(null==role_int){
 
 %>
 
-<!DOCTYPE html>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html">
@@ -68,7 +69,7 @@ if(null==role_int){
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>Logout">注销</a></li>
+								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
 
@@ -125,7 +126,7 @@ if(null==role_int){
 					<div class="box-body">
 						
 
-					<form name="baodan" action="<%=basePath %>AddEnterprisePackageServlet" method="get">
+					<form name="baodan" action="<%=basePath %>servlet/AddEnterprisePackageServlet" method="post">
 
 <table width="920" border="1" align="center">
   <tr>
@@ -136,14 +137,14 @@ if(null==role_int){
   </tr>
   <tr>
     <td>委托人：
-      <label for="weituoren_name"></label>
-    <input type="text" name="weituoren_name" id="weituoren_name"></td>
+      <label for="weituoren"></label>
+    <input type="text" name="weituoren" id="weituoren"></td>
     <td colspan="4">电话： 
-      <label for="weituoren_phone"></label>
-    <input type="text" name="weituoren_phone" id="weituoren_phone"></td>
+      <label for="dianhua"></label>
+    <input type="text" name="dianhua" id="dianhua"></td>
     <td colspan="2">联系人：
-      <label for="weituoren_connection"></label>
-    <input type="text" name="weituoren_connection" id="weituoren_connection"></td>
+      <label for="lianxiren"></label>
+    <input type="text" name="lianxiren" id="lianxiren"></td>
   </tr>
   <tr>
     <td colspan="7" align="center"><h2 align="center">委托险种</h2></td>
@@ -158,7 +159,7 @@ if(null==role_int){
     <td width="178">4. 公众责任保险</td>
   </tr>
   <tr>
-    <td colspan="7" align="center"><h4><strong><label>保险到期日为:&nbsp;</label><input class="Wdate" type="text" onClick="WdatePicker()" name="baoxiandaoqiri"></strong></h4></td>
+    <td colspan="7" align="center"><h4><strong><label>保险到期日为:&nbsp;</label><input class="Wdate" type="text" onClick="WdatePicker()" name="enddate"></strong></h4></td>
   </tr>
   <tr>
     <td height="26" colspan="7">二 可选险种</td>
@@ -166,83 +167,83 @@ if(null==role_int){
   <tr>
     <td height="52" colspan="7"><p>
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="guzhuzeren" id="kexuanxianzhong_0">
+        <input type="checkbox" name="kexuanxianzhong" value=" 雇主责任保险" id="kexuanxianzhong_0">
         雇主责任保险</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="wuranzeren" id="kexuanxianzhong_1">
+        <input type="checkbox" name="kexuanxianzhong" value=" 污染责任保险" id="kexuanxianzhong_1">
         污染责任保险</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="huowuyunshu" id="kexuanxianzhong_2">
+        <input type="checkbox" name="kexuanxianzhong" value=" 货物运输保险" id="kexuanxianzhong_2">
         货物运输保险</label>
 &nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="shigongjiju" id="kexuanxianzhong_3">
+        <input type="checkbox" name="kexuanxianzhong" value="施工机具保险" id="kexuanxianzhong_3">
         施工机具保险</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="jianzhugongcheng" id="kexuanxianzhong_4">
+        <input type="checkbox" name="kexuanxianzhong" value=" 建筑（安装）工程一切保险" id="kexuanxianzhong_4">
         建筑（安装）工程一切保险</label>
 <br>
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="lirunsunshi" id="kexuanxianzhong_5">
+        <input type="checkbox" name="kexuanxianzhong" value="利润损失保险" id="kexuanxianzhong_5">
         利润损失保险</label>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="guyuanzhongcheng" id="kexuanxianzhong_6">
+        <input type="checkbox" name="kexuanxianzhong" value="雇员忠诚保险" id="kexuanxianzhong_6">
         雇员忠诚保险</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="chanpinzeren" id="kexuanxianzhong_7">
+        <input type="checkbox" name="kexuanxianzhong" value="产品责任保险" id="kexuanxianzhong_7">
         产品责任保险</label>
 &nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="buchonggongshang" id="kexuanxianzhong_8">
+        <input type="checkbox" name="kexuanxianzhong" value="补充工伤保险" id="kexuanxianzhong_8">
         补充工伤保险</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="gaoguandongshi" id="kexuanxianzhong_9">
+        <input type="checkbox" name="kexuanxianzhong" value="高管、董事责任保险（上市）" id="kexuanxianzhong_9">
         高管、董事责任保险（上市）</label>
       <br>
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="yiwaishanghai" id="kexuanxianzhong_10">
+        <input type="checkbox" name="kexuanxianzhong" value="意外伤害保险" id="kexuanxianzhong_10">
         意外伤害保险</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="buchongyiliao" id="kexuanxianzhong_11">
+        <input type="checkbox" name="kexuanxianzhong" value="补充医疗保险" id="kexuanxianzhong_11">
         补充医疗保险</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="qiyenianjin" id="kexuanxianzhong_12">
+        <input type="checkbox" name="kexuanxianzhong" value="企业年金保险" id="kexuanxianzhong_12">
         企业年金保险</label>
 &nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="buchongyanglao" id="kexuanxianzhong_13">
+        <input type="checkbox" name="kexuanxianzhong" value="补充养老保险" id="kexuanxianzhong_13">
         补充养老保险</label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="chanpinzhiliang" id="kexuanxianzhong_14">
+        <input type="checkbox" name="kexuanxianzhong" value="产品质量保证保险" id="kexuanxianzhong_14">
         产品质量保证保险</label>
       <br>
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="daxingshebei" id="kexuanxianzhong_15">
+        <input type="checkbox" name="kexuanxianzhong" value="大型设备运输险" id="kexuanxianzhong_15">
         大型设备运输险</label>
       &nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="anquanshengchan" id="kexuanxianzhong_16">
+        <input type="checkbox" name="kexuanxianzhong" value="安全生产责任险" id="kexuanxianzhong_16">
         安全生产责任险</label>
 &nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="youwuzeren" id="kexuanxianzhong_17">
+        <input type="checkbox" name="kexuanxianzhong" value="油污责任保险" id="kexuanxianzhong_17">
         油污责任保险</label>
 &nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="nongzuowu" id="kexuanxianzhong_18">
+        <input type="checkbox" name="kexuanxianzhong" value="农作物种植保险" id="kexuanxianzhong_18">
         农作物种植保险</label>
 &nbsp;&nbsp;
       <label>
-        <input type="checkbox" name="kexuanxianzhong" value="teshu" id="kexuanxianzhong_19">
+        <input type="checkbox" name="kexuanxianzhong" value="特殊保险" id="kexuanxianzhong_19">
         特殊保险</label>
       <br>
     </p></td>
@@ -257,99 +258,99 @@ if(null==role_int){
   <tr>
     <td height="26" colspan="2"><p>
       <label>
-        <input type="radio" name="baoxiangongsi" value="renbao" id="baoxiangongsi_0">
+        <input type="radio" name="baoxiangongsi" value="人保" id="baoxiangongsi_0">
         人保</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="pingan" id="baoxiangongsi_1">
+        <input type="radio" name="baoxiangongsi" value="平安" id="baoxiangongsi_1">
         平安</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="taibao" id="baoxiangongsi_2">
+        <input type="radio" name="baoxiangongsi" value="太保" id="baoxiangongsi_2">
         太保</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="dadi" id="baoxiangongsi_3">
+        <input type="radio" name="baoxiangongsi" value="大地" id="baoxiangongsi_3">
         大地</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="yangguang" id="baoxiangongsi_4">
+        <input type="radio" name="baoxiangongsi" value="阳光" id="baoxiangongsi_4">
         阳光</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="taiping" id="baoxiangongsi_5">
+        <input type="radio" name="baoxiangongsi" value="太平" id="baoxiangongsi_5">
         太平</label>
       <br>
       <label>
-        <input type="radio" name="baoxiangongsi" value="ancheng" id="baoxiangongsi_6">
+        <input type="radio" name="baoxiangongsi" value="安诚" id="baoxiangongsi_6">
         安诚</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="yongcheng" id="baoxiangongsi_7">
+        <input type="radio" name="baoxiangongsi" value="永诚" id="baoxiangongsi_7">
         永诚</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="dubang" id="baoxiangongsi_8">
+        <input type="radio" name="baoxiangongsi" value="都邦" id="baoxiangongsi_8">
         都邦</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="sanxing" id="baoxiangongsi_9">
+        <input type="radio" name="baoxiangongsi" value="三星" id="baoxiangongsi_9">
         三星</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="tianan" id="baoxiangongsi_10">
+        <input type="radio" name="baoxiangongsi" value="天安" id="baoxiangongsi_10">
         天安</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="yongan" id="baoxiangongsi_11">
+        <input type="radio" name="baoxiangongsi" value="永安" id="baoxiangongsi_11">
         永安</label>
       <br>
       <label>
-        <input type="radio" name="baoxiangongsi" value="changan" id="baoxiangongsi_12">
+        <input type="radio" name="baoxiangongsi" value="长安" id="baoxiangongsi_12">
         长安</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="huatai" id="baoxiangongsi_13">
+        <input type="radio" name="baoxiangongsi" value="华泰" id="baoxiangongsi_13">
         华泰</label>
 
       <label>
-        <input type="radio" name="baoxiangongsi" value="anhua" id="baoxiangongsi_14">
+        <input type="radio" name="baoxiangongsi" value="安华" id="baoxiangongsi_14">
         安华</label>
  
       <label>
-        <input type="radio" name="baoxiangongsi" value="dazhong" id="baoxiangongsi_15">
+        <input type="radio" name="baoxiangongsi" value="大众" id="baoxiangongsi_15">
         大众</label>
   
       <label>
-        <input type="radio" name="baoxiangongsi" value="changcheng" id="baoxiangongsi_16">
+        <input type="radio" name="baoxiangongsi" value="长城" id="baoxiangongsi_16">
         长城</label>
    
       <label>
-        <input type="radio" name="baoxiangongsi" value="hainiu" id="baoxiangongsi_17">
+        <input type="radio" name="baoxiangongsi" value="海纽" id="baoxiangongsi_17">
         海纽</label>
       <br>
       <label>
-        <input type="radio" name="baoxiangongsi" value="renshou" id="baoxiangongsi_18">
+        <input type="radio" name="baoxiangongsi" value="人寿" id="baoxiangongsi_18">
         人寿</label>
   
       <label>
-        <input type="radio" name="baoxiangongsi" value="taikang" id="baoxiangongsi_19">
+        <input type="radio" name="baoxiangongsi" value="泰康" id="baoxiangongsi_19">
         泰康</label>
      
       <label>
-        <input type="radio" name="baoxiangongsi" value="xinhua" id="baoxiangongsi_20">
+        <input type="radio" name="baoxiangongsi" value="新华" id="baoxiangongsi_20">
         新华</label>
      
       <label>
-        <input type="radio" name="baoxiangongsi" value="zhongying" id="baoxiangongsi_21">
+        <input type="radio" name="baoxiangongsi" value="中英" id="baoxiangongsi_21">
         中英</label>
      
       <label>
-        <input type="radio" name="baoxiangongsi" value="hezhong" id="baoxiangongsi_22">
+        <input type="radio" name="baoxiangongsi" value="合众" id="baoxiangongsi_22">
         合众</label>
      
       <label>
-        <input type="radio" name="baoxiangongsi" value="xincheng" id="baoxiangongsi_23">
+        <input type="radio" name="baoxiangongsi" value="信诚" id="baoxiangongsi_23">
         信诚</label>
       <br>
     </p></td>
@@ -373,13 +374,13 @@ if(null==role_int){
   </tr>
   <tr>
     <td height="26" colspan="2" align="right"><p>注册地址：</p></td>
-    <td height="26" colspan="5" align="left"><label for="zhucedizhi"></label>
-    <input type="text" name="zhucedizhi" id="zhucedizhi"></td>
+    <td height="26" colspan="5" align="left"><label for="weituorenzhucedizhi"></label>
+    <input type="text" name="weituorenzhucedizhi" id="weituorenzhucedizhi"></td>
   </tr>
   <tr>
     <td height="32" colspan="2" align="right"><p>法定代表人：</p></td>
-    <td height="32" colspan="5" align="left"><label for="fadingdaibiao"></label>
-    <input type="text" name="fadingdaibiao" id="fadingdaibiao"></td>
+    <td height="32" colspan="5" align="left"><label for="weituorenfadingdaibiaoren"></label>
+    <input type="text" name="weituorenfadingdaibiaoren" id="weituorenfadingdaibiaoren"></td>
   </tr>
   <tr>
     <td height="26" colspan="2" align="right">受托人：</td>
@@ -387,13 +388,13 @@ if(null==role_int){
   </tr>
   <tr>
     <td height="33" colspan="2" align="right"><p>注册地址：</p></td>
-    <td height="33" colspan="5" align="left"><label for="zhucedizhi2"></label>
-    <input type="text" name="zhucedizhi2" id="zhucedizhi2"></td>
+    <td height="33" colspan="5" align="left"><label for="shoutuorenzhucedizhi"></label>
+    <input type="text" name="shoutuorenzhucedizhi" id="shoutuorenzhucedizhi"></td>
   </tr>
   <tr>
     <td height="32" colspan="2" align="right"><p>法定代表人：</p></td>
-    <td height="32" colspan="5" align="left"><label for="fadingdaibiao2"></label>
-    <input type="text" name="fadingdaibiao2" id="fadingdaibiao2"></td>
+    <td height="32" colspan="5" align="left"><label for="shoutuorenfadingdaibiao"></label>
+    <input type="text" name="shoutuorenfadingdaibiao" id="shoutuorenfadingdaibiao"></td>
   </tr>
   <tr>
     <td height="53" colspan="7" align="center"><p>从<input class="Wdate" type="text" onClick="WdatePicker()" name="start_date">起，我单位委托江泰保险经纪股份有限公司为我单位保险经纪人，代表我单位处理保险相关事宜，有效期限一年。<br>
@@ -402,9 +403,9 @@ if(null==role_int){
   </tr>
   <tr>
     <td colspan="7" align="center">        委托人： 
-      <label for="weituoren_last"></label>
-      <input type="text" name="weituoren_last" id="weituoren_last" />
-                  日期：<input class="Wdate" type="text" onClick="WdatePicker()" name="date2"></td>
+      <label for="weituorenqianzhang"></label>
+      <input type="text" name="weituorenqianzhang" id="weituorenqianzhang" />
+                  日期：<input class="Wdate" type="text" onClick="WdatePicker()" name="tianbiaoriqi"></td>
   </tr>
   <tr>
     <td colspan="7" align="center">&nbsp;<input type="submit" value="提交保单" /></td>
@@ -521,7 +522,11 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript">
 	
+	
+	</script>
 	<!-- Main js file -->
 </body>
 </html>

@@ -14,6 +14,14 @@
 		</exception-type>
 		<location>/common/error.jsp</location>
 	</error-page> -->
+	
+	 
+	  
+	 <filter>
+		<filter-name>visitcontrol</filter-name>
+		<filter-class>bams.util.AuthFilter</filter-class>
+		
+		</filter>
 	<filter>
 		<filter-name>Set Character Encoding</filter-name>
 		<filter-class>bams.util.SetCharacterEncodingFilter</filter-class>
@@ -25,7 +33,15 @@
 	  <filter-mapping>
 		<filter-name>Set Character Encoding</filter-name>
 		<url-pattern>/*</url-pattern>
-	  </filter-mapping>	
+	  </filter-mapping>
+	  <filter-mapping>
+		<filter-name>visitcontrol</filter-name>
+		<url-pattern>/servlet/*</url-pattern>
+	  </filter-mapping>
+	 
+	 
+	  
+	  
     <servlet>
         <servlet-name>Register</servlet-name>
         <servlet-class>bams.servlet.user.RegisterServlet</servlet-class>
@@ -191,89 +207,89 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
-        <url-pattern>/Logout</url-pattern>
+        <url-pattern>/servlet/Logout</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>Delete</servlet-name>
-        <url-pattern>/Delete</url-pattern>
+        <url-pattern>/servlet/Delete</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
-        <url-pattern>/Search</url-pattern>
+        <url-pattern>/servlet/Search</url-pattern>
     </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddPictureServlet</servlet-name>
-    <url-pattern>/AddPictureServlet</url-pattern>
+    <url-pattern>/servlet/AddPictureServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ListPictureByUserServlet</servlet-name>
-    <url-pattern>/ListPictureByUserServlet</url-pattern>
+    <url-pattern>/servlet/ListPictureByUserServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddAllPropertyServlet</servlet-name>
-    <url-pattern>/AddAllPropertyServlet</url-pattern>
+    <url-pattern>/servlet/AddAllPropertyServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddEmployerDutyServlet</servlet-name>
-    <url-pattern>/AddEmployerDutyServlet</url-pattern>
+    <url-pattern>/servlet/AddEmployerDutyServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddFreightServlet</servlet-name>
-    <url-pattern>/AddFreightServlet</url-pattern>
+    <url-pattern>/servlet/AddFreightServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddVehicleServlet</servlet-name>
-    <url-pattern>/AddVehicleServlet</url-pattern>
+    <url-pattern>/servlet/AddVehicleServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddFamilyServlet</servlet-name>
-    <url-pattern>/AddFamilyServlet</url-pattern>
+    <url-pattern>/servlet/AddFamilyServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddOfficeServlet</servlet-name>
-    <url-pattern>/AddOfficeServlet</url-pattern>
+    <url-pattern>/servlet/AddOfficeServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AddEnterprisePackageServlet</servlet-name>
-    <url-pattern>/AddEnterprisePackageServlet</url-pattern>
+    <url-pattern>/servlet/AddEnterprisePackageServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetUserServlet</servlet-name>
-    <url-pattern>/GetUserServlet</url-pattern>
+    <url-pattern>/servlet/GetUserServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ListAllUserServlet</servlet-name>
-    <url-pattern>/ListAllUserServlet</url-pattern>
+    <url-pattern>/servlet/ListAllUserServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>UpdateUserGoalServlet</servlet-name>
-    <url-pattern>/UpdateUserGoalServlet</url-pattern>
+    <url-pattern>/servlet/UpdateUserGoalServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DeleteManyUserServlet</servlet-name>
-    <url-pattern>/DeleteManyUserServlet</url-pattern>
+    <url-pattern>/servlet/DeleteManyUserServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>UploadPictureServlet</servlet-name>
-    <url-pattern>/UploadPictureServlet</url-pattern>
+    <url-pattern>/servlet/UploadPictureServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>UploadFileServlet</servlet-name>
-    <url-pattern>/UploadFileServlet</url-pattern>
+    <url-pattern>/servlet/UploadFileServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>FileDownLoadServlet</servlet-name>
-    <url-pattern>/FileDownLoadServlet</url-pattern>
+    <url-pattern>/servlet/FileDownLoadServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ListAllFileServlet</servlet-name>
-    <url-pattern>/ListAllFileServlet</url-pattern>
+    <url-pattern>/servlet/ListAllFileServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DeleteFileServlet</servlet-name>
-    <url-pattern>/DeleteFileServlet</url-pattern>
+    <url-pattern>/servlet/DeleteFileServlet</url-pattern>
   </servlet-mapping>
 	 <session-config>
 	    <session-timeout>120</session-timeout>

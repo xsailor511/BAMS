@@ -81,7 +81,7 @@ height:15px;
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>Logout">注销</a></li>
+								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
 
@@ -142,7 +142,7 @@ height:15px;
 
 					<li><a href="<%=basePath %>jsp/manage/all_policy.jsp" class="br-blue"><i
 							class="icon-user"></i> 批量打印word文档</a></li>
-					<li><a href="<%=basePath %>jsp/manage/upload.jsp" class="br-blue"><i
+					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
 							class="icon-user"></i> 文件上传</a></li>
 				</ul>
 				
@@ -205,7 +205,7 @@ height:15px;
     <td align="center"><div id='<%=id%>'></div><a href="javascript:void(0)" onclick="deleteuser('<%=name %>','<%=rowCount %>')">删除</a>
     <input type= "hidden" name= "username" value= "<%=name%>">
     </td>
-    <td align="center"><a href="<%=basePath%>GetUserServlet?name=<%=name %>" target="_blank">查看</a></td>
+    <td align="center"><a href="<%=basePath%>servlet/GetUserServlet?name=<%=name %>" target="_blank">查看</a></td>
   </tr>
   <%
   
@@ -213,7 +213,7 @@ height:15px;
   %>
 </table>
 <p align="center">
-<a href = "<%=basePath%>ListAllUserServlet?start=0" >首页</a>
+<a href = "<%=basePath%>servlet/ListAllUserServlet?start=0" >首页</a>
 <%
 if(start==0){
 %>
@@ -222,7 +222,7 @@ if(start==0){
 <%
 }else{
 %>
-<a href = "<%=basePath%>ListAllUserServlet?start=<%=start-pageSize%>" >上一页</a>
+<a href = "<%=basePath%>servlet/ListAllUserServlet?start=<%=start-pageSize%>" >上一页</a>
 <%
 }
 %>
@@ -234,7 +234,7 @@ if(list.size()<10){
 <%
 }else{
 %>
-<a href = "<%=basePath%>ListAllUserServlet?start=<%=start+pageSize%>" >下一页</a>
+<a href = "<%=basePath%>servlet/ListAllUserServlet?start=<%=start+pageSize%>" >下一页</a>
 <%
 }
 %>
@@ -403,7 +403,7 @@ if(list.size()<10){
 					if(checkboxes[i].checked)
 						param=param+usernames[i].value+";";
 				}
-				var url = server_context+"/DeleteManyUserServlet?usernames="+param;
+				var url = server_context+"/servlet/DeleteManyUserServlet?usernames="+param;
 				loadXMLDoc(url, function() {
 					
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -436,7 +436,7 @@ if(list.size()<10){
 	
 	function updategoal(id,name){
 		var goal = document.getElementById('xsailor_goal'+id).value;
-		var url = server_context+"/UpdateUserGoalServlet?goal="+goal+"&name="+name;
+		var url = server_context+"/servlet/UpdateUserGoalServlet?goal="+goal+"&name="+name;
 		loadXMLDoc(url, function() {
 			
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

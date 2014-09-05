@@ -79,7 +79,7 @@ height:15px;
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>Logout">注销</a></li>
+								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
 
@@ -136,11 +136,11 @@ height:15px;
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li ><a class="open br-red"><i class="icon-home"></i><font color="blue">查找用户</font> </a></li>
-					<li><a href="<%=basePath %>ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
+					<li><a href="<%=basePath %>servlet/ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
 
 					<li><a href="<%=basePath %>jsp/manage/all_policy.jsp" class="br-blue"><i
 							class="icon-user"></i> 批量打印word文档</a></li>
-					<li><a href="<%=basePath %>ListAllFileServlet" class="br-blue"><i
+					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
 							class="icon-user"></i> 文件上传</a></li>
 				</ul>
 				

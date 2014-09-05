@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page language="java" import="bams.entity.User" %>
+<%@ page language="java" import="bams.entity.Picture" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -33,6 +34,10 @@ if(null==mark){
 <meta name="keywords" content="">
 <meta name="author" content="">
 
+<script src="<%=basePath %>jsp/manage/js/jquery2222.js"></script>
+<script src="<%=basePath %>jsp/manage/js/jquery.fancybox-1.3.4.js"></script>
+
+<script src="<%=basePath %>jsp/manage/js/jquery.mousewheel-3.0.4.js"></script>
 
 
 <!-- Stylesheets -->
@@ -48,7 +53,7 @@ if(null==mark){
 
 <!-- Bootstrap responsive -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap-responsive.css" >
-
+<link rel="stylesheet" type="text/css" href="<%=basePath %>jsp/manage/css/jquery.fancybox-1.3.4.css" media="screen" />
 <!-- HTML5 Support for IE -->
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
@@ -56,6 +61,23 @@ if(null==mark){
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		
+		$("a[rel=example_group]").fancybox({
+			'transitionIn':'none',
+			'transitionOut':'none',
+			'titlePosition':'over',
+			'titleFormat':function(title, currentArray, currentIndex, currentOpts) {
+				return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+			}
+		});
+
+		
+	});
+</script>
 </head>
 <body>
 	<!-- Navbar starts -->
@@ -72,7 +94,7 @@ if(null==mark){
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>Logout">注销</a></li>
+								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
 
@@ -153,7 +175,24 @@ if(null==mark){
     <td colspan="2" align="center">所有保单</td>
   </tr>
   <tr>
-    <td height="461" colspan="2" align="left" valign="top">用户名_时间戳_图片名称</td>
+    <td height="461" colspan="2" align="left" valign="top">
+    <div id="content">
+    <%
+   	List<Picture> picturelist = (List)request.getAttribute("picturelist");
+    for(int i=0;i<picturelist.size();i++){
+    	String img_url = picturelist.get(i).getPicture_url();
+    	String image = picturelist.get(i).getPicture_name();
+    %>
+    <p><%=image %>&nbsp;&nbsp;&nbsp;
+    <a rel="example_group" href="<%=img_url %>" title="">查看</a>
+    </p>
+    <%
+    
+    }
+    %>
+    
+    </div>
+    </td>
     <td colspan="2" align="left" valign="top">用户名_邮箱_时间戳_保单名称</td>
   </tr>
   <tr>
@@ -264,19 +303,10 @@ if(null==mark){
 	<span class="totop"><a href="<%=basePath %>#"><i class="icon-chevron-up"></i></a></span>
 
 	<!-- JS -->
-	<script src="<%=basePath %>js/jquery.js"></script>
-	<script src="<%=basePath %>js/bootstrap.js"></script>
-	<!-- Bootstrap -->
-	<script src="<%=basePath %>js/imageloaded.js"></script>
-	<!-- Imageloaded -->
-	<script src="<%=basePath %>js/jquery.isotope.js"></script>
-	<!-- Isotope -->
-	<script src="<%=basePath %>js/jquery.prettyPhoto.js"></script>
-	<!-- prettyPhoto -->
-	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
-	<!-- Flexslider -->
-	<script src="<%=basePath %>js/custom.js"></script>
 	
+
+	
+<!-- 	<script type="text/javascript" src="js/picture/show_picture.js"></script> -->
 	<script type="text/javascript">
 	var xmlhttp;
 	function loadXMLDoc(url, cfunc) {

@@ -61,6 +61,8 @@ public class Freight {
 	private String toubaorenqiangzhang;
 	//投保填单日期
 	private String tianbiaoriqi;
+	//投保账户名称
+	private String username;
 	public int getId() {
 		return id;
 	}
@@ -224,6 +226,12 @@ public class Freight {
 	}
 	public void setTianbiaoriqi(String tianbiaoriqi) {
 		this.tianbiaoriqi = tianbiaoriqi;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 

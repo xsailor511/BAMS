@@ -69,7 +69,7 @@ if(null==role_int){
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="<%=basePath %>contactus.html">联系我们</a></li>
-								<li><a href="<%=basePath %>Logout">注销</a></li>
+								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
 
@@ -139,7 +139,7 @@ if(null==role_int){
 						<ul>
 						<li><a href="<%=basePath %>jsp/user/lipeibaoan.jsp" target="_blank">理赔报案</a></li>
 							<li><a href="<%=basePath %>pricing.html">保单查询</a></li>
-							<li><a href="<%=basePath %>ListAllFileServlet" target="_blank">资料下载</a></li>
+							<li><a href="<%=basePath %>servlet/ListAllFileServlet" target="_blank">资料下载</a></li>
 							<li><a href="<%=basePath %>gallery.html">理赔咨询</a></li>
 						</ul></li>
 					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i

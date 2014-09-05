@@ -30,6 +30,8 @@ public class Family {
 	private String enddate;
 	//保险费总计
 	private double baoxianfeizongji;
+	//投保账户名称
+	private String username;
 	public int getId() {
 		return id;
 	}
@@ -96,6 +98,12 @@ public class Family {
 	}
 	public void setBaoxianfeizongji(double baoxianfeizongji) {
 		this.baoxianfeizongji = baoxianfeizongji;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	

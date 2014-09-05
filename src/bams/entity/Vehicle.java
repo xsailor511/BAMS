@@ -90,6 +90,8 @@ public class Vehicle {
 	private String zhengyijiejue;
 	//驾驶员信息
 	private String jiashiyuanxinxi;
+	//投保账户名称
+	private String username;
 	public int getId() {
 		return id;
 	}
@@ -338,6 +340,12 @@ public class Vehicle {
 	}
 	public void setJiaoqiangbaoxianenddate(String jiaoqiangbaoxianenddate) {
 		this.jiaoqiangbaoxianenddate = jiaoqiangbaoxianenddate;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	

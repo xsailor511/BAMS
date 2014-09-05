@@ -35,7 +35,8 @@ public class Office {
 	private String gaocengchailvmingdan;
 	//高层意外伤害人身份证号码（合并存储）
 	private String gaocengchailvshenfengzheng;
-	
+	//投保账户名称
+	private String username;
 	public int getId() {
 		return id;
 	}
@@ -121,6 +122,12 @@ public class Office {
 	}
 	public void setGaocengchailvshenfengzheng(String gaocengchailvshenfengzheng) {
 		this.gaocengchailvshenfengzheng = gaocengchailvshenfengzheng;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 }

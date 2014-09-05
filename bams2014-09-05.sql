@@ -53,6 +53,7 @@ CREATE TABLE `allproperty` (
   `lipeijilu` tinytext COMMENT '理赔记录（合并存储）',
   `toubaorenqianzhang` varchar(32) DEFAULT NULL COMMENT '投保人签章',
   `toubaoriqi` char(10) DEFAULT NULL COMMENT '投保日期',
+  `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -87,6 +88,7 @@ CREATE TABLE `employerduty` (
   `zhengyichuli` varchar(256) DEFAULT NULL COMMENT '争议处理（合并存储）',
   `toubaorenqianzhang` varchar(64) DEFAULT NULL COMMENT '投保人签章',
   `toubaoriqi` char(10) DEFAULT NULL COMMENT '投保日期',
+  `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -110,10 +112,13 @@ CREATE TABLE `enterprisepackage` (
   `shoutuorenfadingdaibiao` varchar(64) DEFAULT NULL COMMENT '受托人法定代表',
   `weituorenqianzhang` varchar(64) DEFAULT NULL COMMENT '委托人签章',
   `tianbiaoriqi` char(10) DEFAULT NULL COMMENT '填表日期',
+  `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `enterprisepackage` */
+
+insert  into `enterprisepackage`(`id`,`weituoren`,`dianhua`,`lianxiren`,`enddate`,`kexuanxianzhong`,`baoxiangongsi`,`weituorenzhucedizhi`,`weituorenfadingdaibiaoren`,`shoutuorenzhucedizhi`,`shoutuorenfadingdaibiao`,`weituorenqianzhang`,`tianbiaoriqi`,`username`) values (1,'å¤§å¥','12212345678','é¿éå¤«','2014-10-10',NULL,'tongyi;','é¿ä»é¡¿é£é¿ä»é¡¿é£','çè¨è²','é¿ä»é¡¿é£è¡æèå','äººå','å¤§å¥','2014-09-22',NULL),(2,'å¤§å¥','12212345678','é¿éå¤«','2014-10-10','buchonggongshang;buchongyanglao;','tongyi','é¿ä»é¡¿é£é¿ä»é¡¿é£','çè¨è²','é¿ä»é¡¿é£è¡æèå','äººå','å¤§å¥','2014-09-22',NULL),(3,'å¤§å¥','12212345678','é¿éå¤«','2014-10-10','buchonggongshang;buchongyanglao;','tongyi','é¿ä»é¡¿é£é¿ä»é¡¿é£','çè¨è²','é¿ä»é¡¿é£è¡æèå','äººå','å¤§å¥','2014-09-22',NULL),(4,'å¤§å¥','12212345678','é¿éå¤«','2014-10-10','buchonggongshang;buchongyanglao;','tongyi','é¿ä»é¡¿é£é¿ä»é¡¿é£','çè¨è²','é¿ä»é¡¿é£è¡æèå','äººå','å¤§å¥','2014-09-22',NULL),(5,'å¤§å¥','12212345678','é¿éå¤«','2014-10-10','buchonggongshang;buchongyanglao;','tongyi','é¿ä»é¡¿é£é¿ä»é¡¿é£','çè¨è²','é¿ä»é¡¿é£è¡æèå','äººå','å¤§å¥','2014-09-22',NULL),(6,'��','12212345678','������','2014-10-10','buchonggongshang;buchongyanglao;','tongyi','��ʲ�ٷɰ�ʲ�ٷ�','����','��ʲ�ٷ������','��Ա','��','2014-09-22',NULL),(7,'大哥','12212345678','阿道夫','2014-10-10','buchonggongshang;buchongyanglao;','tongyi','阿什顿飞阿什顿飞','的萨菲','阿什顿飞行情而后','人员','大哥','2014-09-22',NULL),(8,'澶у�','12212345678','�块�澶�','2014-10-10','buchonggongshang;buchongyanglao;','tongyi','�夸�椤块��夸�椤块�','�����','�夸�椤块�琛�����','浜哄�','澶у�','2014-09-22',NULL),(9,'澶у�','12212345678','�块�澶�','2014-10-10','buchonggongshang;buchongyanglao;','tongyi','�夸�椤块��夸�椤块�','�����','�夸�椤块�琛�����','浜哄�','澶у�','2014-09-22',NULL),(10,'大哥','12212345678','阿道夫','2014-10-10','shigongjiju;qiyenianjin;','yongan','济南市高新区舜华路1500号','的萨菲','济南市高新区舜华路1500号','人员','大哥','2014-09-24',NULL),(11,'大哥','12212345678','阿道夫','2014-10-10','shigongjiju;qiyenianjin;','yongan','济南市高新区舜华路1500号','的萨菲','济南市高新区舜华路1500号','人员','大哥','2014-09-24',NULL),(12,'大哥','12212345678','阿道夫','2014-10-11','补充医疗保险;安全生产责任险;','tongyi','济南市高新区舜华路1500号','的萨菲','济南市高新区舜华路1500号','人员','大哥','2014-09-05','alice'),(13,'大哥','12212345678','阿道夫','2014-10-11','雇员忠诚保险;补充医疗保险;','长城','济南市高新区舜华路1500号','的萨菲','济南市高新区舜华路1500号','人员','大哥','2014-10-09','alice'),(14,'大哥','12212345678','阿道夫','2014-10-11','雇员忠诚保险;补充医疗保险;','长城','济南市高新区舜华路1500号','的萨菲','济南市高新区舜华路1500号','人员','大哥','2014-10-09','alice');
 
 /*Table structure for table `family` */
 
@@ -131,6 +136,7 @@ CREATE TABLE `family` (
   `startdate` char(10) DEFAULT NULL COMMENT '保险开始时间',
   `enddate` char(10) DEFAULT NULL COMMENT '保险结束时间',
   `baoxianfeizongji` double DEFAULT NULL COMMENT '保险费总计',
+  `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -145,7 +151,7 @@ CREATE TABLE `file` (
   `filename` varchar(128) NOT NULL COMMENT '上传的文件名称',
   `fileurl` varchar(256) NOT NULL COMMENT '文件URL',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 /*Data for the table `file` */
 
@@ -183,6 +189,7 @@ CREATE TABLE `freight` (
   `note` varchar(256) DEFAULT NULL COMMENT '备注',
   `toubaorenqiangzhang` varchar(64) DEFAULT NULL COMMENT '投保人签章',
   `tianbiaoriqi` char(10) DEFAULT NULL COMMENT '投保填单日期',
+  `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -207,6 +214,7 @@ CREATE TABLE `office` (
   `tuantiyiwaishanghaishenfenzheng` varchar(256) DEFAULT NULL COMMENT '团体意外伤害人身份证（合并存储）',
   `gaocengchailvmingdan` varchar(256) DEFAULT NULL COMMENT '高层意外伤害人名单（合并存储）',
   `gaocengchailvshenfengzheng` varchar(256) DEFAULT NULL COMMENT '高层意外伤害人身份证号码（合并存储）',
+  `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -223,11 +231,11 @@ CREATE TABLE `picture` (
   `picture_name` varchar(128) NOT NULL COMMENT '图片名称',
   `description` tinytext COMMENT '图片说明',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 /*Data for the table `picture` */
 
-insert  into `picture`(`id`,`picture_url`,`picture_owner`,`picture_name`,`description`) values (1,'F:\\Program Files\\apache-tomcat-7.0.55\\webapps\\BAMS\\file\\user\\upload_image/test.jpg','test1','test.jpg','vv吧'),(2,'F:\\Program Files\\apache-tomcat-7.0.55\\webapps\\BAMS\\file\\user\\upload_image/QQͼƬ20140819220354.jpg','test1','QQͼƬ20140819220354.jpg','打个'),(3,'F:\\Program Files\\apache-tomcat-7.0.55\\webapps\\BAMS\\file\\user\\upload_image/QQͼƬ20140819220207.jpg','test1','QQͼƬ20140819220207.jpg','发'),(4,'http://localhost:8080/BAMS/file/user/upload_imageQQͼƬ20140819220437.jpg','test1','QQͼƬ20140819220437.jpg','打的费'),(5,'http://localhost:8080/BAMS/file/user/upload_image/QQͼƬ20140821120121.jpg','test1','QQͼƬ20140821120121.jpg','爱的色放'),(6,'http://localhost:8080/BAMS/file/user/upload_image/QQͼƬ20140819220354.jpg','test1','QQͼƬ20140819220354.jpg',''),(7,'http://localhost:8080/BAMS/file/user/upload_image/QQͼƬ20140819220426.jpg','test1','QQͼƬ20140819220426.jpg','打的费'),(8,'http://localhost:8080/BAMS/file/user/upload_image/QQͼƬ20140819220252.jpg','test1','QQͼƬ20140819220252.jpg','搜噶'),(9,'http://localhost:8080/BAMS/file/user/upload_image/���������3.Overhear[00_49_37][20140719-215914-0].JPG','test1','���������3.Overhear[00_49_37][20140719-215914-0].JPG','飞洒发'),(10,'http://localhost:8080/BAMS/file/user/upload_image/�Ҵ�ﵽasdg.jpg','test1','�Ҵ�ﵽasdg.jpg','深v官方'),(11,'http://localhost:8080/BAMS/file/user/upload_image/�Ҵ�ﵽasdg.jpg','test1','�Ҵ�ﵽasdg.jpg',''),(12,'http://localhost:8080/BAMS/file/user/upload_image/Сè7UWSCYL47P3P.jpg','test1','Сè7UWSCYL47P3P.jpg','�块�澶�'),(13,'http://localhost:8080/BAMS/file/user/upload_image/小猫7UWSCYL47P3P.jpg','test1','小猫7UWSCYL47P3P.jpg','阿道夫'),(14,'http://localhost:8080/BAMS/file/user/upload_image/我打达到asdg.jpg','test1','我打达到asdg.jpg','阿道夫'),(15,'http://localhost:8080/BAMS/file/user/upload_image/我外827546.jpg','test1','我外827546.jpg','额额个'),(16,'http://localhost:8080/BAMS/file/user/upload_image/小猫7UWSCYL47P3P.jpg','test1','test1_小猫7UWSCYL47P3P.jpg','男女'),(17,'http://localhost:8080/BAMS/file/user/upload_image/我打达到asdg.jpg','test1','test1_我打达到asdg.jpg','就'),(18,'http://localhost:8080/BAMS/file/user/upload_image/我打达到asdg.jpg','test1','test1_我打达到asdg.jpg','空间'),(19,'http://localhost:8080/BAMS/file/user/upload_image/test1_test.jpg','test1','test1_test.jpg','阿道夫'),(20,'http://localhost:8080/BAMS/file/user/upload_image/test1_小猫7UWSCYL47P3P.jpg','test1','test1_小猫7UWSCYL47P3P.jpg','阿道夫'),(21,'http://localhost:8080/BAMS/file/user/upload_image/test1_QQ图片20140819220345.jpg','test1','test1_QQ图片20140819220345.jpg','圣达菲'),(22,'http://localhost:8080/BAMS/file/user/upload_image/test1_我打达到asdg.jpg','test1','test1_我打达到asdg.jpg','阿道夫'),(23,'http://localhost:8080/BAMS/file/user/upload_image/test1_QQ图片20140819220237.jpg','test1','test1_QQ图片20140819220237.jpg','打的费');
+insert  into `picture`(`id`,`picture_url`,`picture_owner`,`picture_name`,`description`) values (25,'http://localhost:8080/BAMS/file/user/upload_image/test1_20140905165446838.jpg','test1','test1_20140905165446838.jpg','打点滴'),(26,'http://localhost:8080/BAMS/file/user/upload_image/test1_20140905165553694.jpg','test1','test1_20140905165553694.jpg','哈哈'),(27,'http://localhost:8080/BAMS/file/user/upload_image/test1_20140905165630306.jpg','test1','test1_20140905165630306.jpg','阿凡达'),(28,'http://localhost:8080/BAMS/file/user/upload_image/test1_20140905165630309.jpg','test1','test1_20140905165630309.jpg','阿什顿飞');
 
 /*Table structure for table `policyindex` */
 
@@ -324,6 +332,7 @@ CREATE TABLE `vehicle` (
   `jiaoqiangbaoxianenddate` char(10) DEFAULT NULL COMMENT '交强保险结束时间',
   `zhengyijiejue` varchar(128) DEFAULT NULL COMMENT '争议解决方式',
   `jiashiyuanxinxi` varchar(256) DEFAULT NULL COMMENT '驾驶员信息',
+  `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

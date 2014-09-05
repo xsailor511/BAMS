@@ -70,7 +70,6 @@ public class SetCharacterEncodingFilter implements Filter {
 			if (encoding != null)
 				request.setCharacterEncoding(encoding);
 		}
-
 		// Pass control on to the next filter
 		chain.doFilter(request, response);
 

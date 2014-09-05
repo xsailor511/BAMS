@@ -26,7 +26,7 @@ var server_context=basePath;
 function search(){
 	
 	
-	url = server_context+'/Search?name=';
+	url = server_context+'/servlet/Search?name=';
 	var name = document.getElementById("name").value;
 	url = url + name;
 	loadXMLDoc(url, function() {
@@ -65,7 +65,7 @@ function changeContent(resultstring){
 	mytable = mytable + "<tr>"+
 	"<td align='center'>"+resultobj.id+"</td>"+
 	"<td align='center'>"+resultobj.name+"</td>"+
-	"<td align='center'>"+"<a href="+server_context+"/GetUserServlet?name="+resultobj.name+" target='_blank'>查看</a></td>"+
+	"<td align='center'>"+"<a href="+server_context+"/servlet/GetUserServlet?name="+resultobj.name+" target='_blank'>查看</a></td>"+
 	"</tr>";
 
 	mytable = mytable + "</table>";

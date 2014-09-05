@@ -68,7 +68,7 @@ if(null==role_int){
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>Logout">注销</a></li>
+								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
 
@@ -125,7 +125,7 @@ if(null==role_int){
 					<div class="box-body">
 						
 
-					<form name="baodan" action="<%=basePath %>AddFreightServlet" method="get">
+					<form name="baodan" action="<%=basePath %>servlet/AddFreightServlet" method="get">
 
 		<table width="920" height="530" border="1">
   <caption>
