@@ -1,7 +1,7 @@
 package bams.servlet.policy;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,13 +45,13 @@ public class AddAllPropertyServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		PrintWriter writer = response.getWriter();
+		
 		AllProperty allproperty = new AllProperty();
 		String toubaorenmingcheng = request.getParameter("toubaorenmingcheng");
 		String toubaorendizhi = request.getParameter("toubaorendizhi");
 		String toubaorendianhua = request.getParameter("toubaorendianhua");
 		String toubaorenzuzhijigou = request.getParameter("toubaorenzuzhijigou");
-		String beibaoxianrenmingchen = request.getParameter("beibaoxianrenmingchen");
+		String beibaoxianrenmingchen = request.getParameter("beibaoxianrenmingcheng");
 		String beibaoxianrendizhi = request.getParameter("beibaoxianrendizhi");
 		String beibaoxianrenyingyexingzhi = request.getParameter("beibaoxianrenyingyexingzhi");
 		String baoxiancaichandizhi = request.getParameter("baoxiancaichandizhi");
@@ -99,15 +99,64 @@ public class AddAllPropertyServlet extends HttpServlet {
 		allproperty.setJiaofeishijian(jiaofeishijian);
 		allproperty.setToubaoriqi(toubaoriqi);
 
+		String zhengyichuli = "";
+		String zhengyichuli_ok = request.getParameter("zhengyichuli");
+		if(zhengyichuli_ok.equals("zhongcai")){
+			String zhongcaijigou = request.getParameter("zhongcaijigou");
+			zhengyichuli = zhengyichuli_ok+";"+zhongcaijigou;
+		}else{
+			zhengyichuli = zhengyichuli_ok;
+		}
+		allproperty.setZhengyichuli(zhengyichuli);
+		
+		String toubaofujians[] = request.getParameterValues("toubaofujian");
+		String toubaofujian = "";
+		for(int i=0;i<toubaofujians.length;i++){
+			if(toubaofujians[i]==null){
+				toubaofujian = toubaofujian+";"+"no";
+			}else{
+				toubaofujian = toubaofujian+";"+toubaofujians[i];
+			}
+		}
+		if(toubaofujians[3].equals("qita")){
+			String qita = request.getParameter("qita");
+			toubaofujian = toubaofujian+";"+qita;
+		}else{
+			toubaofujian = toubaofujian+";none";
+		}
+		allproperty.setToubaofujian(toubaofujian);
+		
+		String shifoutouguo = request.getParameter("shifoutouguo");
+		if(shifoutouguo.equals("shi")){
+			String baoxiandanhao = request.getParameter("baoxiandanhao");
+			shifoutouguo = shifoutouguo + ";" + baoxiandanhao;
+		}else{
+			shifoutouguo = shifoutouguo + ";none";
+		}
+		allproperty.setShifoutouguo(shifoutouguo);
+		
+		String lipeijilu = request.getParameter("lipeijilu");
+		if(lipeijilu.equals("you")){
+			String chuxianshijian = request.getParameter("chuxianshijian");
+			String sunshijine = request.getParameter("sunshijine");
+			String chuxianyuanyin = request.getParameter("chuxianyuanyin");
+			String gaijincuoshi = request.getParameter("gaijincuoshi");
+			lipeijilu = lipeijilu + ";" + chuxianshijian+";"+sunshijine+";"+chuxianyuanyin+";"+gaijincuoshi;
+		}else{
+			lipeijilu = lipeijilu + ";none;none;none;none";
+		}
+		allproperty.setLipeijilu(lipeijilu);
+		String username = (String)request.getSession().getAttribute("name");
+		allproperty.setUsername(username);
 		PolicyService service = new PolicyService();
 		if(service.addAllProperty(allproperty)){
 			this.getServletContext()
 			.getRequestDispatcher("/success.jsp")
 			.forward(request, response);
 		}else{
-			writer.write("failed");
-			writer.flush();
-			writer.close();
+			this.getServletContext()
+			.getRequestDispatcher("/error.jsp")
+			.forward(request, response);
 		}
 		
 		

@@ -33,7 +33,7 @@ if(null==role_int){
 
 
 <!-- Stylesheets -->
-<link rel="stylesheet" href="<%=basePath %>style/bootstrap.css" >
+<link rel="stylesheet" href="<%=basePath %>style/testbootstrap.css" >
 <!-- Font awesome icon -->
 <link rel="stylesheet" href="<%=basePath %>style/font-awesome.css">
 <!-- Flexslider -->
@@ -50,7 +50,19 @@ if(null==role_int){
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
+  <style>
+table{
+border-collapse:collapse;
+border:1px;
+text-align:center;
+width:820; 
+height:627;
+}
+table td{
+border:solid#000 1px;
+}
 
+</style>
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 </head>
@@ -122,10 +134,146 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
-					
+					<form name="baodan" action="<%=basePath %>servlet/AddFamilyServlet" method="get">
+
+		<table  >
+  <caption>
+    全家无忧保险方案
+  </caption>
+  <tr>
+    <td colspan="3">保险财产地址</td>
+    <td colspan="4" style="text-align:left">&nbsp;
+    <input type="text" name="baoxiancaichandizhi" id="baoxiancaichandizhi" style="width:80%"></td>
+    <td>(具体地址)</td>
+  </tr>
+  <tr>
+    <td rowspan="15" >投保选项</td>
+    <td colspan="7" style="text-align:left">&nbsp;
+    <input type="checkbox" name="caichanzonghebaoxian" value="caichanzonghebaoxian" id="caichanzonghebaoxian">家庭财产综合保险(家财无忧) 没份保险费150元</td>
+  </tr>
+  <tr>
+    <td colspan="2">保险保障</td>
+    <td>房屋</td>
+    <td>房屋装潢</td>
+    <td>室内财产</td>
+    <td>便携式电器</td>
+    <td>现金首饰</td>
+  </tr>
+  <tr>
+    <td colspan="2">主险</td>
+    <td colspan="3">200000元</td>
+    <td>5000元</td>
+    <td>5000元</td>
+  </tr>
+  <tr>
+    <td colspan="2">管道爆裂</td>
+    <td colspan="3">10000元</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2">室内盗抢</td>
+    <td colspan="3">5000元</td>
+    <td>2500元</td>
+    <td>2500元</td>
+  </tr>
+  <tr>
+    <td colspan="2">家用电器用电安全</td>
+    <td colspan="5">5000元</td>
+  </tr>
+  <tr>
+    <td colspan="2">家用玻璃意外破碎</td>
+    <td colspan="5">500元</td>
+  </tr>
+  <tr>
+    <td colspan="7" style="text-align:left">&nbsp;
+    <input type="checkbox" name="quantijiatingchengyuan" value="quantijiatingchengyuan" id="quantijiatingchengyuan">
+    全体家庭成员(0-75岁)意外及医疗保险 保费合计(
+    <input type="text" name="yiwaiyiliaobaoxianheji" id="yiwaiyiliaobaoxianheji"> )</td>
+  </tr>
+  <tr>
+    <td colspan="2">家庭成员类型:</td>
+    <td>夫妻(可包含子女)</td>
+    <td colspan="2">夫妻(可包含子女)+一方父母</td>
+    <td colspan="2">夫妻(可包含子女)+双方父母</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2">保险保障</td>
+    <td colspan="2">保障金额</td>
+    <td>费率</td>
+    <td>保险费</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2">意外伤害</td>
+    <td colspan="2">200000元</td>
+    <td><label for="ywshfeilv"></label>
+    <input type="text" name="ywshfeilv" id="ywshfeilv" value="0.043"></td>
+    <td><label for="ywshbaoxianfei"></label>
+    <input type="text" name="ywshbaoxianfei" id="ywshbaoxianfei" value="200"></td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="yiwaishanghaiyiliao" value="yiwaishanghaiyiliao" id="yiwaishanghaiyiliao"></td>
+    <td colspan="2">意外伤害医疗</td>
+    <td colspan="2">2000元</td>
+    <td>
+    <input type="text" name="ywshylfeilv" id="ywshylfeilv" value="0.043"></td>
+    <td>
+    <input type="text" name="ywshylbaoxianfei" id="ywshylbaoxianfei" value="200"></td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="chucichamingzhongji" value="chucichamingzhongji" id="chucichamingzhongji"></td>
+    <td colspan="2">投保后初次查明重疾</td>
+    <td colspan="2">100000元</td>
+    <td>
+    <input type="text" name="tbhcccmzjfeilv" id="tbhcccmzjfeilv" value="0.043"></td>
+    <td><label for="tbhcccmzjbaoxianfei"></label>
+    <input type="text" name="tbhcccmzjbaoxianfei" id="tbhcccmzjbaoxianfei" value="200"></td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" name="menjizhen" value="menjizhen" id="menjizhen"></td>
+    <td colspan="2">门急诊</td>
+    <td colspan="2">1000元</td>
+    <td>
+    <input type="text" name="mjzfeilv" id="mjzfeilv" value="0.043"></td>
+    <td>
+    <input type="text" name="mjzbaoxianfei" id="mjzbaoxianfei" value="200"></td>
+  </tr>
+  <tr>
+    <td><label><input type="checkbox" name="jibingzhuyuan" value="jibingzhuyuan" id="jibingzhuyuan"></label></td>
+    <td colspan="2">疾病住院</td>
+    <td colspan="2">20000元 （每日承担医疗补贴 100元）</td>
+    <td><label for="jbzyfeilv"></label>
+    <input type="text" name="jbzyfeilv" id="jbzyfeilv" value="0.043"></td>
+    <td><label for="jbzybaoxianfei"></label>
+    <input type="text" name="jbzybaoxianfei" id="jbzybaoxianfei" value="200" ></td>
+  </tr>
+  <tr>
+    <td colspan="3">保险期间：</td>
+    <td colspan="5" style="text-align:left">&nbsp;
+    <input type="text" class="Wdate" name="startdate" id="startdate" onClick="WdatePicker()">
+    起止<input type="text" class="Wdate" name="enddate" id="enddate" onClick="WdatePicker()"></td>
+  </tr>
+  <tr>
+    <td colspan="3">免配额(率)</td>
+    <td colspan="5">无</td>
+  </tr>
+  <tr>
+    <td colspan="3">保险费总计</td>
+    <td colspan="4" style="text-align:left">人民币(大写)
+    <input type="text" name="baoxianfeizongjichina" id="baoxianfeizongjichina"></td>
+    <td>￥&nbsp;
+    <input type="text" name="baoxianfeizongji" id="baoxianfeizongji" style="width:60%"></td>
+  </tr>
+  <tr>
+    <td colspan="10" align="center">&nbsp;<input type="submit" value="提交保单" /></td>
+  </tr>
+</table>
+	</form>
 
 						
 					</div>
@@ -236,7 +384,8 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
-	
+	<!-- date picker -->
+	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
 </body>
 </html>

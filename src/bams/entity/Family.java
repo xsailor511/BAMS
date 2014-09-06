@@ -14,8 +14,10 @@ public class Family {
 	private String baoxiancaichandizhi;
 	//家庭财产综合保险
 	private boolean caichanzonghebaoxian;
+	
+	private boolean quantijiatingchengyuan;
 	//意外医疗保险合计
-	private double yiwaiyiliaobaoxian;
+	private double yiwaiyiliaobaoxianheji;
 	//意外伤害医疗
 	private boolean yiwaishanghaiyiliao;
 	//投保后 初次查明重疾
@@ -32,6 +34,8 @@ public class Family {
 	private double baoxianfeizongji;
 	//投保账户名称
 	private String username;
+	//保险费总计大写
+	private String baoxianfeizongjichina;
 	public int getId() {
 		return id;
 	}
@@ -50,11 +54,19 @@ public class Family {
 	public void setCaichanzonghebaoxian(boolean caichanzonghebaoxian) {
 		this.caichanzonghebaoxian = caichanzonghebaoxian;
 	}
-	public double getYiwaiyiliaobaoxian() {
-		return yiwaiyiliaobaoxian;
+	public double getYiwaiyiliaobaoxianheji() {
+		return yiwaiyiliaobaoxianheji;
 	}
-	public void setYiwaiyiliaobaoxian(double yiwaiyiliaobaoxian) {
-		this.yiwaiyiliaobaoxian = yiwaiyiliaobaoxian;
+	
+	
+	public boolean isQuantijiatingchengyuan() {
+		return quantijiatingchengyuan;
+	}
+	public void setQuantijiatingchengyuan(boolean quantijiatingchengyuan) {
+		this.quantijiatingchengyuan = quantijiatingchengyuan;
+	}
+	public void setYiwaiyiliaobaoxianheji(double yiwaiyiliaobaoxianheji) {
+		this.yiwaiyiliaobaoxianheji = yiwaiyiliaobaoxianheji;
 	}
 	public boolean isYiwaishanghaiyiliao() {
 		return yiwaishanghaiyiliao;
@@ -104,6 +116,12 @@ public class Family {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getBaoxianfeizongjichina() {
+		return baoxianfeizongjichina;
+	}
+	public void setBaoxianfeizongjichina(String baoxianfeizongjichina) {
+		this.baoxianfeizongjichina = baoxianfeizongjichina;
 	}
 	
 	

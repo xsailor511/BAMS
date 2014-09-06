@@ -13,6 +13,14 @@ public class Office {
 	private String toubaorenmingcheng;
 	//投保人地址
 	private String toubaorendizhi;
+	//联系人/联系方式
+	String lianxiren;
+	//室内装潢
+	double shineizhuanghuang;
+	//办公家具及非消耗性用品用具
+	double bangongjiaju;
+	//办公用电子电器和计算机设备
+	double bangongdianzi;
 	//财产损失险增加保额
 	private double caichansunshixianadd;
 	//财产损失险增加保费
@@ -128,6 +136,30 @@ public class Office {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getLianxiren() {
+		return lianxiren;
+	}
+	public void setLianxiren(String lianxiren) {
+		this.lianxiren = lianxiren;
+	}
+	public double getShineizhuanghuang() {
+		return shineizhuanghuang;
+	}
+	public void setShineizhuanghuang(double shineizhuanghuang) {
+		this.shineizhuanghuang = shineizhuanghuang;
+	}
+	public double getBangongjiaju() {
+		return bangongjiaju;
+	}
+	public void setBangongjiaju(double bangongjiaju) {
+		this.bangongjiaju = bangongjiaju;
+	}
+	public double getBangongdianzi() {
+		return bangongdianzi;
+	}
+	public void setBangongdianzi(double bangongdianzi) {
+		this.bangongdianzi = bangongdianzi;
 	}
 	
 }

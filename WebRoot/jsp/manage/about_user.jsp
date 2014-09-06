@@ -33,7 +33,7 @@ if(null==mark){
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
-
+<script src="<%=basePath %>js/jquery.js"></script>
 <script src="<%=basePath %>jsp/manage/js/jquery2222.js"></script>
 <script src="<%=basePath %>jsp/manage/js/jquery.fancybox-1.3.4.js"></script>
 
@@ -303,9 +303,17 @@ if(null==mark){
 	<span class="totop"><a href="<%=basePath %>#"><i class="icon-chevron-up"></i></a></span>
 
 	<!-- JS -->
-	
-
-	
+	<script src="<%=basePath %>js/bootstrap.js"></script>
+	<!-- Bootstrap -->
+	<script src="<%=basePath %>js/imageloaded.js"></script>
+	<!-- Imageloaded -->
+	<script src="<%=basePath %>js/jquery.isotope.js"></script>
+	<!-- Isotope -->
+	<script src="<%=basePath %>js/jquery.prettyPhoto.js"></script>
+	<!-- prettyPhoto -->
+	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
+	<!-- Flexslider -->
+	<script src="<%=basePath %>js/custom.js"></script>
 <!-- 	<script type="text/javascript" src="js/picture/show_picture.js"></script> -->
 	<script type="text/javascript">
 	var xmlhttp;

@@ -1,7 +1,7 @@
 package bams.servlet.policy;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +47,7 @@ public class AddEmployerDutyServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		EmployerDuty employerduty= new EmployerDuty();
-		PrintWriter writer = response.getWriter();
+
 		String toubaorenmingcheng = request.getParameter("toubaorenmingcheng");
 		String toubaorendizhi = request.getParameter("toubaorendizhi");
 		String toubaorenlianxiren = request.getParameter("toubaorenlianxiren");
@@ -89,16 +89,51 @@ public class AddEmployerDutyServlet extends HttpServlet {
 		employerduty.setEnd_time(end_time);
 		employerduty.setFufeiriqi(fufeiriqi);
 		employerduty.setToubaoriqi(toubaoriqi);
+	
+		String guyuangongzhongs[] = request.getParameterValues("guyuangongzhong");
+		String guyuanrenshus[] = request.getParameterValues("guyuanrenshu");
+		String peichangsiwangs[] = request.getParameterValues("peichangsiwang");
+		String peichangyiliaos[] = request.getParameterValues("peichangyiliao");
+		String guyuangongzhong = "";
+		String guyuanrenshu= "";
+		String peichangsiwang= "";
+		String peichangyiliao= "";
 		
+		for(int i=0;i<guyuangongzhongs.length;i++){
+			if(guyuangongzhongs[i].trim().equals("")){
+				guyuangongzhong = guyuangongzhong+";none";
+				guyuanrenshu = guyuanrenshu+";none";
+				peichangsiwang = peichangsiwang+";none";
+				peichangyiliao = peichangyiliao+";none";
+			}else{
+				guyuangongzhong = guyuangongzhong+";"+guyuangongzhongs[i];
+				guyuanrenshu = guyuanrenshu+";"+guyuanrenshus[i];
+				peichangsiwang = peichangsiwang+";"+peichangsiwangs[i];
+				peichangyiliao = peichangyiliao+";"+peichangyiliaos[i];
+			}
+		}
+		employerduty.setGuyuangongzhong(guyuangongzhong);
+		employerduty.setGuyuanrenshu(guyuanrenshu);
+		employerduty.setPeichangsiwang(peichangsiwang);
+		employerduty.setPeichangyiliao(peichangyiliao);
+		
+		String zhengyichuli = request.getParameter("zhengyichuli");
+		if(zhengyichuli.trim().equals("susong")){
+			String zhongcaijigou = request.getParameter("zhongcaijigou");
+			zhengyichuli = zhengyichuli + ";" + zhongcaijigou;
+		}
+		employerduty.setZhengyichuli(zhengyichuli);
+		String username = (String)request.getSession().getAttribute("name");
+		employerduty.setUsername(username);
 		PolicyService service = new PolicyService();
 		if(service.addEmployerDuty(employerduty)){
 			this.getServletContext()
 			.getRequestDispatcher("/success.jsp")
 			.forward(request, response);
 		}else{
-			writer.write("failed");
-			writer.flush();
-			writer.close();
+			this.getServletContext()
+			.getRequestDispatcher("/error.jsp")
+			.forward(request, response);
 		}
 		
 	}

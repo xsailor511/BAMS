@@ -1,7 +1,6 @@
 package bams.servlet.policy;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,13 +45,17 @@ public class AddOfficeServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Office office = new Office();
-		PrintWriter writer = response.getWriter();
+		//PrintWriter writer = response.getWriter();
 		String toubaorenmingcheng = request.getParameter("toubaorenmingcheng");
 		String toubaorendizhi = request.getParameter("toubaorendizhi");
+		String lianxiren = request.getParameter("lianxiren");
 		double caichansunshixianadd = Double.parseDouble(request.getParameter("caichansunshixianadd"));
 		double caichansunshixianaddbaoe = Double.parseDouble(request.getParameter("caichansunshixianaddbaoe"));
 		double tuantiyiwaixianzengjiabaofei = Double.parseDouble(request.getParameter("tuantiyiwaixianzengjiabaofei"));
 		double zongbaofei = Double.parseDouble(request.getParameter("zongbaofei"));
+		double shineizhuanghuang = Double.parseDouble(request.getParameter("bangongjiaju"));
+		double bangongjiaju = Double.parseDouble(request.getParameter("zongbaofei"));
+		double bangongdianzi = Double.parseDouble(request.getParameter("bangongdianzi"));
 		int tuantiyiwaixianzengjiarenshu = Integer.parseInt(request.getParameter("tuantiyiwaixianzengjiarenshu"));
 		String toubaorenqianzhang = request.getParameter("toubaorenqianzhang");
 		String toubaoriqi = request.getParameter("toubaoriqi");
@@ -63,23 +66,61 @@ public class AddOfficeServlet extends HttpServlet {
 		
 		office.setToubaorenmingcheng(toubaorenmingcheng);
 		office.setToubaorendizhi(toubaorendizhi);
+		office.setLianxiren(lianxiren);
 		office.setCaichansunshixianadd(caichansunshixianadd);
 		office.setCaichansunshixianaddbaoe(caichansunshixianaddbaoe);
 		office.setTuantiyiwaixianzengjiabaofei(tuantiyiwaixianzengjiabaofei);
 		office.setZongbaofei(zongbaofei);
+		office.setShineizhuanghuang(shineizhuanghuang);
+		office.setBangongjiaju(bangongjiaju);
+		office.setBangongdianzi(bangongdianzi);
 		office.setTuantiyiwaixianzengjiarenshu(tuantiyiwaixianzengjiarenshu);
 		office.setToubaorenqianzhang(toubaorenqianzhang);
 		office.setToubaoriqi(toubaoriqi);
 
+		//合并存储部分
+		String tuantixingmings[] =request.getParameterValues("tuantixingming");
+		String tuantishenfenzhengs[] =request.getParameterValues("tuantishenfenzheng");
+		String tuantixingming="";
+		String tuantishenfenzheng="";
+		for(int i=0;i<tuantixingmings.length;i++){
+			if(tuantixingmings[i].trim().equals("")){
+				tuantixingming = tuantixingming+";none";
+				tuantishenfenzheng = tuantishenfenzheng +";none";
+			}else{
+				tuantixingming = tuantixingming+";"+tuantixingmings[i];
+				tuantishenfenzheng = tuantishenfenzheng +";"+tuantishenfenzhengs[i];
+			}
+		}
+		office.setTuantiyiwaishanghaimingdan(tuantixingming);
+		office.setTuantiyiwaishanghaishenfenzheng(tuantishenfenzheng);
+		
+		String gaocengxingmings[] = request.getParameterValues("gaocengxingming");
+		String gaocengshenfenzhengs[] = request.getParameterValues("gaocengshenfenzheng");
+		String gaocengxingming = "";
+		String gaocengshenfenzheng = "";
+		for(int i=0;i<gaocengxingmings.length;i++){
+			if(gaocengxingmings[i].trim().equals("")){
+				gaocengxingming = gaocengxingming +";none";
+				gaocengshenfenzheng = gaocengshenfenzheng +";none";
+			}else{
+				gaocengxingming = gaocengxingming +";"+gaocengxingmings[i];
+				gaocengshenfenzheng = gaocengshenfenzheng +";"+gaocengshenfenzhengs[i];
+			}
+		}
+		office.setGaocengchailvmingdan(gaocengxingming);
+		office.setGaocengchailvshenfengzheng(gaocengshenfenzheng);
+		String username = (String)request.getSession().getAttribute("name");
+		office.setUsername(username);
 		PolicyService service = new PolicyService();
 		if(service.addOffice(office)){
 			this.getServletContext()
 			.getRequestDispatcher("/success.jsp")
 			.forward(request, response);
 		}else{
-			writer.write("failed");
-			writer.flush();
-			writer.close();
+			this.getServletContext()
+			.getRequestDispatcher("/error.jsp")
+			.forward(request, response);
 		}
 	}
 

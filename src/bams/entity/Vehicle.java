@@ -71,6 +71,8 @@ public class Vehicle {
 	private String shangyexianbaodanhao;
 	//商业险责任限额（合并存储）
 	private String shangyexianxiane;
+	//保险费小计
+	private String baoxianfeixiaoji;
 	//商业保险费合计
 	private double shangyebaoxianfeiheji;
 	//车船税
@@ -346,6 +348,12 @@ public class Vehicle {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getBaoxianfeixiaoji() {
+		return baoxianfeixiaoji;
+	}
+	public void setBaoxianfeixiaoji(String baoxianfeixiaoji) {
+		this.baoxianfeixiaoji = baoxianfeixiaoji;
 	}
 
 	

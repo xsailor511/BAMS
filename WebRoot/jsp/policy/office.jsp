@@ -33,7 +33,7 @@ if(null==role_int){
 
 
 <!-- Stylesheets -->
-<link rel="stylesheet" href="<%=basePath %>style/bootstrap.css" >
+<link rel="stylesheet" href="<%=basePath %>style/testbootstrap.css" >
 <!-- Font awesome icon -->
 <link rel="stylesheet" href="<%=basePath %>style/font-awesome.css">
 <!-- Flexslider -->
@@ -50,7 +50,16 @@ if(null==role_int){
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
+  <style>
+table{
+border-collapse:collapse;
+border:1px;
+}
+table td{
+border:solid#000 1px;
+}
 
+</style>
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 </head>
@@ -122,10 +131,200 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
-					
+					<form name="baodan" action="<%=basePath %>servlet/AddOfficeServlet" method="get">
+
+		<table width="720" height="673" border="1">
+  <caption>
+    办公室综合保险
+  <br />
+  (投保单)
+  <br />
+  </caption>
+  <tr>
+    <td width="198" style="text-align:right"><label for="toubaorenmingcheng">投保人/被保险人名称:</label></td>
+    <td colspan="5">
+    &nbsp;&nbsp;<input type="text" name="toubaorenmingcheng" id="toubaorenmingcheng"></td>
+  </tr>
+  <tr>
+    <td style="text-align:right"><label for="toubaorendizhi">投保人/被保险人地址:</label></td>
+    <td colspan="5">
+    &nbsp;&nbsp;<input type="text" name="toubaorendizhi" id="toubaorendizhi"></td>
+  </tr>
+  <tr>
+    <td style="text-align:right">联系人/联系方式:</td>
+    <td colspan="5">
+    &nbsp;&nbsp;<input type="text" name="lianxiren" id="lianxiren"></td>
+  </tr>
+  <tr>
+    <td colspan="6" style="text-align:center">办公室综合保险保单内容</td>
+  </tr>
+  <tr>
+    <td colspan="2" rowspan="2" style="text-align:center">财产损失保险</td>
+    <td colspan="4" style="text-align:center">意外伤害险</td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align:center">团体意外伤害保险(5人以下)</td>
+    <td colspan="2" style="text-align:center">公司高层差旅意外保险(2人)</td>
+  </tr>
+  <tr>
+    <td colspan="2"><p >火灾、爆炸，雷击、暴雨等自然灾害；自动喷淋系统故障、管道爆裂；盗抢行为；第三者恶意破坏；因自然灾害、超电压造成计算机财产损失；施救费用。</p>      <p >&nbsp;</p></td>
+    <td colspan="2"><p >被保险人遭受意外伤害导致死亡、残疾或烧伤； </p>
+    <p >遭受意外伤害的医疗费用。</p></td>
+    <td colspan="2"><p >被保险人在乘坐飞机、轮船、火车（含地铁、轻轨）时，遭受意外伤害导致的死亡、残疾。</p></td>
+  </tr>
+  <tr>
+    <td colspan="2"><p >财产损失总保险金额人民币20万元</p>
+      <p >其中： </p>
+      <p ><label for="shineizhuanghuang">室内装潢：</label><br/>
+    &nbsp;&nbsp;<input type="text" name="shineizhuanghuang" id="shineizhuanghuang">
+    </p>
+      <p ><label for="bangongjiaju">办公家具及非消耗性用品用具：</label><br/>
+    &nbsp;&nbsp;<input type="text" name="bangongjiaju" id="bangongjiaju">
+    </p>
+    <p ><label for="bangongdianzi">办公用电子电器和计算机设备：</label><br/>
+    &nbsp;&nbsp;<input type="text" name="bangongdianzi" id="bangongdianzi"></p></td>
+    <td colspan="2"><p >意外伤害身故累计赔偿限额15万元</p>
+      <p >3万元/人      </p>
+      <p >意外医疗累计赔偿限额：6万元； </p>
+      <p >6千元/人 </p>
+    <p style="color:red">另：出纳人员携带现金往返银行途中遭盗抢人身伤亡20万</p></td>
+    <td colspan="2"><p >飞机：赔偿限额40万元； </p>
+      <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20万元/人； </p>
+      <p >其它交通工具：赔偿限额10万元； </p>
+    <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5万元/人。</p></td>
+  </tr>
+  <tr>
+    <td colspan="6" style="text-align:center">保费合计 450元人民币</td>
+  </tr>
+  <tr>
+    <td colspan="6"><p ><label for="caichansunshixianadd">1、财产损失险增加财产保额</label>
+    <input type="text" name="caichansunshixianadd" id="caichansunshixianadd"><label for="caichansunshixianaddbaoe">万，保费增加</label>
+    <input type="text" name="caichansunshixianaddbaoe" id="caichansunshixianaddbaoe">元。（10元/万元） </p>
+    <p ><label for="tuantiyiwaixianzengjiarenshu">2、团体意外伤害险增加</label>
+    <input type="text" name="tuantiyiwaixianzengjiarenshu" id="tuantiyiwaixianzengjiarenshu">
+    <label for="tuantiyiwaixianzengjiabaofei">人，保费增加</label>
+    <input type="text" name="tuantiyiwaixianzengjiabaofei" id="tuantiyiwaixianzengjiabaofei">元。（40元/人）</p></td>
+  </tr>
+  <tr>
+  <td>总保费</td>
+    <td colspan="6">&nbsp;&nbsp;<input type="text" name="zongbaofei" id="zongbaofei" />&nbsp;元</td>
+  </tr>
+  <tr>
+    <td colspan="6"><p >声明：投保人已详细阅读以上保单内容。 </p>
+      <p style="text-align:center">投保人签章: <label for="toubaorenqianzhang"></label>
+    <input type="text" name="toubaorenqianzhang" id="toubaorenqianzhang">
+    </p>
+    <p style="text-align:center">&nbsp;&nbsp;<label for="toubaoriqi">投保日期:</label>
+    <input type="text" class="Wdate" name="toubaoriqi" id="toubaoriqi" onClick="WdatePicker()">
+</p></td>
+  </tr>
+</table>
+<br/>
+<table width="720" height="591" border="1">
+<caption style="text-align:center">
+    附表：团体意外伤害险、高层差旅意外伤害险人员明细表
+  </caption>
+  <tr>
+    <td colspan="2">险别</td>
+    <td>序号</td>
+    <td colspan="2">姓名</td>
+    <td colspan="2">身份证号</td>
+  </tr>
+  <tr>
+    <td colspan="2" rowspan="10">团体意外伤害</td>
+    <td style="text-align:center">1</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming1"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng1"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">2</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming2"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng2"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">3</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming3"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng3"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">4</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming4"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng4"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">5</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming5"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng5"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">6</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming6"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng6"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">7</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming7"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng7"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">8</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming8"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng8"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">9</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming9"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng9"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">10</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantixingming" id="tuantixingming10"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="tuantishenfenzheng" id="tuandishenfenzheng10"></td>
+  </tr>
+  <tr>
+    <td colspan="2" rowspan="2">高层差旅意外伤害</td>
+    <td style="text-align:center">1</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="gaocengxingming" id="gaocengxingming1"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="gaocengshenfenzheng" id="gaocengshenfenzheng1"></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">2</td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="gaocengxingming" id="gaocengxingming2"></td>
+    <td colspan="2">&nbsp;&nbsp;
+    <input type="text" name="gaocengshenfenzheng" id="gaocengshenfenzheng2"></td>
+  </tr>
+  <tr>
+    <td colspan="7" align="center">&nbsp;<input type="submit" value="提交保单" /></td>
+  </tr>
+  
+</table>
+	</form>
 
 						
 					</div>
@@ -236,7 +435,8 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
-	
+	<!-- date picker -->
+	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
 </body>
 </html>

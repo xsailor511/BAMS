@@ -45,7 +45,18 @@ if(null==role_int){
 
 <!-- Bootstrap responsive -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap-responsive.css" >
+<style type="text/css">
+table{
+text-align:center;
+width:820;height:364;
+border-collapse:collapse;
+border:1px;
+}
+table td{
+border:solid#000 1px;
+}
 
+</style>
 <!-- HTML5 Support for IE -->
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
@@ -122,154 +133,157 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
 					<form name="baodan" action="<%=basePath %>servlet/AddEmployerDutyServlet" method="get">
 
-		<table width="920" height="364" border="1">
+		<table  >
   <caption>
     雇主责任险投保单<br />
-投保单编号<label for="toubaodanbianhao"></label>
-    <input type="text" name="toubaodanbianhao" id="toubaodanbianhao"><br />
+<p style="text-align: right">投保单编号
+    <input type="text" name="toubaodanbianhao" id="toubaodanbianhao"></p>
   </caption>
   <tr>
-    <td width="180" height="23">投保人名称</td>
-    <td colspan="3"><label for="toubaoren_name"></label>
-    <input type="text" name="toubaoren_name" id="toubaoren_name"></td>
-    <td width="252">投保人地址</td>
-    <td colspan="2"><label for="toubaoren_address"></label>
-    <input type="text" name="toubaoren_address" id="toubaoren_address"></td>
+    <td >投保人名称</td>
+    <td colspan="3" style="width:30%">
+    <input type="text" name="toubaorenmingcheng" id="toubaorenmingcheng"></td>
+    <td >投保人地址</td>
+    <td colspan="2">
+    <input type="text" name="toubaorendizhi" id="toubaorendizhi"></td>
   </tr>
   <tr>
-    <td height="31">投保人联系人</td>
-    <td colspan="3"><label for="toubaoren_contacts"></label>
-    <input type="text" name="toubaoren_contacts" id="toubaoren_contacts"></td>
+    <td >投保人联系人</td>
+    <td colspan="3">
+    <input type="text" name="toubaorenlianxiren" id="toubaorenlianxiren"></td>
     <td>投保人联系电话</td>
-    <td colspan="2"><label for="toubaoren_phone"></label>
-    <input type="text" name="toubaoren_phone" id="toubaoren_phone"></td>
+    <td colspan="2">
+    <input type="text" name="toubaorendianhua" id="toubaorendianhua"></td>
   </tr>
   <tr>
-    <td height="23">被保险人名称</td>
-    <td colspan="3"><label for="beibxren_name"></label>
-    <input type="text" name="beibxren_name" id="beibxren_name"></td>
+    <td >被保险人名称</td>
+    <td colspan="3">
+    <input type="text" name="beibaoxianrenmingcheng" id="beibaoxianrenmingcheng"></td>
     <td>被保险人地址</td>
-    <td colspan="2"><label for="beibxren_address"></label>
-    <input type="text" name="beibxren_address" id="beibxren_address"></td>
+    <td colspan="2">
+    <input type="text" name="beibaoxianrendizhi" id="beibaoxianrendizhi"></td>
   </tr>
   <tr>
-    <td height="33">营业性质</td>
-    <td colspan="3"><label for="yingyexingzhi"></label>
+    <td >营业性质</td>
+    <td colspan="3">
     <input type="text" name="yingyexingzhi" id="yingyexingzhi"></td>
     <td>被保险人组织机构代码证</td>
-    <td colspan="2"><label for="zuzhijigou_code"></label>
-    <input type="text" name="zuzhijigou_code" id="zuzhijigou_code"></td>
+    <td colspan="2">
+    <input type="text" name="beizuzhijigoudaima" id="beizuzhijigoudaima"></td>
   </tr>
   <tr>
-    <td height="36" colspan="3">是否参加社会(医疗、工伤）保险</td>
-    <td colspan="4"><label for="isshehuibaoxian"></label>
-    <input type="text" name="isshehuibaoxian" id="isshehuibaoxian"></td>
+    <td colspan="3">是否参加社会(医疗、工伤）保险</td>
+    <td colspan="4">
+    <input type="text" name="canjiashehuibaoxian" id="canjiashehuibaoxian"></td>
   </tr>
   <tr>
     <td colspan="2" rowspan="2">雇员工种</td>
     <td colspan="2" rowspan="2">估计雇员人数</td>
-    <td height="37" colspan="3">赔偿限额</td>
+    <td  colspan="3">赔偿限额</td>
   </tr>
   <tr>
-    <td height="32" colspan="2">死亡、伤残</td>
-    <td width="278">医疗</td>
+    <td colspan="2">死亡、伤残</td>
+    <td >医疗</td>
   </tr>
   <tr>
-    <td colspan="2"><label for="guyuangongzhong1"></label>
-    <input type="text" name="guyuangongzhong1" id="guyuangongzhong1"></td>
-    <td colspan="2"><label for="guyuanrenshu1"></label>
-    <input type="text" name="guyuanrenshu1" id="guyuanrenshu1"></td>
-    <td colspan="2"><label for="siwangshangcan1"></label>
-    <input type="text" name="siwangshangcan1" id="siwangshangcan1"></td>
-    <td><label for="yiliao1"></label>
-    <input type="text" name="yiliao1" id="yiliao1"></td>
+    <td colspan="2">
+    <input type="text" name="guyuangongzhong" id="guyuangongzhong1"></td>
+    <td colspan="2">
+    <input type="text" name="guyuanrenshu" id="guyuanrenshu1"></td>
+    <td colspan="2">
+    <input type="text" name="peichangsiwang" id="siwangshangcan1"></td>
+    <td>
+    <input type="text" name="peichangyiliao" id="yiliao1"></td>
   </tr>
   <tr>
-    <td colspan="2"><label for="guyuangongzhong2"></label>
-    <input type="text" name="guyuangongzhong2" id="guyuangongzhong2"></td>
-    <td colspan="2"><label for="guyuanrenshu2"></label>
-    <input type="text" name="guyuanrenshu2" id="guyuanrenshu2"></td>
-    <td colspan="2"><label for="siwangshangcan2"></label>
-    <input type="text" name="siwangshangcan2" id="siwangshangcan2"></td>
-    <td><label for="yiliao2"></label>
-    <input type="text" name="yiliao2" id="yiliao2"></td>
+    <td colspan="2">
+    <input type="text" name="guyuangongzhong" id="guyuangongzhong2"></td>
+    <td colspan="2">
+    <input type="text" name="guyuanrenshu" id="guyuanrenshu2"></td>
+    <td colspan="2">
+    <input type="text" name="peichangsiwang" id="siwangshangcan2"></td>
+    <td>
+    <input type="text" name="peichangyiliao" id="yiliao2"></td>
   </tr>
   <tr>
-    <td height="23" colspan="2"><label for="guyuangongzhong3"></label>
-    <input type="text" name="guyuangongzhong3" id="guyuangongzhong3"></td>
-    <td colspan="2"><label for="guyuanrenshu3"></label>
-    <input type="text" name="guyuanrenshu3" id="guyuanrenshu3"></td>
-    <td colspan="2"><label for="siwangshangcan3"></label>
-    <input type="text" name="siwangshangcan3" id="siwangshangcan3"></td>
-    <td><label for="yiliao3"></label>
-    <input type="text" name="yiliao3" id="yiliao3"></td>
+    <td  colspan="2">
+    <input type="text" name="guyuangongzhong" id="guyuangongzhong3"></td>
+    <td colspan="2">
+    <input type="text" name="guyuanrenshu" id="guyuanrenshu3"></td>
+    <td colspan="2">
+    <input type="text" name="peichangsiwang" id="siwangshangcan3"></td>
+    <td>
+    <input type="text" name="peichangyiliao" id="yiliao3"></td>
   </tr>
   <tr>
-    <td height="23" colspan="2"><label for="guyuangongzhong4"></label>
-    <input type="text" name="guyuangongzhong4" id="guyuangongzhong4"></td>
-    <td colspan="2"><label for="guyuanrenshu4"></label>
-    <input type="text" name="guyuanrenshu4" id="guyuanrenshu4"></td>
-    <td colspan="2"><label for="siwangshangcan4"></label>
-    <input type="text" name="siwangshangcan4" id="siwangshangcan4"></td>
-    <td><label for="yiliao4"></label>
-    <input type="text" name="yiliao4" id="yiliao4"></td>
+    <td colspan="2">
+    <input type="text" name="guyuangongzhong" id="guyuangongzhong4"></td>
+    <td colspan="2">
+    <input type="text" name="guyuanrenshu" id="guyuanrenshu4"></td>
+    <td colspan="2">
+    <input type="text" name="peichangsiwang" id="siwangshangcan4"></td>
+    <td>
+    <input type="text" name="peichangyiliao" id="yiliao4"></td>
   </tr>
   <tr>
-    <td height="23" colspan="2"><label for="guyuangongzhong5"></label>
-    <input type="text" name="guyuangongzhong5" id="guyuangongzhong5"></td>
-    <td colspan="2"><label for="guyuanrenshu5"></label>
-    <input type="text" name="guyuanrenshu5" id="guyuanrenshu5"></td>
-    <td colspan="2"><label for="siwangshangcan5"></label>
-    <input type="text" name="siwangshangcan5" id="siwangshangcan5"></td>
+    <td  colspan="2">
+    <input type="text" name="guyuangongzhong" id="guyuangongzhong5"></td>
+    <td colspan="2">
+    <input type="text" name="guyuanrenshu" id="guyuanrenshu5"></td>
+    <td colspan="2">
+    <input type="text" name="peichangsiwang" id="siwangshangcan5"></td>
     <td><label for="yiliao5"></label>
-    <input type="text" name="yiliao5" id="yiliao5"></td>
+    <input type="text" name="peichangyiliao" id="yiliao5"></td>
   </tr>
   <tr>
-    <td height="23">保险费率</td>
-    <td colspan="6"><label for="baoxianfeilv"></label>
+    <td >保险费率</td>
+    <td colspan="6" style="text-align:left">&nbsp;
     <input type="text" name="baoxianfeilv" id="baoxianfeilv"></td>
   </tr>
   <tr>
-    <td height="23">保险费</td>
-    <td colspan="6"><label for="baoxianfei"></label>
+    <td >保险费</td>
+    <td colspan="6" style="text-align:left">&nbsp;
     <input type="text" name="baoxianfei" id="baoxianfei"></td>
   </tr>
   <tr>
-    <td height="23">附加条款</td>
-    <td colspan="6"><label for="fujiatiaokuan"></label>
+    <td >附加条款</td>
+    <td colspan="6" style="text-align:left">&nbsp;
     <input type="text" name="fujiatiaokuan" id="fujiatiaokuan"></td>
   </tr>
   <tr>
-    <td height="23">保险期间</td>
-    <td colspan="6"><input type="text" name="baoxianqi" id="baoxianqi" onClick="WdatePicker()">起止<input type="text" name="baoxianzhi" id="baoxianzhi" onClick="WdatePicker()"></td>
+    <td >保险期间</td>
+    <td colspan="6" style="text-align:left">&nbsp;
+    <input type="text" class="Wdate" name="start_time" id="start_time" onClick="WdatePicker()">
+    起止<input type="text" class="Wdate" name="end_time" id="end_time" onClick="WdatePicker()"></td>
   </tr>
   <tr>
-    <td height="23" colspan="7"><p >每次事故免赔额/率：每次事故每人绝对免赔100元或损失金额的10%，两者以高者为准。 </p></td>
+    <td colspan="7"><p >&nbsp;每次事故免赔额/率：每次事故每人绝对免赔100元或损失金额的10%，两者以高者为准。 </p></td>
   </tr>
   <tr>
-    <td height="23">特别约定</td>
-    <td colspan="6"><label for="tebieyueding"></label>
+    <td >特别约定</td>
+    <td colspan="6" style="text-align:left">&nbsp;
     <input type="text" name="tebieyueding" id="tebieyueding"></td>
   </tr>
   <tr>
-    <td height="23">付款日期</td>
-    <td colspan="6"><input type="text" name="fukuanriqi" id="fukuanriqi" onClick="WdatePicker()"></td>
+    <td >付款日期</td>
+    <td colspan="6" style="text-align:left">&nbsp;
+    <input type="text" class="Wdate" name="fufeiriqi" id="fufeiriqi" onClick="WdatePicker()"></td>
   </tr>
   <tr>
-    <td height="23">司法管辖</td>
-    <td colspan="6"><label for="sifaguanxia"></label>
+    <td >司法管辖</td>
+    <td colspan="6" style="text-align:left">&nbsp;
     <input type="text" name="sifaguanxia" id="sifaguanxia"></td>
   </tr>
   <tr>
-    <td height="23">争议处理</td>
-    <td colspan="6">若投保人/被保险人与保险人发生争执，不能达成协议，被保险人自愿采取的解决方式：<label>
-        <input type="radio" name="zhengyichuli" value="susong" id="zhengyichuli_0">
-        诉讼</label>
+    <td >争议处理</td>
+    <td colspan="6" style="text-align:left">&nbsp;若投保人/被保险人与保险人发生争执，不能达成协议，被保险人自愿采取的解决方式：<br/>
+        &nbsp;<input type="radio" name="zhengyichuli" value="susong" id="zhengyichuli_0">
+        诉讼
 
       <label>
         <input type="radio" name="zhengyichuli" value="zhogncai" id="zhengyichuli_1">
@@ -278,15 +292,22 @@ if(null==role_int){
        </label></td>
   </tr>
   <tr>
-    <td height="23" colspan="7"><p >保险人（保险公司）提示 </p>
+    <td colspan="7"><p >保险人（保险公司）提示 </p>
     <p >请您仔细阅读保险条款，尤其是黑体字标注部分的条款内容，并听取保险公司业务人员的说明，如对保险公司业务人员的说明不明白或有异议的，请在填写本投保单之前向保险公司业务人员进行询问，如未询问，视同已经对条款内容完全理解并无异议。</p></td>
   </tr>
   <tr>
-    <td height="23" colspan="7"><p >投保人声明 </p>
+    <td colspan="7"><p >投保人声明 </p>
       <p >投保人及被保险人兹声明所填上述内容（包括投保单及投保附件）属实。 </p>
       <p >本人已经收悉并仔细阅读保险条款，尤其是黑体字部分的条款内容，并对保险公司就保险条款内容的说明和提示完全理解，没有异议，申请投保。 </p>
     <p >&nbsp;</p>
-    <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投保人签章：<input type="text" name="toubaorenqz" id="toubaorenqz">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　　　　&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投保日期：<input type="text" name="toubaoriqi" id="toubaoriqi" onClick="WdatePicker()"></p></td>
+    <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投保人签章：
+    <input type="text" name="toubaorenqianzhang" id="toubaorenqianzhang">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　　　　
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    投保日期：<input type="text" class="Wdate" name="toubaoriqi" id="toubaoriqi" onClick="WdatePicker()"></p></td>
+  </tr>
+  <tr>
+    <td colspan="7" style="text-align:center">&nbsp;<input type="submit" value="提交保单" /></td>
   </tr>
 </table>
 	</form>
@@ -400,7 +421,8 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
-	
+	<!-- date picker -->
+	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
 </body>
 </html>

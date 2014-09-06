@@ -46,7 +46,16 @@ if(null==role_int){
 
 <!-- Bootstrap responsive -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap-responsive.css" >
+  <style>
+table{
+border-collapse:collapse;
+border:1px;
+}
+table td{
+border:solid#000 1px;
+}
 
+</style>
 <!-- HTML5 Support for IE -->
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
@@ -123,15 +132,16 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
 					<form name="baodan" action="<%=basePath %>servlet/AddEnterprisePackageServlet" method="post">
 
-<table width="920" border="1" align="center">
-  <tr>
-    <td colspan="7" align="center" style="font-size:10px"><strong >中小企业一揽子保险委托书</strong></td>
-  </tr>
+<table width="820" border="1">
+<caption>
+中小企业一揽子保险委托书
+</caption>
+ 
   <tr>
     <td colspan="7" align="center"><h2>委托人信息</h2></td>
   </tr>
@@ -147,19 +157,19 @@ if(null==role_int){
     <input type="text" name="lianxiren" id="lianxiren"></td>
   </tr>
   <tr>
-    <td colspan="7" align="center"><h2 align="center">委托险种</h2></td>
+    <td colspan="7" style="text-align:center"><h2 align="center">委托险种</h2></td>
   </tr>
   <tr>
-    <td colspan="7"><p align="left">一 必选险种</p></td>
+    <td colspan="7"><p style="text-align:left">一 必选险种</p></td>
   </tr>
   <tr>
-    <td width="388" colspan="2">1. 机动车辆保险（交强、三者、车损、不计免赔）</td>
-    <td width="170">2.财产一切保险</td>
+    <td style="width:350" colspan="2">1. 机动车辆保险（交强、三者、车损、不计免赔）</td>
+    <td style="width:170">2.财产一切保险</td>
     <td colspan="3">3.机器损坏保险</td>
-    <td width="178">4. 公众责任保险</td>
+    <td style="width:178">4. 公众责任保险</td>
   </tr>
   <tr>
-    <td colspan="7" align="center"><h4><strong><label>保险到期日为:&nbsp;</label><input class="Wdate" type="text" onClick="WdatePicker()" name="enddate"></strong></h4></td>
+    <td colspan="7" style="text-align:center"><h4><strong><label>保险到期日为:&nbsp;</label><input class="Wdate" type="text" onClick="WdatePicker()" name="enddate"></strong></h4></td>
   </tr>
   <tr>
     <td height="26" colspan="7">二 可选险种</td>
@@ -249,14 +259,14 @@ if(null==role_int){
     </p></td>
   </tr>
   <tr>
-    <td height="25" colspan="7" align="center"><h2>保险公司选择</h2></td>
+    <td colspan="7" style="text-align:center"><h2>保险公司选择</h2></td>
   </tr>
   <tr>
-    <td height="25" colspan="2" align="center">直接选择</td>
-    <td height="25" colspan="5" align="center">委托选择</td>
+    <td colspan="2" style="text-align:center">直接选择</td>
+    <td colspan="5" style="text-align:center">委托选择</td>
   </tr>
   <tr>
-    <td height="26" colspan="2"><p>
+    <td colspan="2"><p>
       <label>
         <input type="radio" name="baoxiangongsi" value="人保" id="baoxiangongsi_0">
         人保</label>
@@ -354,63 +364,66 @@ if(null==role_int){
         信诚</label>
       <br>
     </p></td>
-    <td height="26" colspan="5" align="center"><input type="radio" name="baoxiangongsi" id="baoxiangongsi_24" value="tongyi">
+    <td  colspan="5" style="text-align:center"><input type="radio" name="baoxiangongsi" id="baoxiangongsi_24" value="tongyi">
     <label for="tongyi">同意</label></td>
   </tr>
   <tr>
-    <td height="53" colspan="7" align="center"><h2 align="center">打折约定</h2>
-    <p align="center">&nbsp;</p></td>
+    <td  colspan="7" style="text-align:center"><h2 style="text-align:center">打折约定</h2>
+    <p style="text-align:center">&nbsp;</p></td>
   </tr>
   <tr>
-    <td height="25" colspan="7"><p align="left"><strong>江泰保险经纪股份有限公司</strong>是中国保险监督管理委员会批准的全国性保险经纪公司，从2002年10月12日起成为中国工商银行股份有限公司的保险经纪人。<strong> </strong></p></td>
+    <td  colspan="7"><p style="text-align:left"><strong>江泰保险经纪股份有限公司</strong>是中国保险监督管理委员会批准的全国性保险经纪公司，从2002年10月12日起成为中国工商银行股份有限公司的保险经纪人。<strong> </strong></p></td>
   </tr>
   <tr>
-    <td height="26" colspan="7" align="center"><h2>授权委托书</h2></td>
+    <td colspan="7" style="text-align:center"><h2>授权委托书</h2></td>
   </tr>
   <tr>
-    <td height="25" colspan="2" align="right"><p>委托人：</p></td>
-    <td height="25" colspan="5" align="left"><label for="weituoren"></label>
+    <td  colspan="2" style="text-align:right"><p>委托人：</p></td>
+    <td  colspan="5" style="text-align:left">&nbsp;
     <input type="text" name="weituoren" id="weituoren"></td>
   </tr>
   <tr>
-    <td height="26" colspan="2" align="right"><p>注册地址：</p></td>
-    <td height="26" colspan="5" align="left"><label for="weituorenzhucedizhi"></label>
+    <td  colspan="2" style="text-align:right"><p>注册地址：</p></td>
+    <td  colspan="5" style="text-align:left">&nbsp;
     <input type="text" name="weituorenzhucedizhi" id="weituorenzhucedizhi"></td>
   </tr>
   <tr>
-    <td height="32" colspan="2" align="right"><p>法定代表人：</p></td>
-    <td height="32" colspan="5" align="left"><label for="weituorenfadingdaibiaoren"></label>
+    <td  colspan="2" style="text-align:right"><p>法定代表人：</p></td>
+    <td  colspan="5" style="text-align:left">&nbsp;
     <input type="text" name="weituorenfadingdaibiaoren" id="weituorenfadingdaibiaoren"></td>
   </tr>
   <tr>
-    <td height="26" colspan="2" align="right">受托人：</td>
-    <td height="26" colspan="5" align="left">江泰保险经纪股份有限公司</td>
+    <td colspan="2" style="text-align:right">受托人：</td>
+    <td colspan="5" style="text-align:left">&nbsp;江泰保险经纪股份有限公司</td>
   </tr>
   <tr>
-    <td height="33" colspan="2" align="right"><p>注册地址：</p></td>
-    <td height="33" colspan="5" align="left"><label for="shoutuorenzhucedizhi"></label>
+    <td colspan="2" style="text-align:right"><p>注册地址：</p></td>
+    <td colspan="5" style="text-align:left">&nbsp;
     <input type="text" name="shoutuorenzhucedizhi" id="shoutuorenzhucedizhi"></td>
   </tr>
   <tr>
-    <td height="32" colspan="2" align="right"><p>法定代表人：</p></td>
-    <td height="32" colspan="5" align="left"><label for="shoutuorenfadingdaibiao"></label>
+    <td colspan="2" style="text-align:right"><p>法定代表人：</p></td>
+    <td colspan="5" style="text-align:left">&nbsp;
     <input type="text" name="shoutuorenfadingdaibiao" id="shoutuorenfadingdaibiao"></td>
   </tr>
   <tr>
-    <td height="53" colspan="7" align="center"><p>从<input class="Wdate" type="text" onClick="WdatePicker()" name="start_date">起，我单位委托江泰保险经纪股份有限公司为我单位保险经纪人，代表我单位处理保险相关事宜，有效期限一年。<br>
+    <td colspan="7" style="text-align:center">
+    <p>从<input class="Wdate" type="text" onClick="WdatePicker()" name="start_date">
+    起，我单位委托江泰保险经纪股份有限公司为我单位保险经纪人，代表我单位处理保险相关事宜，有效期限一年。<br>
       委托事项：协助我单位办理投保手续，为我单位提供保险咨询、保险培训和索赔服务等事宜。</p>
                                               </td>
   </tr>
   <tr>
-    <td colspan="7" align="center">        委托人： 
+    <td colspan="7" style="text-align:center">        委托人： 
       <label for="weituorenqianzhang"></label>
       <input type="text" name="weituorenqianzhang" id="weituorenqianzhang" />
                   日期：<input class="Wdate" type="text" onClick="WdatePicker()" name="tianbiaoriqi"></td>
   </tr>
   <tr>
-    <td colspan="7" align="center">&nbsp;<input type="submit" value="提交保单" /></td>
+    <td colspan="7" style="text-align:center">&nbsp;<input type="submit" value="提交保单" /></td>
   </tr>
 </table>
+
 </form>
 
 						
@@ -522,11 +535,8 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	<!-- date picker -->
 	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
-	<script type="text/javascript">
-	
-	
-	</script>
 	<!-- Main js file -->
 </body>
 </html>

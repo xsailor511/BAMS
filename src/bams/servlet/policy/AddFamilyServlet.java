@@ -1,7 +1,6 @@
 package bams.servlet.policy;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,7 @@ import bams.service.PolicyService;
 public class AddFamilyServlet extends HttpServlet {
 
 	/**
-	 * 
+	 * 全家无忧保险
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -46,7 +45,7 @@ public class AddFamilyServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Family family = new Family();
-		PrintWriter writer = response.getWriter();
+		//PrintWriter writer = response.getWriter();
 		
 		String baoxiancaichandizhi = request.getParameter("baoxiancaichandizhi");
 		family.setBaoxiancaichandizhi(baoxiancaichandizhi);
@@ -55,6 +54,7 @@ public class AddFamilyServlet extends HttpServlet {
 		boolean chucichamingzhongji=false;
 		boolean menjizhen=false;
 		boolean jibingzhuyuan=false;
+		boolean quantijiatingchengyuan = false;
 		String checkboxes[] = request.getParameterValues("checkboxes");
 		for(int i=0;i<checkboxes.length;i++){
 			if(checkboxes[i].equals("caichanzonghebaoxian"))
@@ -67,34 +67,39 @@ public class AddFamilyServlet extends HttpServlet {
 				menjizhen = true;
 			if(checkboxes[i].equals("jibingzhuyuan"))
 				jibingzhuyuan = true;
-			
+			if(checkboxes[i].equals("quantijiatingchengyuan"))
+				quantijiatingchengyuan = true;
 		}
 		family.setCaichanzonghebaoxian(caichanzonghebaoxian);
 		family.setChucichamingzhongji(chucichamingzhongji);
 		family.setMenjizhen(menjizhen);
 		family.setJibingzhuyuan(jibingzhuyuan);
 		family.setYiwaishanghaiyiliao(yiwaishanghaiyiliao);
+		family.setQuantijiatingchengyuan(quantijiatingchengyuan);
 		
-		double yiwaiyiliaobaoxian = Double.parseDouble(request.getParameter("yiwaiyiliaobaoxian"));
+		double yiwaiyiliaobaoxianheji = Double.parseDouble(request.getParameter("yiwaiyiliaobaoxianheji"));
 		double baoxianfeizongji = Double.parseDouble(request.getParameter("baoxianfeizongji"));
 		
-		family.setYiwaiyiliaobaoxian(yiwaiyiliaobaoxian);
+		family.setYiwaiyiliaobaoxianheji(yiwaiyiliaobaoxianheji);
 		family.setBaoxianfeizongji(baoxianfeizongji);
 		String startdate = request.getParameter("startdate");
-		String enddate = request.getParameter("startdate");
-			
+		String enddate = request.getParameter("enddate");
+		String baoxianfeizongjichina = request.getParameter("baoxianfeizongjichina");
+		
 		family.setStartdate(startdate);
 		family.setEnddate(enddate);
-		
+		family.setBaoxianfeizongjichina(baoxianfeizongjichina);
+		String username = (String)request.getSession().getAttribute("name");
+		family.setUsername(username);
 		PolicyService service = new PolicyService();
 		if(service.addFamily(family)){
 			this.getServletContext()
 			.getRequestDispatcher("/success.jsp")
 			.forward(request, response);
 		}else{
-			writer.write("failed");
-			writer.flush();
-			writer.close();
+			this.getServletContext()
+			.getRequestDispatcher("/error.jsp")
+			.forward(request, response);
 		}
 	}
 

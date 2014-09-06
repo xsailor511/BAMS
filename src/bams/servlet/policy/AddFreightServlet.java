@@ -1,7 +1,6 @@
 package bams.servlet.policy;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +45,7 @@ public class AddFreightServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Freight freight = new Freight();
-		PrintWriter writer = response.getWriter();
+		//PrintWriter writer = response.getWriter();
 		String fax_from = request.getParameter("fax_from");
 		String fax_to = request.getParameter("fax_to");
 		String beibaoxianren = request.getParameter("beibaoxianren");
@@ -104,16 +103,17 @@ public class AddFreightServlet extends HttpServlet {
 		freight.setNote(note);
 		freight.setToubaorenqiangzhang(toubaorenqiangzhang);
 		freight.setTianbiaoriqi(tianbiaoriqi);
-		
+		String username = (String)request.getSession().getAttribute("name");
+		freight.setUsername(username);
 		PolicyService service = new PolicyService();
 		if(service.addFreight(freight)){
 			this.getServletContext()
 			.getRequestDispatcher("/success.jsp")
 			.forward(request, response);
 		}else{
-			writer.write("failed");
-			writer.flush();
-			writer.close();
+			this.getServletContext()
+			.getRequestDispatcher("/error.jsp")
+			.forward(request, response);
 		}
 	}
 

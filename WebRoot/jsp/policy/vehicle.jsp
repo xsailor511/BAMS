@@ -50,7 +50,17 @@ if(null==role_int){
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
+  <style>
+table{
+border-collapse:collapse;
+border:1px;
+text-align:center;
+}
+table td{
+border:solid#000 1px;
+}
 
+</style>
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 </head>
@@ -122,7 +132,7 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
 					<form name="baodan" action="<%=basePath %>servlet/AddVehicleServlet" method="get">
@@ -150,62 +160,100 @@ if(null==role_int){
   <tr>
     <td rowspan="3">被保险人资料</td>
     <td>被保险人名称</td>
-    <td colspan="2"><label for="beibaoxianren_name"></label>
-    <input type="text" name="beibaoxianren_name" id="beibaoxianren_name"></td>
+    <td colspan="2">
+    <input type="text" name="beibaoxianrenmingcheng" id="beibaoxianrenmingcheng"></td>
     <td>证件类型</td>
     <td>身份证</td>
     <td colspan="2">证件号码</td>
-    <td colspan="2"><label for="zhengjianhaoma"></label>
-    <input type="text" name="zhengjianhaoma" id="zhengjianhaoma"></td>
+    <td colspan="2">
+    <input type="text" name="beibaoxianrenzhengjianhaoma" id="beibaoxianrenzhengjianhaoma"></td>
   </tr>
   <tr>
     <td>通讯地址</td>
-    <td colspan="6"><label for="tongxundizhi"></label>
-    <input type="text" name="tongxundizhi" id="tongxundizhi"></td>
+    <td colspan="6" style="text-align:left">&nbsp;
+    <input type="text" name="beibaoxianrentongxundizhi" id="beibaoxianrentongxundizhi" style="width:80%"></td>
     <td width="115">邮编</td>
-    <td width="141"><label for="youbian"></label>
-    <input type="text" name="youbian" id="youbian"></td>
+    <td width="141">
+    <input type="text" name="beibaoxianrenyoubian" id="beibaoxianrenyoubian"></td>
   </tr>
   <tr>
     <td>联系人名称</td>
-    <td width="109"><label for="lianxiren_name"></label>
-    <input type="text" name="lianxiren_name" id="lianxiren_name"></td>
+    <td width="109">
+    <input type="text" name="beibaoxianlianxiren" id="beibaoxianlianxiren"></td>
     <td width="104">手机</td>
-    <td><label for="phonenumber"></label>
-    <input type="text" name="phonenumber" id="phonenumber"></td>
+    <td>
+    <input type="text" name="beibaoxianrendianhua" id="beibaoxianrendianhua"></td>
     <td>办公电话</td>
-    <td colspan="2"><label for="bangongdianhua"></label>
-    <input type="text" name="bangongdianhua" id="bangongdianhua"></td>
+    <td colspan="2">
+    <input type="text" name="beibaoxianrenbangongdianhua" id="beibaoxianrenbangongdianhua"></td>
     <td>Email</td>
-    <td><label for="youxiang"></label>
-    <input type="text" name="youxiang" id="youxiang"></td>
+    <td>
+    <input type="text" name="beibaoxianrenemail" id="beibaoxianrenemail"></td>
+  </tr>
+  
+   <tr>
+    <td rowspan="3">投保人资料</td>
+    <td>投标人名称</td>
+    <td colspan="2">
+    <input type="text" name="toubaorenmingcheng" id="toubaorenmingcheng"></td>
+    <td>证件类型</td>
+    <td>身份证</td>
+    <td colspan="2">证件号码</td>
+    <td colspan="2">
+    <input type="text" name="toubaorenzhengjianhaoma" id="toubaorenzhengjianhaoma"></td>
   </tr>
   <tr>
+    <td>通讯地址</td>
+    <td colspan="6" style="text-align:left">&nbsp;
+    <input type="text" name="toubaorentongxundizhi" id="toubaorentongxundizhi" style="width:80%"></td>
+    <td width="115">邮编</td>
+    <td width="141">
+    <input type="text" name="toubaorenyoubian" id="toubaorenyoubian"></td>
+  </tr>
+  <tr>
+    <td>联系人名称</td>
+    <td width="109">
+    <input type="text" name="toubaorenlianxiren" id="toubaorenlianxiren"></td>
+    <td width="104">手机</td>
+    <td>
+    <input type="text" name="toubaorendianhua" id="toubaorendianhua"></td>
+    <td>办公电话</td>
+    <td colspan="2">
+    <input type="text" name="toubaorenbangongdianhua" id="toubaorenbangongdianhua"></td>
+    <td>Email</td>
+    <td>
+    <input type="text" name="toubaorenemail" id="toubaorenemail"></td>
+  </tr>
+  
+  
+  
+  
+  <tr>
     <td colspan="2">行驶证车主</td>
-    <td colspan="8"><label for="chezhu"></label>
-    <input type="text" name="chezhu" id="chezhu"></td>
+    <td colspan="8" style="text-align:left">&nbsp;
+    <input type="text" name="xingshizhengchezhu" id="xingshizhengchezhu" style="width:60%"></td>
   </tr>
   <tr>
     <td rowspan="3">车辆信息</td>
     <td>厂牌型号</td>
-    <td><label for="changpaixinghao"></label>
+    <td>
     <input type="text" name="changpaixinghao" id="changpaixinghao"></td>
     <td>核定载客/质量</td>
-    <td><label for="hedingzaike"></label>
+    <td>
     <input type="text" name="hedingzaike" id="hedingzaike"></td>
     <td>号牌号码</td>
-    <td width="137"><label for="haopaihaoma"></label>
+    <td width="137">
     <input type="text" name="haopaihaoma" id="haopaihaoma"></td>
     <td colspan="2">初次登记日期</td>
-    <td><input type="text" name="chucidengjiriqi" id="chucidengjiriqi" onClick="WdatePicker()"></td>
+    <td><input type="text" class="Wdate" name="chucidengjiriqi" id="chucidengjiriqi" onClick="WdatePicker()"></td>
   </tr>
   <tr>
     <td>识别代码</td>
     <td><label for="shibiedaima"></label>
     <input type="text" name="shibiedaima" id="shibiedaima"></td>
     <td>发动机号码</td>
-    <td><label for="fadongjihaoma"></label>
-    <input type="text" name="fadongjihaoma" id="fadongjihaoma"></td>
+    <td>
+    <input type="text" name="fadongjixinghao" id="fadongjixinghao"></td>
     <td>使用性质</td>
     <td colspan="2">非营业</td>
     <td>使用性质细分</td>
@@ -215,10 +263,10 @@ if(null==role_int){
     <td>行驶区域</td>
     <td>全国</td>
     <td>新车购置价</td>
-    <td><label for="xinchegouzhijia"></label>
-    <input type="text" name="xinchegouzhijia" id="xinchegouzhijia"></td>
+    <td>
+    <input type="text" name="xinchejiage" id="xinchejiage"></td>
     <td>整备质量</td>
-    <td colspan="2"><label for="zhengbeizhiliang"></label>
+    <td colspan="2">
     <input type="text" name="zhengbeizhiliang" id="zhengbeizhiliang"></td>
     <td>排气量(L)</td>
     <td><label for="paiqiliang"></label>
@@ -227,22 +275,22 @@ if(null==role_int){
   <tr>
     <td>上年投保情况</td>
     <td>投保公司(交强险)</td>
-    <td><label for="jqxtoubaogongsi"></label>
-    <input type="text" name="jqxtoubaogongsi" id="jqxtoubaogongsi"></td>
+    <td>
+    <input type="text" name="shangnianjiaoqiangxian" id="shangnianjiaoqiangxian"></td>
     <td>上年保单号</td>
-    <td><label for="jqxshangnianbaodanhao"></label>
-    <input type="text" name="jqxshangnianbaodanhao" id="jqxshangnianbaodanhao"></td>
+    <td>
+    <input type="text" name="jiaoqiangxianbaodanhao" id="jiaoqiangxianbaodanhao"></td>
     <td>投保公司(商业险)</td>
-    <td colspan="2"><label for="syxtoubaogongsi"></label>
-    <input type="text" name="syxtoubaogongsi" id="syxtoubaogongsi"></td>
+    <td colspan="2">
+    <input type="text" name="shangnianshangyexian" id="shangnianshangyexian"></td>
     <td>上年保单号</td>
-    <td><label for="syxshangnianbaodanhao"></label>
-    <input type="text" name="syxshangnianbaodanhao" id="syxshangnianbaodanhao"></td>
+    <td>
+    <input type="text" name="shangyexianbaodanhao" id="shangyexianbaodanhao"></td>
   </tr>
   <tr>
-    <td>驾驶员信息</td>
-    <td colspan="9"><label for="jiashiyuanxinxi"></label>
-    <input type="text" name="jiashiyuanxinxi" id="jiashiyuanxinxi"></td>
+    <td colspan="2">驾驶员信息</td>
+    <td colspan="9" style="text-align:left" >&nbsp;
+    <input type="text" name="jiashiyuanxinxi" id="jiashiyuanxinxi" style="width:60%"></td>
   </tr>
   <tr>
     <td rowspan="13">商业险责任限额</td>
@@ -252,100 +300,100 @@ if(null==role_int){
   </tr>
   <tr>
     <td colspan="3">
-    <label><input type="checkbox" name="cheliangsunshixian" value="cheliangsunshixian" id="cheliangsunshixian">
-        车辆损失险</label></td>
-    <td colspan="2"><label for="clbaoxianjine"></label>
-    <input type="text" name="clbaoxianjine" id="clbaoxianjine"></td>
-    <td colspan="4"><label for="clbaoxianfeixiaoji"></label>
-    <input type="text" name="clbaoxianfeixiaoji" id="clbaoxianfeixiaoji"></td>
+    <input type="checkbox" name="xianbie" value="checked" id="cheliangsunshixian">
+        车辆损失险</td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="clbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="clbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="sydszzrbx" value="sydszzrbx" id="sydszzrbx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="sydszzrbx">
         商业第三者责任保险</label></td>
-    <td colspan="2"><label for="sybaoxianjine"></label>
-    <input type="text" name="sybaoxianjine" id="sybaoxianjine"></td>
-    <td colspan="4"><label for="sybaoxianfeixiaoji"></label>
-    <input type="text" name="sybaoxianfeixiaoji" id="sybaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="sybaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="sybaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="qcdqx" value="qcdqx" id="qcdqx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="qcdqx">
         全车盗抢险</label></td>
-    <td colspan="2"><label for="qcbaoxianjine"></label>
-    <input type="text" name="qcbaoxianjine" id="qcbaoxianjine"></td>
-    <td colspan="4"><label for="qcbaoxianfeixiaoji"></label>
-    <input type="text" name="qcbaoxianfeixiaoji" id="qcbaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="qcbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="qcbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="sjzwzrx" value="sjzwzrx" id="sjzwzrx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="sjzwzrx">
         司机座位责任险</label></td>
-    <td colspan="2"><label for="sjbaoxianjine"></label>
-    <input type="text" name="sjbaoxianjine" id="sjbaoxianjine"></td>
-    <td colspan="4"><label for="sjbaoxianfeixiaoji"></label>
-    <input type="text" name="sjbaoxianfeixiaoji" id="sjbaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="sjbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="sjbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="ckzwzrx" value="ckzwzrx" id="ckzwzrx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="ckzwzrx">
         乘客座位责任险</label></td>
-    <td colspan="2"><label for="ckbaoxianjine"></label>
-    <input type="text" name="ckbaoxianjine" id="ckbaoxianjine"></td>
-    <td colspan="4"><label for="ckbaoxianfeixiaoji"></label>
-    <input type="text" name="ckbaoxianfeixiaoji" id="ckbaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="ckbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="ckbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="zrx" value="zrx" id="zrx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="zrx">
         自燃险</label></td>
-    <td colspan="2"><label for="zrxbaoxianjine"></label>
-    <input type="text" name="zrxbaoxianjine" id="zrxbaoxianjine"></td>
-    <td colspan="4"><label for="zrxbaoxianfeixiaoji"></label>
-    <input type="text" name="zrxbaoxianfeixiaoji" id="zrxbaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="zrxbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="zrxbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="blddpsx" value="blddpsx" id="blddpsx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="blddpsx">
         玻璃单独破碎险(国产玻璃)</label></td>
-    <td colspan="2"><label for="blbaoxianjine"></label>
-    <input type="text" name="blbaoxianjine" id="blbaoxianjine"></td>
-    <td colspan="4"><label for="blbaoxianfeixiaoji"></label>
-    <input type="text" name="blbaoxianfeixiaoji" id="blbaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="blbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="blbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="cshhx" value="cshhx" id="cshhx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="cshhx">
         车身划痕险</label></td>
-    <td colspan="2"><label for="csbaoxianjine"></label>
-    <input type="text" name="csbaoxianjine" id="csbaoxianjine"></td>
-    <td colspan="4"><label for="csbaoxianfeixiaoji"></label>
-    <input type="text" name="csbaoxianfeixiaoji" id="csbaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="csbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="csbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="clbjmpltstk" value="clbjmpltstk" id="clbjmpltstk">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="clbjmpltstk">
         不计免赔率特约条款(车辆损失险)</label></td>
-    <td colspan="2"><label for="clbjbaoxianjine"></label>
-    <input type="text" name="clbjbaoxianjine" id="clbjbaoxianjine"></td>
-    <td colspan="4"><label for="clbjbaoxianfeixiaoji"></label>
-    <input type="text" name="clbjbaoxianfeixiaoji" id="clbjbaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="clbjbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="clbjbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="sybjmpltstk" value="sybjmpltstk" id="sybjmpltstk">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="sybjmpltstk">
         不计免赔率特约条款(商业第三者责任保险)</label></td>
-    <td colspan="2"><label for="blbaoxianjine"></label>
-    <input type="text" name="sybaoxianjine" id="sybaoxianjine"></td>
-    <td colspan="4"><label for="blbaoxianfeixiaoji"></label>
-    <input type="text" name="sybaoxianfeixiaoji" id="sybaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="sybaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="sybaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="qcbjmpltstk" value="qcbjmpltstk" id="qcbjmpltstk">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="qcbjmpltstk">
         不计免赔率特约条款(全车盗抢险)</label></td>
-    <td colspan="2"><label for="qcbaoxianjine"></label>
-    <input type="text" name="qcbaoxianjine" id="qcbaoxianjine"></td>
-    <td colspan="4"><label for="qcbaoxianfeixiaoji"></label>
-    <input type="text" name="qcbaoxianfeixiaoji" id="qcbaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="qcbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="qcbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="csbjmpltstk" value="csbjmpltstk" id="csbjmpltstk">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="csbjmpltstk">
       不计免赔率特约条款(车上人员责任险)</label></td>
-    <td colspan="2"><label for="csbaoxianjine"></label>
-    <input type="text" name="csbaoxianjine" id="csbaoxianjine"></td>
-    <td colspan="4"><label for="csbaoxianfeixiaoji"></label>
-    <input type="text" name="csbaoxianfeixiaoji" id="csbaoxianfeixiaoji"></td>
+    <td colspan="2">
+    <input type="text" name="shangyexianxiane" id="csbaoxianjine"></td>
+    <td colspan="4">
+    <input type="text" name="baoxianfeixiaoji" id="csbaoxianfeixiaoji"></td>
   </tr>
   <tr>
     <td rowspan="4"><p>交强险</p>
@@ -369,41 +417,48 @@ if(null==role_int){
   </tr>
   <tr>
     <td>商业保险费合计</td>
-    <td colspan="7">RMB<label for="shangyebaoxianfeiheji"></label>
+    <td colspan="7" style="text-align:left" >&nbsp;RMB
     <input type="text" name="shangyebaoxianfeiheji" id="shangyebaoxianfeiheji"></td>
     <td colspan="2">人民币</td>
   </tr>
   <tr>
     <td>交强险保费合计</td>
-    <td colspan="7">RMB 420</td>
+    <td colspan="7" style="text-align:left" >&nbsp;RMB 420</td>
     <td colspan="2">人民币</td>
   </tr>
   <tr>
     <td>车船税</td>
-    <td colspan="7">RMB<label for="chechuanfei"></label>
-    <input type="text" name="chechuanfei" id="chechuanfei"></td>
+    <td colspan="7" style="text-align:left" >&nbsp;RMB
+    <input type="text" name="chechuanshui" id="chechuanshui"></td>
     <td colspan="2">人民币</td>
   </tr>
   <tr>
     <td>合计费用</td>
-    <td colspan="4">RMB<label for="hejifeiyong"></label>
-    <input type="text" name="hejifeiyong" id="hejifeiyong"></td>
+    <td colspan="4" style="text-align:left" >&nbsp;RMB
+    <input type="text" name="heji" id="heji"></td>
     <td>人民币</td>
     <td colspan="4"><p >注：保费金额以最终核保通过并在保单中确定的金额为准</p></td>
   </tr>
   <tr>
     <td rowspan="2">保险期间</td>
     <td>商业险保险期间</td>
-    <td colspan="8"><input type="text" name="sybaoxianqi" id="sybaoxianqi" onClick="WdatePicker()">起至<input type="text" name="sybaoxianzhi" id="sybaoxianzhi" onClick="WdatePicker()">24时止</td>
+    <td colspan="8">
+    <input type="text" class="Wdate" name="shangyebaoxianstartdate" id="shangyebaoxianstartdate" onClick="WdatePicker()">
+    起至<input type="text" class="Wdate" name="shangyebaoxianenddate" id="shangyebaoxianenddate" onClick="WdatePicker()">24时止</td>
   </tr>
   <tr>
     <td>交强险保险期间</td>
-    <td colspan="8"><input type="text" name="jqxbaoxianqi" id="jqxbaoxianqi" onClick="WdatePicker()">起至<input type="text" name="jqxbaoxianzhi" id="jqxbaoxianzhi" onClick="WdatePicker()">24时止</td>
+    <td colspan="8">
+    <input type="text" class="Wdate" name="jiaoqiangbaoxianstartdate" id="jiaoqiangbaoxianstartdate" onClick="WdatePicker()">
+    起至<input type="text" class="Wdate" name="jiaoqiangbaoxianenddate" id="jiaoqiangbaoxianenddate" onClick="WdatePicker()">24时止</td>
   </tr>
   <tr>
     <td>争议解决方式</td>
-    <td colspan="9">被保险人自愿采取下列解决方式解决<label for="jiejuefangshi"></label>
-    <input type="text" name="jiejuefangshi" id="jiejuefangshi"></td>
+    <td colspan="9">被保险人自愿采取下列解决方式解决
+    <input type="text" name="zhengyijiejue" id="zhengyijiejue"></td>
+  </tr>
+  <tr>
+    <td colspan="10">&nbsp;<input type="submit" value="提交保单" /></td>
   </tr>
 </table>
 	</form>
@@ -517,7 +572,8 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
-	
+	<!-- date picker -->
+	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
 </body>
 </html>

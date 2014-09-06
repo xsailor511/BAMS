@@ -19,7 +19,7 @@ public class AllProperty {
 	//投保人组织机构代码
 	private String toubaorenzuzhijigou;
 	//被保险人名称
-	private String beibaoxianrenmingchen;
+	private String beibaoxianrenmingcheng;
 	//被保险人地址
 	private String beibaoxianrendizhi;
 	//被保险人营业性质
@@ -28,8 +28,8 @@ public class AllProperty {
 	private String baoxiancaichandizhi;
 	//被保险财产邮政编码
 	private String youzhengbianma;
-	//承保标的项目合并存储
-	private String chengbaobiaoxiangmu;
+	//被保险人组织机构代码
+	private String beibaoxianrenzuzhijigou;
 	//	房屋建筑保险金额
 	private double fangwujine;
 	//机器设备保险金额
@@ -104,11 +104,11 @@ public class AllProperty {
 	public void setToubaorenzuzhijigou(String toubaorenzuzhijigou) {
 		this.toubaorenzuzhijigou = toubaorenzuzhijigou;
 	}
-	public String getBeibaoxianrenmingchen() {
-		return beibaoxianrenmingchen;
+	public String getBeibaoxianrenmingcheng() {
+		return beibaoxianrenmingcheng;
 	}
-	public void setBeibaoxianrenmingchen(String beibaoxianrenmingchen) {
-		this.beibaoxianrenmingchen = beibaoxianrenmingchen;
+	public void setBeibaoxianrenmingchen(String beibaoxianrenmingcheng) {
+		this.beibaoxianrenmingcheng = beibaoxianrenmingcheng;
 	}
 	public String getBeibaoxianrendizhi() {
 		return beibaoxianrendizhi;
@@ -134,11 +134,12 @@ public class AllProperty {
 	public void setYouzhengbianma(String youzhengbianma) {
 		this.youzhengbianma = youzhengbianma;
 	}
-	public String getChengbaobiaoxiangmu() {
-		return chengbaobiaoxiangmu;
+	
+	public String getBeibaoxianrenzuzhijigou() {
+		return beibaoxianrenzuzhijigou;
 	}
-	public void setChengbaobiaoxiangmu(String chengbaobiaoxiangmu) {
-		this.chengbaobiaoxiangmu = chengbaobiaoxiangmu;
+	public void setBeibaoxianrenzuzhijigou(String beibaoxianrenzuzhijigou) {
+		this.beibaoxianrenzuzhijigou = beibaoxianrenzuzhijigou;
 	}
 	public double getFangwujine() {
 		return fangwujine;

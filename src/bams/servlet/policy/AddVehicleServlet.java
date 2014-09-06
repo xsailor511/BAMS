@@ -1,7 +1,6 @@
 package bams.servlet.policy;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +45,7 @@ public class AddVehicleServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Vehicle vehicle = new Vehicle();
-		PrintWriter writer = response.getWriter();
+		//PrintWriter writer = response.getWriter();
 		
 		String beibaoxianrenmingcheng = request.getParameter("beibaoxianrenmingcheng");
 		String beibaoxianrenzhengjianhaoma = request.getParameter("beibaoxianrenzhengjianhaoma");
@@ -131,16 +130,36 @@ public class AddVehicleServlet extends HttpServlet {
 		vehicle.setJiaoqiangbaoxianenddate(jiaoqiangbaoxianenddate);
 		vehicle.setZhengyijiejue(zhengyijiejue);
 		vehicle.setJiashiyuanxinxi(jiashiyuanxinxi);
+		String username = (String)request.getSession().getAttribute("name");
+		vehicle.setUsername(username);
 		
+		
+		String checkboxes[] = request.getParameterValues("xianbie");
+		String shangyexianxianes[] = request.getParameterValues("shangyexianxiane");
+		String baoxianfeixiaojis[] = request.getParameterValues("baoxianfeixiaoji");
+		
+		String shangyexianxiane = "";
+		String baoxianfeixiaoji = "";
+		for(int i=0;i<checkboxes.length;i++){
+			if(checkboxes[i].equals("checked")){
+				shangyexianxiane = shangyexianxiane + ";" + shangyexianxianes[i];
+				baoxianfeixiaoji = baoxianfeixiaoji + ";" + baoxianfeixiaojis[i];
+			}else{
+				shangyexianxiane = shangyexianxiane + ";zero";
+				baoxianfeixiaoji = baoxianfeixiaoji + ";zero";
+			}
+		}
+		vehicle.setShangyexianxiane(shangyexianxiane);
+		vehicle.setBaoxianfeixiaoji(baoxianfeixiaoji);
 		PolicyService service = new PolicyService();
 		if(service.addVehicle(vehicle)){
 			this.getServletContext()
 			.getRequestDispatcher("/success.jsp")
 			.forward(request, response);
 		}else{
-			writer.write("failed");
-			writer.flush();
-			writer.close();
+			this.getServletContext()
+			.getRequestDispatcher("/error.jsp")
+			.forward(request, response);
 		}
 	}
 
