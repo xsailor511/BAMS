@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page language="java" import="bams.entity.User" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,10 +19,10 @@ if(null==role_int){
 
 %>
 
-<!DOCTYPE html>
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <!-- Title and other stuffs -->
 <title>财产一切险投保单</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,11 +130,11 @@ border:solid#000 1px;
 			<div class="matter">
 				<div class="container-fluid">
 
-					<!-- Element -->
+					<!-- Element AddAllPropertyServlet-->
 					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
-					<form name="baodan" action="<%=basePath %>servlet/AddAllPropertyServlet" method="get">
+<form name="baodan" action="<%=basePath %>servlet/AddAllPropertyServlet" method="get" onsubmit="return checkForm()">
 
 		<table width="820" height="571" >
   <caption>
@@ -148,7 +148,7 @@ border:solid#000 1px;
     <td width="130" rowspan="2" scope="col" style="text-align:center">投保人</td>
     <td width="150" scope="col" style="text-align:right">名称</td>
     <td scope="col" width="150">
-    &nbsp;<input type="text" name="toubaorenmingcheng" id="toubaorenmingcheng"></td>
+    &nbsp;<input type="text" name="toubaorenmingcheng" id="toubaorenmingcheng" ></td>
     <td width="150" scope="col" style="text-align:right">地址</td>
     <td colspan="2" scope="col">
     &nbsp;<input type="text" name="toubaorendizhi" id="toubaorendizhi"></td>
@@ -165,7 +165,7 @@ border:solid#000 1px;
     <td rowspan="2" style="text-align:center">被保险人</td>
     <td style="text-align:right">名称</td>
     <td>
-    &nbsp;<input type="text" name="beibaoxianrenmingchen" id="beibaoxianrenmingchen"></td>
+    &nbsp;<input type="text" name="beibaoxianrenmingcheng" id="beibaoxianrenmingcheng"></td>
     <td style="text-align:right">地址</td>
     <td width="197" colspan="2">
     &nbsp;<input type="text" name="beibaoxianrendizhi" id="beibaoxianrendizhi"></td>
@@ -462,6 +462,194 @@ border:solid#000 1px;
 	<script src="<%=basePath %>js/custom.js"></script>
 	<!-- date picker -->
 	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript">
+	function isEmpty(str){
+		if(str==null || str.length==0)
+			return true;
+		else 
+			return false;
+	}
+	function checkForm(){
+		//alert("test");
+		var toubaorenmingcheng = document.getElementById("toubaorenmingcheng").value;
+		
+		var toubaorendizhi = document.getElementById("toubaorendizhi").value;
+		var toubaorendianhua = document.getElementById("toubaorendianhua").value;
+		
+		var toubaorenzuzhijigou = document.getElementById("toubaorenzuzhijigou").value;
+		
+		var beibaoxianrenmingcheng = document.getElementById("beibaoxianrenmingcheng").value;
+		
+		var beibaoxianrendizhi = document.getElementById("beibaoxianrendizhi").value;
+		var beibaoxianrenyingyexingzhi = document.getElementById("beibaoxianrenyingyexingzhi").value;
+		var baoxiancaichandizhi = document.getElementById("baoxiancaichandizhi").value;
+		var youzhengbianma = document.getElementById("youzhengbianma").value;
+		var fangwujine = document.getElementById("fangwujine").value;
+		var jiqishebeijine = document.getElementById("jiqishebeijine").value;
+		var qitajine = document.getElementById("qitajine").value;
+		var cunhuojine = document.getElementById("cunhuojine").value;
+		
+		if(isNaN(fangwujine)){
+			alert("房屋建筑物保险金额必须为数字");
+			return false;
+		}else if(isNaN(jiqishebeijine)){
+			alert("机器设备保险金额必须为数字");
+			return false;
+		}else if(isNaN(qitajine)){
+			alert("其他保险金额必须为数字");
+			return false;
+		}else if(isNaN(cunhuojine)){
+			alert("存货保险金额必须为数字");
+			return false;
+		}
+		
+		var baoxianfei = document.getElementById("baoxianfei").value;
+		if(isNaN(baoxianfei)){
+			alert("保险费必须是数字");
+			return false;
+		}
+		var baoxianjinexiaoji = document.getElementById("baoxianjinexiaoji").value;
+		//var jiaofeifangshi = document.getElementById("jiaofeifangshi").value;
+		var fujiatiaokuan = document.getElementById("fujiatiaokuan").value;
+		var tebieyueding = document.getElementById("tebieyueding").value;
+		
+		//var toubaofujianshuliang = document.getElementById("toubaofujianshuliang").value;
+		var toubaorenqianzhang = document.getElementById("toubaorenqianzhang").value;
+		var baoxianfeichina = document.getElementById("baoxianfeichina").value;
+		var start_time = document.getElementById("start_time").value;
+		var end_time = document.getElementById("end_time").value;
+		var jiaofeishijian= document.getElementById("jiaofeishijian").value;
+		var toubaoriqi = document.getElementById("toubaoriqi").value;
+
+		//alert("test");
+		//alert(toubaorenmingcheng);
+		if(isEmpty(toubaorenmingcheng)||isEmpty(toubaorendizhi)||isEmpty(toubaorendianhua)
+				||isEmpty(toubaorenzuzhijigou)||isEmpty(beibaoxianrenmingcheng)||isEmpty(beibaoxianrendizhi)
+				||isEmpty(beibaoxianrenyingyexingzhi)||isEmpty(baoxiancaichandizhi)||isEmpty(youzhengbianma)
+				||isEmpty(fangwujine)||isEmpty(jiqishebeijine)||isEmpty(qitajine)
+				||isEmpty(cunhuojine)||isEmpty(baoxianfei)||isEmpty(baoxianjinexiaoji)
+				||isEmpty(fujiatiaokuan)||isEmpty(tebieyueding)
+				||isEmpty(toubaorenqianzhang)||isEmpty(baoxianfeichina)
+				||isEmpty(start_time)||isEmpty(end_time)||isEmpty(jiaofeishijian)||isEmpty(toubaoriqi)){
+			alert("请将必填项填写完整!");
+			return false;
+		}
+		
+		var zhengyichuli_ok = document.getElementsByName("zhengyichuli");
+		var test = false;
+		for(var i=0;i<zhengyichuli_ok.length;i++){
+			if(zhengyichuli_ok[i].checked){
+				test = true;
+				if(zhengyichuli_ok[i].value=="zhongcai"){
+					var zhongcaijigou = document.getElementById("zhongcaijigou").value;
+					if(isEmpty(zhongcaijigou)){
+						alert("仲裁机构不能为空");
+						return false;
+					}else{
+						break;
+					}
+				}
+				
+			}
+		}
+		if(!test){
+			alert("请选择争议处理方式");
+			return false;
+		}
+
+		
+		
+		var toubaofujians = document.getElementsByName("toubaofujian");
+		var mark = false;//用户是否选择了投保附件
+		for(var i=0;i<toubaofujians.length;i++){
+			if(toubaofujians[i].checked){
+				mark = true;
+				break;
+			}
+		}
+		//只要有一个投保附件被选中，mark为true
+		if(mark){
+			var toubaofujianshuliang = document.getElementById("toubaofujianshuliang").value;
+			if(isEmpty(toubaofujianshuliang)){
+				alert("请填写投保附件数量");
+				return false;
+			}else if(isNaN(toubaofujianshuliang)){
+				alert("投保附件数量必须为数字");
+				return false;
+			}
+		}
+		//如果其他被选中，则需要填写其他附件
+		if(toubaofujians[3].checked){
+			var qita = document.getElementById("toubaofujian_4").value;
+			
+			if(isEmpty(qita)){
+				alert("其他附件需要填写！");
+				return false;
+			}
+			
+		}
+		
+		var shifoutouguo = document.getElementsByName("shifoutouguo");
+		var test2 = false;
+		for(var i=0;i<shifoutouguo.length;i++){
+			if(shifoutouguo[i].checked){
+				test2 = true;
+				if(shifoutouguo[i].value=="shi"){
+					var baoxiandanhao = document.getElementById("baoxiandanhao").value;
+					if(isEmpty(baoxiandanhao)){
+						alert("保险单号不能为空");
+						return false;
+					}else{
+						break;
+					}
+				}
+				
+			}
+		}
+		if(!test2){
+			alert("请填写是否投保过类似险种！");
+			return false;
+		}
+		
+		var lipeijilu = document.getElementsByName("lipeijilu");
+		
+		var test3 = false;
+		for(var i=0;i<lipeijilu.length;i++){
+			if(lipeijilu[i].checked){
+				test3 = true;
+				if(lipeijilu[i].value=="you"){
+					var chuxianshijian = document.getElementById("chuxianshijian").value;
+					var sunshijine = document.getElementById("sunshijine").value;
+					var chuxianyuanyin = document.getElementById("chuxianyuanyin").value;
+					var gaijincuoshi = document.getElementById("gaijincuoshi").value;
+					if(isEmpty(chuxianshijian)||isEmpty(sunshijine)||isEmpty(chuxianyuanyin)||isEmpty(gaijincuoshi)){
+						alert("请将理赔记录填写完整！");
+						return false;
+					}else if(isNaN(sunshijine)){
+						alert("损失金额必须是数字！");
+						return false;
+					}
+					else{
+						break;
+					}
+				}
+				
+			}
+		}
+		if(!test3){
+			alert("请填写是否有过理赔记录！");
+			return false;
+		}
+		document.charset='utf-8';
+		
+	}
+	
+	
+	
+	
+	
+	
+	</script>
 	<!-- Main js file -->
 </body>
 </html>

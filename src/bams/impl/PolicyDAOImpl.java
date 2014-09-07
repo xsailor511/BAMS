@@ -36,10 +36,10 @@ public class PolicyDAOImpl implements PolicyDAO {
 		String sql = "insert into allproperty(toubaorenmingcheng,toubaorendizhi,toubaorendianhua,toubaorenzuzhijigou,"
 				+ "beibaoxianrenmingcheng,beibaoxianrendizhi,beibaoxianrenyingyexingzhi,baoxiancaichandizhi,"
 				+ "youzhengbianma,beibaoxianrenzuzhijigou,fangwujine,jiqishebeijine,qitajine,cunhuojine,"
-				+ "baoxianfei,baoxianjinexiaoji,start_time,end_time,baoxianfeichina,jiaofeishijian,jiaofeifangshi,"
+				+ "baoxianfei,baoxianjinexiaoji,start_time,end_time,baoxianfeichina,jiaofeishijian,"
 				+ "fujiatiaokuan,tebieyueding,zhengyichuli,toubaofujian,toubaofujianshuliang,shifoutouguo,"
 				+ "lipeijilu,toubaorenqianzhang,toubaoriqi,username)"
-				                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ps = connection.prepareStatement(sql);
 		
 		ps.setString(1, allproperty.getToubaorenmingcheng());
@@ -62,17 +62,17 @@ public class PolicyDAOImpl implements PolicyDAO {
 		ps.setString(18, allproperty.getEnd_time());
 		ps.setString(19, allproperty.getBaoxianfeichina());
 		ps.setString(20, allproperty.getJiaofeishijian());
-		ps.setString(21, allproperty.getJiaofeifangshi());
-		ps.setString(22, allproperty.getFujiatiaokuan());
-		ps.setString(23, allproperty.getTebieyueding());
-		ps.setString(24, allproperty.getZhengyichuli());
-		ps.setString(25, allproperty.getToubaofujian());
-		ps.setInt(26, allproperty.getToubaofujianshuliang());
-		ps.setString(27, allproperty.getShifoutouguo());
-		ps.setString(28, allproperty.getLipeijilu());
-		ps.setString(29, allproperty.getToubaorenqianzhang());
-		ps.setString(30, allproperty.getToubaoriqi());
-		ps.setString(31, allproperty.getUsername());
+		//ps.setString(21, allproperty.getJiaofeifangshi());
+		ps.setString(21, allproperty.getFujiatiaokuan());
+		ps.setString(22, allproperty.getTebieyueding());
+		ps.setString(23, allproperty.getZhengyichuli());
+		ps.setString(24, allproperty.getToubaofujian());
+		ps.setInt(25, allproperty.getToubaofujianshuliang());
+		ps.setString(26, allproperty.getShifoutouguo());
+		ps.setString(27, allproperty.getLipeijilu());
+		ps.setString(28, allproperty.getToubaorenqianzhang());
+		ps.setString(29, allproperty.getToubaoriqi());
+		ps.setString(30, allproperty.getUsername());
 		try {
 			ps.executeUpdate();
 			

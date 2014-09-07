@@ -107,7 +107,7 @@ public class AllProperty {
 	public String getBeibaoxianrenmingcheng() {
 		return beibaoxianrenmingcheng;
 	}
-	public void setBeibaoxianrenmingchen(String beibaoxianrenmingcheng) {
+	public void setBeibaoxianrenmingcheng(String beibaoxianrenmingcheng) {
 		this.beibaoxianrenmingcheng = beibaoxianrenmingcheng;
 	}
 	public String getBeibaoxianrendizhi() {
