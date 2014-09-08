@@ -136,7 +136,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 		String sql = "insert into freight(fax_from,fax_to,beibaoxianren,fapiaohao,fapiaoriqi,jinkouhetonghao,"
 				+ "xinyongzhenghao,baozhuangshuliang,baoxianhuowumingcheng,biaoji,jiagetiaojian,fapiaojine,"
 				+ "baoxianjine,baoxianfei,chuanming,jianzaonianfen,chuanqi,qiyunriqi,qiyungang,via,mudigang,"
-				+ "chengbaoxianbie,note,toubaorenqiangzhang,tianbiaoriqi,username) "
+				+ "chengbaoxianbie,note,toubaorenqianzhang,tianbiaoriqi,username) "
 				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ps = connection.prepareStatement(sql);
 		
@@ -163,7 +163,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 		ps.setString(21, freight.getMudigang());
 		ps.setString(22, freight.getChengbaoxianbie());
 		ps.setString(23, freight.getNote());
-		ps.setString(24, freight.getToubaorenqiangzhang());
+		ps.setString(24, freight.getToubaorenqianzhang());
 		ps.setString(25, freight.getTianbiaoriqi());
 		ps.setString(26, freight.getUsername());
 		try {
@@ -251,8 +251,8 @@ public class PolicyDAOImpl implements PolicyDAO {
 		PreparedStatement ps = null;
 		String sql = "insert into family(baoxiancaichandizhi,caichanzonghebaoxian,yiwaiyiliaobaoxianheji,"
 				+ "yiwaishanghaiyiliao,chucichamingzhongji,menjizhen,jibingzhuyuan,startdate,enddate,"
-				+ "baoxianfeizongji,username,quantijiatingchengyuan)"
-				+ " values(?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "baoxianfeizongji,username,quantijiatingchengyuan,jiatingchengyuanleixing)"
+				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ps = connection.prepareStatement(sql);
 
 		ps.setString(1, family.getBaoxiancaichandizhi());
@@ -267,6 +267,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 		ps.setDouble(10, family.getBaoxianfeizongji());
 		ps.setString(11, family.getUsername());
 		ps.setBoolean(12, family.isQuantijiatingchengyuan());
+		ps.setString(13, family.getJiatingchengyuanleixing());
 		try {
 			ps.executeUpdate();
 			
@@ -325,8 +326,8 @@ public class PolicyDAOImpl implements PolicyDAO {
 		PreparedStatement ps = null;
 		String sql = "insert into enterprisepackage(weituoren,dianhua,lianxiren,enddate,"
 				+ "kexuanxianzhong,baoxiangongsi,weituorenzhucedizhi,weituorenfadingdaibiaoren,"
-				+ "shoutuorenzhucedizhi,shoutuorenfadingdaibiao,weituorenqianzhang,tianbiaoriqi,username) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "shoutuorenzhucedizhi,shoutuorenfadingdaibiao,weituorenqianzhang,tianbiaoriqi,username,startdate) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ps = connection.prepareStatement(sql);
 		ps.setString(1, enterprisepackage.getWeituoren());
 		ps.setString(2, enterprisepackage.getDianhua());
@@ -341,6 +342,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 		ps.setString(11, enterprisepackage.getWeituorenqianzhang());
 		ps.setString(12, enterprisepackage.getTianbiaoriqi());
 		ps.setString(13,enterprisepackage.getUsername());
+		ps.setString(14, enterprisepackage.getStartdate());
 		try {
 			ps.executeUpdate();
 			

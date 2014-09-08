@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bams.entity.Office;
 import bams.service.PolicyService;
+import bams.util.StringUtil;
 
 public class AddOfficeServlet extends HttpServlet {
 
@@ -53,16 +54,18 @@ public class AddOfficeServlet extends HttpServlet {
 		double caichansunshixianaddbaoe = Double.parseDouble(request.getParameter("caichansunshixianaddbaoe"));
 		double tuantiyiwaixianzengjiabaofei = Double.parseDouble(request.getParameter("tuantiyiwaixianzengjiabaofei"));
 		double zongbaofei = Double.parseDouble(request.getParameter("zongbaofei"));
-		double shineizhuanghuang = Double.parseDouble(request.getParameter("bangongjiaju"));
-		double bangongjiaju = Double.parseDouble(request.getParameter("zongbaofei"));
+		double shineizhuanghuang = Double.parseDouble(request.getParameter("shineizhuanghuang"));
+		double bangongjiaju = Double.parseDouble(request.getParameter("bangongjiaju"));
 		double bangongdianzi = Double.parseDouble(request.getParameter("bangongdianzi"));
 		int tuantiyiwaixianzengjiarenshu = Integer.parseInt(request.getParameter("tuantiyiwaixianzengjiarenshu"));
 		String toubaorenqianzhang = request.getParameter("toubaorenqianzhang");
 		String toubaoriqi = request.getParameter("toubaoriqi");
-//		String tuantiyiwaishanghaimingdan = request.getParameter("tuantiyiwaishanghaimingdan");
-//		String tuantiyiwaishanghaishenfenzheng = request.getParameter("tuantiyiwaishanghaishenfenzheng");
-//		String gaocengchailvmingdan = request.getParameter("gaocengchailvmingdan");
-//		String gaocengchailvshenfengzheng = request.getParameter("gaocengchailvshenfengzheng");
+		
+		toubaorenmingcheng = new String(toubaorenmingcheng.getBytes(StringUtil.getEncoding(toubaorenmingcheng)), "UTF-8");
+		toubaorendizhi = new String(toubaorendizhi.getBytes(StringUtil.getEncoding(toubaorendizhi)), "UTF-8");
+		lianxiren = new String(lianxiren.getBytes(StringUtil.getEncoding(lianxiren)), "UTF-8");
+		toubaorenqianzhang = new String(toubaorenqianzhang.getBytes(StringUtil.getEncoding(toubaorenqianzhang)), "UTF-8");
+		toubaoriqi = new String(toubaoriqi.getBytes(StringUtil.getEncoding(toubaoriqi)), "UTF-8");
 		
 		office.setToubaorenmingcheng(toubaorenmingcheng);
 		office.setToubaorendizhi(toubaorendizhi);
@@ -88,8 +91,10 @@ public class AddOfficeServlet extends HttpServlet {
 				tuantixingming = tuantixingming+";none";
 				tuantishenfenzheng = tuantishenfenzheng +";none";
 			}else{
-				tuantixingming = tuantixingming+";"+tuantixingmings[i];
-				tuantishenfenzheng = tuantishenfenzheng +";"+tuantishenfenzhengs[i];
+				String temp1 = new String(tuantixingmings[i].getBytes(StringUtil.getEncoding(tuantixingmings[i])), "UTF-8");
+				String temp2 = new String(tuantishenfenzhengs[i].getBytes(StringUtil.getEncoding(tuantishenfenzhengs[i])), "UTF-8");
+				tuantixingming = tuantixingming+";"+ temp1;
+				tuantishenfenzheng = tuantishenfenzheng +";"+temp2;
 			}
 		}
 		office.setTuantiyiwaishanghaimingdan(tuantixingming);
@@ -104,8 +109,10 @@ public class AddOfficeServlet extends HttpServlet {
 				gaocengxingming = gaocengxingming +";none";
 				gaocengshenfenzheng = gaocengshenfenzheng +";none";
 			}else{
-				gaocengxingming = gaocengxingming +";"+gaocengxingmings[i];
-				gaocengshenfenzheng = gaocengshenfenzheng +";"+gaocengshenfenzhengs[i];
+				String temp1 = new String(gaocengxingmings[i].getBytes(StringUtil.getEncoding(gaocengxingmings[i])), "UTF-8");
+				String temp2 = new String(gaocengshenfenzhengs[i].getBytes(StringUtil.getEncoding(gaocengshenfenzhengs[i])), "UTF-8");
+				gaocengxingming = gaocengxingming +";" + temp1;
+				gaocengshenfenzheng = gaocengshenfenzheng +";" + temp2;
 			}
 		}
 		office.setGaocengchailvmingdan(gaocengxingming);

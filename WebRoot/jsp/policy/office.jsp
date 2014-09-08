@@ -54,6 +54,8 @@ if(null==role_int){
 table{
 border-collapse:collapse;
 border:1px;
+width:720;
+height:673;
 }
 table td{
 border:solid#000 1px;
@@ -133,10 +135,9 @@ border:solid#000 1px;
 					<!-- Element -->
 					<div class="box-body" style="background:#CCDDFF;color:black">
 						
+<form name="baodan" action="<%=basePath %>servlet/AddOfficeServlet" method="get" onsubmit="return checkForm()">
 
-					<form name="baodan" action="<%=basePath %>servlet/AddOfficeServlet" method="get">
-
-		<table width="720" height="673" border="1">
+		<table>
   <caption>
     办公室综合保险
   <br />
@@ -144,12 +145,12 @@ border:solid#000 1px;
   <br />
   </caption>
   <tr>
-    <td width="198" style="text-align:right"><label for="toubaorenmingcheng">投保人/被保险人名称:</label></td>
+    <td width="198" style="text-align:right">投保人/被保险人名称:</td>
     <td colspan="5">
     &nbsp;&nbsp;<input type="text" name="toubaorenmingcheng" id="toubaorenmingcheng"></td>
   </tr>
   <tr>
-    <td style="text-align:right"><label for="toubaorendizhi">投保人/被保险人地址:</label></td>
+    <td style="text-align:right">投保人/被保险人地址:</td>
     <td colspan="5">
     &nbsp;&nbsp;<input type="text" name="toubaorendizhi" id="toubaorendizhi"></td>
   </tr>
@@ -178,13 +179,13 @@ border:solid#000 1px;
   <tr>
     <td colspan="2"><p >财产损失总保险金额人民币20万元</p>
       <p >其中： </p>
-      <p ><label for="shineizhuanghuang">室内装潢：</label><br/>
+      <p >室内装潢：<br/>
     &nbsp;&nbsp;<input type="text" name="shineizhuanghuang" id="shineizhuanghuang">
     </p>
-      <p ><label for="bangongjiaju">办公家具及非消耗性用品用具：</label><br/>
+      <p >办公家具及非消耗性用品用具：<br/>
     &nbsp;&nbsp;<input type="text" name="bangongjiaju" id="bangongjiaju">
     </p>
-    <p ><label for="bangongdianzi">办公用电子电器和计算机设备：</label><br/>
+    <p >办公用电子电器和计算机设备：<br/>
     &nbsp;&nbsp;<input type="text" name="bangongdianzi" id="bangongdianzi"></p></td>
     <td colspan="2"><p >意外伤害身故累计赔偿限额15万元</p>
       <p >3万元/人      </p>
@@ -200,17 +201,17 @@ border:solid#000 1px;
     <td colspan="6" style="text-align:center">保费合计 450元人民币</td>
   </tr>
   <tr>
-    <td colspan="6"><p ><label for="caichansunshixianadd">1、财产损失险增加财产保额</label>
-    <input type="text" name="caichansunshixianadd" id="caichansunshixianadd"><label for="caichansunshixianaddbaoe">万，保费增加</label>
+    <td colspan="6"><p >1、财产损失险增加财产保额
+    <input type="text" name="caichansunshixianadd" id="caichansunshixianadd" onblur="setCaichanBaofei()">万，保费增加
     <input type="text" name="caichansunshixianaddbaoe" id="caichansunshixianaddbaoe">元。（10元/万元） </p>
-    <p ><label for="tuantiyiwaixianzengjiarenshu">2、团体意外伤害险增加</label>
-    <input type="text" name="tuantiyiwaixianzengjiarenshu" id="tuantiyiwaixianzengjiarenshu">
-    <label for="tuantiyiwaixianzengjiabaofei">人，保费增加</label>
+    <p >2、团体意外伤害险增加
+    <input type="text" name="tuantiyiwaixianzengjiarenshu" id="tuantiyiwaixianzengjiarenshu" onblur="setTuantiBaofei()">
+    人，保费增加
     <input type="text" name="tuantiyiwaixianzengjiabaofei" id="tuantiyiwaixianzengjiabaofei">元。（40元/人）</p></td>
   </tr>
   <tr>
   <td>总保费</td>
-    <td colspan="6">&nbsp;&nbsp;<input type="text" name="zongbaofei" id="zongbaofei" />&nbsp;元</td>
+    <td colspan="6">&nbsp;&nbsp;<input type="text" name="zongbaofei" id="zongbaofei" onfocus="setZongbaofei()" />&nbsp;元</td>
   </tr>
   <tr>
     <td colspan="6"><p >声明：投保人已详细阅读以上保单内容。 </p>
@@ -438,6 +439,159 @@ border:solid#000 1px;
 	<!-- date picker -->
 	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
+	<script type="text/javascript">
+	function isEmpty(str){
+		if(str==null || str.trim().length==0)
+			return true;
+		else 
+			return false;
+	}
+	//根据增加的保额计算增加的保费
+	function setCaichanBaofei(){
+		var caichansunshixianadd = document.getElementById("caichansunshixianadd").value;
+		if(!isEmpty(caichansunshixianadd)&&!isNaN(caichansunshixianadd)){
+			var doubleadd = parseFloat(caichansunshixianadd);
+			var result = doubleadd*10;
+			document.getElementById("caichansunshixianaddbaoe").value = result;
+		}
+	}
+	//根据增加的人数计算增加的保费
+	function setTuantiBaofei(){
+		var tuantiyiwaixianzengjiarenshu = document.getElementById("tuantiyiwaixianzengjiarenshu").value;
+		if(!isEmpty(tuantiyiwaixianzengjiarenshu)&&!isNaN(tuantiyiwaixianzengjiarenshu)){
+			var intadd = parseFloat(tuantiyiwaixianzengjiarenshu);
+			var result = intadd*40;
+			document.getElementById("tuantiyiwaixianzengjiabaofei").value = result;
+		}
+	}
+	//设置总保费
+	function setZongbaofei(){
+		var caichansunshixianaddbaoe = document.getElementById("caichansunshixianaddbaoe").value;
+		var tuantiyiwaixianzengjiabaofei = document.getElementById("tuantiyiwaixianzengjiabaofei").value;
+		if(!isEmpty(caichansunshixianaddbaoe)&&!isEmpty(tuantiyiwaixianzengjiabaofei)
+				&&!isNaN(caichansunshixianaddbaoe)&&!isNaN(tuantiyiwaixianzengjiabaofei)){
+			var zongbaofei = caichansunshixianaddbaoe*1 + tuantiyiwaixianzengjiabaofei*1 + 450;//450是必须的保费
+			document.getElementById("zongbaofei").value = zongbaofei;
+		}
+	}
+	
+	function checkForm(){
+		var toubaorenmingcheng = document.getElementById("toubaorenmingcheng").value;
+		var toubaorendizhi = document.getElementById("toubaorendizhi").value;
+		var lianxiren = document.getElementById("lianxiren").value;
+		//alert("tset0");
+		var caichansunshixianadd = document.getElementById("caichansunshixianadd").value;
+		var caichansunshixianaddbaoe = document.getElementById("caichansunshixianaddbaoe").value;
+		var tuantiyiwaixianzengjiabaofei = document.getElementById("tuantiyiwaixianzengjiabaofei").value;
+		var zongbaofei = document.getElementById("zongbaofei").value;
+		//alert("tset1");
+		var shineizhuanghuang =document.getElementById("shineizhuanghuang").value;
+		var bangongjiaju = document.getElementById("bangongjiaju").value;
+		var bangongdianzi = document.getElementById("bangongdianzi").value;
+		//alert("tset2");
+		var tuantiyiwaixianzengjiarenshu = document.getElementById("tuantiyiwaixianzengjiarenshu").value;
+		var toubaorenqianzhang = document.getElementById("toubaorenqianzhang").value;
+		var toubaoriqi = document.getElementById("toubaoriqi").value;
+		//alert("tset3");
+		if(isEmpty(toubaorenmingcheng)||isEmpty(toubaorendizhi)||isEmpty(lianxiren)||
+				isEmpty(caichansunshixianadd)||isEmpty(caichansunshixianaddbaoe)||
+				isEmpty(tuantiyiwaixianzengjiabaofei)||isEmpty(tuantiyiwaixianzengjiarenshu)||
+				isEmpty(zongbaofei)||isEmpty(shineizhuanghuang)||isEmpty(bangongjiaju)||
+				isEmpty(bangongdianzi)||isEmpty(toubaorenqianzhang)||isEmpty(toubaoriqi)){
+			alert("请将选项填写完整");
+			return false;
+		}
+		if(isNaN(shineizhuanghuang)){
+			alert("室内装潢必须是数字");
+			return false;
+		}
+		if(isNaN(bangongjiaju)){
+			alert("办公家具及非消耗性用品用具必须是数字");
+			return false;
+		}
+		if(isNaN(bangongdianzi)){
+			alert("办公用电子电器和计算机设备必须是数字");
+			return false;
+		}
+		if(isNaN(caichansunshixianadd)){
+			alert("财产损失险增加财产保额必须是数字");
+			return false;
+		}
+		if(isNaN(caichansunshixianaddbaoe)){
+			alert("财产损失险增加财产保费必须是数字");
+			return false;
+		}
+		if(isNaN(tuantiyiwaixianzengjiarenshu)){
+			alert("团体意外伤害险增加人数必须为数字");
+			return false;
+		}
+		if(isNaN(tuantiyiwaixianzengjiabaofei)){
+			alert("团体意外伤害险增加保费必须为数字");
+			return false;
+		}
+		if(isNaN(zongbaofei)){
+			alert("总保费必须为数字");
+			return false;
+		}
+		//alert('teaest');
+		var tuantixingming = document.getElementsByName("tuantixingming");
+		var tuantishenfenzheng = document.getElementsByName("tuantishenfenzheng");
+		var mark1 = false;
+		for(var i=0;i<tuantixingming.length;i++){
+			if(!isEmpty(tuantixingming[i].value)){
+				mark1 = true;//表格不为空
+			}
+		}
+		//alert(mark1);
+		if(!mark1){
+			alert("请填写团体意外伤害表信息");
+			return false;
+		}
+		for(var i=0;i<tuantixingming.length;i++){
+			if(!isEmpty(tuantixingming[i].value)&&isEmpty(tuantishenfenzheng[i].value)){//只要填写了姓名，就必须填写身份证号码
+				alert("请将团体身份证号码填写完全");
+				return false;
+			}
+		}
+		//检查团体身份证号码合法性
+		for(var i=0;i<tuantishenfenzheng.length;i++){
+			var temp = tuantishenfenzheng[i].value.length;
+			if(temp>0&&temp<18){
+				alert("团体表身份证长度不合法,身份证号码长度为18位");
+				return false;
+			}
+		}
+		var gaocengxingming = document.getElementsByName("gaocengxingming");
+		var gaocengshenfenzheng = document.getElementsByName("gaocengshenfenzheng");
+		var mark2 = false;
+		for(var i=0;i<gaocengxingming.length;i++){
+			if(!isEmpty(gaocengxingming[i].value)){
+				mark2 = true;//高层差旅意外伤害表格不为空
+			}
+		}
+		if(!mark2){
+			alert("高层差旅意外伤害表信息");
+			return false;
+		}
+		
+		for(var i=0;i<gaocengxingming.length;i++){
+			if(!isEmpty(gaocengxingming[i].value)&&isEmpty(gaocengshenfenzheng[i].value)){//只要填写了姓名，就必须填写身份证号码
+				alert("请将高层身份证号码填写完全");
+				return false;
+			}
+		}
+		
+		//检查高层身份证号码合法性
+		for(var i=0;i<gaocengshenfenzheng.length;i++){
+			var temp = gaocengshenfenzheng[i].value.length;
+			if(temp>0&&temp<18){
+				alert("高层表身份证长度不合法,身份证号码长度为18位");
+				return false;
+			}
+		}
+}
+
+	</script>
 </body>
 </html>
 

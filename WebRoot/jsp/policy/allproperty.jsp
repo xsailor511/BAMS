@@ -256,7 +256,7 @@ border:solid#000 1px;
   </tr>
   <tr>
     <td style="text-align:center">争议处理</td>
-    <td colspan="5">若投保人/被保险人与保险人发生争执，不能达成协议，被保险人自愿采取的解决方式：
+    <td colspan="5">若投保人/被保险人与保险人发生争执，不能达成协议，被保险人自愿采取的解决方式：<br/>
      <label>
         <input type="radio" name="zhengyichuli" value="susong" id="zhengyichuli_0">
         诉讼</label>
@@ -464,11 +464,14 @@ border:solid#000 1px;
 	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 	function isEmpty(str){
-		if(str==null || str.length==0)
+		if(str==null || str.trim().length==0)
 			return true;
 		else 
 			return false;
 	}
+	
+	
+	
 	function checkForm(){
 		//alert("test");
 		var toubaorenmingcheng = document.getElementById("toubaorenmingcheng").value;
@@ -489,25 +492,10 @@ border:solid#000 1px;
 		var qitajine = document.getElementById("qitajine").value;
 		var cunhuojine = document.getElementById("cunhuojine").value;
 		
-		if(isNaN(fangwujine)){
-			alert("房屋建筑物保险金额必须为数字");
-			return false;
-		}else if(isNaN(jiqishebeijine)){
-			alert("机器设备保险金额必须为数字");
-			return false;
-		}else if(isNaN(qitajine)){
-			alert("其他保险金额必须为数字");
-			return false;
-		}else if(isNaN(cunhuojine)){
-			alert("存货保险金额必须为数字");
-			return false;
-		}
+		
 		
 		var baoxianfei = document.getElementById("baoxianfei").value;
-		if(isNaN(baoxianfei)){
-			alert("保险费必须是数字");
-			return false;
-		}
+		
 		var baoxianjinexiaoji = document.getElementById("baoxianjinexiaoji").value;
 		//var jiaofeifangshi = document.getElementById("jiaofeifangshi").value;
 		var fujiatiaokuan = document.getElementById("fujiatiaokuan").value;
@@ -532,6 +520,25 @@ border:solid#000 1px;
 				||isEmpty(toubaorenqianzhang)||isEmpty(baoxianfeichina)
 				||isEmpty(start_time)||isEmpty(end_time)||isEmpty(jiaofeishijian)||isEmpty(toubaoriqi)){
 			alert("请将必填项填写完整!");
+			return false;
+		}
+		
+		if(isNaN(fangwujine)){
+			alert("房屋建筑物保险金额必须为数字");
+			return false;
+		}else if(isNaN(jiqishebeijine)){
+			alert("机器设备保险金额必须为数字");
+			return false;
+		}else if(isNaN(qitajine)){
+			alert("其他保险金额必须为数字");
+			return false;
+		}else if(isNaN(cunhuojine)){
+			alert("存货保险金额必须为数字");
+			return false;
+		}
+		
+		if(isNaN(baoxianfei)){
+			alert("保险费必须是数字");
 			return false;
 		}
 		
@@ -640,6 +647,8 @@ border:solid#000 1px;
 			alert("请填写是否有过理赔记录！");
 			return false;
 		}
+		
+		
 		document.charset='utf-8';
 		
 	}

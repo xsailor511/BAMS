@@ -61,6 +61,7 @@ public class AddEnterprisePackageServlet extends HttpServlet {
 		String shoutuorenzhucedizhi = request.getParameter("shoutuorenzhucedizhi");
 		String shoutuorenfadingdaibiao = request.getParameter("shoutuorenfadingdaibiao");
 		String weituorenqianzhang = request.getParameter("weituorenqianzhang");
+		String startdate = request.getParameter("startdate");
 		System.out.println("weituorenqianzhang encoding before   "+StringUtil.getEncoding(weituorenqianzhang));//ISO-8859-1
 //		weituoren = new String(weituoren.getBytes(StringUtil.getEncoding(weituoren)), "GB2312");
 //		dianhua = new String(dianhua.getBytes(StringUtil.getEncoding(dianhua)), "GB2312");
@@ -84,7 +85,8 @@ public class AddEnterprisePackageServlet extends HttpServlet {
 		enterprisepackage.setShoutuorenfadingdaibiao(shoutuorenfadingdaibiao);
 		enterprisepackage.setWeituorenqianzhang(weituorenqianzhang);
 		enterprisepackage.setBaoxiangongsi(baoxiangongsi);
-
+		enterprisepackage.setStartdate(startdate);
+		
 		String enddate = request.getParameter("enddate");
 		String tianbiaoriqi = request.getParameter("tianbiaoriqi");
 		enddate = new String(enddate.getBytes(StringUtil.getEncoding(enddate)), "GB2312");
@@ -94,9 +96,12 @@ public class AddEnterprisePackageServlet extends HttpServlet {
 		
 		String kexuanxianzhongs[] = request.getParameterValues("kexuanxianzhong");
 		String kexuanxianzhong = "";
-		for(int i=0;i<kexuanxianzhongs.length;i++){
-			kexuanxianzhong = kexuanxianzhong+kexuanxianzhongs[i]+";";
+		if(null!=kexuanxianzhongs){
+			for(int i=0;i<kexuanxianzhongs.length;i++){
+				kexuanxianzhong = kexuanxianzhong+kexuanxianzhongs[i]+";";
+			}
 		}
+		
 		enterprisepackage.setKexuanxianzhong(kexuanxianzhong);
 		enterprisepackage.setUsername(name);
 		PolicyService service = new PolicyService();

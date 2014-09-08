@@ -134,13 +134,11 @@ border:solid#000 1px;
 
 					<!-- Element -->
 					<div class="box-body" style="background:#CCDDFF;color:black">
-						
+<form name="baodan" action="<%=basePath %>servlet/AddEmployerDutyServlet" method="get" onsubmit="return checkForm()">
 
-					<form name="baodan" action="<%=basePath %>servlet/AddEmployerDutyServlet" method="get">
-
-		<table  >
-  <caption>
-    雇主责任险投保单<br />
+<table>
+<caption>
+雇主责任险投保单<br />
 <p style="text-align: right">投保单编号
     <input type="text" name="toubaodanbianhao" id="toubaodanbianhao"></p>
   </caption>
@@ -179,7 +177,8 @@ border:solid#000 1px;
   <tr>
     <td colspan="3">是否参加社会(医疗、工伤）保险</td>
     <td colspan="4">
-    <input type="text" name="canjiashehuibaoxian" id="canjiashehuibaoxian"></td>
+    是<input type="radio" name="canjiashehuibaoxian" id="canjiashehuibaoxian1" value="shi" />
+    否<input type="radio" name="canjiashehuibaoxian" id="canjiashehuibaoxian2" value="fou" /></td>
   </tr>
   <tr>
     <td colspan="2" rowspan="2">雇员工种</td>
@@ -286,7 +285,7 @@ border:solid#000 1px;
         诉讼
 
       <label>
-        <input type="radio" name="zhengyichuli" value="zhogncai" id="zhengyichuli_1">
+        <input type="radio" name="zhengyichuli" value="zhongcai" id="zhengyichuli_1">
        仲裁
        仲裁机构：<input type="text" name="zhongcaijigou" id="zhongcaijigou">
        </label></td>
@@ -424,6 +423,127 @@ border:solid#000 1px;
 	<!-- date picker -->
 	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
+	<script type="text/javascript">
+	function isEmpty(str){
+		if(str==null || str.trim().length==0)
+			return true;
+		else 
+			return false;
+	}
+	function checkForm(){
+		
+		var toubaorenmingcheng = document.getElementById("toubaorenmingcheng").value;
+		var toubaorendizhi = document.getElementById("toubaorendizhi").value;
+		var toubaorenlianxiren = document.getElementById("toubaorenlianxiren").value;
+		var toubaorendianhua = document.getElementById("toubaorendianhua").value;
+		var beibaoxianrenmingcheng = document.getElementById("beibaoxianrenmingcheng").value;
+		var beibaoxianrendizhi = document.getElementById("beibaoxianrendizhi").value;
+		//alert("-------");
+		var yingyexingzhi = document.getElementById("yingyexingzhi").value;
+		var beizuzhijigoudaima = document.getElementById("beizuzhijigoudaima").value;
+		
+		var tebieyueding = document.getElementById("tebieyueding").value;
+		var sifaguanxia = document.getElementById("sifaguanxia").value;
+		var toubaorenqianzhang = document.getElementById("toubaorenqianzhang").value;
+		//alert("estsasdfalk");
+		var baoxianfei = document.getElementById("baoxianfei").value;
+		var start_time = document.getElementById("start_time").value;
+		var end_time = document.getElementById("end_time").value;
+		var fufeiriqi = document.getElementById("fufeiriqi").value;
+		var toubaoriqi = document.getElementById("toubaoriqi").value;
+		//alert("soga");
+		if(isEmpty(toubaorenmingcheng)||isEmpty(toubaorendizhi)||isEmpty(toubaorenlianxiren)||isEmpty(toubaorendianhua)||
+				isEmpty(beibaoxianrenmingcheng)||isEmpty(beibaoxianrendizhi)||isEmpty(yingyexingzhi)||
+				isEmpty(beizuzhijigoudaima)||isEmpty(tebieyueding)
+				||isEmpty(sifaguanxia)||isEmpty(toubaorenqianzhang)||isEmpty(baoxianfei)
+				||isEmpty(start_time)||isEmpty(end_time)||isEmpty(fufeiriqi)
+				||isEmpty(toubaoriqi)){
+			alert("请将空格填满");
+			return false;
+		}
+		if(isNaN(baoxianfei)){
+			alert("保险费必须是数字");
+			return false;
+		}
+		
+		var canjiashehuibaoxian= document.getElementsByName("canjiashehuibaoxian");
+		//alert("length  :"+canjiashehuibaoxian.length);
+		var mark2 = false;
+		for(var i=0;i<canjiashehuibaoxian.length;i++){
+			
+			if(canjiashehuibaoxian[i].checked){
+				mark2 = true;
+			}
+				
+		}
+		if(!mark2){
+			alert("是否参加社会(医疗、工伤）保险");
+			return false;
+		}
+		
+		var guyuangongzhongs = document.getElementsByName("guyuangongzhong");
+		var guyuanrenshus = document.getElementsByName("guyuanrenshu");
+		var peichangsiwangs = document.getElementsByName("peichangsiwang");
+		var peichangyiliaos = document.getElementsByName("peichangyiliao");
+		var mark1 = false;
+		for(var i =0 ;i<guyuangongzhongs.length;i++){
+			if(!isEmpty(guyuangongzhongs[i].value))
+				mark1 = true;
+		}
+		if(!mark1){
+			alert("请填写雇员工种数");
+			return false;
+		}
+		for(var i=0;i<guyuangongzhongs.length;i++){
+			if(!isEmpty(guyuangongzhongs[i].value)){
+				if(isEmpty(guyuanrenshus[i].value)){
+					alert("估计雇员人数没有填写完整");
+					return false;
+				}else if(isEmpty(peichangsiwangs[i].value)){
+					alert("赔偿限额中的死亡、伤残没有填写完整");
+					return false;
+				}else if(isEmpty(peichangyiliaos[i].value)){
+					alert("赔偿限额中的医疗没有填写完整");
+					return false;
+				}else if(isNaN(guyuanrenshus[i].value)){
+					alert("估计雇员人数必须为数字");
+					return false;
+				}else if(isNaN(peichangsiwangs[i].value)){
+					alert("赔偿限额中的死亡、伤残必须为数字");
+					return false;
+				}else if(isNaN(peichangyiliaos[i].value)){
+					alert("赔偿限额中的医疗必须为数字");
+					return false;
+				}
+			}
+		}
+		
+		
+		
+		var zhengyichuli_ok = document.getElementsByName("zhengyichuli");
+		var test = false;
+		for(var i=0;i<zhengyichuli_ok.length;i++){
+			if(zhengyichuli_ok[i].checked){
+				test = true;
+				if(zhengyichuli_ok[i].value=="zhongcai"){
+					var zhongcaijigou = document.getElementById("zhongcaijigou").value;
+					if(isEmpty(zhongcaijigou)){
+						alert("仲裁机构不能为空");
+						return false;
+					}else{
+						break;
+					}
+				}
+				
+			}
+		}
+		if(!test){
+			alert("请选择争议处理方式");
+			return false;
+		}
+
+	}
+	</script>
 </body>
 </html>
 

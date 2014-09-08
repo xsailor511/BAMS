@@ -135,9 +135,7 @@ border:solid#000 1px;
 
 					<!-- Element -->
 					<div class="box-body" style="background:#CCDDFF;color:black">
-						
-
-					<form name="baodan" action="<%=basePath %>servlet/AddFamilyServlet" method="get">
+<form name="baodan" action="<%=basePath %>servlet/AddFamilyServlet" method="get" onsubmit="return checkForm()">
 
 		<table  >
   <caption>
@@ -196,9 +194,9 @@ border:solid#000 1px;
   </tr>
   <tr>
     <td colspan="2">家庭成员类型:</td>
-    <td>夫妻(可包含子女)</td>
-    <td colspan="2">夫妻(可包含子女)+一方父母</td>
-    <td colspan="2">夫妻(可包含子女)+双方父母</td>
+    <td><input type="radio" name="jiatingchengyuanleixing" id="fuqi" >夫妻(可包含子女)</td>
+    <td colspan="2"><input type="radio" name="jiatingchengyuanleixing" id="fuqi_one" >夫妻(可包含子女)+一方父母</td>
+    <td colspan="2"><input type="radio" name="jiatingchengyuanleixing" id="fuqi_two" >夫妻(可包含子女)+双方父母</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -387,6 +385,29 @@ border:solid#000 1px;
 	<!-- date picker -->
 	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
+	<script type="text/javascript">
+	function isEmpty(str){
+		if(str==null || str.trim().length==0)
+			return true;
+		else 
+			return false;
+	}
+	
+	function checkForm(){
+		var baoxiancaichandizhi = document.getElementById("baoxiancaichandizhi").value;
+		var startdate = document.getElementById("startdate").value;
+		var enddate = document.getElementById("enddate").value;
+		var baoxianfeizongji = document.getElementById("baoxianfeizongji").value;
+		
+		if(isEmpty(baoxiancaichandizhi)||isEmpty(startdate)||isEmpty(enddate)
+				||isEmpty(baoxianfeizongji)){
+			alert("页面有未填写的空格");
+			return false;
+		}
+		
+	}
+
+	</script>
 </body>
 </html>
 

@@ -14,7 +14,7 @@ public class Family {
 	private String baoxiancaichandizhi;
 	//家庭财产综合保险
 	private boolean caichanzonghebaoxian;
-	
+	//全体家庭成员（0-75岁）意外及医疗保险
 	private boolean quantijiatingchengyuan;
 	//意外医疗保险合计
 	private double yiwaiyiliaobaoxianheji;
@@ -36,6 +36,9 @@ public class Family {
 	private String username;
 	//保险费总计大写
 	private String baoxianfeizongjichina;
+	//家庭成员类型
+	private String jiatingchengyuanleixing;
+	
 	public int getId() {
 		return id;
 	}
@@ -122,6 +125,12 @@ public class Family {
 	}
 	public void setBaoxianfeizongjichina(String baoxianfeizongjichina) {
 		this.baoxianfeizongjichina = baoxianfeizongjichina;
+	}
+	public String getJiatingchengyuanleixing() {
+		return jiatingchengyuanleixing;
+	}
+	public void setJiatingchengyuanleixing(String jiatingchengyuanleixing) {
+		this.jiatingchengyuanleixing = jiatingchengyuanleixing;
 	}
 	
 	

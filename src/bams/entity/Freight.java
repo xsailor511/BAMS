@@ -58,7 +58,7 @@ public class Freight {
 	//备注
 	private String note;
 	//投保人签章
-	private String toubaorenqiangzhang;
+	private String toubaorenqianzhang;
 	//投保填单日期
 	private String tianbiaoriqi;
 	//投保账户名称
@@ -203,11 +203,11 @@ public class Freight {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public String getToubaorenqiangzhang() {
-		return toubaorenqiangzhang;
+	public String getToubaorenqianzhang() {
+		return toubaorenqianzhang;
 	}
-	public void setToubaorenqiangzhang(String toubaorenqiangzhang) {
-		this.toubaorenqiangzhang = toubaorenqiangzhang;
+	public void setToubaorenqianzhang(String toubaorenqianzhang) {
+		this.toubaorenqianzhang = toubaorenqianzhang;
 	}
 	public String getFapiaoriqi() {
 		return fapiaoriqi;

@@ -135,7 +135,7 @@ border:solid#000 1px;
 					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
-					<form name="baodan" action="<%=basePath %>servlet/AddEnterprisePackageServlet" method="post">
+<form name="baodan" action="<%=basePath %>servlet/AddEnterprisePackageServlet" method="post" onsubmit="return checkForm()">
 
 <table width="820" border="1">
 <caption>
@@ -169,7 +169,8 @@ border:solid#000 1px;
     <td style="width:178">4. 公众责任保险</td>
   </tr>
   <tr>
-    <td colspan="7" style="text-align:center"><h4><strong><label>保险到期日为:&nbsp;</label><input class="Wdate" type="text" onClick="WdatePicker()" name="enddate"></strong></h4></td>
+    <td colspan="7" style="text-align:center"><h4><strong><label>保险到期日为:&nbsp;</label>
+    <input class="Wdate" type="text" onClick="WdatePicker()" name="enddate" id="enddate"></strong></h4></td>
   </tr>
   <tr>
     <td height="26" colspan="7">二 可选险种</td>
@@ -408,7 +409,7 @@ border:solid#000 1px;
   </tr>
   <tr>
     <td colspan="7" style="text-align:center">
-    <p>从<input class="Wdate" type="text" onClick="WdatePicker()" name="start_date">
+    <p>从<input class="Wdate" type="text" onClick="WdatePicker()" name="startdate" id="startdate">
     起，我单位委托江泰保险经纪股份有限公司为我单位保险经纪人，代表我单位处理保险相关事宜，有效期限一年。<br>
       委托事项：协助我单位办理投保手续，为我单位提供保险咨询、保险培训和索赔服务等事宜。</p>
                                               </td>
@@ -417,7 +418,7 @@ border:solid#000 1px;
     <td colspan="7" style="text-align:center">        委托人： 
       <label for="weituorenqianzhang"></label>
       <input type="text" name="weituorenqianzhang" id="weituorenqianzhang" />
-                  日期：<input class="Wdate" type="text" onClick="WdatePicker()" name="tianbiaoriqi"></td>
+                  日期：<input class="Wdate" type="text" onClick="WdatePicker()" name="tianbiaoriqi" id="tianbiaoriqi"></td>
   </tr>
   <tr>
     <td colspan="7" style="text-align:center">&nbsp;<input type="submit" value="提交保单" /></td>
@@ -538,6 +539,75 @@ border:solid#000 1px;
 	<!-- date picker -->
 	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
+	<script type="text/javascript">
+	function isEmpty(str){
+		if(str==null || str.trim().length==0)
+			return true;
+		else 
+			return false;
+	}
+	function checkForm(){
+		
+		var dianhua = document.getElementById("dianhua").value;
+		var lianxiren = document.getElementById("lianxiren").value;
+		
+		var weituorenzhucedizhi = document.getElementById("weituorenzhucedizhi").value;
+		var weituorenfadingdaibiaoren = document.getElementById("weituorenfadingdaibiaoren").value;
+		var shoutuorenzhucedizhi = document.getElementById("shoutuorenzhucedizhi").value;
+		var shoutuorenfadingdaibiao = document.getElementById("shoutuorenfadingdaibiao").value;
+		var weituorenqianzhang = document.getElementById("weituorenqianzhang").value;
+		var enddate = document.getElementById("enddate").value;
+		var startdate = document.getElementById("startdate").value;
+		var tianbiaoriqi = document.getElementById("tianbiaoriqi").value;
+		
+		if(isEmpty(dianhua)||isEmpty(lianxiren)||isEmpty(weituorenzhucedizhi)
+				||isEmpty(weituorenfadingdaibiaoren)||isEmpty(shoutuorenzhucedizhi)
+				||isEmpty(shoutuorenfadingdaibiao)||isEmpty(weituorenqianzhang)
+				||isEmpty(enddate)||isEmpty(startdate)||isEmpty(tianbiaoriqi)){
+			alert("请将必填项填写完整!");
+			return false;
+		}
+		
+		var baoxiangongsi = document.getElementsByName("baoxiangongsi");
+		var mark1 = false;
+		for(var i=0;i<baoxiangongsi.length;i++){
+			if(baoxiangongsi[i].checked){
+				mark1 = true;
+			}
+			
+		}
+		if(!mark1){
+			alert("请选择保险公司");
+			return false;
+		}
+		
+		var weituoren = document.getElementsByName("weituoren");
+		var weituoren1 = weituoren[0].value;
+		var weituoren2 = weituoren[1].value;
+		if(isEmpty(weituoren1)||isEmpty(weituoren2)){
+			alert("委托人名称没有填写完整");
+			return false;
+		}else if(weituoren1!=weituoren2){
+			alert("委托人名称前后不一致");
+			return false;
+		}
+// 		var kexuanxianzhong = document.getElementsByName("kexuanxianzhong");
+// 		var mark2 = false;
+// 		for(var i=0;i<kexuanxianzhong.length;i++){
+// 			if(kexuanxianzhong[i].checked){
+// 				mark2 = true;
+// 			}
+// 		}
+// 		if(!mark2){
+// 			alert("可选险种至少选择一个");
+// 			return false;
+// 		}
+
+	
+		
+	}
+	
+	</script>
 </body>
 </html>
 

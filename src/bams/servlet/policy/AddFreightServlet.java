@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bams.entity.Freight;
 import bams.service.PolicyService;
+import bams.util.StringUtil;
 
 public class AddFreightServlet extends HttpServlet {
 
@@ -53,6 +54,14 @@ public class AddFreightServlet extends HttpServlet {
 		String fapiaoriqi = request.getParameter("fapiaoriqi");
 		String jinkouhetonghao = request.getParameter("jinkouhetonghao");
 		String xinyongzhenghao = request.getParameter("xinyongzhenghao");
+		
+		fax_from = new String(fax_from.getBytes(StringUtil.getEncoding(fax_from)), "UTF-8");
+		fax_to = new String(fax_to.getBytes(StringUtil.getEncoding(fax_to)), "UTF-8");
+		beibaoxianren = new String(beibaoxianren.getBytes(StringUtil.getEncoding(beibaoxianren)), "UTF-8");
+		fapiaohao = new String(fapiaohao.getBytes(StringUtil.getEncoding(fapiaohao)), "UTF-8");
+		fapiaoriqi = new String(fapiaoriqi.getBytes(StringUtil.getEncoding(fapiaoriqi)), "UTF-8");
+		jinkouhetonghao = new String(jinkouhetonghao.getBytes(StringUtil.getEncoding(jinkouhetonghao)), "UTF-8");
+		xinyongzhenghao = new String(xinyongzhenghao.getBytes(StringUtil.getEncoding(xinyongzhenghao)), "UTF-8");
 		int baozhuangshuliang = Integer.parseInt(request.getParameter("baozhuangshuliang"));
 		
 		freight.setFax_from(fax_from);
@@ -72,6 +81,10 @@ public class AddFreightServlet extends HttpServlet {
 		double feilv = Double.parseDouble(request.getParameter("feilv"));
 		double baoxianfei = Double.parseDouble(request.getParameter("baoxianfei"));
 		
+		baoxianhuowumingcheng = new String(baoxianhuowumingcheng.getBytes(StringUtil.getEncoding(baoxianhuowumingcheng)), "UTF-8");
+		biaoji = new String(biaoji.getBytes(StringUtil.getEncoding(biaoji)), "UTF-8");
+		jiagetiaojian = new String(jiagetiaojian.getBytes(StringUtil.getEncoding(jiagetiaojian)), "UTF-8");
+		
 		freight.setBaoxianhuowumingcheng(baoxianhuowumingcheng);
 		freight.setBiaoji(biaoji);
 		freight.setJiagetiaojian(jiagetiaojian);
@@ -89,8 +102,20 @@ public class AddFreightServlet extends HttpServlet {
 		String mudigang = request.getParameter("mudigang");
 		String chengbaoxianbie = request.getParameter("chengbaoxianbie");
 		String note = request.getParameter("note");
-		String toubaorenqiangzhang = request.getParameter("toubaorenqiangzhang");
+		String toubaorenqianzhang = request.getParameter("toubaorenqianzhang");
 		String tianbiaoriqi = request.getParameter("tianbiaoriqi");
+		
+		chuanming = new String(chuanming.getBytes(StringUtil.getEncoding(chuanming)), "UTF-8");
+		jianzaonianfen = new String(jianzaonianfen.getBytes(StringUtil.getEncoding(jianzaonianfen)), "UTF-8");
+		chuanqi = new String(chuanqi.getBytes(StringUtil.getEncoding(chuanqi)), "UTF-8");
+		qiyunriqi = new String(qiyunriqi.getBytes(StringUtil.getEncoding(qiyunriqi)), "UTF-8");
+		qiyungang = new String(qiyungang.getBytes(StringUtil.getEncoding(qiyungang)), "UTF-8");
+		via = new String(via.getBytes(StringUtil.getEncoding(via)), "UTF-8");
+		mudigang = new String(mudigang.getBytes(StringUtil.getEncoding(mudigang)), "UTF-8");
+		chengbaoxianbie = new String(chengbaoxianbie.getBytes(StringUtil.getEncoding(chengbaoxianbie)), "UTF-8");
+		note = new String(note.getBytes(StringUtil.getEncoding(note)), "UTF-8");
+		toubaorenqianzhang = new String(toubaorenqianzhang.getBytes(StringUtil.getEncoding(toubaorenqianzhang)), "UTF-8");
+		tianbiaoriqi = new String(tianbiaoriqi.getBytes(StringUtil.getEncoding(tianbiaoriqi)), "UTF-8");
 		
 		freight.setChuanming(chuanming);
 		freight.setJianzaonianfen(jianzaonianfen);
@@ -101,8 +126,9 @@ public class AddFreightServlet extends HttpServlet {
 		freight.setMudigang(mudigang);
 		freight.setChengbaoxianbie(chengbaoxianbie);
 		freight.setNote(note);
-		freight.setToubaorenqiangzhang(toubaorenqiangzhang);
+		freight.setToubaorenqianzhang(toubaorenqianzhang);
 		freight.setTianbiaoriqi(tianbiaoriqi);
+		
 		String username = (String)request.getSession().getAttribute("name");
 		freight.setUsername(username);
 		PolicyService service = new PolicyService();

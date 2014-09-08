@@ -134,7 +134,7 @@ border:solid#000 1px;
 					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
-					<form name="baodan" action="<%=basePath %>servlet/AddFreightServlet" method="get">
+<form name="baodan" action="<%=basePath %>servlet/AddFreightServlet" method="get" onsubmit="return checkForm()">
 
 		<table width="820" height="530">
   <caption>
@@ -180,7 +180,7 @@ border:solid#000 1px;
     <td colspan="2"><p>信用证号</p>
     <p>L/C NO.</p></td>
     <td colspan="2">&nbsp;
-    <input type="text" name="xinyongzhenghao" id="xinyongzhenghao"></td>
+    <input type="text" name="xinyongzhenghao" id="xinyongzhenghao" style="width:80%"></td>
   </tr>
   <tr>
     <td colspan="2"><p>包装数量&nbsp;QUANTITY:</p></td>
@@ -398,6 +398,79 @@ border:solid#000 1px;
 	<!-- date picker -->
 	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
+	
+	<script type="text/javascript">
+	function isEmpty(str){
+		if(str==null || str.trim().length==0)
+			return true;
+		else 
+			return false;
+	}
+	
+	function checkForm(){
+		var fax_from = document.getElementById("fax_from").value;
+		var fax_to = document.getElementById("fax_to").value;
+		var beibaoxianren = document.getElementById("beibaoxianren").value;
+		var fapiaohao = document.getElementById("fapiaohao").value;
+		var fapiaoriqi = document.getElementById("fapiaoriqi").value;
+		var jinkouhetonghao = document.getElementById("jinkouhetonghao").value;
+		var xinyongzhenghao = document.getElementById("xinyongzhenghao").value;
+		var baozhuangshuliang = document.getElementById("baozhuangshuliang").value;
+		
+		var baoxianhuowumingcheng = document.getElementById("baoxianhuowumingcheng").value;
+		var biaoji = document.getElementById("biaoji").value;
+		var jiagetiaojian = document.getElementById("jiagetiaojian").value;
+		var fapiaojine = document.getElementById("fapiaojine").value;
+		var baoxianjine = document.getElementById("baoxianjine").value;
+		//var feilv =document.getElementById("feilv");
+		var baoxianfei = document.getElementById("baoxianfei").value;
+		
+		var chuanming = document.getElementById("chuanming").value;
+		var jianzaonianfen = document.getElementById("jianzaonianfen").value;
+		var chuanqi = document.getElementById("chuanqi").value;
+		var qiyunriqi = document.getElementById("qiyunriqi").value;
+		var qiyungang = document.getElementById("qiyungang").value;
+		var via = document.getElementById("via").value;
+		var mudigang = document.getElementById("mudigang").value;
+		var chengbaoxianbie = document.getElementById("chengbaoxianbie").value;
+		var note = document.getElementById("note").value;
+		var toubaorenqianzhang = document.getElementById("toubaorenqianzhang").value;
+		var tianbiaoriqi = document.getElementById("tianbiaoriqi").value;
+		
+		if(isEmpty(fax_from)||isEmpty(fax_to)||isEmpty(beibaoxianren)||isEmpty(fapiaohao)||
+				isEmpty(fapiaoriqi)||isEmpty(jinkouhetonghao)||isEmpty(xinyongzhenghao)||isEmpty(baozhuangshuliang)||
+				isEmpty(baoxianhuowumingcheng)||isEmpty(biaoji)||isEmpty(jiagetiaojian)||isEmpty(fapiaojine)||
+				isEmpty(baoxianjine)||isEmpty(baoxianfei)||isEmpty(chuanming)||isEmpty(jianzaonianfen)
+				||isEmpty(jianzaonianfen)||isEmpty(chuanqi)||isEmpty(qiyungang)||isEmpty(via)
+				||isEmpty(qiyunriqi)||isEmpty(mudigang)||isEmpty(chengbaoxianbie)||isEmpty(note)
+				||isEmpty(toubaorenqianzhang)||isEmpty(tianbiaoriqi)){
+			alert("还有没填的选项");
+			return false;
+		}
+		if(isNaN(baozhuangshuliang)){
+			alert("包装数量必须为数字");
+			return false;
+		}
+		if(isNaN(fapiaojine)){
+			alert("发票金额必须为数字");
+			return false;
+		}
+		if(isNaN(baoxianjine)){
+			alert("保险金额必须为数字");
+			return false;
+		}
+		if(isNaN(baoxianfei)){
+			alert("保险费必须为数字");
+			return false;
+		}
+		
+		
+		if(jianzaonianfen.length!=4){
+			alert("建造年份是4位的数字");
+			return false;
+		}
+	}
+	</script>
 </body>
 </html>
 

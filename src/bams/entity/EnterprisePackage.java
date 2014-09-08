@@ -17,6 +17,8 @@ public class EnterprisePackage {
 	private String lianxiren;
 	//保险到期日期
 	private String enddate;
+	//开始日期
+	private String startdate;
 	//可选险种（合并存储）
 	private String kexuanxianzhong;
 	//保险公司
@@ -107,6 +109,14 @@ public class EnterprisePackage {
 	}
 	public void setEnddate(String enddate) {
 		this.enddate = enddate;
+	}
+	
+	
+	public String getStartdate() {
+		return startdate;
+	}
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
 	}
 	public String getTianbiaoriqi() {
 		return tianbiaoriqi;
