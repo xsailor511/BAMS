@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page language="java" import="bams.entity.User" %>
+<%@ page import="bams.entity.PolicyIndex" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -24,7 +24,7 @@ if(null==role_int){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>理赔咨询</title>
+<title>资料下载</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -100,7 +100,7 @@ if(null==role_int){
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li><a  class="open br-red"><i
-							class="icon-home"></i>理赔咨询</a> <!-- Sub menu markup 
+							class="icon-home"></i>保单查询</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>
@@ -125,16 +125,30 @@ if(null==role_int){
 					<!-- Element -->
 					<div class="box-body">
 						
-					<div class="s-widget">
-					<h6>咨询热线</h6>
-					<p>TEL:0532-88886666</p>
-					<p>qq：346543534</p>
-					<p>邮箱：235435@145.com</p>
-					<p>8:30-24:00(周一到周五)</p>
-					<p>9:00-18:00(周六到周日)</p>
-					<p></p>
-				</div>
-					
+
+					<div id="uploaded_file">
+					<p style="color:blue" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=session_name %>的所有保单：</p>
+<%
+List<PolicyIndex> policyindexlist = (List)request.getAttribute("policyindexlist");
+if(null==policyindexlist){
+	  this.getServletContext()
+	  	.getRequestDispatcher("/error.jsp")
+	  	.forward(request,response);
+}
+for(int i=0;i<policyindexlist.size();i++){
+	
+String policyname = policyindexlist.get(i).getPolicyname();
+
+%>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%=policyname %>
+</p>
+<%
+
+}
+
+%>
+</div>
 
 						
 					</div>

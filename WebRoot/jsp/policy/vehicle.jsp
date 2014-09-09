@@ -135,7 +135,7 @@ border:solid#000 1px;
 					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
-					<form name="baodan" action="<%=basePath %>servlet/AddVehicleServlet" method="get">
+<form name="baodan" action="<%=basePath %>servlet/AddVehicleServlet" method="get" onsubmit="return checkForm()">
 
 		<table width="920" height="643" border="1">
   <caption>
@@ -575,6 +575,172 @@ border:solid#000 1px;
 	<!-- date picker -->
 	<script src="<%=basePath %>js/My97DatePicker/WdatePicker.js"></script>
 	<!-- Main js file -->
+	<script type="text/javascript">
+	function isEmpty(str){
+		if(str==null || str.trim().length==0)
+			return true;
+		else 
+			return false;
+	}
+	
+	function emailFormatCheck(email){
+	    if ((email.length > 128) || (email.length < 6)) {
+	        return false;
+	    }
+	    var format = /^[A-Za-z0-9+]+[A-Za-z0-9\.\_\-+]*@([A-Za-z0-9\-]+\.)+[A-Za-z0-9]+$/;
+	    if (!email.match(format)) {
+	        return false;
+	    }
+	    return true;
+	}
+	
+	function checkForm(){
+		var beibaoxianrenmingcheng = document.getElementById("beibaoxianrenmingcheng").value;
+		var beibaoxianrenzhengjianhaoma = document.getElementById("beibaoxianrenzhengjianhaoma").value;
+		var beibaoxianrentongxundizhi = document.getElementById("beibaoxianrentongxundizhi").value;
+		var beibaoxianrenyoubian = document.getElementById("beibaoxianrenyoubian").value;
+		var beibaoxianlianxiren = document.getElementById("beibaoxianlianxiren").value;
+		var beibaoxianrendianhua = document.getElementById("beibaoxianrendianhua").value;
+		var beibaoxianrenbangongdianhua = document.getElementById("beibaoxianrenbangongdianhua").value;
+		var beibaoxianrenemail = document.getElementById("beibaoxianrenemail").value;
+		var toubaorenmingcheng = document.getElementById("toubaorenmingcheng").value;
+		var toubaorenzhengjianhaoma = document.getElementById("toubaorenzhengjianhaoma").value;
+		var toubaorentongxundizhi = document.getElementById("toubaorentongxundizhi").value;
+		var toubaorenyoubian = document.getElementById("toubaorenyoubian").value;
+		if(isEmpty(beibaoxianrenmingcheng)||isEmpty(beibaoxianrenzhengjianhaoma)||isEmpty(beibaoxianrentongxundizhi)||
+				isEmpty(beibaoxianrenyoubian)||isEmpty(beibaoxianlianxiren)||isEmpty(beibaoxianrendianhua)||
+				isEmpty(beibaoxianrenbangongdianhua)||isEmpty(beibaoxianrenemail)||isEmpty(toubaorenmingcheng)
+				||isEmpty(toubaorenzhengjianhaoma)||isEmpty(toubaorentongxundizhi)||isEmpty(toubaorenyoubian)){
+			alert("请将选项填写完整");
+			return false;
+		}
+		var toubaorenlianxiren = document.getElementById("toubaorenlianxiren").value;
+		var toubaorendianhua = document.getElementById("toubaorendianhua").value;
+		var toubaorenbangongdianhua = document.getElementById("toubaorenbangongdianhua").value;
+		var toubaorenemail = document.getElementById("toubaorenemail").value;
+		var xingshizhengchezhu = document.getElementById("xingshizhengchezhu").value;
+		var changpaixinghao = document.getElementById("changpaixinghao").value;
+		var hedingzaike = document.getElementById("hedingzaike").value;
+		var haopaihaoma = document.getElementById("haopaihaoma").value;
+		var chucidengjiriqi = document.getElementById("chucidengjiriqi").value;
+		var shibiedaima = document.getElementById("shibiedaima").value;
+		var fadongjixinghao = document.getElementById("fadongjixinghao").value;
+		if(isEmpty(toubaorenlianxiren)||isEmpty(toubaorendianhua)||isEmpty(toubaorenbangongdianhua)
+				||isEmpty(toubaorenemail)||isEmpty(xingshizhengchezhu)||isEmpty(changpaixinghao)
+				||isEmpty(hedingzaike)||isEmpty(haopaihaoma)||isEmpty(chucidengjiriqi)
+				||isEmpty(shibiedaima)||isEmpty(fadongjixinghao)){
+			alert("请将选项填写完整");
+			return false;
+		}
+		
+		var xinchejiage = document.getElementById("xinchejiage").value;
+		var zhengbeizhiliang = document.getElementById("zhengbeizhiliang").value;
+		var paiqiliang = document.getElementById("paiqiliang").value;
+		var shangnianjiaoqiangxian = document.getElementById("shangnianjiaoqiangxian").value;
+		var jiaoqiangxianbaodanhao = document.getElementById("jiaoqiangxianbaodanhao").value;
+		var shangnianshangyexian = document.getElementById("shangnianshangyexian").value;
+		var shangyexianbaodanhao = document.getElementById("shangyexianbaodanhao").value;	
+		var shangyebaoxianfeiheji = document.getElementById("shangyebaoxianfeiheji").value;
+		var chechuanshui = document.getElementById("chechuanshui").value;
+		var heji = document.getElementById("heji").value;
+		var shangyebaoxianstartdate = document.getElementById("shangyebaoxianstartdate").value;
+		var shangyebaoxianenddate = document.getElementById("shangyebaoxianenddate").value;
+		var jiaoqiangbaoxianstartdate = document.getElementById("jiaoqiangbaoxianstartdate").value;
+		var jiaoqiangbaoxianenddate = document.getElementById("jiaoqiangbaoxianenddate").value;
+		var zhengyijiejue = document.getElementById("zhengyijiejue").value;
+		var jiashiyuanxinxi = document.getElementById("jiashiyuanxinxi").value;
+		
+		
+		if(isEmpty(xinchejiage)||isEmpty(zhengbeizhiliang)||isEmpty(paiqiliang)
+				||isEmpty(shangnianjiaoqiangxian)||isEmpty(jiaoqiangxianbaodanhao)||isEmpty(shangnianshangyexian)
+				||isEmpty(shangyexianbaodanhao)||isEmpty(shangyebaoxianfeiheji)||isEmpty(chechuanshui)
+				||isEmpty(heji)||isEmpty(shangyebaoxianstartdate)||isEmpty(shangyebaoxianenddate)
+				||isEmpty(jiaoqiangbaoxianstartdate)||isEmpty(jiaoqiangbaoxianenddate)||isEmpty(zhengyijiejue)
+				||isEmpty(jiashiyuanxinxi)){
+			alert("请将选项填写完整");
+			return false;
+		}
+		//检查邮箱格式
+		if(!emailFormatCheck(beibaoxianrenemail)){
+			alert("被保险人email格式不对");
+			return false;
+		}
+		if(!emailFormatCheck(toubaorenemail)){
+			alert("投保人email格式不对");
+			return false;
+		}
+		//邮政编码的长度必须是6
+		if(beibaoxianrenyoubian.length!=6){
+			alert("被保险人邮编不对");
+			return false;
+		}
+		if(toubaorenyoubian.length!=6){
+			alert("投保人邮编不对");
+			return false;
+		}
+		//身份证长度检查
+		if(beibaoxianrenzhengjianhaoma.length!=18){
+			alert("被保险人身份号码长度不对");
+			return false;
+		}
+		if(toubaorenzhengjianhaoma.length!=18){
+			alert("投保人身份证号码长度不对");
+		}
+		
+		//检查数字合法性
+		if(isNaN(xinchejiage)){
+			alert("新车购置价必须是数字");
+			return false;
+		}
+		if(isNaN(zhengbeizhiliang)){
+			alert("整备质量必须是数字");
+			return false;
+		}
+		if(isNaN(hedingzaike)){
+			alert("核定载客必须是数字");
+			return false;
+		}
+		if(isNaN(paiqiliang)){
+			alert("排气量(L)必须是数字");
+			return false;
+		}
+		if(isNaN(shangyebaoxianfeiheji)){
+			alert("商业保险费合计必须是数字");
+			return false;
+		}
+		if(isNaN(chechuanshui)){
+			alert("车船税必须是数字");
+			return false;
+		}
+		if(isNaN(heji)){
+			alert("合计费用必须是数字");
+			return false;
+		}
+		var xianbie = document.getElementsByName("xianbie");
+		var shangyexianxiane = document.getElementsByName("shangyexianxiane");
+		//var baoxianfeixiaoji = document.getElementsByName("baoxianfeixiaoji");
+		var mark2 = false;
+		for(var i=0;i<xianbie.length;i++){
+			if(xianbie[i].checked){
+				mark2 = true;
+			}
+		}
+		if(!mark2){
+			alert("请至少选择一个商业险责任限额");
+			return false;
+		}
+		for(var i=0;i<xianbie.length;i++){
+			if(xianbie[i].checked){
+				if(isEmpty(shangyexianxiane[i].value)){
+					alert("请将商业险责任限额部分的保险金额/赔偿限额填写完整");
+					return false;
+				}
+				
+			}
+		}
+		
+	}
+	</script>
 </body>
 </html>
 

@@ -260,10 +260,11 @@ String path = request.getContextPath();
   <td align="right">用户身份:</td>
   <td>
 						<select name="role" style="width: 195px;height: 30px">
-					  <option value ="1" selected="selected">企业</option>
+					  <option value ="1" selected="selected">企业黄金</option>
 					  <option value ="2">银行</option>
 					  <option value="3">经济服务</option>
 					  <option value="4">代理人</option>
+					  <option value="6">企业邮政</option>
 					  </select>
 						</td>
 						<td>*(选择合适的用户身份)</td>

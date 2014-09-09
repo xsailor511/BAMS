@@ -35,7 +35,7 @@ String path = request.getContextPath();
   Integer str_role = (Integer)session.getAttribute("role");
 	int role = str_role.intValue();
 	if(role==1){
-		url = basePath+"jsp/home/enterprise_home.jsp";
+		url = basePath+"jsp/home/gold_home.jsp";//企业黄金
 	}else if(role==2){
 		url = basePath+"jsp/home/bank_home.jsp";
 	}else if(role==3){
@@ -44,6 +44,8 @@ String path = request.getContextPath();
 		url = basePath+"jsp/home/agent_home.jsp";
 	}else if(role==5){
 		url = basePath+"jsp/home/bams_manager.jsp";
+	}else if(role==6){
+		url = basePath+"jsp/home/mail_home.jsp";//新增企业邮政
 	}
   response.setHeader("refresh","2;URL="+url) ;
   	}%>

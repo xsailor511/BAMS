@@ -179,6 +179,16 @@
             <param-value>temp</param-value> 
         </init-param>
   </servlet>
+  <servlet>
+    <servlet-name>AddPolicyIndexServlet</servlet-name>
+    <servlet-class>bams.servlet.policy.AddPolicyIndexServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchPolicyServlet</servlet-name>
+    <servlet-class>bams.servlet.policy.SearchPolicyServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -290,6 +300,14 @@
   <servlet-mapping>
     <servlet-name>DeleteFileServlet</servlet-name>
     <url-pattern>/servlet/DeleteFileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddPolicyIndexServlet</servlet-name>
+    <url-pattern>/servlet/AddPolicyIndexServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchPolicyServlet</servlet-name>
+    <url-pattern>/servlet/SearchPolicyServlet</url-pattern>
   </servlet-mapping>
 	 <session-config>
 	    <session-timeout>120</session-timeout>

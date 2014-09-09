@@ -5,6 +5,7 @@ import java.io.IOException;
 
 
 
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -154,10 +155,14 @@ public class AddEmployerDutyServlet extends HttpServlet {
 		employerduty.setZhengyichuli(zhengyichuli);
 		String username = (String)request.getSession().getAttribute("name");
 		employerduty.setUsername(username);
+		
+		String policyname = "雇主责任险投保单";
+		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
+		
 		PolicyService service = new PolicyService();
 		if(service.addEmployerDuty(employerduty)){
 			this.getServletContext()
-			.getRequestDispatcher("/success.jsp")
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

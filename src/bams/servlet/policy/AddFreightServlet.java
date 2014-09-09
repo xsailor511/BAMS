@@ -131,10 +131,14 @@ public class AddFreightServlet extends HttpServlet {
 		
 		String username = (String)request.getSession().getAttribute("name");
 		freight.setUsername(username);
+		
+		String policyname = "货运险投保单";
+		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
+		
 		PolicyService service = new PolicyService();
 		if(service.addFreight(freight)){
 			this.getServletContext()
-			.getRequestDispatcher("/success.jsp")
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

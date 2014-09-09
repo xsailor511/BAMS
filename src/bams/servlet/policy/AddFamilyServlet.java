@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bams.entity.Family;
 import bams.service.PolicyService;
+import bams.util.StringUtil;
 
 public class AddFamilyServlet extends HttpServlet {
 
@@ -48,6 +49,7 @@ public class AddFamilyServlet extends HttpServlet {
 		//PrintWriter writer = response.getWriter();
 		
 		String baoxiancaichandizhi = request.getParameter("baoxiancaichandizhi");
+		baoxiancaichandizhi = new String(baoxiancaichandizhi.getBytes(StringUtil.getEncoding(baoxiancaichandizhi)), "UTF-8");
 		family.setBaoxiancaichandizhi(baoxiancaichandizhi);
 		boolean caichanzonghebaoxian=false;
 		boolean yiwaishanghaiyiliao=false;
@@ -55,21 +57,35 @@ public class AddFamilyServlet extends HttpServlet {
 		boolean menjizhen=false;
 		boolean jibingzhuyuan=false;
 		boolean quantijiatingchengyuan = false;
-		String checkboxes[] = request.getParameterValues("checkboxes");
-		for(int i=0;i<checkboxes.length;i++){
-			if(checkboxes[i].equals("caichanzonghebaoxian"))
+		String toubaoxuanxiangs[] = request.getParameterValues("toubaoxuanxiang");
+		for(int i=0;i<toubaoxuanxiangs.length;i++){
+			if(toubaoxuanxiangs[i].equals("caichanzonghebaoxian"))
 				caichanzonghebaoxian = true;
-			if(checkboxes[i].equals("yiwaishanghaiyiliao"))
-				yiwaishanghaiyiliao = true;
-			if(checkboxes[i].equals("chucichamingzhongji"))
-				chucichamingzhongji = true;
-			if(checkboxes[i].equals("menjizhen"))
-				menjizhen = true;
-			if(checkboxes[i].equals("jibingzhuyuan"))
-				jibingzhuyuan = true;
-			if(checkboxes[i].equals("quantijiatingchengyuan"))
+			if(toubaoxuanxiangs[i].equals("quantijiatingchengyuan")){
 				quantijiatingchengyuan = true;
+				double yiwaiyiliaobaoxianheji = Double.parseDouble(request.getParameter("yiwaiyiliaobaoxianheji"));
+				family.setYiwaiyiliaobaoxianheji(yiwaiyiliaobaoxianheji);
+				String jiatingchengyuanleixing = request.getParameter("jiatingchengyuanleixing");
+				family.setJiatingchengyuanleixing(jiatingchengyuanleixing);
+			}
+				
 		}
+		String yiliaobaoxians[] = request.getParameterValues("yiliaobaoxian");
+		
+		if(null!=yiliaobaoxians){
+			for(int i=0;i<yiliaobaoxians.length;i++){
+				
+				if(yiliaobaoxians[i].equals("chucichamingzhongji"))
+					chucichamingzhongji = true;
+				if(yiliaobaoxians[i].equals("menjizhen"))
+					menjizhen = true;
+				if(yiliaobaoxians[i].equals("jibingzhuyuan"))
+					jibingzhuyuan = true;
+				if(yiliaobaoxians[i].equals("yiwaishanghaiyiliao"))
+					yiwaishanghaiyiliao = true;
+			}
+		}
+		
 		family.setCaichanzonghebaoxian(caichanzonghebaoxian);
 		family.setChucichamingzhongji(chucichamingzhongji);
 		family.setMenjizhen(menjizhen);
@@ -77,24 +93,28 @@ public class AddFamilyServlet extends HttpServlet {
 		family.setYiwaishanghaiyiliao(yiwaishanghaiyiliao);
 		family.setQuantijiatingchengyuan(quantijiatingchengyuan);
 		
-		double yiwaiyiliaobaoxianheji = Double.parseDouble(request.getParameter("yiwaiyiliaobaoxianheji"));
+		
 		double baoxianfeizongji = Double.parseDouble(request.getParameter("baoxianfeizongji"));
 		
-		family.setYiwaiyiliaobaoxianheji(yiwaiyiliaobaoxianheji);
+		
 		family.setBaoxianfeizongji(baoxianfeizongji);
 		String startdate = request.getParameter("startdate");
 		String enddate = request.getParameter("enddate");
 		String baoxianfeizongjichina = request.getParameter("baoxianfeizongjichina");
-		
+		baoxianfeizongjichina = new String(baoxianfeizongjichina.getBytes(StringUtil.getEncoding(baoxianfeizongjichina)), "UTF-8");
 		family.setStartdate(startdate);
 		family.setEnddate(enddate);
 		family.setBaoxianfeizongjichina(baoxianfeizongjichina);
 		String username = (String)request.getSession().getAttribute("name");
 		family.setUsername(username);
+		
+		String policyname = "全家无忧投保单";
+		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
+		
 		PolicyService service = new PolicyService();
 		if(service.addFamily(family)){
 			this.getServletContext()
-			.getRequestDispatcher("/success.jsp")
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

@@ -150,7 +150,7 @@ border:solid#000 1px;
   <tr>
     <td rowspan="15" >投保选项</td>
     <td colspan="7" style="text-align:left">&nbsp;
-    <input type="checkbox" name="caichanzonghebaoxian" value="caichanzonghebaoxian" id="caichanzonghebaoxian">家庭财产综合保险(家财无忧) 没份保险费150元</td>
+    <input type="checkbox" name="toubaoxuanxiang" value="caichanzonghebaoxian" id="caichanzonghebaoxian" checked="checked" onclick="javascript:this.checked=true;">家庭财产综合保险(家财无忧) 每份保险费150元</td>
   </tr>
   <tr>
     <td colspan="2">保险保障</td>
@@ -188,15 +188,15 @@ border:solid#000 1px;
   </tr>
   <tr>
     <td colspan="7" style="text-align:left">&nbsp;
-    <input type="checkbox" name="quantijiatingchengyuan" value="quantijiatingchengyuan" id="quantijiatingchengyuan">
+    <input type="checkbox" name="toubaoxuanxiang" value="quantijiatingchengyuan" id="quantijiatingchengyuan" onclick="setValue1(this)">
     全体家庭成员(0-75岁)意外及医疗保险 保费合计(
-    <input type="text" name="yiwaiyiliaobaoxianheji" id="yiwaiyiliaobaoxianheji"> )</td>
+    <input type="text" name="yiwaiyiliaobaoxianheji" id="yiwaiyiliaobaoxianheji"  readonly="readonly"> )</td>
   </tr>
   <tr>
     <td colspan="2">家庭成员类型:</td>
-    <td><input type="radio" name="jiatingchengyuanleixing" id="fuqi" >夫妻(可包含子女)</td>
-    <td colspan="2"><input type="radio" name="jiatingchengyuanleixing" id="fuqi_one" >夫妻(可包含子女)+一方父母</td>
-    <td colspan="2"><input type="radio" name="jiatingchengyuanleixing" id="fuqi_two" >夫妻(可包含子女)+双方父母</td>
+    <td><input type="radio" name="jiatingchengyuanleixing" id="fuqi" value="fuqi">夫妻(可包含子女)</td>
+    <td colspan="2"><input type="radio" name="jiatingchengyuanleixing" id="fuqi_one" value="fuqi_one" >夫妻(可包含子女)+一方父母</td>
+    <td colspan="2"><input type="radio" name="jiatingchengyuanleixing" id="fuqi_two" value="fuqi_two" >夫妻(可包含子女)+双方父母</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -210,45 +210,45 @@ border:solid#000 1px;
     <td colspan="2">意外伤害</td>
     <td colspan="2">200000元</td>
     <td><label for="ywshfeilv"></label>
-    <input type="text" name="ywshfeilv" id="ywshfeilv" value="0.043"></td>
-    <td><label for="ywshbaoxianfei"></label>
-    <input type="text" name="ywshbaoxianfei" id="ywshbaoxianfei" value="200"></td>
+    <input type="text" name="ywshfeilv" id="ywshfeilv" value="0.043"  readonly="readonly"></td>
+    <td>
+    <input type="text" name="baoxianfei" id="ywshbaoxianfei" value="200"  readonly="readonly"></td>
   </tr>
   <tr>
-    <td><input type="checkbox" name="yiwaishanghaiyiliao" value="yiwaishanghaiyiliao" id="yiwaishanghaiyiliao"></td>
+    <td><input type="checkbox" name="yiliaobaoxian" value="yiwaishanghaiyiliao" id="yiwaishanghaiyiliao" onclick="setValue2(this)" ></td>
     <td colspan="2">意外伤害医疗</td>
     <td colspan="2">2000元</td>
     <td>
-    <input type="text" name="ywshylfeilv" id="ywshylfeilv" value="0.043"></td>
+    <input type="text" name="ywshylfeilv" id="ywshylfeilv" value="0.043"  readonly="readonly"></td>
     <td>
-    <input type="text" name="ywshylbaoxianfei" id="ywshylbaoxianfei" value="200"></td>
+    <input type="text" name="baoxianfei" id="ywshylbaoxianfei" value="200"  readonly="readonly"></td>
   </tr>
   <tr>
-    <td><input type="checkbox" name="chucichamingzhongji" value="chucichamingzhongji" id="chucichamingzhongji"></td>
+    <td><input type="checkbox" name="yiliaobaoxian" value="chucichamingzhongji" id="chucichamingzhongji" onclick="setValue2(this)" ></td>
     <td colspan="2">投保后初次查明重疾</td>
     <td colspan="2">100000元</td>
     <td>
-    <input type="text" name="tbhcccmzjfeilv" id="tbhcccmzjfeilv" value="0.043"></td>
-    <td><label for="tbhcccmzjbaoxianfei"></label>
-    <input type="text" name="tbhcccmzjbaoxianfei" id="tbhcccmzjbaoxianfei" value="200"></td>
+    <input type="text" name="tbhcccmzjfeilv" id="tbhcccmzjfeilv" value="0.043"  readonly="readonly"></td>
+    <td>
+    <input type="text" name="baoxianfei" id="tbhcccmzjbaoxianfei" value="200"  readonly="readonly"></td>
   </tr>
   <tr>
-    <td><input type="checkbox" name="menjizhen" value="menjizhen" id="menjizhen"></td>
+    <td><input type="checkbox" name="yiliaobaoxian" value="menjizhen" id="menjizhen" onclick="setValue2(this)" ></td>
     <td colspan="2">门急诊</td>
     <td colspan="2">1000元</td>
     <td>
-    <input type="text" name="mjzfeilv" id="mjzfeilv" value="0.043"></td>
+    <input type="text" name="mjzfeilv" id="mjzfeilv" value="0.043"  readonly="readonly"></td>
     <td>
-    <input type="text" name="mjzbaoxianfei" id="mjzbaoxianfei" value="200"></td>
+    <input type="text" name="baoxianfei" id="mjzbaoxianfei" value="200"  readonly="readonly"></td>
   </tr>
   <tr>
-    <td><label><input type="checkbox" name="jibingzhuyuan" value="jibingzhuyuan" id="jibingzhuyuan"></label></td>
+    <td><label><input type="checkbox" name="yiliaobaoxian" value="jibingzhuyuan" id="jibingzhuyuan" onclick="setValue2(this)" ></label></td>
     <td colspan="2">疾病住院</td>
     <td colspan="2">20000元 （每日承担医疗补贴 100元）</td>
     <td><label for="jbzyfeilv"></label>
-    <input type="text" name="jbzyfeilv" id="jbzyfeilv" value="0.043"></td>
-    <td><label for="jbzybaoxianfei"></label>
-    <input type="text" name="jbzybaoxianfei" id="jbzybaoxianfei" value="200" ></td>
+    <input type="text" name="jbzyfeilv" id="jbzyfeilv" value="0.043"  readonly="readonly"></td>
+    <td>
+    <input type="text" name="baoxianfei" id="jbzybaoxianfei" value="200"  readonly="readonly"></td>
   </tr>
   <tr>
     <td colspan="3">保险期间：</td>
@@ -405,6 +405,122 @@ border:solid#000 1px;
 			return false;
 		}
 		
+		var toubaoxuanxiang = document.getElementsByName("toubaoxuanxiang");
+		var mark1 = false;
+		for(var i=0;i<toubaoxuanxiang.length;i++){
+			if(toubaoxuanxiang[i].checked){
+				mark1 = true;
+			}
+		}
+		if(!mark1){
+			alert("请至少选择一个投保选项1.家庭财产综合2.全体家庭成员(0-75岁)意外及医疗保险");
+			return false;
+		}
+		var quantiChecked = false;//全体家庭成员(0-75岁)意外及医疗保险默认是没有被选中的。
+		for(var i=0;i<toubaoxuanxiang.length;i++){
+			if(toubaoxuanxiang[i].value=="quantijiatingchengyuan"&&toubaoxuanxiang[i].checked){
+				quantiChecked = true;//
+			}
+		}
+		if(quantiChecked){
+			var jiatingchengyuanleixing = document.getElementsByName("jiatingchengyuanleixing");
+			var mark2 = false;
+			for(var i=0;i<jiatingchengyuanleixing.length;i++){
+				if(jiatingchengyuanleixing[i].checked){
+					mark2 = true;
+				}
+			}
+			if(!mark2){
+				alert("请选择家庭成员类型");
+				return false;
+			}
+			
+		}
+		if(isNaN(baoxianfeizongji)){
+			alert("￥保险费合计必须是数字");
+			return false;
+		}
+		//检查总保费小写合法性
+		var yiwaiyiliaobaoxianheji = document.getElementById("yiwaiyiliaobaoxianheji").value;
+		var caichanzonghebaoxian = document.getElementById("caichanzonghebaoxian");
+		var quantijiatingchengyuan = document.getElementById("quantijiatingchengyuan");
+		if(caichanzonghebaoxian.checked){
+			if(quantijiatingchengyuan.checked){
+				if(baoxianfeizongji*1!=(yiwaiyiliaobaoxianheji*1+150)){
+					alert("请详细计算保险费总计，其值等于家庭财产综合保险(家财无忧) 每份保险费+保险费合计");
+					return false;
+				}
+				
+			}else if(baoxianfeizongji*1!=150){
+				alert("请详细计算保险费总计，为家庭财产综合保险(家财无忧) 每份保险费");
+				return false;
+			}
+		}else if(baoxianfeizongji*1!=(yiwaiyiliaobaoxianheji*1)){
+			alert("请详细计算保险费总计，其值等于保险费合计");
+			return false;
+		}
+		
+		
+		
+	}
+	
+	function setValue1(param){//设置全体家庭成员(0-75岁)意外及医疗保险,初始化
+		var yiwaiyiliaobaoxianheji = document.getElementById("yiwaiyiliaobaoxianheji");
+		if(param.checked){
+			
+			var ywshbaoxianfei = document.getElementById("ywshbaoxianfei").value;
+			yiwaiyiliaobaoxianheji.value = ywshbaoxianfei;//意外伤害是默认选中的，其保费为200，需要修改
+		}else{
+			yiwaiyiliaobaoxianheji.value = 0;
+			document.getElementById("yiwaishanghaiyiliao").checked = false;
+			document.getElementById("chucichamingzhongji").checked = false;
+			document.getElementById("menjizhen").checked = false;
+			document.getElementById("jibingzhuyuan").checked = false;
+		}
+	}
+	
+	function setValue2(param){//设置全体家庭成员(0-75岁)意外及医疗保险,修改当前值
+		var quantijiatingchengyuan = document.getElementById("quantijiatingchengyuan");
+		var yiwaiyiliaobaoxianheji = document.getElementById("yiwaiyiliaobaoxianheji");
+		if(quantijiatingchengyuan.checked){//如果设置全体家庭成员(0-75岁)意外及医疗保险被选中，则直接设置保费合计
+			
+		}else{//如果没被选中，则自动将其选中
+			//alert("test");
+			document.getElementById("quantijiatingchengyuan").checked = true;
+			//var yiwaiyiliaobaoxianheji = document.getElementById("yiwaiyiliaobaoxianheji");
+			var ywshbaoxianfei = document.getElementById("ywshbaoxianfei").value;
+			yiwaiyiliaobaoxianheji.value = ywshbaoxianfei;//意外伤害是默认选中的，其保费为200，需要修改
+		}
+		
+		if(param.value="yiwaishanghaiyiliao"){
+			var ywshylbaoxianfei = document.getElementById("ywshylbaoxianfei").value;
+			if(param.checked){
+				yiwaiyiliaobaoxianheji.value = yiwaiyiliaobaoxianheji.value*1 + ywshylbaoxianfei*1;
+			}else{
+				yiwaiyiliaobaoxianheji.value = yiwaiyiliaobaoxianheji.value*1 - ywshylbaoxianfei*1;
+			}
+		}else if(param.value=="chucichamingzhongji"){
+			var tbhcccmzjbaoxianfei = document.getElementById("tbhcccmzjbaoxianfei").value;
+			if(param.checked){
+				yiwaiyiliaobaoxianheji.value = yiwaiyiliaobaoxianheji.value*1 + tbhcccmzjbaoxianfei*1;
+			}else{
+				yiwaiyiliaobaoxianheji.value = yiwaiyiliaobaoxianheji.value*1 - tbhcccmzjbaoxianfei*1;
+			}
+		}else if(param.value=="menjizhen"){
+			var mjzbaoxianfei = document.getElementById("mjzbaoxianfei").value;
+			if(param.checked){
+				yiwaiyiliaobaoxianheji.value = yiwaiyiliaobaoxianheji.value*1 + mjzbaoxianfei*1;
+			}else{
+				yiwaiyiliaobaoxianheji.value = yiwaiyiliaobaoxianheji.value*1 - mjzbaoxianfei*1;
+			}
+		}else if(param.value=="jibingzhuyuan"){
+			var jbzybaoxianfei = document.getElementById("jbzybaoxianfei").value;
+			if(param.checked){
+				yiwaiyiliaobaoxianheji.value = yiwaiyiliaobaoxianheji.value*1 + jbzybaoxianfei*1;
+			}else{
+				yiwaiyiliaobaoxianheji.value = yiwaiyiliaobaoxianheji.value*1 - jbzybaoxianfei*1;
+			}
+		}
 	}
 
 	</script>

@@ -14,17 +14,20 @@ public class PolicyIndexService {
 	
 	public boolean addPolicyIndex(PolicyIndex policyIndex){
 		Connection connection = null;
+		boolean result = false;
 		try {
 			connection = Database.getConnection();
 			policyIndexDAO.setConnection(connection);
-			return policyIndexDAO.addPolicyIndex(policyIndex);
+			result =  policyIndexDAO.addPolicyIndex(policyIndex);
+			Database.commit();
 		} catch (Exception e) {
 			Database.rollback();
 			e.printStackTrace();
+			result = false;
 		}finally{
 			Database.releaseConnection(connection);
 		}
-		return false;
+		return result;
 	}
 	
 	public List<PolicyIndex> getPolicyIndexByUserName(String username){

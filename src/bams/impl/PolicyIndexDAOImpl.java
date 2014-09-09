@@ -38,7 +38,7 @@ public class PolicyIndexDAOImpl implements PolicyIndexDAO {
 	public boolean addPolicyIndex(PolicyIndex policyIndex) throws Exception {
 		PreparedStatement ps = null;
 		boolean result = false;
-		String sql = "insert into policyindex tablename,policyname,username values(?,?,?)";
+		String sql = "insert into policyindex(tablename,policyname,username) values(?,?,?)";
 		ps = connection.prepareStatement(sql);
 		try {
 			ps.setString(1, policyIndex.getTablename());
@@ -65,6 +65,7 @@ public class PolicyIndexDAOImpl implements PolicyIndexDAO {
 		
 		ps = connection.prepareStatement(sql);
 		ps.setString(1, username);
+		System.out.println(ps.toString());
 		rs = ps.executeQuery();
 		while(rs.next()){
 			PolicyIndex policyindex = new PolicyIndex();

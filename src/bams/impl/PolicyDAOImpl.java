@@ -181,14 +181,14 @@ public class PolicyDAOImpl implements PolicyDAO {
 	//添加一个机动车保险单
 	public boolean addVehicle(Vehicle vehicle)throws Exception{
 		PreparedStatement ps = null;
-		String sql = "insert into vehicle beibaoxianrenmingcheng,beibaoxianrenzhengjianhaoma,beibaoxianrentongxundizhi,"
+		String sql = "insert into vehicle(beibaoxianrenmingcheng,beibaoxianrenzhengjianhaoma,beibaoxianrentongxundizhi,"
 				+ "beibaoxianrenyoubian,beibaoxianlianxiren,beibaoxianrendianhua,beibaoxianrenbangongdianhua,beibaoxianrenemail,"
 				+ "toubaorenmingcheng,toubaorenzhengjianhaoma,toubaorentongxundizhi,toubaorenyoubian,toubaorenlianxiren,"
 				+ "toubaorendianhua,toubaorenbangongdianhua,toubaorenemail,xingshizhengchezhu,changpaixinghao,hedingzaike,"
 				+ "haopaihaoma,chucidengjiriqi,shibiedaima,fadongjixinghao,xinchejiage,zhengbeizhiliang,paiqiliang,"
 				+ "shangnianjiaoqiangxian,jiaoqiangxianbaodanhao,shangnianshangyexian,shangyexianbaodanhao,shangyexianxiane,"
 				+ "shangyebaoxianfeiheji,chechuanshui,heji,shangyebaoxianstartdate,shangyebaoxianenddate,jiaoqiangbaoxianstartdate,"
-				+ "jiaoqiangbaoxianenddate,zhengyijiejue,jiashiyuanxinxi,username,baoxianfeixiaoji"
+				+ "jiaoqiangbaoxianenddate,zhengyijiejue,jiashiyuanxinxi,username,baoxianfeixiaoji) "
 								+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ps = connection.prepareStatement(sql);
 		
@@ -251,8 +251,8 @@ public class PolicyDAOImpl implements PolicyDAO {
 		PreparedStatement ps = null;
 		String sql = "insert into family(baoxiancaichandizhi,caichanzonghebaoxian,yiwaiyiliaobaoxianheji,"
 				+ "yiwaishanghaiyiliao,chucichamingzhongji,menjizhen,jibingzhuyuan,startdate,enddate,"
-				+ "baoxianfeizongji,username,quantijiatingchengyuan,jiatingchengyuanleixing)"
-				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "baoxianfeizongji,username,quantijiatingchengyuan,jiatingchengyuanleixing,baoxianfeizongjichina)"
+				+ " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ps = connection.prepareStatement(sql);
 
 		ps.setString(1, family.getBaoxiancaichandizhi());
@@ -268,6 +268,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 		ps.setString(11, family.getUsername());
 		ps.setBoolean(12, family.isQuantijiatingchengyuan());
 		ps.setString(13, family.getJiatingchengyuanleixing());
+		ps.setString(14, family.getBaoxianfeizongjichina());
 		try {
 			ps.executeUpdate();
 			

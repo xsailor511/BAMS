@@ -1,27 +1,25 @@
-package bams.servlet.user;
+package bams.servlet.policy;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bams.entity.File;
-import bams.service.FileService;
+import bams.entity.PolicyIndex;
+import bams.service.PolicyIndexService;
+import bams.util.StringUtil;
 
-public class ListAllFileServlet extends HttpServlet {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class AddPolicyIndexServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public ListAllFileServlet() {
+	public AddPolicyIndexServlet() {
 		super();
 	}
 
@@ -45,19 +43,27 @@ public class ListAllFileServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Integer role_int = (Integer)request.getSession().getAttribute("role");
-		int role = role_int.intValue();
-		FileService service = new FileService();
-		List<File> filelist = service.listAllFiles();
-		request.setAttribute("filelist", filelist);
-		if(role==5){
+		String policyname = request.getParameter("policyname");
+		String username = (String)request.getSession().getAttribute("name");
+		PolicyIndexService indexService = new PolicyIndexService();
+		PolicyIndex index = new PolicyIndex();
+		index.setTablename("allproperty");
+		index.setUsername(username);
+		Date dt = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String   fileName   =   sdf.format(dt);
+        String policyName = username+"_"+policyname+"_"+fileName;
+        policyName = new String(policyName.getBytes(StringUtil.getEncoding(policyName)), "GB2312");
+        System.out.println(policyName);
+		index.setPolicyname(policyName);
+		if(indexService.addPolicyIndex(index)){
 			this.getServletContext()
-		  	.getRequestDispatcher("/jsp/manage/upload.jsp")
-		  	.forward(request,response);
+			.getRequestDispatcher("/success.jsp")
+			.forward(request, response);
 		}else{
 			this.getServletContext()
-		  	.getRequestDispatcher("/jsp/user/download.jsp")
-		  	.forward(request,response);
+			.getRequestDispatcher("/error.jsp")
+			.forward(request, response);
 		}
 		
 	}
@@ -75,7 +81,7 @@ public class ListAllFileServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doGet(request,response);
+		doGet(request, response);
 	}
 
 	/**

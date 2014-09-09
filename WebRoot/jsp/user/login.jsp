@@ -11,7 +11,7 @@ String path = request.getContextPath();
 		Integer str_role = (Integer)session.getAttribute("role");
 		int role = str_role.intValue();
 		if(role==1){
-			url = basePath+"jsp/home/enterprise_home.jsp";
+			url = basePath+"jsp/home/gold_home.jsp";
 		}else if(role==2){
 			url = basePath+"jsp/home/bank_home.jsp";
 		}else if(role==3){
@@ -20,6 +20,8 @@ String path = request.getContextPath();
 			url = basePath+"jsp/home/agent_home.jsp";
 		}else if(role==5){
 			url = basePath+"jsp/home/bams_manager.jsp";
+		}else if(role==6){
+			url = basePath+"jsp/home/mail_home.jsp";
 		}
 		response.setHeader("refresh","0;URL="+url) ;
 	}
@@ -201,10 +203,11 @@ function isEmpty(str){
   <th height="35" align="center" scope="row">身&nbsp;&nbsp;&nbsp;&nbsp;份:</th>
   <td>
 						<select name="role" style="width: 195px;height: 30px">
-					  <option value ="1" selected = "selected">企业</option>
+					  <option value ="1" selected = "selected">企业黄金</option>
 					  <option value ="2">银行</option>
 					  <option value="3">经济服务</option>
 					  <option value="4">代理人</option>
+					  <option value="6">企业邮政</option>
 					  <option value="5">管理员</option>
 					  </select>
 						</td>

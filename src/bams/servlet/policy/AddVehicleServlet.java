@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bams.entity.Vehicle;
 import bams.service.PolicyService;
+import bams.util.StringUtil;
 
 public class AddVehicleServlet extends HttpServlet {
 
@@ -60,6 +61,19 @@ public class AddVehicleServlet extends HttpServlet {
 		String toubaorentongxundizhi = request.getParameter("toubaorentongxundizhi");
 		String toubaorenyoubian = request.getParameter("toubaorenyoubian");
 		
+		beibaoxianrenmingcheng = new String(beibaoxianrenmingcheng.getBytes(StringUtil.getEncoding(beibaoxianrenmingcheng)), "UTF-8");
+		beibaoxianrenzhengjianhaoma = new String(beibaoxianrenzhengjianhaoma.getBytes(StringUtil.getEncoding(beibaoxianrenzhengjianhaoma)), "UTF-8");
+		beibaoxianrentongxundizhi = new String(beibaoxianrentongxundizhi.getBytes(StringUtil.getEncoding(beibaoxianrentongxundizhi)), "UTF-8");
+		beibaoxianrenyoubian = new String(beibaoxianrenyoubian.getBytes(StringUtil.getEncoding(beibaoxianrenyoubian)), "UTF-8");
+		beibaoxianlianxiren = new String(beibaoxianlianxiren.getBytes(StringUtil.getEncoding(beibaoxianlianxiren)), "UTF-8");
+		beibaoxianrendianhua = new String(beibaoxianrendianhua.getBytes(StringUtil.getEncoding(beibaoxianrendianhua)), "UTF-8");
+		beibaoxianrenbangongdianhua = new String(beibaoxianrenbangongdianhua.getBytes(StringUtil.getEncoding(beibaoxianrenbangongdianhua)), "UTF-8");
+		beibaoxianrenemail = new String(beibaoxianrenemail.getBytes(StringUtil.getEncoding(beibaoxianrenemail)), "UTF-8");
+		toubaorenmingcheng = new String(toubaorenmingcheng.getBytes(StringUtil.getEncoding(toubaorenmingcheng)), "UTF-8");
+		toubaorenzhengjianhaoma = new String(toubaorenzhengjianhaoma.getBytes(StringUtil.getEncoding(toubaorenzhengjianhaoma)), "UTF-8");
+		toubaorentongxundizhi = new String(toubaorentongxundizhi.getBytes(StringUtil.getEncoding(toubaorentongxundizhi)), "UTF-8");
+		toubaorenyoubian = new String(toubaorenyoubian.getBytes(StringUtil.getEncoding(toubaorenyoubian)), "UTF-8");
+		
 		vehicle.setBeibaoxianrenmingcheng(beibaoxianrenmingcheng);
 		vehicle.setBeibaoxianrenzhengjianhaoma(beibaoxianrenzhengjianhaoma);
 		vehicle.setBeibaoxianrentongxundizhi(beibaoxianrentongxundizhi);
@@ -84,6 +98,17 @@ public class AddVehicleServlet extends HttpServlet {
 		String chucidengjiriqi = request.getParameter("chucidengjiriqi");
 		String shibiedaima = request.getParameter("shibiedaima");
 		String fadongjixinghao = request.getParameter("fadongjixinghao");
+		
+		toubaorenlianxiren = new String(toubaorenlianxiren.getBytes(StringUtil.getEncoding(toubaorenlianxiren)), "UTF-8");
+		toubaorendianhua = new String(toubaorendianhua.getBytes(StringUtil.getEncoding(toubaorendianhua)), "UTF-8");
+		toubaorenbangongdianhua = new String(toubaorenbangongdianhua.getBytes(StringUtil.getEncoding(toubaorenbangongdianhua)), "UTF-8");
+		toubaorenemail = new String(toubaorenemail.getBytes(StringUtil.getEncoding(toubaorenemail)), "UTF-8");
+		xingshizhengchezhu = new String(xingshizhengchezhu.getBytes(StringUtil.getEncoding(xingshizhengchezhu)), "UTF-8");
+		changpaixinghao = new String(changpaixinghao.getBytes(StringUtil.getEncoding(changpaixinghao)), "UTF-8");
+		haopaihaoma = new String(haopaihaoma.getBytes(StringUtil.getEncoding(haopaihaoma)), "UTF-8");
+		chucidengjiriqi = new String(chucidengjiriqi.getBytes(StringUtil.getEncoding(chucidengjiriqi)), "UTF-8");
+		shibiedaima = new String(shibiedaima.getBytes(StringUtil.getEncoding(shibiedaima)), "UTF-8");
+		fadongjixinghao = new String(fadongjixinghao.getBytes(StringUtil.getEncoding(fadongjixinghao)), "UTF-8");
 		
 		vehicle.setToubaorenlianxiren(toubaorenlianxiren);
 		vehicle.setToubaorendianhua(toubaorendianhua);
@@ -113,6 +138,17 @@ public class AddVehicleServlet extends HttpServlet {
 		String jiaoqiangbaoxianenddate = request.getParameter("jiaoqiangbaoxianenddate");
 		String zhengyijiejue = request.getParameter("zhengyijiejue");
 		String jiashiyuanxinxi = request.getParameter("jiashiyuanxinxi");
+		
+		shangnianjiaoqiangxian = new String(shangnianjiaoqiangxian.getBytes(StringUtil.getEncoding(shangnianjiaoqiangxian)), "UTF-8");
+		jiaoqiangxianbaodanhao = new String(jiaoqiangxianbaodanhao.getBytes(StringUtil.getEncoding(jiaoqiangxianbaodanhao)), "UTF-8");
+		shangnianshangyexian = new String(shangnianshangyexian.getBytes(StringUtil.getEncoding(shangnianshangyexian)), "UTF-8");
+		shangyexianbaodanhao = new String(shangyexianbaodanhao.getBytes(StringUtil.getEncoding(shangyexianbaodanhao)), "UTF-8");
+		shangyebaoxianstartdate = new String(shangyebaoxianstartdate.getBytes(StringUtil.getEncoding(shangyebaoxianstartdate)), "UTF-8");
+		shangyebaoxianenddate = new String(shangyebaoxianenddate.getBytes(StringUtil.getEncoding(shangyebaoxianenddate)), "UTF-8");
+		jiaoqiangbaoxianstartdate = new String(jiaoqiangbaoxianstartdate.getBytes(StringUtil.getEncoding(jiaoqiangbaoxianstartdate)), "UTF-8");
+		jiaoqiangbaoxianenddate = new String(jiaoqiangbaoxianenddate.getBytes(StringUtil.getEncoding(jiaoqiangbaoxianenddate)), "UTF-8");
+		zhengyijiejue = new String(zhengyijiejue.getBytes(StringUtil.getEncoding(zhengyijiejue)), "UTF-8");
+		jiashiyuanxinxi = new String(jiashiyuanxinxi.getBytes(StringUtil.getEncoding(jiashiyuanxinxi)), "UTF-8");
 		
 		vehicle.setXinchejiage(xinchejiage);
 		vehicle.setZhengbeizhiliang(zhengbeizhiliang);
@@ -151,10 +187,14 @@ public class AddVehicleServlet extends HttpServlet {
 		}
 		vehicle.setShangyexianxiane(shangyexianxiane);
 		vehicle.setBaoxianfeixiaoji(baoxianfeixiaoji);
+		
+		String policyname = "机动车投保单";
+		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
+		
 		PolicyService service = new PolicyService();
 		if(service.addVehicle(vehicle)){
 			this.getServletContext()
-			.getRequestDispatcher("/success.jsp")
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

@@ -137,9 +137,9 @@ if(null==role_int){
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 						<li><a href="<%=basePath %>jsp/user/lipeibaoan.jsp" target="_blank">理赔报案</a></li>
-							<li><a href="<%=basePath %>pricing.html">保单查询</a></li>
+							<li><a href="<%=basePath %>servlet/SearchPolicyServlet" target="_blank">保单查询</a></li>
 							<li><a href="<%=basePath %>servlet/ListAllFileServlet" target="_blank">资料下载</a></li>
-							<li><a href="<%=basePath %>gallery.html">理赔咨询</a></li>
+							<li><a href="<%=basePath %>jsp/user/lipeizixun.jsp" target="_blank">理赔咨询</a></li>
 						</ul></li>
 					
 					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i

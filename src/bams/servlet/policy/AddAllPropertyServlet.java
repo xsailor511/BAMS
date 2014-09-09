@@ -4,12 +4,19 @@ import java.io.IOException;
 
 
 
+
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bams.entity.AllProperty;
+import bams.entity.PolicyIndex;
+import bams.service.PolicyIndexService;
 import bams.service.PolicyService;
 import bams.util.StringUtil;
 
@@ -178,10 +185,13 @@ public class AddAllPropertyServlet extends HttpServlet {
 		allproperty.setLipeijilu(lipeijilu);
 		String username = (String)request.getSession().getAttribute("name");
 		allproperty.setUsername(username);
+		String policyname = "财产一切险投保单";
+		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
+		
 		PolicyService service = new PolicyService();
 		if(service.addAllProperty(allproperty)){
 			this.getServletContext()
-			.getRequestDispatcher("/success.jsp")
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

@@ -3,6 +3,7 @@ package bams.servlet.policy;
 import java.io.IOException;
 
 
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -104,10 +105,14 @@ public class AddEnterprisePackageServlet extends HttpServlet {
 		
 		enterprisepackage.setKexuanxianzhong(kexuanxianzhong);
 		enterprisepackage.setUsername(name);
+		
+		String policyname = "中小企业一揽子保险委托书";
+		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
+		
 		PolicyService service = new PolicyService();
 		if(service.addEnterprisePackage(enterprisepackage)){
 			this.getServletContext()
-			.getRequestDispatcher("/success.jsp")
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

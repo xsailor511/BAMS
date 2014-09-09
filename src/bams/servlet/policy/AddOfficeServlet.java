@@ -119,10 +119,14 @@ public class AddOfficeServlet extends HttpServlet {
 		office.setGaocengchailvshenfengzheng(gaocengshenfenzheng);
 		String username = (String)request.getSession().getAttribute("name");
 		office.setUsername(username);
+		
+		String policyname = "办公室综合保险投保单";
+		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
+		
 		PolicyService service = new PolicyService();
 		if(service.addOffice(office)){
 			this.getServletContext()
-			.getRequestDispatcher("/success.jsp")
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

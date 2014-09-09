@@ -1,4 +1,4 @@
-package bams.servlet.user;
+package bams.servlet.policy;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bams.entity.File;
-import bams.service.FileService;
+import bams.entity.PolicyIndex;
+import bams.service.PolicyIndexService;
 
-public class ListAllFileServlet extends HttpServlet {
+public class SearchPolicyServlet extends HttpServlet {
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class ListAllFileServlet extends HttpServlet {
 	/**
 	 * Constructor of the object.
 	 */
-	public ListAllFileServlet() {
+	public SearchPolicyServlet() {
 		super();
 	}
 
@@ -45,20 +45,23 @@ public class ListAllFileServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Integer role_int = (Integer)request.getSession().getAttribute("role");
-		int role = role_int.intValue();
-		FileService service = new FileService();
-		List<File> filelist = service.listAllFiles();
-		request.setAttribute("filelist", filelist);
-		if(role==5){
+
+		String username = (String)request.getSession().getAttribute("name");
+		PolicyIndexService service = new PolicyIndexService();
+		List<PolicyIndex> policyindexlist = service.getPolicyIndexByUserName(username);
+		
+		if(null!=policyindexlist){
+			request.setAttribute("policyindexlist", policyindexlist);
+			//System.out.println(policyindexlist.get(0).getPolicyname());
 			this.getServletContext()
-		  	.getRequestDispatcher("/jsp/manage/upload.jsp")
+		  	.getRequestDispatcher("/jsp/policy/searchpolicy.jsp")
 		  	.forward(request,response);
 		}else{
 			this.getServletContext()
-		  	.getRequestDispatcher("/jsp/user/download.jsp")
+		  	.getRequestDispatcher("error.jsp")
 		  	.forward(request,response);
 		}
+		
 		
 	}
 
@@ -75,7 +78,7 @@ public class ListAllFileServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doGet(request,response);
+		doGet(request, response);
 	}
 
 	/**
