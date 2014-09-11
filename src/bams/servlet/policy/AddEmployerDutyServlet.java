@@ -6,6 +6,9 @@ import java.io.IOException;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -155,14 +158,17 @@ public class AddEmployerDutyServlet extends HttpServlet {
 		employerduty.setZhengyichuli(zhengyichuli);
 		String username = (String)request.getSession().getAttribute("name");
 		employerduty.setUsername(username);
-		
+		Date dt = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String   tag   =   sdf.format(dt);
+        employerduty.setTag(tag);
 		String policyname = "雇主责任险投保单";
 		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
-		
+		String tablename = "employerduty";
 		PolicyService service = new PolicyService();
 		if(service.addEmployerDuty(employerduty)){
 			this.getServletContext()
-			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname+"&tag="+tag+"&tablename="+tablename)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

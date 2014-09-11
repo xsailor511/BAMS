@@ -1,6 +1,8 @@
 package bams.servlet.policy;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -119,14 +121,17 @@ public class AddOfficeServlet extends HttpServlet {
 		office.setGaocengchailvshenfengzheng(gaocengshenfenzheng);
 		String username = (String)request.getSession().getAttribute("name");
 		office.setUsername(username);
-		
+		Date dt = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String   tag   =   sdf.format(dt);
+        office.setTag(tag);
 		String policyname = "办公室综合保险投保单";
 		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
-		
+		String tablename = "office";
 		PolicyService service = new PolicyService();
 		if(service.addOffice(office)){
 			this.getServletContext()
-			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname+"&tag="+tag+"&tablename="+tablename)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

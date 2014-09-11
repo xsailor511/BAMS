@@ -137,7 +137,7 @@ border:solid#000 1px;
 					<div class="box-body" style="background:#CCDDFF;color:black">
 <form name="baodan" action="<%=basePath %>servlet/AddFamilyServlet" method="get" onsubmit="return checkForm()">
 
-		<table  >
+		<table  border="1">
   <caption>
     全家无忧保险方案
   </caption>

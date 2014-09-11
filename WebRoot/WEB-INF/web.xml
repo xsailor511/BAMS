@@ -162,6 +162,14 @@
             <param-name>temppath</param-name> 
             <param-value>temp</param-value> 
         </init-param>
+        <init-param>
+            <param-name>contentType</param-name>
+            <param-value>application/x-msdownload</param-value>
+        </init-param>
+        <init-param>
+            <param-name>enc</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
   </servlet>
   <servlet>
     <servlet-name>ListAllFileServlet</servlet-name>
@@ -187,6 +195,33 @@
     <servlet-name>SearchPolicyServlet</servlet-name>
     <servlet-class>bams.servlet.policy.SearchPolicyServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DownPolicyAsMSWord</servlet-name>
+    <servlet-class>bams.servlet.policy.DownPolicyAsMSWord</servlet-class>
+    <init-param>
+     <param-name>filepath</param-name>
+            <param-value>file/user/template</param-value>
+        </init-param> 
+        <init-param> 
+            <param-name>temppath</param-name> 
+            <param-value>temp</param-value> 
+        </init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>DownPoliciesAsZip</servlet-name>
+    <servlet-class>bams.servlet.policy.DownPoliciesAsZip</servlet-class>
+    <init-param>
+     <param-name>filepath</param-name>
+            <param-value>file/user/template</param-value>
+        </init-param> 
+        <init-param> 
+            <param-name>temppath</param-name> 
+            <param-value>temp</param-value> 
+        </init-param>
+  </servlet>
+
+
+
 
 
 
@@ -309,6 +344,15 @@
     <servlet-name>SearchPolicyServlet</servlet-name>
     <url-pattern>/servlet/SearchPolicyServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownPolicyAsMSWord</servlet-name>
+    <url-pattern>/servlet/DownPolicyAsMSWord</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownPoliciesAsZip</servlet-name>
+    <url-pattern>/servlet/DownPoliciesAsZip</url-pattern>
+  </servlet-mapping>
+  
 	 <session-config>
 	    <session-timeout>120</session-timeout>
 	 </session-config>

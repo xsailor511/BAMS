@@ -24,7 +24,7 @@ if(null==role_int){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>资料下载</title>
+<title>保单查询</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -120,14 +120,15 @@ if(null==role_int){
 		<div class="mainbar">
 
 			<div class="matter">
-				<div class="container-fluid">
+				<div class="container-fluid" >
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black">
 						
 
 					<div id="uploaded_file">
-					<p style="color:blue" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=session_name %>的所有保单：</p>
+					<h4 style="color:blue" ><%=session_name %>的所有保单：<h4>
+					<ul>
 <%
 List<PolicyIndex> policyindexlist = (List)request.getAttribute("policyindexlist");
 if(null==policyindexlist){
@@ -140,16 +141,17 @@ for(int i=0;i<policyindexlist.size();i++){
 String policyname = policyindexlist.get(i).getPolicyname();
 
 %>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<li>
 <%=policyname %>
-</p>
+</li>
 <%
 
 }
 
 %>
+</ul>
 </div>
-
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 						
 					</div>
 				</div>

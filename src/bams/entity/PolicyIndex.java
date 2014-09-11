@@ -6,6 +6,8 @@ public class PolicyIndex {
 	private String tablename;//该保单所属table
 	private String policyname;//保单名称
 	private String username;//保单所属用户
+	//保单的唯一标识
+		private String tag;
 	public int getId() {
 		return id;
 	}
@@ -29,6 +31,12 @@ public class PolicyIndex {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 	
 }

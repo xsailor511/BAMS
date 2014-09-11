@@ -59,6 +59,22 @@ public class PolicyIndexService {
 		return null;
 	}
 
+	public PolicyIndex getPolicyIndexByTag(String tag){
+		PolicyIndex policyindex = null;
+		Connection connection = null;
+		try {
+			connection = Database.getConnection();
+			policyIndexDAO.setConnection(connection);
+			policyindex = policyIndexDAO.getPolicyIndexByTag(tag);
+			
+		}  catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		return policyindex;
+	}
+	
 	public PolicyIndexDAO getPolicyIndexDAO() {
 		return policyIndexDAO;
 	}

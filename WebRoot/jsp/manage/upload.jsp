@@ -159,7 +159,7 @@ height:15px;
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
 <!-- 						<div class="flexslider"> -->
 <div id="uploaded_file">
 <%
@@ -175,7 +175,7 @@ String filename = list.get(i).getFilename();
 //String fileurl = list.get(i).getFileurl();
 
 %>
-<p><a href="javascript:deletefile('<%=filename %>')">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=filename %>
+<p><a href="javascript:deletefile('<%=filename %>')"><font style="color:red">删除</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=filename %>
 <input type="hidden" name="hiddenfile" value="<%=filename %>" />
 </p>
 <%

@@ -17,4 +17,6 @@ public interface PolicyIndexDAO {
 	public Connection getConnection()throws Exception;
 	
 	public void setConnection(Connection connection)throws Exception;
+	
+	public PolicyIndex getPolicyIndexByTag(String tag);
 }

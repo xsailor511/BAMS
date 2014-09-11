@@ -127,6 +127,7 @@ if(null==role_int){
 						
 
 					<div id="uploaded_file">
+					<p style="color:red">注意360安全浏览器下载会有问题，请选择IE，firefox，chrome谷歌浏览器，opera，360极速浏览器</p>
 <%
 List<File> list = (List)request.getAttribute("filelist");
 if(null==list){

@@ -57,7 +57,7 @@ public class UploadPictureServlet extends HttpServlet
         PictureService service = new PictureService();
         List<Picture> picturelist = new ArrayList<Picture>();
         
-        PrintWriter pw = response.getWriter();
+        //PrintWriter pw = response.getWriter();
         try{  
             DiskFileItemFactory diskFactory = new DiskFileItemFactory();  
             // threshold 极限、临界值，即硬盘缓存 1M  
@@ -151,14 +151,14 @@ public class UploadPictureServlet extends HttpServlet
         String   fileName   =   sdf.format(dt);
         System.out.println(fileName);
         fileName = fileName+suffix;
-        File uploadFile = new File(filePath + "/" + name+"_"+fileName);
+        File uploadFile = new File(filePath + "/" +fileName);
         item.write(uploadFile);
         System.out.println(fileName + " 文件保存完毕 ...");
         //System.out.println(filePath);
         System.out.println("文件大小为 ：" + fileSize + "\r\n");
         picture.setPicture_owner(name);
-        picture.setPicture_name(name+"_"+fileName);
-        picture.setPicture_url(basePath + relativePath + "/"+name+"_"+fileName);
+        picture.setPicture_name(fileName);
+        picture.setPicture_url(basePath + relativePath + "/"+fileName);
     }  
       
     // doGet  

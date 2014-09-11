@@ -137,7 +137,7 @@ border:solid#000 1px;
 						
 <form name="baodan" action="<%=basePath %>servlet/AddOfficeServlet" method="get" onsubmit="return checkForm()">
 
-		<table>
+		<table border="1">
   <caption>
     办公室综合保险
   <br />

@@ -136,7 +136,7 @@ border:solid#000 1px;
 
 <form name="baodan" action="<%=basePath %>servlet/AddFreightServlet" method="get" onsubmit="return checkForm()">
 
-		<table width="820" height="530">
+		<table width="820" height="530" border="1">
   <caption>
     货物运输保险投保单
   <br />

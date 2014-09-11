@@ -136,7 +136,7 @@ border:solid#000 1px;
 					<div class="box-body" style="background:#CCDDFF;color:black">
 <form name="baodan" action="<%=basePath %>servlet/AddEmployerDutyServlet" method="get" onsubmit="return checkForm()">
 
-<table>
+<table border="1">
 <caption>
 雇主责任险投保单<br />
 <p style="text-align: right">投保单编号

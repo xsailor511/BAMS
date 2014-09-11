@@ -1,9 +1,6 @@
 package bams.servlet.policy;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +12,11 @@ import bams.service.PolicyIndexService;
 import bams.util.StringUtil;
 
 public class AddPolicyIndexServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Constructor of the object.
@@ -44,18 +46,18 @@ public class AddPolicyIndexServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String policyname = request.getParameter("policyname");
+		String tablename = request.getParameter("tablename");
+		String tag = request.getParameter("tag");
 		String username = (String)request.getSession().getAttribute("name");
 		PolicyIndexService indexService = new PolicyIndexService();
 		PolicyIndex index = new PolicyIndex();
-		index.setTablename("allproperty");
+		index.setTablename(tablename);
 		index.setUsername(username);
-		Date dt = new Date(System.currentTimeMillis());
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-        String   fileName   =   sdf.format(dt);
-        String policyName = username+"_"+policyname+"_"+fileName;
+        String policyName = username+"_"+policyname+"_"+tag;
         policyName = new String(policyName.getBytes(StringUtil.getEncoding(policyName)), "GB2312");
         System.out.println(policyName);
 		index.setPolicyname(policyName);
+		index.setTag(tag);
 		if(indexService.addPolicyIndex(index)){
 			this.getServletContext()
 			.getRequestDispatcher("/success.jsp")

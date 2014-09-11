@@ -94,6 +94,8 @@ public class Vehicle {
 	private String jiashiyuanxinxi;
 	//投保账户名称
 	private String username;
+	//保单的唯一标识
+		private String tag;
 	public int getId() {
 		return id;
 	}
@@ -354,6 +356,12 @@ public class Vehicle {
 	}
 	public void setBaoxianfeixiaoji(String baoxianfeixiaoji) {
 		this.baoxianfeixiaoji = baoxianfeixiaoji;
+	}
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 
 	

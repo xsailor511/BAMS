@@ -50,14 +50,13 @@ if(null==role_int){
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
 <style type="text/css">
-table.dotted {border-style: dotted}
-table.dashed {border-style: dashed}
-table.solid {border-style: solid}
-table.double {border-style: double}
-table.groove {border-style: groove}
-table.ridge {border-style: ridge}
-table.inset {border-style: inset}
-table.outset {border-style: outset}
+table{
+border-collapse:collapse;
+border:1px;
+}
+table td{
+border:solid#000 1px;
+}
 
 input.user_goal{
 width:50px;
@@ -159,7 +158,7 @@ height:15px;
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
 <!-- 						<div class="flexslider"> -->
 <!-- 						</div> --><table width="100%" border="0" id="mytable">
   <tr>
@@ -169,8 +168,8 @@ height:15px;
     <th align="center" valign="middle" scope="col">积分:</th>
     <th align="center" valign="bottom" scope="col"></th>
     <th align="center" valign="middle" scope="col">修改积分</th>
-    <th align="center" valign="middle" scope="col">删除</th>
-    <th align="center" valign="middle" scope="col">查看</th>
+    <th align="center" valign="middle" scope="col"><font style="color:red">删除</font></th>
+    <th align="center" valign="middle" scope="col"><font style="color:blue">查看</font></th>
   </tr>
   <%
   List<User> list = (List)request.getAttribute("userlist");
@@ -202,10 +201,12 @@ height:15px;
     <td colspan="2" align="center" valign="middle"><label for="xsailor_goal"></label>
     <input name="xsailor_goal" type="text" id="xsailor_goal<%=rowCount %>" value="<%=goal %>" style="width:50px;height:15px" value="22"/>&nbsp;&nbsp;</td>
     <td align="center"><input type="button" name="goal_set_button" id="goal_set_button" value="确认修改" onclick="updategoal('<%=rowCount %>','<%=name %>')"/></td>
-    <td align="center"><div id='<%=id%>'></div><a href="javascript:void(0)" onclick="deleteuser('<%=name %>','<%=rowCount %>')">删除</a>
+    <td align="center"><div id='<%=id%>'></div><a href="javascript:void(0)" onclick="deleteuser('<%=name %>','<%=rowCount %>')">
+    <font style="color:red">删除</font></a>
     <input type= "hidden" name= "username" value= "<%=name%>">
     </td>
-    <td align="center"><a href="<%=basePath%>servlet/GetUserServlet?name=<%=name %>" target="_blank">查看</a></td>
+    <td align="center"><a href="<%=basePath%>servlet/GetUserServlet?name=<%=name %>" target="_blank">
+    <font style="color:blue">查看</font></a></td>
   </tr>
   <%
   
@@ -213,7 +214,7 @@ height:15px;
   %>
 </table>
 <p align="center">
-<a href = "<%=basePath%>servlet/ListAllUserServlet?start=0" >首页</a>
+<a href = "<%=basePath%>servlet/ListAllUserServlet?start=0" ><font color="blue"><B>首页</B></font></a>
 <%
 if(start==0){
 %>
@@ -222,7 +223,7 @@ if(start==0){
 <%
 }else{
 %>
-<a href = "<%=basePath%>servlet/ListAllUserServlet?start=<%=start-pageSize%>" >上一页</a>
+<a href = "<%=basePath%>servlet/ListAllUserServlet?start=<%=start-pageSize%>" ><font color="blue">上一页</font></a>
 <%
 }
 %>
@@ -234,7 +235,7 @@ if(list.size()<10){
 <%
 }else{
 %>
-<a href = "<%=basePath%>servlet/ListAllUserServlet?start=<%=start+pageSize%>" >下一页</a>
+<a href = "<%=basePath%>servlet/ListAllUserServlet?start=<%=start+pageSize%>" ><font color="blue">下一页</font></a>
 <%
 }
 %>
@@ -394,9 +395,19 @@ if(list.size()<10){
 	}
 	
 	function deleteManyUsers(){
+		//至少选择一个用户
+		 var checkboxes = document.getElementsByName("mycheck");
+		 var mark = false;
+		 for(var i=0;i<checkboxes.length;i++){
+			 if(checkboxes[i].checked)
+				 mark = true;
+		 }
+		 if(!mark){
+			 alert("请至少选择一个用户");
+			 return false;
+		 }
 		 var    bln    =    window.confirm("批量删除将会删除所有被选中的用户，不可修复！");
-		 if(blm){
-			 var checkboxes = document.getElementsByName("mycheck");
+		 if(bln){
 				var usernames = document.getElementsByName("username");
 				var param = "";
 				for(var i=0;i<checkboxes.length;i++){

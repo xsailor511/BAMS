@@ -332,6 +332,21 @@ function checkForm(form){
 		alert("请选择文件");
 		return false;
 	}
+	var filemark = false;
+	for(var i=0;i<commonfiles.length;i++){
+		var f = commonfiles[i].files;//获得单个文件
+		var filename = f[0].name;
+		var index = filename.lastIndexOf(".");
+		var suffix = filename.substr(index);
+		if(suffix==".jpg"||suffix==".jpeg"||suffix==".png"||suffix==".tiff"||suffix==".gif"){
+			filemark = true;
+		}
+	}
+	if(!filemark){
+		alert("请选择合适的图片，支持的格式包括jpg,jpeg,png,tiff.gif");
+		return false;
+	}
+	
 	var descriptions = document.getElementsByName("description");
 	//如果一行上面的图片已经添加，但是没有填写说明，则不能提交
 	for(var i=0;i<descriptions.length;i++){

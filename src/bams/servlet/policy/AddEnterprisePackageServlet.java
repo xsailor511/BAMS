@@ -4,6 +4,9 @@ import java.io.IOException;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -105,14 +108,17 @@ public class AddEnterprisePackageServlet extends HttpServlet {
 		
 		enterprisepackage.setKexuanxianzhong(kexuanxianzhong);
 		enterprisepackage.setUsername(name);
-		
+		Date dt = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String   tag   =   sdf.format(dt);
+        enterprisepackage.setTag(tag);
 		String policyname = "中小企业一揽子保险委托书";
 		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
-		
+		String tablename = "enterprisepackage";
 		PolicyService service = new PolicyService();
 		if(service.addEnterprisePackage(enterprisepackage)){
 			this.getServletContext()
-			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname+"&tag="+tag+"&tablename="+tablename)
 			.forward(request, response);
 		}else{
 			this.getServletContext()

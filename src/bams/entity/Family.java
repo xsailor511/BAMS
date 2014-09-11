@@ -38,6 +38,8 @@ public class Family {
 	private String baoxianfeizongjichina;
 	//家庭成员类型
 	private String jiatingchengyuanleixing;
+	//保单的唯一标识
+	private String tag;
 	
 	public int getId() {
 		return id;
@@ -131,6 +133,12 @@ public class Family {
 	}
 	public void setJiatingchengyuanleixing(String jiatingchengyuanleixing) {
 		this.jiatingchengyuanleixing = jiatingchengyuanleixing;
+	}
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 	
 	

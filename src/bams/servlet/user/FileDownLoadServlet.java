@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -34,6 +36,7 @@ public class FileDownLoadServlet extends HttpServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String filename = request.getParameter("filename");
+		//filename = encodingFileName(filename);
 		filename = new String(filename.getBytes("ISO-8859-1"), "utf-8");
 		download(filePath + "\\" + filename, request, response);
 	}
@@ -54,11 +57,15 @@ public class FileDownLoadServlet extends HttpServlet {
 			byte[] buffer = new byte[fis.available()];
 			fis.read(buffer);
 			fis.close();
+//			 Date dt = new Date(System.currentTimeMillis());
+//		     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+//		     String   fileName   =   sdf.format(dt);
+		     String temp = filename;
 			// 清空response
 			response.reset();
 			// 设置response的Header
 			response.addHeader("Content-Disposition", "attachment;filename="
-					+ new String(filename.getBytes("utf-8"), "ISO-8859-1"));
+					+ encodingFileName(temp));
 			response.addHeader("Content-Length", "" + file.length());
 			OutputStream toClient = new BufferedOutputStream(
 					response.getOutputStream());
@@ -71,5 +78,21 @@ public class FileDownLoadServlet extends HttpServlet {
 		}
 		return response;
 	}
+	
+	public static String encodingFileName(String fileName) { 
+        String returnFileName = ""; 
+        try { 
+            returnFileName = URLEncoder.encode(fileName, "UTF-8");
+            returnFileName = returnFileName.replace( "+", "%20");
+            if (returnFileName.length() > 150) { 
+                returnFileName = new String(fileName.getBytes("GB2312"), "ISO8859-1"); 
+                returnFileName = returnFileName.replace(" ", "%20"); 
+            } 
+        } catch (UnsupportedEncodingException e) { 
+            e.printStackTrace(); 
+           
+        } 
+        return returnFileName; 
+    } 
 
 }

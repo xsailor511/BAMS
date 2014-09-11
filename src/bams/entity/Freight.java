@@ -63,6 +63,8 @@ public class Freight {
 	private String tianbiaoriqi;
 	//投保账户名称
 	private String username;
+	//保单的唯一标识
+	private String tag;
 	public int getId() {
 		return id;
 	}
@@ -232,6 +234,12 @@ public class Freight {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 	
 

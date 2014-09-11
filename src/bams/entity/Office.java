@@ -45,6 +45,8 @@ public class Office {
 	private String gaocengchailvshenfengzheng;
 	//投保账户名称
 	private String username;
+	//保单的唯一标识
+		private String tag;
 	public int getId() {
 		return id;
 	}
@@ -160,6 +162,12 @@ public class Office {
 	}
 	public void setBangongdianzi(double bangongdianzi) {
 		this.bangongdianzi = bangongdianzi;
+	}
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 	
 }

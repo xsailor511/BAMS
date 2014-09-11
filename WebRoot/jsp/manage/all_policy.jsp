@@ -49,15 +49,13 @@ if(null==role_int){
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
 <style type="text/css">
-table.dotted {border-style: dotted}
-table.dashed {border-style: dashed}
-table.solid {border-style: solid}
-table.double {border-style: double}
-table.groove {border-style: groove}
-table.ridge {border-style: ridge}
-table.inset {border-style: inset}
-table.outset {border-style: outset}
-
+table{
+border-collapse:collapse;
+border:1px;
+}
+table td{
+border:solid#000 1px;
+}
 input.user_goal{
 width:50px;
 height:15px;
@@ -158,7 +156,7 @@ height:15px;
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
 <!-- 						<div class="flexslider"> -->
 <!-- 						</div> -->
 <table width="100%" border="1">

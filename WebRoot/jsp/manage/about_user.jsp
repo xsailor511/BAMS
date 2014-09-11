@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page language="java" import="bams.entity.User" %>
 <%@ page language="java" import="bams.entity.Picture" %>
+<%@ page language="java" import="bams.entity.PolicyIndex" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -58,7 +59,16 @@ if(null==mark){
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
+<style type="text/css">
+table{
+border-collapse:collapse;
+border:1px;
+}
+table td{
+border:solid#000 1px;
+}
 
+</style>
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 
@@ -148,9 +158,9 @@ if(null==mark){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
 						
-<table width="100%" border="1">
+<table width="800px" border="1">
   <tr>
     <td width="20%" align="right">用户名：</td>
     <td width="30%" align="left"><jsp:getProperty name="user" property="name" />
@@ -184,7 +194,7 @@ if(null==mark){
     	String image = picturelist.get(i).getPicture_name();
     %>
     <p><%=image %>&nbsp;&nbsp;&nbsp;
-    <a rel="example_group" href="<%=img_url %>" title="">查看</a>
+    <a rel="example_group" href="<%=img_url %>" title=""><font color="blue">查看</font></a>
     </p>
     <%
     
@@ -193,7 +203,23 @@ if(null==mark){
     
     </div>
     </td>
-    <td colspan="2" align="left" valign="top">用户名_邮箱_时间戳_保单名称</td>
+    <td colspan="2" align="left" valign="top">
+    <ul>
+    <%
+    List<PolicyIndex> indexlist = (List)request.getAttribute("indexlist");
+    for(int i=0;i<indexlist.size();i++){
+    	String policyname = indexlist.get(i).getPolicyname();
+    	String tag = indexlist.get(i).getTag();
+    
+    %>
+    <li><a href="<%=basePath %>servlet/DownPolicyAsMSWord?tag=<%=tag %>" title=""><font color="blue">下载</font></a>
+    <a href="<%=basePath %>servlet/DownPolicyAsMSWord?tag=<%=tag %>" ><%=policyname %></a>&nbsp;&nbsp;&nbsp;
+    </li>
+    <%
+    }
+    %>
+   </ul>
+    </td>
   </tr>
   <tr>
     <td colspan="4" align="center">

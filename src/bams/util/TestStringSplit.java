@@ -11,6 +11,10 @@ public class TestStringSplit {
 		}
 		String ss = "我在alksdjf";
 		System.out.println("encoding:   "+getEncoding(ss));
+		
+		String sss = "我地址_alskdjfkjaldf124";
+		String tt = sss.substring(sss.lastIndexOf("_")+1);
+		System.out.println("ttt:  "+tt);
 	}
 	
 	 public static String getEncoding(String str) {

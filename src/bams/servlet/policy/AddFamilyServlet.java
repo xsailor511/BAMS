@@ -1,6 +1,8 @@
 package bams.servlet.policy;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -107,14 +109,17 @@ public class AddFamilyServlet extends HttpServlet {
 		family.setBaoxianfeizongjichina(baoxianfeizongjichina);
 		String username = (String)request.getSession().getAttribute("name");
 		family.setUsername(username);
-		
+		Date dt = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String   tag   =   sdf.format(dt);
+        family.setTag(tag);
 		String policyname = "全家无忧投保单";
 		policyname = new String(policyname.getBytes(StringUtil.getEncoding(policyname)), "GB2312");
-		
+		String tablename = "family";
 		PolicyService service = new PolicyService();
 		if(service.addFamily(family)){
 			this.getServletContext()
-			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname)
+			.getRequestDispatcher("/servlet/AddPolicyIndexServlet?policyname="+policyname+"&tag="+tag+"&tablename="+tablename)
 			.forward(request, response);
 		}else{
 			this.getServletContext()
