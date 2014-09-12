@@ -12,7 +12,7 @@ public interface PolicyIndexDAO {
 	
 	public List<PolicyIndex> getPolicyIndexByUserName(String username)throws Exception;
 	
-	public List<PolicyIndex> listAllPolicyIndex()throws Exception;
+	public List<PolicyIndex> listAllPolicyIndex(int start)throws Exception;
 	
 	public Connection getConnection()throws Exception;
 	

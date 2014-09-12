@@ -137,7 +137,7 @@ margin-right: auto;
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
 						
 <div class="fileupload">
    <form name="uploadForm" method="POST" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>servlet/UploadPictureServlet" onsubmit="return checkForm(this)">

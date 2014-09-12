@@ -25,6 +25,7 @@ public class DataToWordService {
 	private DataToWordDAO dao = new DataToWordDAOImpl();
 	private String templateWordPath="/file/user/template/";
 	private String downloadPath = "/temp/";
+	private String policyname;
 	public String getTemplateWordPath() {
 		return templateWordPath;
 	}
@@ -41,6 +42,15 @@ public class DataToWordService {
 		this.downloadPath = downloadPath;
 	}
 
+	
+	public String getPolicyname() {
+		return policyname;
+	}
+
+	public void setPolicyname(String policyname) {
+		this.policyname = policyname;
+	}
+
 	public String getAllPropertyFile(String tag){
 		
 		Connection connection = null;
@@ -55,7 +65,7 @@ public class DataToWordService {
 		}finally {
 			Database.releaseConnection(connection);
 		}
-		String newfilename = downloadPath+allproperty.getUsername()+"_财产一切险投保单.doc";
+		String newfilename = downloadPath+policyname;
 		String oldfilename = "allproperty.doc";
 		oldfilename = templateWordPath + oldfilename;
 		copyFile(oldfilename,newfilename);
@@ -96,7 +106,7 @@ public class DataToWordService {
 			Database.releaseConnection(connection);
 		}
 		
-		String newfilename = downloadPath+employerduty.getUsername()+"_雇主责任险投保单.doc";
+		String newfilename = downloadPath+policyname;
 		String oldfilename = "employerduty.doc";
 		oldfilename = templateWordPath + oldfilename;
 		copyFile(oldfilename,newfilename);
@@ -136,7 +146,7 @@ public class DataToWordService {
 		}
 		
 		
-		String newfilename = downloadPath+enterprisepackage.getUsername()+"_中小企业一揽子保险委托书.doc";
+		String newfilename = downloadPath+policyname;
 		String oldfilename = "enterprisepackage.doc";
 		oldfilename = templateWordPath + oldfilename;
 		copyFile(oldfilename,newfilename);
@@ -174,7 +184,7 @@ public class DataToWordService {
 			Database.releaseConnection(connection);
 		}
 		
-		String newfilename = downloadPath+family.getUsername()+"_全家无忧投保单.doc";
+		String newfilename = downloadPath+policyname;
 		String oldfilename = "family.doc";
 		oldfilename = templateWordPath + oldfilename;
 		copyFile(oldfilename,newfilename);
@@ -212,7 +222,7 @@ public class DataToWordService {
 		}finally {
 			Database.releaseConnection(connection);
 		}
-		String newfilename = downloadPath+freight.getUsername()+"_货运险投保单.doc";
+		String newfilename = downloadPath+policyname;
 		String oldfilename = "freight.doc";
 		oldfilename = templateWordPath + oldfilename;
 		copyFile(oldfilename,newfilename);
@@ -250,7 +260,7 @@ public class DataToWordService {
 			Database.releaseConnection(connection);
 		}
 		
-		String newfilename = downloadPath+office.getUsername()+"_办公室综合保险投保单.doc";
+		String newfilename = downloadPath+policyname;
 		String oldfilename = "office.doc";
 		oldfilename = templateWordPath + oldfilename;
 		copyFile(oldfilename,newfilename);
@@ -287,7 +297,7 @@ public class DataToWordService {
 		}finally {
 			Database.releaseConnection(connection);
 		}
-		String newfilename = downloadPath+vehicle.getUsername()+"_机动车投保单.doc";
+		String newfilename = downloadPath+policyname;
 		String oldfilename = "vehicle.doc";
 		oldfilename = templateWordPath + oldfilename;
 		copyFile(oldfilename,newfilename);
@@ -313,7 +323,7 @@ public class DataToWordService {
 	
 	public void copyFile(String oldPath, String newPath) { 
 	       try { 
-	           int bytesum = 0; 
+	           //int bytesum = 0;
 	           int byteread = 0; 
 	           File oldfile = new File(oldPath); 
 	           if (oldfile.exists()) { //文件存在时 
@@ -322,8 +332,8 @@ public class DataToWordService {
 	               byte[] buffer = new byte[1444]; 
 	               //int length; 
 	               while ( (byteread = inStream.read(buffer)) != -1) { 
-	                   bytesum += byteread; //字节数 文件大小 
-	                   System.out.println(bytesum); 
+	                   //bytesum += byteread; //字节数 文件大小 
+	                   //System.out.println(bytesum); 
 	                   fs.write(buffer, 0, byteread); 
 	               } 
 	               inStream.close(); 

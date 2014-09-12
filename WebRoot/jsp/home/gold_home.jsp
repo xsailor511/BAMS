@@ -125,7 +125,7 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
+					<li><a class="open br-red"><i
 							class="icon-home"></i><font color="blue">企业黄金用户</font></a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
@@ -142,14 +142,14 @@ if(null==role_int){
 							<li><a href="<%=basePath %>servlet/ListAllFileServlet" target="_blank">资料下载</a></li>
 							<li><a href="<%=basePath %>jsp/user/lipeizixun.jsp" target="_blank">理赔咨询</a></li>
 						</ul></li>
-					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i
-							class="icon-list-alt"></i> 在线投保专区 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-							<li><a href="#huangjin">黄金</a></li>
+<!-- 					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i -->
+<!-- 							class="icon-list-alt"></i> 在线投保专区 <span class="pull-right"><i -->
+<!-- 								class="icon-chevron-right"></i></span></a> -->
+<!-- 						<ul> -->
+<!-- 							<li><a href="#huangjin">黄金</a></li> -->
 							
 							
-						</ul></li>
+<!-- 						</ul></li> -->
 					
 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
 							class="icon-user"></i> 核心流程</a></li>
@@ -178,7 +178,7 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body" id="box-body" >
+					<div class="box-body" id="box-body" style="background:#CCDDFF;color:black">
 						<div class="flexslider" id="flexslider">
 							<ul class="slides">
 								<!-- Each slide should be enclosed inside li tag. -->
@@ -196,19 +196,19 @@ if(null==role_int){
 								</li>
 							</ul>
 						</div>
-<a name="huangjin"></a>
+<!-- <a name="huangjin"></a> -->
+
+<br/>
+<h4>在线投保专区</h4>
+
 <hr/>
-<br/>
-<br/>
-
-
 <div class="section" >
 <div class="description">黄金对公专区</div>
 <div class="content">
 <div class="policy">
 <div class="image"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank">雇主责任保险</a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank"><font color="blue">雇主责任保险</font></a></div>
 </div>
 <div class="policy">
 <div class="image">
@@ -216,7 +216,7 @@ if(null==role_int){
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
 </a>
 </div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">货运险</a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank"><font color="blue">货运险</font></a></div>
 </div>
 <div class="policy">
 <div class="image">
@@ -225,7 +225,7 @@ if(null==role_int){
 </a>
 </div>
 <div class="showtext">
-<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank">企业财产险</a>
+<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank"><font color="blue">企业财产险</font></a>
 </div>
 </div>
 </div>

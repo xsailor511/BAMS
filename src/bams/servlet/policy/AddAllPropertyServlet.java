@@ -138,7 +138,7 @@ public class AddAllPropertyServlet extends HttpServlet {
 		boolean mark = false;
 		if(toubaofujians!=null){//toubaofujian is not null.
 			for(int i=0;i<toubaofujians.length;i++){
-				toubaofujian = toubaofujian+";"+toubaofujians[i];
+				toubaofujian = toubaofujian+toubaofujians[i]+";";//the end fo toubaofujian is ";"
 				if(toubaofujians[i].equals("qita")){
 					mark = true;
 				}
@@ -146,22 +146,22 @@ public class AddAllPropertyServlet extends HttpServlet {
 			if(mark){
 				String qita = request.getParameter("qita");
 				qita = new String(qita.getBytes(StringUtil.getEncoding(qita)), "UTF-8");
-				toubaofujian = toubaofujian+";"+qita;
+				toubaofujian = toubaofujian+qita;//the end fo toubaofujian is ";"
 				
 				int toubaofujianshuliang = Integer.parseInt(request.getParameter("toubaofujianshuliang"));
 				allproperty.setToubaofujianshuliang(toubaofujianshuliang);
 			}else{
-				toubaofujian = toubaofujian+";none";
+				toubaofujian = toubaofujian+"none";//the end fo toubaofujian is ";"
 			}
 		}
 		
-		allproperty.setToubaofujian(toubaofujian);//toubaofujian="", or "some;none";
+		allproperty.setToubaofujian(toubaofujian);//toubaofujian="zican;qita;dddssd", or "zican;none";
 		
 		String shifoutouguo = request.getParameter("shifoutouguo");
 		if(shifoutouguo.equals("shi")){
 			String baoxiandanhao = request.getParameter("baoxiandanhao");
 			baoxiandanhao = new String(baoxiandanhao.getBytes(StringUtil.getEncoding(baoxiandanhao)), "UTF-8");
-			shifoutouguo = shifoutouguo + ";" + baoxiandanhao;
+			shifoutouguo = shifoutouguo+ ";" + baoxiandanhao ;
 		}else{
 			shifoutouguo = shifoutouguo + ";none";
 		}

@@ -180,7 +180,7 @@ function isEmpty(str){
 
 					<!-- Element -->
 					<div class="box-body">
-						<div class="flexslider">
+						<div class="flexslider" style="background:#CCDDFF;color:black;height:520px">
 							
   <span id="error_message"></span>
   	<form name="loginForm" method="post" action="<%=basePath %>Login" onsubmit="return checkForm(this)">

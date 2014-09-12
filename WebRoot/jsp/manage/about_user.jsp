@@ -210,7 +210,7 @@ border:solid#000 1px;
     for(int i=0;i<indexlist.size();i++){
     	String policyname = indexlist.get(i).getPolicyname();
     	String tag = indexlist.get(i).getTag();
-    
+    	String username = indexlist.get(i).getUsername();
     %>
     <li><a href="<%=basePath %>servlet/DownPolicyAsMSWord?tag=<%=tag %>" title=""><font color="blue">下载</font></a>
     <a href="<%=basePath %>servlet/DownPolicyAsMSWord?tag=<%=tag %>" ><%=policyname %></a>&nbsp;&nbsp;&nbsp;

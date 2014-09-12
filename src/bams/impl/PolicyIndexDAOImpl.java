@@ -85,13 +85,16 @@ public class PolicyIndexDAOImpl implements PolicyIndexDAO {
 	}
 
 	@Override
-	public List<PolicyIndex> listAllPolicyIndex() throws Exception {
+	public List<PolicyIndex> listAllPolicyIndex(int start) throws Exception {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<PolicyIndex> policylist = new ArrayList<PolicyIndex>();
-		String sql = "select * from policyindex ";
+		int pageSize = 20;
+		String sql = "select * from policyindex order by id asc limit ?,?";
 		
 		ps = connection.prepareStatement(sql);
+		ps.setInt(1, start);
+		ps.setInt(2, pageSize);
 		rs = ps.executeQuery();
 		while(rs.next()){
 			PolicyIndex policyindex = new PolicyIndex();
@@ -99,7 +102,7 @@ public class PolicyIndexDAOImpl implements PolicyIndexDAO {
 			policyindex.setPolicyname(rs.getString("policyname"));
 			policyindex.setTablename(rs.getString("tablename"));
 			policyindex.setUsername(rs.getString("username"));
-			policyindex.setUsername(rs.getString("tag"));
+			policyindex.setTag(rs.getString("tag"));
 			policylist.add(policyindex);
 		}
 		closeStatement(ps);

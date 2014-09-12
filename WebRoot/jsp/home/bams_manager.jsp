@@ -137,7 +137,7 @@ height:15px;
 					<li ><a class="open br-red"><i class="icon-home"></i><font color="blue">查找用户</font> </a></li>
 					<li><a href="<%=basePath %>servlet/ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
 
-					<li><a href="<%=basePath %>jsp/manage/all_policy.jsp" class="br-blue"><i
+					<li><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" class="br-blue"><i
 							class="icon-user"></i> 批量打印word文档</a></li>
 					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
 							class="icon-user"></i> 文件上传</a></li>
@@ -273,10 +273,7 @@ height:15px;
 
 	<!-- Scroll to top -->
 	<span class="totop"><a href="<%=basePath %>#"><i class="icon-chevron-up"></i></a></span>
-<script type="text/javascript">
 
-
-</script>
 	<!-- JS -->
 	<script src="<%=basePath %>js/jquery.js"></script>
 	<script src="<%=basePath %>js/bootstrap.js"></script>

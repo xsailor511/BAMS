@@ -43,7 +43,7 @@ if(null==role_int){
 
 <!-- Bootstrap responsive -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap-responsive.css" >
-
+<link rel="stylesheet" href="<%=basePath %>style/policy.css" >
 <!-- HTML5 Support for IE -->
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
@@ -177,7 +177,7 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black">
 						<div class="flexslider">
 							<ul class="slides">
 								<!-- Each slide should be enclosed inside li tag. -->
@@ -195,7 +195,28 @@ if(null==role_int){
 								</li>
 							</ul>
 						</div>
+						<br/>
+						<h4>在线投保专区</h4>
+						<hr>
+<div class="section">
+<div class="description">经纪业务专区</div>
+<div class="content">
+<div class="policy">
+<div class="image"></div>
+<div class="showtext"></div>
+</div>
+<div class="policy">
+<div class="image"></div>
+<div class="showtext"></div>
+</div>
+<div class="policy">
+<div class="image"><a href="<%=basePath%>jsp/policy/enterprisepackage.jsp" target="_blank">
+<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/enterprisepackage.jsp" target="_blank"><font color="blue">中小企业一揽子保险委托书</font></a></div>
+</div>
 
+</div>
+</div>
 					
 					</div>
 				</div>

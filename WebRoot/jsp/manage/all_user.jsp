@@ -139,7 +139,7 @@ height:15px;
 					<li ><a href="<%=basePath %>jsp/home/bams_manager.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
 					<li><a  class="open br-red"><i class="icon-home"></i> <font color="blue">所有用户</font></a></li>
 
-					<li><a href="<%=basePath %>jsp/manage/all_policy.jsp" class="br-blue"><i
+					<li><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" class="br-blue"><i
 							class="icon-user"></i> 批量打印word文档</a></li>
 					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
 							class="icon-user"></i> 文件上传</a></li>

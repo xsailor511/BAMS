@@ -132,12 +132,13 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<User> result = null;
-
+		int pageSize = 10;
 		try {
 			ps = connection
-					.prepareStatement("select * from user where role!=5 order by id asc limit ?,10");
+					.prepareStatement("select * from user where role!=5 order by id asc limit ?,?");
 			ps.setInt(1, start);
-			System.out.println(ps.toString());
+			ps.setInt(2, pageSize);
+			//System.out.println(ps.toString());
 			rs = ps.executeQuery();
 			User user = null;
 			result = new ArrayList<User>();

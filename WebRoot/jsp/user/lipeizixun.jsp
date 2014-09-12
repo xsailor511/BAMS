@@ -123,7 +123,7 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
 						
 					<div class="s-widget">
 					<h6>咨询热线</h6>

@@ -125,7 +125,7 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a href="<%=basePath %>index.html" class="open br-red"><i
+					<li><a  class="open br-red"><i
 							class="icon-home"></i><font color="blue">银行用户</font></a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
@@ -142,14 +142,14 @@ if(null==role_int){
 							<li><a href="<%=basePath %>servlet/ListAllFileServlet" target="_blank">资料下载</a></li>
 							<li><a href="<%=basePath %>jsp/user/lipeizixun.jsp" target="_blank">理赔咨询</a></li>
 						</ul></li>
-					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i
-							class="icon-list-alt"></i> 在线投保专区 <span class="pull-right"><i
-								class="icon-chevron-right"></i></span></a>
-						<ul>
-							<li><a href="#geren">个人</a></li>
-							<li><a href="#duigong">对公</a></li>
+<!-- 					<li class="has_sub"><a href="<%=basePath %>#" class="br-green"><i -->
+<!-- 							class="icon-list-alt"></i> 在线投保专区 <span class="pull-right"><i -->
+<!-- 								class="icon-chevron-right"></i></span></a> -->
+<!-- 						<ul> -->
+<!-- 							<li><a href="#geren">个人</a></li> -->
+<!-- 							<li><a href="#duigong">对公</a></li> -->
 							
-						</ul></li>
+<!-- 						</ul></li> -->
 					
 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
 							class="icon-user"></i> 核心流程</a></li>
@@ -178,8 +178,8 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
-						<div class="flexslider">
+					<div class="box-body" style="background:#CCDDFF;color:black">
+						<div class="flexslider" >
 							<ul class="slides">
 								<!-- Each slide should be enclosed inside li tag. -->
 
@@ -196,11 +196,11 @@ if(null==role_int){
 								</li>
 							</ul>
 						</div>
-<a name="geren"></a>
-<hr/>
-<br/>
-<br/>
 
+
+<br/>
+<h4>在线投保专区</h4>
+<hr/>
 <div class="section">
 <div class="description">个人专区</div>
 <div class="content">
@@ -214,7 +214,7 @@ if(null==role_int){
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
 </a>
 </div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/family.jsp" target="_blank">家庭综合保险</a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/family.jsp" target="_blank"><font color="blue">家庭综合保险</font></a></div>
 </div>
 <div class="policy">
 <div class="image">
@@ -223,20 +223,20 @@ if(null==role_int){
 </a>
 </div>
 <div class="showtext">
-<a href="<%=basePath%>jsp/policy/vehicle.jsp" target="_blank">私家车保险</a>
+<a href="<%=basePath%>jsp/policy/vehicle.jsp" target="_blank"><font color="blue">私家车保险</font></a>
 </div>
 </div>
 </div>
 </div>
 <hr/>
-<a name="duigong"></a>
+
 <div class="section">
 <div class="description">对公专区</div>
 <div class="content">
 <div class="policy">
 <div class="image"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank">雇主责任保险</a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank"><font color="blue">雇主责任保险</font></a></div>
 </div>
 <div class="policy">
 <div class="image">
@@ -244,7 +244,7 @@ if(null==role_int){
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
 </a>
 </div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">货运险</a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank"><font color="blue">货运险</font></a></div>
 </div>
 <div class="policy">
 <div class="image">
@@ -253,7 +253,7 @@ if(null==role_int){
 </a>
 </div>
 <div class="showtext">
-<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank">企业财产险</a>
+<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank"><font color="blue">企业财产险</font></a>
 </div>
 </div>
 </div>
@@ -272,7 +272,7 @@ if(null==role_int){
 <div class="policy">
 <div class="image"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank">办公室综合保险</a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank"><font color="blue">办公室综合保险</font></a></div>
 </div>
 
 </div>

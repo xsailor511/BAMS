@@ -123,7 +123,7 @@ if(null==role_int){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
+					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
 						
 
 					<div id="uploaded_file">
@@ -141,8 +141,9 @@ String filename = list.get(i).getFilename();
 String fileurl = list.get(i).getFileurl();
 
 %>
-<p><a href="<%=basePath%>servlet/FileDownLoadServlet?filename=<%=filename %>">下载</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="<%=basePath%>servlet/FileDownLoadServlet?filename=<%=filename %>" ><%=filename %></a>
+<hr>
+<p><a href="<%=basePath%>servlet/FileDownLoadServlet?filename=<%=filename %>"><font color="blue">下载</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="<%=basePath%>servlet/FileDownLoadServlet?filename=<%=filename %>" ><font color="blue"><%=filename %></font></a>
 <input type="hidden" name="hiddenfile" value="<%=filename %>" />
 </p>
 <%

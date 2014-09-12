@@ -80,6 +80,8 @@ public class RegisterServlet extends HttpServlet {
 	    	String path = request.getContextPath();
 	    	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 	    	service.addUser(user,basePath);
+	    	request.getSession().setAttribute("name", name);
+	    	request.getSession().setAttribute("role", role);
 	    	this.getServletContext()
 	    	.getRequestDispatcher("/jsp/user/loginAction.jsp?name="+name+"&password="+password)
 	    	.forward(request,response);

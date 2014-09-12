@@ -219,6 +219,11 @@
             <param-value>temp</param-value> 
         </init-param>
   </servlet>
+  <servlet>
+    <servlet-name>ListAllPolicyIndexServlet</servlet-name>
+    <servlet-class>bams.servlet.policy.ListAllPolicyIndexServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -351,6 +356,10 @@
   <servlet-mapping>
     <servlet-name>DownPoliciesAsZip</servlet-name>
     <url-pattern>/servlet/DownPoliciesAsZip</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListAllPolicyIndexServlet</servlet-name>
+    <url-pattern>/servlet/ListAllPolicyIndexServlet</url-pattern>
   </servlet-mapping>
   
 	 <session-config>

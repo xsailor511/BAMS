@@ -63,7 +63,12 @@ String path = request.getContextPath();
 			alert("电话号码不符合！");
 			return false;
 		}
-		
+		 var regex=/^[0-9A-Za-z_]{4,15}$/;
+		 if(!regex.test(form.name.value)){
+			 alert("用户的用户名只包含大小写英文、数字和下划线。同时用户名长度在4-15之间");
+			 return false;
+		 }
+			 
 	     var email = document.getElementById("email").value;
 	     if(!emailFormatCheck(email))
 	     {
@@ -206,7 +211,7 @@ String path = request.getContextPath();
 
 					<!-- Element -->
 					<div class="box-body">
-						<div class="flexslider">
+						<div class="flexslider" style="background:#CCDDFF;color:black;height:520px">
 							
   
 <form name="userRegisterForm" method="post" action="<%=basePath %>Register" onsubmit="return checkForm(this)">

@@ -4,8 +4,9 @@ public class TestStringSplit {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String str = "test;ert;asdf;";
+		String str = "test;ert;asdf";
 		String strs[] = str.split(";");
+		System.out.println(strs.length);
 		for(int i=0;i<strs.length;i++){
 			System.out.print(strs[i]+" ");
 		}
@@ -15,6 +16,10 @@ public class TestStringSplit {
 		String sss = "我地址_alskdjfkjaldf124";
 		String tt = sss.substring(sss.lastIndexOf("_")+1);
 		System.out.println("ttt:  "+tt);
+		
+		String so = "xsailor_中小企业一揽子保险委托书.doc";
+		if(so.contains("xsailor"))
+			System.out.println("so contains xsailor");
 	}
 	
 	 public static String getEncoding(String str) {

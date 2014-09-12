@@ -180,11 +180,11 @@ public class AddVehicleServlet extends HttpServlet {
 		String baoxianfeixiaoji = "";
 		for(int i=0;i<checkboxes.length;i++){
 			if(checkboxes[i].equals("checked")){
-				shangyexianxiane = shangyexianxiane + ";" + shangyexianxianes[i];
-				baoxianfeixiaoji = baoxianfeixiaoji + ";" + baoxianfeixiaojis[i];
+				shangyexianxiane = shangyexianxiane + shangyexianxianes[i] + ";";
+				baoxianfeixiaoji = baoxianfeixiaoji + baoxianfeixiaojis[i] + ";";
 			}else{
-				shangyexianxiane = shangyexianxiane + ";zero";
-				baoxianfeixiaoji = baoxianfeixiaoji + ";zero";
+				shangyexianxiane = shangyexianxiane + "zero;";
+				baoxianfeixiaoji = baoxianfeixiaoji + "zero;";
 			}
 		}
 		vehicle.setShangyexianxiane(shangyexianxiane);

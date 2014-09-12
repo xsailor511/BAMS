@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="bams.entity.PolicyIndex" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -162,17 +163,83 @@ height:15px;
 <table width="100%" border="1">
   <tr>
     <th align="center" scope="col">编号</th>
-    <th align="center" scope="col">选择</th>
+    <th align="center" scope="col"><input type="checkbox" name="checkall" id="checkall" /></th>
     <th align="center" scope="col">保单</th>
-    <th align="center" scope="col"><a href="http|//localhost|8080/BAMS/">批量下载</a></th>
+    <th align="center" scope="col">下载</th>
   </tr>
+  
+  <%
+  List<PolicyIndex> list = (List)request.getAttribute("indexlist");
+  if(null==list){
+	  this.getServletContext()
+	  	.getRequestDispatcher("/error.jsp")
+	  	.forward(request,response);
+  }
+  int start = 0 ;
+	String str_start = request.getParameter("start");
+	if(null!=str_start)
+		start = Integer.parseInt(str_start);
+	int pageSize = 20;
+	int pageCount = start/pageSize+1;
+  Iterator<PolicyIndex> it = list.iterator();
+  int rowCount = 0 ;
+  while(it.hasNext()){
+	  rowCount++;
+	  PolicyIndex policyindex = it.next();
+		String policyname = policyindex.getPolicyname();
+		String tablename = policyindex.getTablename();
+		String tag = policyindex.getTag();
+		int id = policyindex.getId();
+		String username = policyindex.getUsername();
+  %>
+  
   <tr>
-    <td align="center">1</td>
-    <td align="center"><input type="checkbox" name="baodan_check" id="baodan_check" /></td>
-    <td align="center">用户名_邮箱_时间戳_保单名称</td>
-    <td align="center"><a href="http://localhost:8080/BAMS/">下载</a></td>
+    <td align="center"><%=id %></td>
+    <td align="center"><input type="checkbox" name="mycheck" id="baodan_check" />
+    <input type="hidden" name="tag" value="<%=tag %>" />
+    <input type="hidden" name="username" value="<%=username %>" />
+    </td>
+   <td align="left"> &nbsp;<%=policyname %></td>
+    <td align="center"><a href="<%=basePath%>servlet/DownPolicyAsMSWord?tag=<%=tag %>">下载</a></td>
   </tr>
+  
+  
+  <%
+  }
+  %>
 </table>
+
+<p align="center">
+<a href = "<%=basePath%>servlet/ListAllPolicyIndexServlet?start=0" ><font color="blue"><B>首页</B></font></a>
+<%
+if(start==0){
+%>
+上一页
+
+<%
+}else{
+%>
+<a href = "<%=basePath%>servlet/ListAllPolicyIndexServlet?start=<%=start-pageSize%>" ><font color="blue">上一页</font></a>
+<%
+}
+%>
+
+<%
+if(list.size()<10){
+%>
+下一页
+<%
+}else{
+%>
+<a href = "<%=basePath%>servlet/ListAllPolicyIndexServlet?start=<%=start+pageSize%>" ><font color="blue">下一页</font></a>
+<%
+}
+%>
+第<%=pageCount%>页</p>
+
+<p align="center">
+<a href="javascript:void(0)" onclick="downPolicies()"><font color="blue">批量下载</font></a>
+</p>
 					</div>
 				</div>
 			</div>
@@ -282,6 +349,89 @@ height:15px;
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
 	<!-- Main js file -->
+	<script type="text/javascript">
+	var xmlhttp;
+	function loadXMLDoc(url, cfunc) {
+		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else {// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		xmlhttp.open("POST", url, false);
+		xmlhttp.onreadystatechange = cfunc;
+		xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
+		xmlhttp.send();
+	}
+
+	//获取应用绝对路径
+	var localObj = window.location;
+
+	var contextPath = localObj.pathname.split("/")[1];
+
+	var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
+
+	var server_context=basePath;
+	
+	
+	function downPolicies(){
+		//至少选择一个保单
+		 var checkboxes = document.getElementsByName("mycheck");
+		 var mark = false;
+		 for(var i=0;i<checkboxes.length;i++){
+			 if(checkboxes[i].checked)
+				 mark = true;
+		 }
+		 if(!mark){
+			 alert("请至少选择一个保单");
+			 return false;
+		 }
+		 var tags = document.getElementsByName("tag");
+		 //var usernames = document.getElementsByName("username");
+		 var paramtags = "";
+		 //var paramnames = "";
+		 for(var i=0;i<checkboxes.length;i++){
+			 if(checkboxes[i].checked){
+				 if(paramtags.length==0)//;tset;wo;san;将会被劈成4个值，而第一个为空，所以不能吧分号放在首位
+					 paramtags = paramtags+tags[i].value;
+				 else
+				 	paramtags = paramtags+";"+tags[i].value;
+				 //paramnames = paramnames+";"+usernames[i];
+			 }
+		 }
+		// alert(paramtags);
+		 var url = server_context+"/servlet/DownPoliciesAsZip?tags="+paramtags;
+		 
+		 window.location.href = url;
+	}
+	
+	
+	
+	
+	$(function() {
+	    $("#checkall").click(function() {
+	        if ($(this).attr("checked")) {
+	            $("input[name=mycheck]").each(function() {
+	                $(this).attr("checked", true);
+	            });
+	        } else {
+	            $("input[name=mycheck]").each(function() {
+	                $(this).attr("checked", false);
+	            });
+	        }
+	    });
+	    //得到选中的值，ajax操作使用
+	    $("#submit").click(function() {
+	        var text="";
+	        $("input[name=items]").each(function() {
+	            if ($(this).attr("checked")) {
+	                text += ","+$(this).val();
+	            }
+	        });
+	         alert(text);
+	    });
+	});
+	</script>
 </body>
 </html>
 

@@ -127,17 +127,17 @@ public class AddEmployerDutyServlet extends HttpServlet {
 		
 		for(int i=0;i<guyuangongzhongs.length;i++){
 			if(guyuangongzhongs[i].trim().equals("")){
-				guyuangongzhong = guyuangongzhong+";none";
-				guyuanrenshu = guyuanrenshu+";none";
-				peichangsiwang = peichangsiwang+";none";
-				peichangyiliao = peichangyiliao+";none";
+				guyuangongzhong = guyuangongzhong+"none;";
+				guyuanrenshu = guyuanrenshu+"none;";
+				peichangsiwang = peichangsiwang+"none;";
+				peichangyiliao = peichangyiliao+"none;";
 			}else{
 				String temp = new String(guyuangongzhongs[i].getBytes(StringUtil.getEncoding(guyuangongzhongs[i])), "UTF-8");
 				
-				guyuangongzhong = guyuangongzhong+";" + temp;
-				guyuanrenshu = guyuanrenshu+";"+guyuanrenshus[i];
-				peichangsiwang = peichangsiwang+";"+peichangsiwangs[i];
-				peichangyiliao = peichangyiliao+";"+peichangyiliaos[i];
+				guyuangongzhong = guyuangongzhong + temp+";";
+				guyuanrenshu = guyuanrenshu+guyuanrenshus[i]+";";
+				peichangsiwang = peichangsiwang+peichangsiwangs[i]+";";
+				peichangyiliao = peichangyiliao+peichangyiliaos[i]+";";
 			}
 		}
 		employerduty.setGuyuangongzhong(guyuangongzhong);

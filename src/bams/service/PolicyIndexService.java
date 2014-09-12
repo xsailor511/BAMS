@@ -45,12 +45,12 @@ public class PolicyIndexService {
 		return null;
 	}
 	
-	public List<PolicyIndex> listAllPolicyIndex(){
+	public List<PolicyIndex> listAllPolicyIndex(int start){
 		Connection connection = null;
 		try {
 			connection = Database.getConnection();
 			policyIndexDAO.setConnection(connection);
-			return policyIndexDAO.listAllPolicyIndex();
+			return policyIndexDAO.listAllPolicyIndex(start);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{

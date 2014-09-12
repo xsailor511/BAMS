@@ -64,12 +64,19 @@ public class DownPolicyAsMSWord extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String username = (String)request.getSession().getAttribute("name");
+		//保存最近一个月的下载文件，超过一个月就会被删除
 		File file = new File(tempPath);
 		File files[] = file.listFiles();
+		long onemonth = 30*24*60*60;
+		onemonth = onemonth*1000;
+		
 		for(int i=0;i<files.length;i++){
-			if(files[i].getName().contains(username)){
-				System.out.println("file delete "+files[i].getName()+"   "+username);
+			//System.out.println(files[i].getName());
+			long lasttime = files[i].lastModified();
+			long current = System.currentTimeMillis();
+			long cha = current - lasttime;
+			//Date date = new Date(lasttime);
+			if(cha>onemonth){
 				files[i].delete();
 			}
 		}
@@ -80,9 +87,26 @@ public class DownPolicyAsMSWord extends HttpServlet {
 		DataToWordService service = new DataToWordService();
 		service.setDownloadPath(tempPath+"/");//下载文件临时文件夹
 		service.setTemplateWordPath(filePath+"/");//word 模板存放文件夹
-		String fileName = getData(tablename,service,tag);
+		String ffname = policyindex.getPolicyname()+".doc";
+		service.setPolicyname(ffname);
+		boolean mark = false;
+		//查看待下载的文件是否已经存在
+		for(int i=0;i<files.length;i++){
+			if(files[i].getName().equals(ffname)){
+				mark = true;
+				System.out.println("the "+ffname+" is already exsits");
+			}
+				
+		}
 		
-		download(fileName,request,response);
+		if(mark){//已经存在，直接下载
+			download(tempPath+"/"+ffname,request,response);
+		}else{//不存在，向数据库访问，生成word文档
+			String fileName = getData(tablename,service,tag);
+			
+			download(fileName,request,response);
+		}
+		
 		
 	}
 	

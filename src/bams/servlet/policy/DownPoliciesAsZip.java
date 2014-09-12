@@ -68,7 +68,7 @@ public class DownPoliciesAsZip extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		filePath = config.getInitParameter("filepath");
-		tempPath = config.getInitParameter("tempPath");
+		tempPath = config.getInitParameter("temppath");
 		ServletContext context = getServletContext();
 		filePath = context.getRealPath(filePath);
 		tempPath = context.getRealPath(tempPath);
@@ -77,35 +77,49 @@ public class DownPoliciesAsZip extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String username = (String)request.getSession().getAttribute("name");
+		//保存最近一个月的下载文件，超过一个月就会被删除
 		File file = new File(tempPath);
-		File fs[] = file.listFiles();
-		for(int i=0;i<fs.length;i++){
-			if(fs[i].getName().contains(username)){
-				fs[i].delete();
+		File files[] = file.listFiles();
+		long onemonth = 30*24*60*60;
+		onemonth = onemonth*1000;
+		for(int i=0;i<files.length;i++){
+			long lasttime = files[i].lastModified();
+			long current = System.currentTimeMillis();
+			long cha = current - lasttime;
+			if(cha>onemonth){
+				files[i].delete();
 			}
 		}
-		
-		String tags[] = request.getParameterValues("tag");//checkbox value = tag.
-		String files[] = new String[tags.length];
+		String temp = request.getParameter("tags");
+		System.out.println("temp"+temp);
+		String tags[] = temp.split(";");//many policies
+		//System.out.println("tag "+ tags[0]);
+		//String usernames[] = request.getParameterValues("usernames");//many usernames
+		String filepaths[] = new String[tags.length];
 		PolicyIndexService s = new PolicyIndexService();
 		DataToWordService service = new DataToWordService();
-		service.setDownloadPath(tempPath);//下载文件临时文件夹
-		service.setTemplateWordPath(filePath);//word 模板存放文件夹
+		service.setDownloadPath(tempPath+"/");//下载文件临时文件夹
+		service.setTemplateWordPath(filePath+"/");//word 模板存放文件夹
 		for(int i=0;i<tags.length;i++){
 			PolicyIndex policyindex = s.getPolicyIndexByTag(tags[i]);
 			String tablename = policyindex.getTablename();
-			files[i] = getData(tablename,service,tags[i]);
+			String policyname = policyindex.getPolicyname()+".doc";
+			service.setPolicyname(policyname);
+			filepaths[i] = getData(tablename,service,tags[i]);
 		}
+		
+		Date dt = new Date(System.currentTimeMillis());
+	     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+	     String   datetime   =   sdf.format(dt);
+		String myfilename = tempPath+"/"+datetime+".zip";//用时间戳作为zip文件的文件名
+		//将文件压缩为zip
 		try {
-			ZipFileUtil.zipFiles(files, tempPath);
+			ZipFileUtil.zipFiles(filepaths, myfilename);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		 Date dt = new Date(System.currentTimeMillis());
-	     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-	     String   fileName   =   sdf.format(dt);
-		download(tempPath+username+"_"+fileName+".zip",request,response);
+		//下载zip文件
+		download(myfilename,request,response);
 		
 	}
 	

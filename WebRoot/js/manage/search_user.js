@@ -14,6 +14,12 @@ function loadXMLDoc(url, cfunc) {
 	xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
 	xmlhttp.send();
 }
+function isEmpty(str){
+	if(str==null || str.trim().length==0)
+		return true;
+	else 
+		return false;
+}
 
 //获取应用绝对路径
 var localObj = window.location;
@@ -28,6 +34,10 @@ function search(){
 	
 	url = server_context+'/servlet/Search?name=';
 	var name = document.getElementById("name").value;
+	if(isEmpty(name)){
+		alert("请填写搜索用户名");
+		return false;
+	}
 	url = url + name;
 	loadXMLDoc(url, function() {
 		//alert("readState:"+xmlhttp.readyState+" status:"+xmlhttp.status);

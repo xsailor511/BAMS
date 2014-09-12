@@ -90,13 +90,13 @@ public class AddOfficeServlet extends HttpServlet {
 		String tuantishenfenzheng="";
 		for(int i=0;i<tuantixingmings.length;i++){
 			if(tuantixingmings[i].trim().equals("")){
-				tuantixingming = tuantixingming+";none";
-				tuantishenfenzheng = tuantishenfenzheng +";none";
+				tuantixingming = tuantixingming+"none;";
+				tuantishenfenzheng = tuantishenfenzheng +"none;";
 			}else{
 				String temp1 = new String(tuantixingmings[i].getBytes(StringUtil.getEncoding(tuantixingmings[i])), "UTF-8");
 				String temp2 = new String(tuantishenfenzhengs[i].getBytes(StringUtil.getEncoding(tuantishenfenzhengs[i])), "UTF-8");
-				tuantixingming = tuantixingming+";"+ temp1;
-				tuantishenfenzheng = tuantishenfenzheng +";"+temp2;
+				tuantixingming = tuantixingming+ temp1+";";
+				tuantishenfenzheng = tuantishenfenzheng +temp2+";";
 			}
 		}
 		office.setTuantiyiwaishanghaimingdan(tuantixingming);
@@ -108,13 +108,13 @@ public class AddOfficeServlet extends HttpServlet {
 		String gaocengshenfenzheng = "";
 		for(int i=0;i<gaocengxingmings.length;i++){
 			if(gaocengxingmings[i].trim().equals("")){
-				gaocengxingming = gaocengxingming +";none";
-				gaocengshenfenzheng = gaocengshenfenzheng +";none";
+				gaocengxingming = gaocengxingming +"none;";
+				gaocengshenfenzheng = gaocengshenfenzheng +"none;";
 			}else{
 				String temp1 = new String(gaocengxingmings[i].getBytes(StringUtil.getEncoding(gaocengxingmings[i])), "UTF-8");
 				String temp2 = new String(gaocengshenfenzhengs[i].getBytes(StringUtil.getEncoding(gaocengshenfenzhengs[i])), "UTF-8");
-				gaocengxingming = gaocengxingming +";" + temp1;
-				gaocengshenfenzheng = gaocengshenfenzheng +";" + temp2;
+				gaocengxingming = gaocengxingming  + temp1+";";
+				gaocengshenfenzheng = gaocengshenfenzheng  + temp2+";";
 			}
 		}
 		office.setGaocengchailvmingdan(gaocengxingming);
