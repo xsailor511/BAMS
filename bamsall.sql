@@ -55,11 +55,7 @@ CREATE TABLE `allproperty` (
   `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   `tag` varchar(18) NOT NULL COMMENT '时间戳表示的保单唯一代号',
   PRIMARY KEY (`id`,`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-
-/*Data for the table `allproperty` */
-
-insert  into `allproperty`(`toubaorenmingcheng`,`toubaorendizhi`,`toubaorendianhua`,`id`,`toubaorenzuzhijigou`,`beibaoxianrenmingcheng`,`beibaoxianrendizhi`,`beibaoxianrenzuzhijigou`,`beibaoxianrenyingyexingzhi`,`baoxiancaichandizhi`,`youzhengbianma`,`fangwujine`,`jiqishebeijine`,`qitajine`,`cunhuojine`,`feilv`,`baoxianfei`,`baoxianjinexiaoji`,`start_time`,`end_time`,`baoxianfeichina`,`jiaofeishijian`,`fujiatiaokuan`,`tebieyueding`,`zhengyichuli`,`toubaofujian`,`toubaofujianshuliang`,`shifoutouguo`,`lipeijilu`,`toubaorenqianzhang`,`toubaoriqi`,`username`,`tag`) values ('王三','江苏泗洪','12345678901',19,'234545','张氏','江苏宿迁','122334','商务','江苏宿迁','223456',20001,2343,2345,1233,NULL,345,'壹万叁仟四百','2014-09-11','2014-10-10','三百四十五','2014信用卡','附加条款','特别约定','susong',';fengxianpinggu;qita;其他投保附件',3,'fou;none','you;2014-09-11;123;我方;大傻瓜','王三','2014-09-11','xsailor','20140911223601966');
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `employerduty` */
 
@@ -94,11 +90,7 @@ CREATE TABLE `employerduty` (
   `tag` varchar(18) NOT NULL COMMENT '时间戳表示的保单唯一代号',
   PRIMARY KEY (`id`,`tag`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
-/*Data for the table `employerduty` */
-
-insert  into `employerduty`(`id`,`toubaorenmingcheng`,`toubaorendizhi`,`toubaorenlianxiren`,`toubaorendianhua`,`beibaoxianrenmingcheng`,`beibaoxianrendizhi`,`yingyexingzhi`,`beizuzhijigoudaima`,`canjiashehuibaoxian`,`guyuangongzhong`,`guyuanrenshu`,`peichangsiwang`,`peichangyiliao`,`baoxianfeilv`,`baoxianfei`,`start_time`,`end_time`,`tebieyueding`,`fufeiriqi`,`sifaguanxia`,`zhengyichuli`,`toubaorenqianzhang`,`toubaoriqi`,`username`,`tag`) values (4,'王三','江苏泗洪','山大','12345678901','张氏','江苏宿迁','商务','hgfjhgfj',1,';职员;大哥;none;none;none',';35;35;none;none;none',';10000;10000;none;none;none',';20000;20000;none;none;none',NULL,345,'2014-09-01','2014-09-26','特别约定','2014-10-09','司法管辖','susong','王三','2014-10-01','xsailor','20140911224411876');
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `enterprisepackage` */
 
@@ -122,11 +114,7 @@ CREATE TABLE `enterprisepackage` (
   `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   `tag` varchar(18) NOT NULL COMMENT '时间戳表示的保单唯一代号',
   PRIMARY KEY (`id`,`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
-
-/*Data for the table `enterprisepackage` */
-
-insert  into `enterprisepackage`(`id`,`weituoren`,`dianhua`,`lianxiren`,`enddate`,`startdate`,`kexuanxianzhong`,`baoxiangongsi`,`weituorenzhucedizhi`,`weituorenfadingdaibiaoren`,`shoutuorenzhucedizhi`,`shoutuorenfadingdaibiao`,`weituorenqianzhang`,`tianbiaoriqi`,`username`,`tag`) values (24,'大哥','12212345678','阿道夫','2014-10-11','2014-09-11',' 雇主责任保险; 污染责任保险;','平安','济南市高新区舜华路1500号','的萨菲','济南市高新区舜华路1500号','人员','大哥','2014-09-08','xsailor','20140911224521994');
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `family` */
 
@@ -150,11 +138,7 @@ CREATE TABLE `family` (
   `baoxianfeizongjichina` varchar(128) DEFAULT NULL COMMENT '保险费总计大写',
   `tag` varchar(18) NOT NULL COMMENT '时间戳表示的保单唯一代号',
   PRIMARY KEY (`id`,`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-
-/*Data for the table `family` */
-
-insert  into `family`(`id`,`baoxiancaichandizhi`,`caichanzonghebaoxian`,`quantijiatingchengyuan`,`jiatingchengyuanleixing`,`yiwaiyiliaobaoxianheji`,`yiwaishanghaiyiliao`,`chucichamingzhongji`,`menjizhen`,`jibingzhuyuan`,`startdate`,`enddate`,`baoxianfeizongji`,`username`,`baoxianfeizongjichina`,`tag`) values (8,'江苏宿迁',1,1,'fuqi',400,1,0,0,0,'2014-09-11','2014-10-11',550,'xsailor','四万八千','20140911223501145');
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `file` */
 
@@ -166,10 +150,6 @@ CREATE TABLE `file` (
   `fileurl` varchar(256) NOT NULL COMMENT '文件URL',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-
-/*Data for the table `file` */
-
-insert  into `file`(`id`,`filename`,`fileurl`) values (10,'java2word整理文档.doc','http://localhost:8080/BAMS/file/manager/java2word整理文档.doc'),(11,'网站入口.doc','http://localhost:8080/BAMS/file/manager/网站入口.doc'),(12,'OPENWRT安装.docx','http://localhost:8080/BAMS/file/manager/OPENWRT安装.docx');
 
 /*Table structure for table `freight` */
 
@@ -206,11 +186,7 @@ CREATE TABLE `freight` (
   `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   `tag` varchar(18) NOT NULL COMMENT '时间戳表示的保单唯一代号',
   PRIMARY KEY (`id`,`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
-/*Data for the table `freight` */
-
-insert  into `freight`(`id`,`fax_from`,`fax_to`,`beibaoxianren`,`fapiaohao`,`fapiaoriqi`,`jinkouhetonghao`,`xinyongzhenghao`,`baozhuangshuliang`,`baoxianhuowumingcheng`,`biaoji`,`jiagetiaojian`,`fapiaojine`,`baoxianjine`,`feilv`,`baoxianfei`,`chuanming`,`jianzaonianfen`,`chuanqi`,`qiyunriqi`,`qiyungang`,`via`,`mudigang`,`chengbaoxianbie`,`note`,`toubaorenqianzhang`,`tianbiaoriqi`,`username`,`tag`) values (5,'0634—6192778','0634—6192779','林夕','NO 02995606','2014-09-02','NO 12132432','20 DOCUMENTARY CREDIT NUMBER',34,'苹果手机','易碎品','无',1345,100000,NULL,345,'江苏号','1987','中国','2014-09-11','青岛港','福建港','西班牙马德里港','货运商业险','好样的','王三','2014-10-10','xsailor','20140911224306683');
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `office` */
 
@@ -238,11 +214,7 @@ CREATE TABLE `office` (
   `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   `tag` varchar(18) NOT NULL COMMENT '时间戳表示的保单唯一代号',
   PRIMARY KEY (`id`,`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
-
-/*Data for the table `office` */
-
-insert  into `office`(`id`,`toubaorenmingcheng`,`toubaorendizhi`,`lianxiren`,`shineizhuanghuang`,`bangongjiaju`,`bangongdianzi`,`caichansunshixianadd`,`caichansunshixianaddbaoe`,`tuantiyiwaixianzengjiarenshu`,`tuantiyiwaixianzengjiabaofei`,`zongbaofei`,`toubaorenqianzhang`,`toubaoriqi`,`tuantiyiwaishanghaimingdan`,`tuantiyiwaishanghaishenfenzheng`,`gaocengchailvmingdan`,`gaocengchailvshenfengzheng`,`username`,`tag`) values (18,'王三','江苏泗洪','阿道夫',8,7,5,10,100,12,480,1030,'王三','2014-09-04',';大海;none;none;none;none;none;none;none;none;none',';123456111111111111;none;none;none;none;none;none;none;none;none',';阿什顿飞;none',';111122223333333333;none','xsailor','20140911224450495');
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `picture` */
 
@@ -257,10 +229,6 @@ CREATE TABLE `picture` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
-/*Data for the table `picture` */
-
-insert  into `picture`(`id`,`picture_url`,`picture_owner`,`picture_name`,`description`) values (31,'http://localhost:8080/BAMS/file/user/upload_image/20140910151110069.jpg','xsailor','20140910151110069.jpg','阿什顿飞');
-
 /*Table structure for table `policyindex` */
 
 DROP TABLE IF EXISTS `policyindex`;
@@ -272,11 +240,7 @@ CREATE TABLE `policyindex` (
   `username` varchar(64) NOT NULL COMMENT '保单所属用户',
   `tag` varchar(18) NOT NULL COMMENT '时间戳表示的保单唯一代号',
   PRIMARY KEY (`id`,`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
-
-/*Data for the table `policyindex` */
-
-insert  into `policyindex`(`id`,`tablename`,`policyname`,`username`,`tag`) values (12,'vehicle','xsailor_机动车投保单_20140911223415732','xsailor','20140911223415732'),(13,'family','xsailor_全家无忧投保单_20140911223501145','xsailor','20140911223501145'),(14,'allproperty','xsailor_财产一切险投保单_20140911223601966','xsailor','20140911223601966'),(15,'freight','xsailor_货运险投保单_20140911224306683','xsailor','20140911224306683'),(16,'employerduty','xsailor_雇主责任险投保单_20140911224411876','xsailor','20140911224411876'),(17,'office','xsailor_办公室综合保险投保单_20140911224450495','xsailor','20140911224450495'),(18,'enterprisepackage','xsailor_中小企业一揽子保险委托书_20140911224521994','xsailor','20140911224521994');
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `role` */
 
@@ -287,10 +251,6 @@ CREATE TABLE `role` (
   `role_name` varchar(32) NOT NULL COMMENT '角色名称',
   PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
-/*Data for the table `role` */
-
-insert  into `role`(`role_id`,`role_name`) values (1,'enterprise_gold'),(2,'bank'),(3,'financial'),(4,'agent'),(5,'manager'),(6,'enterprise_mail');
 
 /*Table structure for table `user` */
 
@@ -308,10 +268,6 @@ CREATE TABLE `user` (
   `goal` int(5) DEFAULT NULL COMMENT '用户积分',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
-
-/*Data for the table `user` */
-
-insert  into `user`(`name`,`role`,`id`,`password`,`phone`,`realname`,`socialid`,`email`,`goal`) values ('alice',3,3,'111111','18769780002','王二','123456789123456789','shit@163.com',11),('richard',5,4,'111111','18769780003','彰武','123456789123456789','shit@163.com',9),('xsailor',4,5,'111111','18769780004','吴克','123456789123456789','shit@163.com',22),('test1',1,6,'111111','18769788016','大海','123456789123456789','sddskfj@156.com',NULL),('test6',1,11,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test9',4,14,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test14',2,19,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test15',2,20,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test26',2,31,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('test32',2,37,'111111','12345678934','王二麻子','123456789543245678','198@168.com',NULL),('tom',6,38,'111111','12345678987','daf','123456789987654321','123@145.com',NULL),('Friend',4,39,'111111','12345678767','大哥','122222222222223333','xsailor51@345.com',NULL),('shang',6,40,'111111','18765437680','易中天','234567654567898789','sdf@165.com',NULL),('leijun',2,41,'111111','23456789876','杨洋','345678765432345678','dsaf@cc.com',NULL);
 
 /*Table structure for table `vehicle` */
 
@@ -363,11 +319,7 @@ CREATE TABLE `vehicle` (
   `username` varchar(64) DEFAULT NULL COMMENT '投保账户名称',
   `tag` varchar(18) NOT NULL COMMENT '时间戳表示的保单唯一代号',
   PRIMARY KEY (`id`,`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
-
-/*Data for the table `vehicle` */
-
-insert  into `vehicle`(`id`,`beibaoxianrenmingcheng`,`beibaoxianrenzhengjianhaoma`,`beibaoxianrentongxundizhi`,`beibaoxianrenyoubian`,`beibaoxianlianxiren`,`beibaoxianrendianhua`,`beibaoxianrenbangongdianhua`,`beibaoxianrenemail`,`toubaorenmingcheng`,`toubaorenzhengjianhaoma`,`toubaorentongxundizhi`,`toubaorenyoubian`,`toubaorenlianxiren`,`toubaorendianhua`,`toubaorenbangongdianhua`,`toubaorenemail`,`xingshizhengchezhu`,`changpaixinghao`,`hedingzaike`,`haopaihaoma`,`chucidengjiriqi`,`shibiedaima`,`fadongjixinghao`,`xinchejiage`,`zhengbeizhiliang`,`paiqiliang`,`shangnianjiaoqiangxian`,`jiaoqiangxianbaodanhao`,`shangnianshangyexian`,`shangyexianbaodanhao`,`shangyexianxiane`,`baoxianfeixiaoji`,`shangyebaoxianfeiheji`,`chechuanshui`,`heji`,`shangyebaoxianstartdate`,`shangyebaoxianenddate`,`jiaoqiangbaoxianstartdate`,`jiaoqiangbaoxianenddate`,`zhengyijiejue`,`jiashiyuanxinxi`,`username`,`tag`) values (11,'张氏','123456789987654321','江苏思思洪','223456','王思','18767899098','88765432','1234@163.com','王三','181736453629304920','湖南长沙','345678','山大','12345678901','45678923','45@qq.com','我的','hkdalda',23,'苏kn345','2014-09-11','12434356','alkjs4345',123445,5600,20,'中国平安','asdf123','中国人保','23zasdf',';1223',';12',600,200,1220,'2014-09-11','2014-10-10','2014-09-03','2014-09-17','法院处理','驾驶员信息','xsailor','20140911223415732');
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

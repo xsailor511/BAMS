@@ -172,20 +172,22 @@ public class AddVehicleServlet extends HttpServlet {
 		vehicle.setUsername(username);
 		
 		
-		String checkboxes[] = request.getParameterValues("xianbie");
+		//String checkboxes[] = request.getParameterValues("xianbie");
 		String shangyexianxianes[] = request.getParameterValues("shangyexianxiane");
 		String baoxianfeixiaojis[] = request.getParameterValues("baoxianfeixiaoji");
 		
 		String shangyexianxiane = "";
 		String baoxianfeixiaoji = "";
-		for(int i=0;i<checkboxes.length;i++){
-			if(checkboxes[i].equals("checked")){
+		for(int i=0;i<shangyexianxianes.length;i++){
+			if(!shangyexianxianes[i].trim().equals("")){
 				shangyexianxiane = shangyexianxiane + shangyexianxianes[i] + ";";
 				baoxianfeixiaoji = baoxianfeixiaoji + baoxianfeixiaojis[i] + ";";
 			}else{
 				shangyexianxiane = shangyexianxiane + "zero;";
 				baoxianfeixiaoji = baoxianfeixiaoji + "zero;";
 			}
+				
+			
 		}
 		vehicle.setShangyexianxiane(shangyexianxiane);
 		vehicle.setBaoxianfeixiaoji(baoxianfeixiaoji);

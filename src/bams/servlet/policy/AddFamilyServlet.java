@@ -87,6 +87,10 @@ public class AddFamilyServlet extends HttpServlet {
 					yiwaishanghaiyiliao = true;
 			}
 		}
+//		System.out.println("chucichamingzhongji    "+chucichamingzhongji);
+//		System.out.println("menjizhen    "+menjizhen);
+//		System.out.println("jibingzhuyuan    "+jibingzhuyuan);
+//		System.out.println("yiwaishanghaiyiliao    "+yiwaishanghaiyiliao);
 		
 		family.setCaichanzonghebaoxian(caichanzonghebaoxian);
 		family.setChucichamingzhongji(chucichamingzhongji);

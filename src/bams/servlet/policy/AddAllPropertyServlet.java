@@ -148,11 +148,12 @@ public class AddAllPropertyServlet extends HttpServlet {
 				qita = new String(qita.getBytes(StringUtil.getEncoding(qita)), "UTF-8");
 				toubaofujian = toubaofujian+qita;//the end fo toubaofujian is ";"
 				
-				int toubaofujianshuliang = Integer.parseInt(request.getParameter("toubaofujianshuliang"));
-				allproperty.setToubaofujianshuliang(toubaofujianshuliang);
+				
 			}else{
 				toubaofujian = toubaofujian+"none";//the end fo toubaofujian is ";"
 			}
+			int toubaofujianshuliang = Integer.parseInt(request.getParameter("toubaofujianshuliang"));
+			allproperty.setToubaofujianshuliang(toubaofujianshuliang);
 		}
 		
 		allproperty.setToubaofujian(toubaofujian);//toubaofujian="zican;qita;dddssd", or "zican;none";

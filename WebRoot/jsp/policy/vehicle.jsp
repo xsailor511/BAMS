@@ -300,7 +300,7 @@ border:solid#000 1px;
   </tr>
   <tr>
     <td colspan="3">
-    <input type="checkbox" name="xianbie" value="checked" id="cheliangsunshixian">
+    <input type="checkbox" name="xianbie" value="cheliangsunshixian" id="cheliangsunshixian">
         车辆损失险</td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="clbaoxianjine"></td>
@@ -308,7 +308,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="clbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="sydszzrbx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="sydszzrbx" id="sydszzrbx">
         商业第三者责任保险</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="sybaoxianjine"></td>
@@ -316,7 +316,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="sybaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="qcdqx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="qcdqx" id="qcdqx">
         全车盗抢险</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="qcbaoxianjine"></td>
@@ -324,7 +324,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="qcbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="sjzwzrx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="sjzwzrx" id="sjzwzrx">
         司机座位责任险</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="sjbaoxianjine"></td>
@@ -332,7 +332,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="sjbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="ckzwzrx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="ckzwzrx" id="ckzwzrx">
         乘客座位责任险</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="ckbaoxianjine"></td>
@@ -340,7 +340,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="ckbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="zrx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="zrx" id="zrx">
         自燃险</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="zrxbaoxianjine"></td>
@@ -348,7 +348,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="zrxbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="blddpsx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="blddpsx" id="blddpsx">
         玻璃单独破碎险(国产玻璃)</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="blbaoxianjine"></td>
@@ -356,7 +356,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="blbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="cshhx">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="cshhx" id="cshhx">
         车身划痕险</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="csbaoxianjine"></td>
@@ -364,7 +364,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="csbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="clbjmpltstk">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="clbjmpltstk" id="clbjmpltstk">
         不计免赔率特约条款(车辆损失险)</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="clbjbaoxianjine"></td>
@@ -372,7 +372,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="clbjbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="sybjmpltstk">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="sybjmpltstk" id="sybjmpltstk">
         不计免赔率特约条款(商业第三者责任保险)</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="sybaoxianjine"></td>
@@ -380,7 +380,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="sybaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="qcbjmpltstk">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="qcbjmpltstk" id="qcbjmpltstk">
         不计免赔率特约条款(全车盗抢险)</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="qcbaoxianjine"></td>
@@ -388,7 +388,7 @@ border:solid#000 1px;
     <input type="text" name="baoxianfeixiaoji" id="qcbaoxianfeixiaoji"></td>
   </tr>
   <tr>
-    <td colspan="3"><label><input type="checkbox" name="xianbie" value="checked" id="csbjmpltstk">
+    <td colspan="3"><label><input type="checkbox" name="xianbie" value="csbjmpltstk" id="csbjmpltstk">
       不计免赔率特约条款(车上人员责任险)</label></td>
     <td colspan="2">
     <input type="text" name="shangyexianxiane" id="csbaoxianjine"></td>
@@ -730,7 +730,9 @@ border:solid#000 1px;
 			return false;
 		}
 		for(var i=0;i<xianbie.length;i++){
+			
 			if(xianbie[i].checked){
+				//alert("value: "+shangyexianxiane[i].value);
 				if(isEmpty(shangyexianxiane[i].value)){
 					alert("请将商业险责任限额部分的保险金额/赔偿限额填写完整");
 					return false;
