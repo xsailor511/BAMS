@@ -155,8 +155,8 @@ if(null==role_int){
 							class="icon-user"></i> 核心流程</a></li>
 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
 							class="icon-user"></i> 积分兑换</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 更多</a></li>
+<!-- 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i -->
+<!-- 							class="icon-user"></i> 更多</a></li> -->
 				</ul>
 				<div class="s-widget">
 					<h6>咨询热线</h6>
@@ -210,20 +210,20 @@ if(null==role_int){
 </div>
 <div class="policy">
 <div class="image">
-<a href="<%=basePath%>jsp/policy/family.jsp" target="_blank">
+<a href="<%=basePath%>jsp/policy/familyhint.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
 </a>
 </div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/family.jsp" target="_blank"><font color="blue">家庭综合保险</font></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/familyhint.jsp" target="_blank"><font color="blue">家庭综合保险</font></a></div>
 </div>
 <div class="policy">
 <div class="image">
-<a href="<%=basePath%>jsp/policy/vehicle.jsp" target="_blank">
+<a href="<%=basePath%>jsp/policy/vehiclehint.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
 </a>
 </div>
 <div class="showtext">
-<a href="<%=basePath%>jsp/policy/vehicle.jsp" target="_blank"><font color="blue">私家车保险</font></a>
+<a href="<%=basePath%>jsp/policy/vehiclehint.jsp" target="_blank"><font color="blue">私家车保险</font></a>
 </div>
 </div>
 </div>
@@ -234,26 +234,26 @@ if(null==role_int){
 <div class="description">对公专区</div>
 <div class="content">
 <div class="policy">
-<div class="image"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank">
+<div class="image"><a href="<%=basePath%>jsp/policy/employerdutyhint.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/employerduty.jsp" target="_blank"><font color="blue">雇主责任保险</font></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/employerdutyhint.jsp" target="_blank"><font color="blue">雇主责任保险</font></a></div>
 </div>
 <div class="policy">
 <div class="image">
-<a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">
+<a href="<%=basePath%>jsp/policy/freighthint.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
 </a>
 </div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank"><font color="blue">货运险</font></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/freighthint.jsp" target="_blank"><font color="blue">货运险</font></a></div>
 </div>
 <div class="policy">
 <div class="image">
-<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank">
+<a href="<%=basePath%>jsp/policy/allpropertyhint.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
 </a>
 </div>
 <div class="showtext">
-<a href="<%=basePath%>jsp/policy/allproperty.jsp" target="_blank"><font color="blue">企业财产险</font></a>
+<a href="<%=basePath%>jsp/policy/allpropertyhint.jsp" target="_blank"><font color="blue">企业财产险</font></a>
 </div>
 </div>
 </div>
@@ -270,9 +270,9 @@ if(null==role_int){
 <div class="showtext"></div>
 </div>
 <div class="policy">
-<div class="image"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank">
+<div class="image"><a href="<%=basePath%>jsp/policy/officehint.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank"><font color="blue">办公室综合保险</font></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/officehint.jsp" target="_blank"><font color="blue">办公室综合保险</font></a></div>
 </div>
 
 </div>

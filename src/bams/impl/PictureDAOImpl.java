@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bams.dao.PictureDAO;
+import bams.entity.Case;
 import bams.entity.Picture;
 import bams.util.Database;
 
@@ -154,6 +155,38 @@ public class PictureDAOImpl implements PictureDAO {
 				sqle.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public boolean addCase(Case mycase) {
+		PreparedStatement ps = null;
+		boolean result = false;
+		String sql = "insert into bams.case(baoxiandanhao,shigujingguo,username,tel) values(?,?,?,?)";
+		return false;
+	}
+
+	@Override
+	public List<Case> listAllCase() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Case> queryCaseByShigu() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean markCase(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Case getCase(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

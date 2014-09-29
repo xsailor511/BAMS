@@ -142,6 +142,8 @@ height:15px;
 							class="icon-user"></i><font color="blue"> 批量打印word文档</font></a></li>
 					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
 							class="icon-user"></i> 文件上传</a></li>
+					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue"><i
+							class="icon-user"></i> 费率管理</a></li>
 				</ul>
 				
 			</div>

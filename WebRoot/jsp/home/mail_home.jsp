@@ -154,8 +154,7 @@ if(null==role_int){
 							class="icon-user"></i> 核心流程</a></li>
 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
 							class="icon-user"></i> 积分兑换</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 更多</a></li>
+					
 				</ul>
 				<div class="s-widget">
 					<h6>咨询热线</h6>
@@ -213,14 +212,14 @@ if(null==role_int){
 <div class="showtext"></div>
 </div>
 <div class="policy">
-<div class="image"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank">
+<div class="image"><a href="<%=basePath%>jsp/policy/freighthint.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/freight.jsp" target="_blank"><font color="blue">货运险</font></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/freighthint.jsp" target="_blank"><font color="blue">货运险</font></a></div>
 </div>
 <div class="policy">
-<div class="image"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank">
+<div class="image"><a href="<%=basePath%>jsp/policy/officehint.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/office.jsp" target="_blank"><font color="blue">办公室综合保险</font></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/officehint.jsp" target="_blank"><font color="blue">办公室综合保险</font></a></div>
 </div>
 
 </div>
@@ -301,7 +300,7 @@ if(null==role_int){
 						<hr class="visible-desktop">
 						<div class="copy">
 							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="<%=basePath %>http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
+							<a href="<%=basePath %>" title="银保直通车" target="_blank">银保直通车</a>
 						</div>
 					</div>
 				</div>

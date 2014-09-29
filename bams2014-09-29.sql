@@ -57,6 +57,20 @@ CREATE TABLE `allproperty` (
   PRIMARY KEY (`id`,`tag`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
+/*Table structure for table `case` */
+
+DROP TABLE IF EXISTS `case`;
+
+CREATE TABLE `case` (
+  `id` int(16) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `baoxiandanhao` varchar(64) NOT NULL COMMENT '保险单号',
+  `shigujingguo` tinytext NOT NULL COMMENT '事故经过',
+  `username` varchar(64) NOT NULL COMMENT '用户姓名',
+  `tel` char(11) NOT NULL COMMENT '联系电话',
+  `mark` tinyint(1) DEFAULT '0' COMMENT '是否受理',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /*Table structure for table `employerduty` */
 
 DROP TABLE IF EXISTS `employerduty`;
@@ -139,6 +153,17 @@ CREATE TABLE `family` (
   `tag` varchar(18) NOT NULL COMMENT '时间戳表示的保单唯一代号',
   PRIMARY KEY (`id`,`tag`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+/*Table structure for table `feilv` */
+
+DROP TABLE IF EXISTS `feilv`;
+
+CREATE TABLE `feilv` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `description` varchar(64) NOT NULL COMMENT '费率所属保单',
+  `feilv` double NOT NULL COMMENT '费率',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `file` */
 
@@ -226,6 +251,7 @@ CREATE TABLE `picture` (
   `picture_owner` varchar(64) NOT NULL COMMENT '图片所属用户',
   `picture_name` varchar(128) NOT NULL COMMENT '图片名称',
   `description` tinytext COMMENT '图片说明',
+  `baoxiandanhao` varchar(64) DEFAULT NULL COMMENT '保险单号',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 

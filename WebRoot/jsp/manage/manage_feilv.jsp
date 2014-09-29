@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="bams.entity.User" %>
+<%@ page import="bams.entity.Feilv" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -49,26 +49,29 @@ if(null==role_int){
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
-<style type="text/css">
-table{
-border-collapse:collapse;
-border:1px;
-}
-table td{
-border:solid#000 1px;
-}
+<style type="text/css"> 
 
-input.user_goal{
-width:50px;
-height:15px;
+#main {text-align:center;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;} 
+#main ul {width:520px;height:165px;list-style:none}
+#main li.description {border:1px solid #ccc;border-top:1px solid #ccc;float:left;width:306px;height:33px;text-align:center;line-height:33px} 
+#main li.input {border:1px solid #ccc;border-top:1px solid #ccc;float:left;width:102px;height:33px;text-align:center;line-height:33px}
+#main li.button {border:1px solid #ccc;border-top:1px solid #ccc;float:left;width:102px;height:33px;text-align:center;line-height:33px} 
+#main li.b {border-bottom:1px solid #ccc} 
+#main li.r {border-right:1px solid #ccc}
+.feilv{
+width:60px;
+height:20px;
 }
-</style>
+.mybutton{
+width:50px;
+height:25px;
+}
+</style> 
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 </head>
 <body>
 	<!-- Navbar starts -->
-
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -137,14 +140,14 @@ height:15px;
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li ><a href="<%=basePath %>jsp/home/bams_manager.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
-					<li><a  class="open br-red"><i class="icon-home"></i> <font color="blue">所有用户</font></a></li>
+					<li><a href="<%=basePath %>servlet/ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
 
 					<li><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" class="br-blue"><i
 							class="icon-user"></i> 批量打印word文档</a></li>
 					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
 							class="icon-user"></i> 文件上传</a></li>
-					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue"><i
-							class="icon-user"></i> 费率管理</a></li>
+					<li><a class="br-blue"><i
+							class="icon-user"></i><font color="blue">费率管理</font></a></li>
 				</ul>
 				
 			</div>
@@ -161,91 +164,37 @@ height:15px;
 
 					<!-- Element -->
 					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
-<!-- 						<div class="flexslider"> -->
-<!-- 						</div> --><table width="100%" border="0" id="mytable">
-  <tr>
-    <th align="center" valign="middle" scope="col">编号</th>
-    <th align="center" valign="middle" scope="col"><input type="checkbox" name="checkall" id="checkall" /></th>
-    <th align="center" valign="middle" scope="col">用户名</th>
-    <th align="center" valign="middle" scope="col">积分:</th>
-    <th align="center" valign="bottom" scope="col"></th>
-    <th align="center" valign="middle" scope="col">修改积分</th>
-    <th align="center" valign="middle" scope="col"><font style="color:red">删除</font></th>
-    <th align="center" valign="middle" scope="col"><font style="color:blue">查看</font></th>
-  </tr>
-  <%
-  List<User> list = (List)request.getAttribute("userlist");
-  if(null==list){
-	  this.getServletContext()
-	  	.getRequestDispatcher("/error.jsp")
-	  	.forward(request,response);
-  }
-  int start = 0 ;
-	String str_start = request.getParameter("start");
-	if(null!=str_start)
-		start = Integer.parseInt(str_start);
-	int pageSize = 10;
-	int pageCount = start/10+1;
-  Iterator<User> it = list.iterator();
-  int rowCount = 0 ;
-  while(it.hasNext()){
-	  rowCount++;
-	  User user = it.next();
-		String name = user.getName();
-		int goal = user.getGoal();
-		int id = user.getId();
-  %>
-  <tr>
-    <td height="25" align="center"><%=rowCount %></td>
-    <td align="center"><input type="checkbox" name="mycheck" id="mycheck" />
-    <label for="mycheck"></label></td>
-    <td align="center"><%=name %></td>
-    <td colspan="2" align="center" valign="middle"><label for="xsailor_goal"></label>
-    <input name="xsailor_goal" type="text" id="xsailor_goal<%=rowCount %>" value="<%=goal %>" style="width:50px;height:15px" value="22"/>&nbsp;&nbsp;</td>
-    <td align="center"><input type="button" name="goal_set_button" id="goal_set_button" value="确认修改" onclick="updategoal('<%=rowCount %>','<%=name %>')"/></td>
-    <td align="center"><div id='<%=id%>'></div><a href="javascript:void(0)" onclick="deleteuser('<%=name %>','<%=rowCount %>')">
-    <font style="color:red">删除</font></a>
-    <input type= "hidden" name= "username" value= "<%=name%>">
-    </td>
-    <td align="center"><a href="<%=basePath%>servlet/GetUserServlet?name=<%=name %>" target="_blank">
-    <font style="color:blue">查看</font></a></td>
-  </tr>
-  <%
-  
-  }
-  %>
-</table>
-<p align="center">
-<a href = "<%=basePath%>servlet/ListAllUserServlet?start=0" ><font color="blue"><B>首页</B></font></a>
-<%
-if(start==0){
-%>
-上一页
+
+<div id="main"> 
+<ul> 
+<li class="description">所属保单</li> 
+
+<li class="input">当前费率(‰)</li>
+<li class="button">修改</li>
+
 
 <%
-}else{
+List<Feilv> feilvlist= (List)request.getAttribute("feilvlist");
+for(int i=0;i<feilvlist.size();i++){
+	int id = feilvlist.get(i).getId();
+	String description = feilvlist.get(i).getDescription();
+	double feilv = feilvlist.get(i).getFeilv();
+
+
 %>
-<a href = "<%=basePath%>servlet/ListAllUserServlet?start=<%=start-pageSize%>" ><font color="blue">上一页</font></a>
+<li class="description"><%=description %></li> 
+<li class="input"><input type="text" name="feilv" id="feilv<%=id %>" class="feilv" value="<%=feilv %>" /></li> 
+<li class="button"><input type="button" id="mybutton" class="mybutton" onclick="alterValue('<%=id %>','<%=feilv %>')" value="修改" /></li> 
+
+
 <%
 }
 %>
 
-<%
-if(list.size()<10){
-%>
-下一页
-<%
-}else{
-%>
-<a href = "<%=basePath%>servlet/ListAllUserServlet?start=<%=start+pageSize%>" ><font color="blue">下一页</font></a>
-<%
-}
-%>
-第<%=pageCount%>页</p>
+</ul> 
+</div> 
 
-<p align="center">
-<a href="javascript:void(0)" onclick="deleteManyUsers()"><font color="red">批量删除</font></a>
-</p>
+
 					</div>
 				</div>
 			</div>
@@ -354,8 +303,15 @@ if(list.size()<10){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
-	<!-- Main js file -->
+	<script src="<%=basePath %>js/manage/search_user.js"></script>
 	<script type="text/javascript">
+	function isEmpty(str){
+		if(str==null || str.trim().length==0)
+			return true;
+		else 
+			return false;
+	}
+	
 	var xmlhttp;
 	function loadXMLDoc(url, cfunc) {
 		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -378,117 +334,42 @@ if(list.size()<10){
 	var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
 
 	var server_context=basePath;
-	function deleteuser(name,rowCount){
-		//alert("test");
-		var url = server_context+"/Delete?name="+name;
-		loadXMLDoc(url, function() {
-			
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				resultstring = xmlhttp.responseText;//json 字符串
-				if(resultstring=="success"){
-					alert("删除成功");
-					location.reload();
-				}else{
-					alert("删除失败");
-					location.reload();
-				}
-			}
-		});
-	}
 	
-	function deleteManyUsers(){
-		//至少选择一个用户
-		 var checkboxes = document.getElementsByName("mycheck");
-		 var mark = false;
-		 for(var i=0;i<checkboxes.length;i++){
-			 if(checkboxes[i].checked)
-				 mark = true;
-		 }
-		 if(!mark){
-			 alert("请至少选择一个用户");
-			 return false;
-		 }
-		 var    bln    =    window.confirm("批量删除将会删除所有被选中的用户，不可修复！");
-		 if(bln){
-				var usernames = document.getElementsByName("username");
-				var param = "";
-				for(var i=0;i<checkboxes.length;i++){
-					if(checkboxes[i].checked)
-						param=param+usernames[i].value+";";
-				}
-				var url = server_context+"/servlet/DeleteManyUserServlet?usernames="+param;
-				loadXMLDoc(url, function() {
-					
-					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						resultstring = xmlhttp.responseText;//json 字符串
-						if(resultstring=="success"){
-							alert("删除成功");
-							location.reload();
-							
-						}else if(resultstring=="failed"){
-							alert("全部删除失败");
-						}else{
-							alert("发生未知错误");
-						}
-					}
-				});
-		 }
-		
-		
-	}
-	
-	function setglobal(){
-		var global_goal = document.getElementById("global_goal").value;
-		var checkboxes = document.getElementsByName("mycheck");
-		var xsailor_goals= document.getElementsByName("xsailor_goal");
-		for(var i=0;i<checkboxes.length;i++){
-			if(checkboxes[i].checked)
-				xsailor_goals.value = global_goal;
+	function alterValue(id, feilv){
+		var new_feilv = document.getElementById("feilv"+id).value;
+		if(isEmpty(new_feilv)){
+			alert("费率不能为空");
+			document.getElementById("feilv"+id).value = feilv;
+			return;
 		}
-	}
-	
-	function updategoal(id,name){
-		var goal = document.getElementById('xsailor_goal'+id).value;
-		var url = server_context+"/servlet/UpdateUserGoalServlet?goal="+goal+"&name="+name;
-		loadXMLDoc(url, function() {
-			
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				resultstring = xmlhttp.responseText;//json 字符串
-				if(resultstring=="success"){
-					alert("更新成功");
-				}else{
-					alert("更新失败");
-					
+		if(isNaN(new_feilv)){
+			alert("费率必须是数字");
+			document.getElementById("feilv"+id).value = feilv;
+			return;
+		}
+		if(new_feilv==feilv){
+			return ;
+		}else{
+			var url = server_context+"/servlet/AlterFeilvServlet?id="+id+"&feilv="+new_feilv;
+			loadXMLDoc(url, function() {
+				
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					resultstring = xmlhttp.responseText;//json 字符串
+					if(resultstring=="success"){
+						alert("修改成功");
+						location.reload();
+					}else{
+						alert("修改失败");
+						location.reload();
+					}
 				}
-			}
-		});
+			});
+		}
+		
 	}
 	
-	$(function() {
-	    $("#checkall").click(function() {
-	        if ($(this).attr("checked")) {
-	            $("input[name=mycheck]").each(function() {
-	                $(this).attr("checked", true);
-	            });
-	        } else {
-	            $("input[name=mycheck]").each(function() {
-	                $(this).attr("checked", false);
-	            });
-	        }
-	    });
-	    //得到选中的值，ajax操作使用
-	    $("#submit").click(function() {
-	        var text="";
-	        $("input[name=items]").each(function() {
-	            if ($(this).attr("checked")) {
-	                text += ","+$(this).val();
-	            }
-	        });
-	         alert(text);
-	    });
-	});
-
 	</script>
+	<!-- Main js file -->
 </body>
 </html>
 

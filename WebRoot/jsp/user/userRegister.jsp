@@ -187,8 +187,7 @@ String path = request.getContextPath();
 
 					<li><a href="<%=basePath %>jsp/user/login.jsp" class="br-blue"><i
 							class="icon-user"></i> 登陆</a></li>
-					<li><a href="<%=basePath %>error.jsp" class="br-blue"><i
-							class="icon-user"></i> 更多</a></li>
+
 				</ul>
 				<div class="s-widget">
 					<h6>咨询热线</h6>

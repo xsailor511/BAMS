@@ -24,7 +24,7 @@ if(null==role_int){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>雇主责任险投保流程</title>
+<title>货运险类投保流程</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -99,7 +99,7 @@ if(null==role_int){
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li><a  class="open br-red"><i
-							class="icon-home"></i>雇主责任险投保流程</a> <!-- Sub menu markup 
+							class="icon-home"></i>货运险类投保流程</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>
@@ -124,14 +124,14 @@ if(null==role_int){
 					<!-- Element -->
 					<div class="box-body" style="background:#CCDDFF;color:black">
 						
-
-
-						<h5>雇主责任险投保流程</h5><br/>
-<img src="<%=basePath %>img/hint/employerdutyhint.jpg" />
+<h5>货运险类投保流程</h5><br/>
+<img src="<%=basePath %>img/hint/freighthint.jpg" />
 <br/><br/><br/>
 <p style="text-align:center;color:red">
-<a href="<%=basePath %>servlet/EmployerDutyFeilvServlet"><font color="blue">我已详细了解投保流程</font></a>
+<a href="<%=basePath %>servlet/FreightFeilvServlet"><font color="blue">我已详细了解投保流程</font></a>
 </p>
+
+						
 					</div>
 				</div>
 			</div>

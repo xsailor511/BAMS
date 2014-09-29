@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page language="java" import="bams.entity.User" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -150,28 +149,11 @@ border:solid#000 1px;
 <h5>补充医疗保险：</h5>此保险是相对于基本医疗保险而言的一个概念。即企业员工超过基本医疗保险范围的医疗需求可以通过补充医疗保险的方式予以补充，提高员工的养老、医疗保障程度。与基本医疗保险不同，补充医疗保险不是通过国家立法强制实施的，而是由用人单位自愿参加的商业保险。
 
 <br/><br/>
-
-财产保险投保流程<br/>
-详细了解集团统保说明<br/>
- 
-
- 对价格及服务优势认可后，点击预投保，填制预投保单。点击提交后，完成预投保；
-根据对入围保险公司车辆价格及条款比较报告，选择投保公司；
- 
-
-（1）点提交，待审核报价，
-（2）并在“会员专区—照片上传”提交上年保单
- 
-
-接受报价后，将保费及时划转至保险公司银行帐号。
-
- 
-
-按投保单中所填列的邮寄地址向投保人发放保险合同。
-（7个工作日，包含递送时间）
+<h5>财产一切险投保流程</h5><br/>
+<img src="<%=basePath %>img/hint/allpropertyhint.jpg" />
 <br/><br/><br/>
 <p style="text-align:center;color:red">
-<a href="<%=basePath %>jsp/policy/allproperty.jsp"><font color="blue">我已详细了解投保流程</font></a>
+<a href="<%=basePath %>servlet/AllPropertyFeilvServlet"><font color="blue">我已详细了解投保流程</font></a>
 </p>
 					
 

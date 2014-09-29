@@ -5,6 +5,7 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String session_name = (String)session.getAttribute("name");
 Integer role_int = (Integer)session.getAttribute("role");
+String feilv = (String)request.getAttribute("feilv");
 String url = basePath+"jsp/user/login.jsp";//then go back to login page
 if(null==role_int){
 	response.setHeader("refresh","0;URL="+url) ;
@@ -221,7 +222,7 @@ border:solid#000 1px;
     <td colspan="2"><p>费率</p>
     <p>INSURANCE RATE</p></td>
     <td colspan="3">&nbsp;
-    <input type="text" name="feilv" id="feilv"></td>
+    <input type="text" name="feilv" id="feilv" value="<%=feilv %>" readonly="readonly"/></td>
     <td colspan="2">保险费</td>
     <td colspan="2">&nbsp;
     <input type="text" name="baoxianfei" id="baoxianfei"></td>

@@ -154,8 +154,7 @@ if(null==role_int){
 						</ul></li>
 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
 							class="icon-user"></i> 积分兑换</a></li>
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 更多</a></li>
+					
 				</ul>
 				<div class="s-widget">
 					<h6>咨询热线</h6>
@@ -210,9 +209,9 @@ if(null==role_int){
 <div class="showtext"></div>
 </div>
 <div class="policy">
-<div class="image"><a href="<%=basePath%>jsp/policy/enterprisepackage.jsp" target="_blank">
+<div class="image"><a href="<%=basePath%>jsp/policy/enterprisepackagehint.jsp" target="_blank">
 <img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/enterprisepackage.jsp" target="_blank"><font color="blue">中小企业一揽子保险委托书</font></a></div>
+<div class="showtext"><a href="<%=basePath%>jsp/policy/enterprisepackagehint.jsp" target="_blank"><font color="blue">中小企业一揽子保险委托书</font></a></div>
 </div>
 
 </div>

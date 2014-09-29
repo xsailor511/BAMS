@@ -24,7 +24,7 @@ if(null==role_int){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>雇主责任险投保流程</title>
+<title>车险投保流程</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -99,7 +99,7 @@ if(null==role_int){
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li><a  class="open br-red"><i
-							class="icon-home"></i>雇主责任险投保流程</a> <!-- Sub menu markup 
+							class="icon-home"></i>车险投保流程</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>
@@ -124,14 +124,23 @@ if(null==role_int){
 					<!-- Element -->
 					<div class="box-body" style="background:#CCDDFF;color:black">
 						
+<h5>一、集中私家车保险采购说明：</h5>
+<p>应广大职工提出的强烈需求，现针对员工私家车进行了集团统一保险采购，通过规模采购，大幅降低了保险价格，同时获取了保险公司的诸多VIP服务。有相关需求的职工可踊跃报名参加。</p>
+<p>1、未到期保险车辆尽快完成欲投保车辆信息报备</p>
+<p>2、到期保险车辆完成网上投保。</p>
+<h5>私家车保险规模采购优势：</h5>
+<p>1、	低廉的保费价格、范围广泛的礼品兑换</p>
+<p>2、	中标保险公司完善的增值服务（包括：VIP绿色通道、“7×24小时百公里免费道路救援”服务、赔款时限、车辆养护咨询、道路交通事故处理咨询、全国通赔服务、“简单快赔”服务、1万元以内单方事故现场赔付）
+<p>3、	经纪人的贴身理赔协助服务</p>
+<p>4、	详解投保后的客户服务手册</p>
 
-
-						<h5>雇主责任险投保流程</h5><br/>
-<img src="<%=basePath %>img/hint/employerdutyhint.jpg" />
+<h5>车险投保流程</h5><br/>
+<img src="<%=basePath %>img/hint/vehiclehint.jpg" />
 <br/><br/><br/>
 <p style="text-align:center;color:red">
-<a href="<%=basePath %>servlet/EmployerDutyFeilvServlet"><font color="blue">我已详细了解投保流程</font></a>
+<a href="<%=basePath %>jsp/policy/vehicle.jsp"><font color="blue">我已详细了解投保流程</font></a>
 </p>
+						
 					</div>
 				</div>
 			</div>

@@ -223,6 +223,31 @@
     <servlet-name>ListAllPolicyIndexServlet</servlet-name>
     <servlet-class>bams.servlet.policy.ListAllPolicyIndexServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ListAllFeilvServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.ListAllFeilvServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AlterFeilvServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.AlterFeilvServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AllPropertyFeilvServlet</servlet-name>
+    <servlet-class>bams.servlet.feilv.AllPropertyFeilvServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FreightFeilvServlet</servlet-name>
+    <servlet-class>bams.servlet.feilv.FreightFeilvServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>EmployerDutyFeilvServlet</servlet-name>
+    <servlet-class>bams.servlet.feilv.EmployerDutyFeilvServlet</servlet-class>
+  </servlet>
+
+
+
+
+
 
 
 
@@ -360,6 +385,26 @@
   <servlet-mapping>
     <servlet-name>ListAllPolicyIndexServlet</servlet-name>
     <url-pattern>/servlet/ListAllPolicyIndexServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListAllFeilvServlet</servlet-name>
+    <url-pattern>/servlet/ListAllFeilvServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AlterFeilvServlet</servlet-name>
+    <url-pattern>/servlet/AlterFeilvServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AllPropertyFeilvServlet</servlet-name>
+    <url-pattern>/servlet/AllPropertyFeilvServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FreightFeilvServlet</servlet-name>
+    <url-pattern>/servlet/FreightFeilvServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EmployerDutyFeilvServlet</servlet-name>
+    <url-pattern>/servlet/EmployerDutyFeilvServlet</url-pattern>
   </servlet-mapping>
   
 	 <session-config>

@@ -141,6 +141,15 @@ margin-right: auto;
 						
 <div class="fileupload">
    <form name="uploadForm" method="POST" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>servlet/UploadPictureServlet" onsubmit="return checkForm(this)">
+        <div id="baodan">
+        <p>保险单号：<input type="text" id="baodanhao" name="baodanhao" /></p>
+        <p>联系电话：<input type="text" id="tel" name="tel" /></p>
+        </div>
+        <div id="shigu">
+        <p>事故经过（时间、地点、事故简述、）：</p>
+        
+        <p><textarea name="textarea" cols="10" rows="5"  id="shigujingguo" name="shigujingguo" style="width:535px"></textarea></p>
+        </div>
         <div id="fileinput">
         
         </div>
