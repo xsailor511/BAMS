@@ -126,4 +126,26 @@ public class FeilvDAOImpl implements FeilvDAO {
 			}
 		}
 	}
+
+
+	@Override
+	public List<String> getFamilyFeilv() {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<String> feilvs = new ArrayList<String>();
+		String sql = "SELECT feilv FROM bams.feilv ORDER BY id ASC LIMIT 3,5";
+		try {
+			ps = connection.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				feilvs.add(rs.getDouble("feilv")+"");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return feilvs;
+	}
 }

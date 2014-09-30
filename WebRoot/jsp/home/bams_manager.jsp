@@ -143,6 +143,10 @@ height:15px;
 							class="icon-user"></i> 文件上传</a></li>
 					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue"><i
 							class="icon-user"></i> 费率管理</a></li>
+					<li><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0" class="br-blue"><i
+							class="icon-user"></i> 理赔报案管理</a></li>
+					<li><a href="<%=basePath %>jsp/manage/lipeibaoanchaxun.jsp" class="br-blue"><i
+							class="icon-user"></i> 理赔报案查询</a></li>
 				</ul>
 				
 			</div>
@@ -168,7 +172,7 @@ height:15px;
   <tr>
     <td width="49%" align="right">用户名:</td>
     <td width="51%"  style="align:left;valign:bottom">
-    <input type="text" name="name" id="name" style="margin-top:10px"/>
+    <input type="text" name="name" id="name" style="margin-top:10px" onkeypress="if (event.keyCode == 13) search();"/>
     <label for="name_email"></label>
     </td>
   </tr>

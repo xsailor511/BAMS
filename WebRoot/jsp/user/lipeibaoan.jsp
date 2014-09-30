@@ -148,7 +148,7 @@ margin-right: auto;
         <div id="shigu">
         <p>事故经过（时间、地点、事故简述、）：</p>
         
-        <p><textarea name="textarea" cols="10" rows="5"  id="shigujingguo" name="shigujingguo" style="width:535px"></textarea></p>
+        <p><textarea cols="10" rows="5"  id="shigujingguo" name="shigujingguo" style="width:535px"></textarea></p>
         </div>
         <div id="fileinput">
         
@@ -368,7 +368,22 @@ function checkForm(form){
 			}
 		}
 	}
-
+	
+	var tel = document.getElementById("tel").value;
+	if(tel.length!=11){
+		alert("电话号码必须是11位!");
+		return false;
+	}
+	var shigujingguo = document.getElementById("shigujingguo").value;
+	if(isEmpty(shigujingguo)){
+		alert("事故经过不能为空!");
+		return false;
+	}
+	var baodanhao = document.getElementById("baodanhao").value;
+	if(isEmpty(baodanhao)){
+		alert("保险单号不能为空!");
+		return false;
+	}
 }
 	function isEmpty(str){
 		if(str==null || str.length==0)

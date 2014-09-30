@@ -66,14 +66,6 @@
     <servlet-name>AddPictureServlet</servlet-name>
     
     <servlet-class>bams.servlet.picture.AddPictureServlet</servlet-class>
-    <init-param>
-            <param-name>filepath</param-name> 
-            <param-value>file/user/upload_image</param-value>
-        </init-param> 
-        <init-param> 
-            <param-name>temppath</param-name>
-            <param-value>temp</param-value>
-        </init-param> 
     
   </servlet>
   <servlet>
@@ -243,6 +235,31 @@
     <servlet-name>EmployerDutyFeilvServlet</servlet-name>
     <servlet-class>bams.servlet.feilv.EmployerDutyFeilvServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>FamilyFeilvServlet</servlet-name>
+    <servlet-class>bams.servlet.feilv.FamilyFeilvServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ManageLiPeiServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.ManageLiPeiServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchLiPeiServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.SearchLiPeiServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MarkLiPeiServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.MarkLiPeiServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UnmarkLiPeiServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.UnmarkLiPeiServlet</servlet-class>
+  </servlet>
+
+
+
+
+
 
 
 
@@ -405,6 +422,26 @@
   <servlet-mapping>
     <servlet-name>EmployerDutyFeilvServlet</servlet-name>
     <url-pattern>/servlet/EmployerDutyFeilvServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FamilyFeilvServlet</servlet-name>
+    <url-pattern>/servlet/FamilyFeilvServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManageLiPeiServlet</servlet-name>
+    <url-pattern>/servlet/ManageLiPeiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchLiPeiServlet</servlet-name>
+    <url-pattern>/servlet/SearchLiPeiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MarkLiPeiServlet</servlet-name>
+    <url-pattern>/servlet/MarkLiPeiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UnmarkLiPeiServlet</servlet-name>
+    <url-pattern>/servlet/UnmarkLiPeiServlet</url-pattern>
   </servlet-mapping>
   
 	 <session-config>

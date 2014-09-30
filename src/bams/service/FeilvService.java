@@ -60,6 +60,19 @@ public class FeilvService {
 		return f;
 	}
 	
-	
+	public List<String> getFamilyFeilv(){
+		List<String> feilvs = null;
+		Connection connection = null;
+		try {
+			connection = Database.getConnection();
+			dao.setConnection(connection);
+			feilvs = dao.getFamilyFeilv();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Database.releaseConnection(connection);
+		}
+		return feilvs;
+	}
 	
 }

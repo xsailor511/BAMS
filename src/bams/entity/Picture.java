@@ -7,6 +7,7 @@ public class Picture {
 	private String picture_owner;//图片所有者
 	private String picture_name;//图片名称
 	private String description;//图片说明
+	private String baodanhao;//图片所属保单号
 	public int getId() {
 		return id;
 	}
@@ -36,6 +37,12 @@ public class Picture {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getBaodanhao() {
+		return baodanhao;
+	}
+	public void setBaodanhao(String baodanhao) {
+		this.baodanhao = baodanhao;
 	}
 	
 	

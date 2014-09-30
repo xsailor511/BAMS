@@ -53,9 +53,9 @@ if(null==role_int){
 
 #main {text-align:center;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;} 
 #main ul {width:520px;height:165px;list-style:none}
-#main li.description {border:1px solid #ccc;border-top:1px solid #ccc;float:left;width:306px;height:33px;text-align:center;line-height:33px} 
-#main li.input {border:1px solid #ccc;border-top:1px solid #ccc;float:left;width:102px;height:33px;text-align:center;line-height:33px}
-#main li.button {border:1px solid #ccc;border-top:1px solid #ccc;float:left;width:102px;height:33px;text-align:center;line-height:33px} 
+#main li.description {border:1px solid #000;border-top:1px solid #000;float:left;width:306px;height:33px;text-align:center;line-height:33px} 
+#main li.input {border:1px solid #000;border-top:1px solid #000;float:left;width:102px;height:33px;text-align:center;line-height:33px}
+#main li.button {border:1px solid #000;border-top:1px solid #000;float:left;width:102px;height:33px;text-align:center;line-height:33px} 
 #main li.b {border-bottom:1px solid #ccc} 
 #main li.r {border-right:1px solid #ccc}
 .feilv{
@@ -148,6 +148,10 @@ height:25px;
 							class="icon-user"></i> 文件上传</a></li>
 					<li><a class="br-blue"><i
 							class="icon-user"></i><font color="blue">费率管理</font></a></li>
+					<li><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0" class="br-blue"><i
+							class="icon-user"></i> 理赔报案管理</a></li>
+					<li><a href="<%=basePath %>jsp/manage/lipeibaoanchaxun.jsp" class="br-blue"><i
+							class="icon-user"></i> 理赔报案查询</a></li>
 				</ul>
 				
 			</div>

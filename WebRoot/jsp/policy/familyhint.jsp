@@ -128,7 +128,7 @@ if(null==role_int){
 <img src="<%=basePath %>img/hint/familyhint.jpg" />
 <br/><br/><br/>
 <p style="text-align:center;color:red">
-<a href="<%=basePath %>jsp/policy/family.jsp"><font color="blue">我已详细了解投保流程</font></a>
+<a href="<%=basePath %>servlet/FamilyFeilvServlet"><font color="blue">我已详细了解投保流程</font></a>
 </p>
 
 

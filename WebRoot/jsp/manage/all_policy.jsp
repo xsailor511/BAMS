@@ -144,6 +144,10 @@ height:15px;
 							class="icon-user"></i> 文件上传</a></li>
 					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue"><i
 							class="icon-user"></i> 费率管理</a></li>
+					<li><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0" class="br-blue"><i
+							class="icon-user"></i> 理赔报案管理</a></li>
+					<li><a href="<%=basePath %>jsp/manage/lipeibaoanchaxun.jsp" class="br-blue"><i
+							class="icon-user"></i> 理赔报案查询</a></li>
 				</ul>
 				
 			</div>
@@ -202,7 +206,7 @@ height:15px;
     <input type="hidden" name="username" value="<%=username %>" />
     </td>
    <td align="left"> &nbsp;<%=policyname %></td>
-    <td align="center"><a href="<%=basePath%>servlet/DownPolicyAsMSWord?tag=<%=tag %>">下载</a></td>
+    <td align="center"><a href="<%=basePath%>servlet/DownPolicyAsMSWord?tag=<%=tag %>"><font color='blue'>下载</font></a></td>
   </tr>
   
   
@@ -227,7 +231,7 @@ if(start==0){
 %>
 
 <%
-if(list.size()<10){
+if(list.size()<pageSize){
 %>
 下一页
 <%

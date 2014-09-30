@@ -1,9 +1,11 @@
 package bams.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import bams.dao.PictureDAO;
+import bams.entity.Case;
 import bams.entity.Picture;
 import bams.impl.PictureDAOImpl;
 import bams.util.Database;
@@ -51,6 +53,7 @@ public class PictureService {
 		List<Picture> pictures = null;
 		try {
 			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
 			pictures = pictureDAO.listPictureByUser(picture_name);
 			return pictures;
 		} catch (Exception e) {
@@ -77,6 +80,105 @@ public class PictureService {
 			Database.releaseConnection(connection);
 		}
 		
+		return result;
+	}
+	
+	public boolean addCase(Case mycase){
+		Connection connection = null;
+		boolean result = false;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			result = pictureDAO.addCase(mycase);
+			Database.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			Database.rollback();
+			result = false;
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		
+		return result;
+	}
+	public List<Case> listAllCase(int start){
+		Connection connection = null;
+		List<Case> cases = null;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			cases = pictureDAO.listAllCase(start);
+			return cases;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		return cases;
+	}
+	public List<Case> queryCaseByShigu(String shigu){
+		Connection connection = null;
+		List<Case> cases = null;
+		try {
+			connection = Database.getConnection();
+			cases = pictureDAO.queryCaseByShigu(shigu);
+			return cases;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		return cases;
+	}
+	public boolean markCase(int id){
+		Connection connection = null;
+		boolean result = false;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			result = pictureDAO.markCase(id);
+			Database.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		return result;
+	}
+	public Case getCase(int id){
+		Connection connection = null;
+		Case c = null;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			c = pictureDAO.getCase(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		return c;
+	}
+	
+	public boolean unmarkCase(int id) {
+		Connection connection = null;
+		boolean result = false;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			result = pictureDAO.unmarkCase(id);
+			Database.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Database.releaseConnection(connection);
+		}
 		return result;
 	}
 	

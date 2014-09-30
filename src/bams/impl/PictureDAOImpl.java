@@ -116,7 +116,7 @@ public class PictureDAOImpl implements PictureDAO {
 	public boolean addPictures(List<Picture> picturelist) {
 		PreparedStatement ps = null;
 		boolean result = false;
-		String sql = "insert into picture(picture_url,picture_owner,picture_name,description) values(?,?,?,?)";
+		String sql = "insert into picture(picture_url,picture_owner,picture_name,description,baoxiandanhao) values(?,?,?,?,?)";
 		try {
 			ps = connection.prepareStatement(sql);
 			for(int i=0;i<picturelist.size();i++){
@@ -124,13 +124,17 @@ public class PictureDAOImpl implements PictureDAO {
 				ps.setString(2, picturelist.get(i).getPicture_owner());
 				ps.setString(3, picturelist.get(i).getPicture_name());
 				ps.setString(4, picturelist.get(i).getDescription());
+				ps.setString(5, picturelist.get(i).getBaodanhao());
 				ps.addBatch();
 			}
 			ps.executeBatch();
+			
 			result = true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			result = false;
+		}finally{
+			closeStatement(ps);
 		}
 		return result;
 	}
@@ -162,31 +166,149 @@ public class PictureDAOImpl implements PictureDAO {
 		PreparedStatement ps = null;
 		boolean result = false;
 		String sql = "insert into bams.case(baoxiandanhao,shigujingguo,username,tel) values(?,?,?,?)";
-		return false;
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, mycase.getBaoxiandanhao());
+			ps.setString(2, mycase.getShigujingguo());
+			ps.setString(3, mycase.getUsername());
+			ps.setString(4, mycase.getTel());
+			System.out.println(ps.toString());
+			ps.executeUpdate();
+			
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeStatement(ps);
+		}
+		
+		return result;
 	}
 
 	@Override
-	public List<Case> listAllCase() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Case> listAllCase(int start) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Case> caselist = new ArrayList<Case>();
+		String sql = "select * from bams.case limit ?,10";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, start);
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				Case c = new Case();
+				c.setBaoxiandanhao(rs.getString("baoxiandanhao"));
+				c.setId(rs.getInt("id"));
+				c.setMark(rs.getInt("mark"));
+				c.setUsername(rs.getString("username"));
+				c.setTel(rs.getString("tel"));
+				c.setShigujingguo(rs.getString("shigujingguo"));
+				caselist.add(c);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeResultSet(rs);
+			closeStatement(ps);
+		}
+		return caselist;
 	}
 
 	@Override
-	public List<Case> queryCaseByShigu() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Case> queryCaseByShigu(String shigu) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from bams.case where shigujingguo like '%"+shigu+"%'";
+		List<Case> caselist = new ArrayList<Case>();
+		try {
+			ps = connection.prepareStatement(sql);
+			//ps.setString(1, shigu);
+			System.out.println(ps.toString());
+			rs = ps.executeQuery();
+			while(rs.next()){
+				Case c = new Case();
+				c.setBaoxiandanhao(rs.getString("baoxiandanhao"));
+				c.setId(rs.getInt("id"));
+				c.setMark(rs.getInt("mark"));
+				c.setUsername(rs.getString("username"));
+				c.setTel(rs.getString("tel"));
+				c.setShigujingguo(rs.getString("shigujingguo"));
+				caselist.add(c);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeResultSet(rs);
+			closeStatement(ps);
+		}
+		
+		return caselist;
 	}
 
 	@Override
 	public boolean markCase(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		PreparedStatement ps = null;
+		String sql = "update bams.case set mark = 1 where id=?";
+		boolean result = false;
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+			
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeStatement(ps);
+		}
+		return result;
 	}
 
 	@Override
 	public Case getCase(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Case c = new Case();
+		String sql = "select * from bams.case where id=?";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()){
+				c.setBaoxiandanhao(rs.getString("baoxiandanhao"));
+				c.setId(rs.getInt("id"));
+				c.setMark(rs.getInt("mark"));
+				c.setUsername(rs.getString("username"));
+				c.setTel(rs.getString("tel"));
+				c.setShigujingguo(rs.getString("shigujingguo"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeResultSet(rs);
+			closeStatement(ps);
+		}
+		return c;
+	}
+
+	@Override
+	public boolean unmarkCase(int id) {
+		PreparedStatement ps = null;
+		String sql = "update bams.case set mark = 0 where id=?";
+		boolean result = false;
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+			
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeStatement(ps);
+		}
+		return result;
 	}
 
 	

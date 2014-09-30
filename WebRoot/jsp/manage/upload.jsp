@@ -146,6 +146,10 @@ height:15px;
 							class="icon-user"></i> <font color="blue">文件上传</font></a></li>
 					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue"><i
 							class="icon-user"></i> 费率管理</a></li>
+					<li><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0" class="br-blue"><i
+							class="icon-user"></i> 理赔报案管理</a></li>
+					<li><a href="<%=basePath %>jsp/manage/lipeibaoanchaxun.jsp" class="br-blue"><i
+							class="icon-user"></i> 理赔报案查询</a></li>
 				</ul>
 				
 			</div>

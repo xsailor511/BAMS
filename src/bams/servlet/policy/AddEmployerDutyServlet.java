@@ -69,6 +69,7 @@ public class AddEmployerDutyServlet extends HttpServlet {
 		String toubaorenqianzhang = request.getParameter("toubaorenqianzhang");
 		
 		double baoxianfei = Double.parseDouble(request.getParameter("baoxianfei"));
+		double baoxianfeilv = Double.parseDouble(request.getParameter("baoxianfeilv"));
 		String start_time = request.getParameter("start_time");
 		String end_time = request.getParameter("end_time");
 		String fufeiriqi = request.getParameter("fufeiriqi");
@@ -115,7 +116,7 @@ public class AddEmployerDutyServlet extends HttpServlet {
 		employerduty.setEnd_time(end_time);
 		employerduty.setFufeiriqi(fufeiriqi);
 		employerduty.setToubaoriqi(toubaoriqi);
-	
+		employerduty.setBaoxianfeilv(baoxianfeilv);
 		String guyuangongzhongs[] = request.getParameterValues("guyuangongzhong");
 		String guyuanrenshus[] = request.getParameterValues("guyuanrenshu");
 		String peichangsiwangs[] = request.getParameterValues("peichangsiwang");

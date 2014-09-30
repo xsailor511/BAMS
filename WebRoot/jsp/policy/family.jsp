@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page language="java" import="bams.entity.User" %>
+<%@ page language="java" import="java.text.DecimalFormat" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -16,7 +17,13 @@ if(null==role_int){
 		//response.sendRedirect(basePath+"jsp/user/login.jsp");
 	}
 }
-
+List<String> feilvs = (List<String>)request.getAttribute("feilvs");
+DecimalFormat df = new DecimalFormat("#.0");
+double ywshfeilv = Double.parseDouble(feilvs.get(0));
+double ywshylfeilv = Double.parseDouble(feilvs.get(1));
+double tbhcccmzjfeilv = Double.parseDouble(feilvs.get(2));
+double mjzfeilv = Double.parseDouble(feilvs.get(3));
+double jbzyfeilv = Double.parseDouble(feilvs.get(4));
 %>
 
 <!DOCTYPE html>
@@ -202,7 +209,7 @@ border:solid#000 1px;
     <td>&nbsp;</td>
     <td colspan="2">保险保障</td>
     <td colspan="2">保障金额</td>
-    <td>费率</td>
+    <td>费率‰</td>
     <td>保险费</td>
   </tr>
   <tr>
@@ -210,45 +217,45 @@ border:solid#000 1px;
     <td colspan="2">意外伤害</td>
     <td colspan="2">200000元</td>
     <td><label for="ywshfeilv"></label>
-    <input type="text" name="ywshfeilv" id="ywshfeilv" value="0.043"  readonly="readonly"></td>
+    <input type="text" name="ywshfeilv" id="ywshfeilv" value="<%=ywshfeilv %>"  readonly="readonly"></td>
     <td>
-    <input type="text" name="baoxianfei" id="ywshbaoxianfei" value="200"  readonly="readonly"></td>
+    <input type="text" name="baoxianfei" id="ywshbaoxianfei" value="<%=df.format(ywshfeilv*200000*0.001) %>"  readonly="readonly"></td>
   </tr>
   <tr>
     <td><input type="checkbox" name="yiliaobaoxian" value="yiwaishanghaiyiliao" id="yiwaishanghaiyiliao" onclick="setValue2(this)" ></td>
     <td colspan="2">意外伤害医疗</td>
     <td colspan="2">2000元</td>
     <td>
-    <input type="text" name="ywshylfeilv" id="ywshylfeilv" value="0.043"  readonly="readonly"></td>
+    <input type="text" name="ywshylfeilv" id="ywshylfeilv" value="<%=ywshylfeilv %>"  readonly="readonly"></td>
     <td>
-    <input type="text" name="baoxianfei" id="ywshylbaoxianfei" value="200"  readonly="readonly"></td>
+    <input type="text" name="baoxianfei" id="ywshylbaoxianfei" value="<%=df.format(ywshylfeilv*2000*0.001) %>"  readonly="readonly"></td>
   </tr>
   <tr>
     <td><input type="checkbox" name="yiliaobaoxian" value="chucichamingzhongji" id="chucichamingzhongji" onclick="setValue2(this)" ></td>
     <td colspan="2">投保后初次查明重疾</td>
     <td colspan="2">100000元</td>
     <td>
-    <input type="text" name="tbhcccmzjfeilv" id="tbhcccmzjfeilv" value="0.043"  readonly="readonly"></td>
+    <input type="text" name="tbhcccmzjfeilv" id="tbhcccmzjfeilv" value="<%=tbhcccmzjfeilv %>"  readonly="readonly"></td>
     <td>
-    <input type="text" name="baoxianfei" id="tbhcccmzjbaoxianfei" value="200"  readonly="readonly"></td>
+    <input type="text" name="baoxianfei" id="tbhcccmzjbaoxianfei" value="<%=df.format(tbhcccmzjfeilv*100000*0.001) %>"  readonly="readonly"></td>
   </tr>
   <tr>
     <td><input type="checkbox" name="yiliaobaoxian" value="menjizhen" id="menjizhen" onclick="setValue2(this)" ></td>
     <td colspan="2">门急诊</td>
     <td colspan="2">1000元</td>
     <td>
-    <input type="text" name="mjzfeilv" id="mjzfeilv" value="0.043"  readonly="readonly"></td>
+    <input type="text" name="mjzfeilv" id="mjzfeilv" value="<%=mjzfeilv %>"  readonly="readonly"></td>
     <td>
-    <input type="text" name="baoxianfei" id="mjzbaoxianfei" value="200"  readonly="readonly"></td>
+    <input type="text" name="baoxianfei" id="mjzbaoxianfei" value="<%=df.format(mjzfeilv*1000*0.001) %>"  readonly="readonly"></td>
   </tr>
   <tr>
     <td><label><input type="checkbox" name="yiliaobaoxian" value="jibingzhuyuan" id="jibingzhuyuan" onclick="setValue2(this)" ></label></td>
     <td colspan="2">疾病住院</td>
     <td colspan="2">20000元 （每日承担医疗补贴 100元）</td>
     <td><label for="jbzyfeilv"></label>
-    <input type="text" name="jbzyfeilv" id="jbzyfeilv" value="0.043"  readonly="readonly"></td>
+    <input type="text" name="jbzyfeilv" id="jbzyfeilv" value="<%=jbzyfeilv %>"  readonly="readonly"></td>
     <td>
-    <input type="text" name="baoxianfei" id="jbzybaoxianfei" value="200"  readonly="readonly"></td>
+    <input type="text" name="baoxianfei" id="jbzybaoxianfei" value="<%=df.format(jbzyfeilv*20000*0.001) %>"  readonly="readonly"></td>
   </tr>
   <tr>
     <td colspan="3">保险期间：</td>

@@ -21,9 +21,10 @@ public interface PictureDAO {
 	
 	
 	public boolean addCase(Case mycase);
-	public List<Case> listAllCase();
-	public List<Case> queryCaseByShigu();
+	public List<Case> listAllCase(int start);
+	public List<Case> queryCaseByShigu(String shigu);
 	public boolean markCase(int id);
+	public boolean unmarkCase(int id);
 	public Case getCase(int id);
 	
 	public Connection getConnection()throws Exception;

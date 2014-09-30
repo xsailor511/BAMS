@@ -1,7 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page language="java" import="bams.entity.User" %>
-<%@ page language="java" import="bams.entity.Picture" %>
-<%@ page language="java" import="bams.entity.PolicyIndex" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,10 +15,6 @@ if(null==role_int){
 		//response.sendRedirect(basePath+"jsp/user/login.jsp");
 	}
 }
-String mark = (String)request.getAttribute("mark");
-if(null==mark){
-	response.setHeader("refresh","0;URL="+basePath+"/error.jsp") ;
-}
 %>
 
 <!DOCTYPE html>
@@ -29,16 +22,12 @@ if(null==mark){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>用户信息</title>
+<title>管理员</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
-<script src="<%=basePath %>js/jquery.js"></script>
-<script src="<%=basePath %>jsp/manage/js/jquery2222.js"></script>
-<script src="<%=basePath %>jsp/manage/js/jquery.fancybox-1.3.4.js"></script>
 
-<script src="<%=basePath %>jsp/manage/js/jquery.mousewheel-3.0.4.js"></script>
 
 
 <!-- Stylesheets -->
@@ -54,12 +43,25 @@ if(null==mark){
 
 <!-- Bootstrap responsive -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap-responsive.css" >
-<link rel="stylesheet" type="text/css" href="<%=basePath %>jsp/manage/css/jquery.fancybox-1.3.4.css" media="screen" />
+
 <!-- HTML5 Support for IE -->
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
 <style type="text/css">
+#result {text-align:center;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;} 
+#result ul {width:680px;height:165px;list-style:none}
+
+#result li.id {border:1px solid #000;border-top:1px solid #000;float:left;width:62px;height:33px;text-align:center;line-height:33px}
+#result li.baoxiandanhao {border:1px solid #000;border-top:1px solid #000;float:left;width:232px;height:33px;text-align:center;line-height:33px}
+#result li.username {border:1px solid #000;border-top:1px solid #000;float:left;width:112px;height:33px;text-align:center;line-height:33px}
+#result li.tel {border:1px solid #000;border-top:1px solid #000;float:left;width:102px;height:33px;text-align:center;line-height:33px}
+#result li.button {border:1px solid #000;border-top:1px solid #000;float:left;width:132px;height:33px;text-align:center;line-height:33px} 
+
+.mybutton{
+width:38px;height:18px;line-height:18px;border:0;margin:-4px 0 0 0px;background:#D28EFF;
+}
+
 table{
 border-collapse:collapse;
 border:1px;
@@ -68,30 +70,16 @@ table td{
 border:solid#000 1px;
 }
 
+input.user_goal{
+width:50px;
+height:15px;
+}
 </style>
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
-
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		
-		$("a[rel=example_group]").fancybox({
-			'transitionIn':'none',
-			'transitionOut':'none',
-			'titlePosition':'over',
-			'titleFormat':function(title, currentArray, currentIndex, currentOpts) {
-				return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
-			}
-		});
-
-		
-	});
-</script>
 </head>
 <body>
 	<!-- Navbar starts -->
-<jsp:useBean id="user" class="bams.entity.User" scope="request"/>
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -100,7 +88,6 @@ border:solid#000 1px;
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -115,6 +102,32 @@ border:solid#000 1px;
 	</div>
 
 	<!-- Navbar ends -->
+
+
+	<!-- Sliding box starts -->
+	<div class="slide-box">
+		<div class="bor"></div>
+		<div class="padd">
+			<div class="slide-box-button">
+				<i class="icon-chevron-left"></i>
+			</div>
+			<h5>欢迎</h5>
+			银保直通车为您服务。
+
+			<hr />
+
+			<div class="social">
+				<a href="<%=basePath %>"><i class="icon-facebook facebook"></i></a> 
+				<a href="<%=basePath %>"><i class="icon-twitter twitter"></i></a> 
+				<a href="<%=basePath %>"><i class="icon-linkedin linkedin"></i></a> 
+				<a href="<%=basePath %>"><i class="icon-google-plus google-plus"></i></a> 
+				<a href="<%=basePath %>"><i class="icon-pinterest pinterest"></i></a>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Sliding box ends -->
 
 	<!-- Main content starts -->
 
@@ -134,15 +147,18 @@ border:solid#000 1px;
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a  class="open br-red"><i
-							class="icon-home"></i>管理单个用户信息</a> <!-- Sub menu markup 
-              <ul>
-                <li><a href="<%=basePath %>#">Submenu #1</a></li>
-                <li><a href="<%=basePath %>#">Submenu #2</a></li>
-                <li><a href="<%=basePath %>#">Submenu #3</a></li>
-              </ul>--></li>
+					<li ><a href="<%=basePath %>jsp/home/bams_manager.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
+					<li><a href="<%=basePath %>servlet/ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
 
-
+					<li><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" class="br-blue"><i
+							class="icon-user"></i> 批量打印word文档</a></li>
+					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
+							class="icon-user"></i> 文件上传</a></li>
+					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue"><i
+							class="icon-user"></i> 费率管理</a></li>
+					<li><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0" class="br-blue"><i
+							class="icon-user"></i> 理赔报案管理</a></li>
+					<li><a class="br-blue"><i class="icon-user"></i><font color="blue"> 理赔报案查询</font></a></li>
 				</ul>
 				
 			</div>
@@ -159,80 +175,28 @@ border:solid#000 1px;
 
 					<!-- Element -->
 					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
-						
-<table width="800px" border="1">
+<!-- 						<div class="flexslider"> -->
+<!-- 						</div> -->
+					<table width="100%" border="1">
   <tr>
-    <td width="20%" align="right">用户名：</td>
-    <td width="30%" align="left"><jsp:getProperty name="user" property="name" />
-    <input type="hidden" id="name" value=<jsp:getProperty name="user" property="name"/> /> </td>
-    <td width="17%" align="right">邮箱：</td>
-    <td width="33%" align="left"><jsp:getProperty name="user" property="email" /></td>
+    <td colspan="2" align="center">输入关键字</td>
   </tr>
   <tr>
-    <td align="right">真实姓名：</td>
-    <td align="left"><jsp:getProperty name="user" property="realname" /></td>
-    <td align="right">电话：</td>
-    <td align="left"><jsp:getProperty name="user" property="phone" /></td>
-  </tr>
-  <tr>
-    <td align="right">用户身份：</td>
-    <td align="left"><jsp:getProperty name="user" property="role" /></td>
-    <td align="right">身份证号码：</td>
-    <td align="left"><jsp:getProperty name="user" property="socialid" /></td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">上传的图片</td>
-    <td colspan="2" align="center">所有保单</td>
-  </tr>
-  <tr>
-    <td height="461" colspan="2" align="left" valign="top">
-    <div id="content">
-    <%
-   	List<Picture> picturelist = (List)request.getAttribute("picturelist");
-    for(int i=0;i<picturelist.size();i++){
-    	String img_url = picturelist.get(i).getPicture_url();
-    	String image = picturelist.get(i).getPicture_name();
-    %>
-    <p><%=image %>&nbsp;&nbsp;&nbsp;
-    <a rel="example_group" href="<%=img_url %>" title=""><font color="blue">查看</font></a>
-    </p>
-    <%
-    
-    }
-    %>
-    
-    </div>
-    </td>
-    <td colspan="2" align="left" valign="top">
-    <ul>
-    <%
-    List<PolicyIndex> indexlist = (List)request.getAttribute("indexlist");
-    for(int i=0;i<indexlist.size();i++){
-    	String policyname = indexlist.get(i).getPolicyname();
-    	String tag = indexlist.get(i).getTag();
-    	String username = indexlist.get(i).getUsername();
-    %>
-    <li><a href="<%=basePath %>servlet/DownPolicyAsMSWord?tag=<%=tag %>" title=""><font color="blue">下载</font></a>
-    <a href="<%=basePath %>servlet/DownPolicyAsMSWord?tag=<%=tag %>" ><font color="blue"><%=policyname %></font></a>&nbsp;&nbsp;&nbsp;
-    </li>
-    <%
-    }
-    %>
-   </ul>
+    <td width="49%" align="right">与事件有关的关键字:</td>
+    <td width="51%"  style="align:left;valign:bottom">
+    <input type="text" name="shigu" id="shigu" style="margin-top:10px" onkeypress="if (event.keyCode == 13) search();"/>
+    <label for="name_email"></label>
     </td>
   </tr>
   <tr>
-    <td colspan="4" align="center">
-    
-    <a href="javascript:void(0)" onclick="deleteuser()"><font color="red">
-    删除该用户
-    </font></a>
-    </td>
+    <td colspan="2" align="center"><input type="button" name="search_button" id="search_button" value="查询" onclick="search()"/></td>
   </tr>
 </table>
-					
 
-						
+<br/><hr/><font color='blue'>查询结果</font>
+<div id="result">
+
+</div>
 					</div>
 				</div>
 			</div>
@@ -329,6 +293,7 @@ border:solid#000 1px;
 	<span class="totop"><a href="<%=basePath %>#"><i class="icon-chevron-up"></i></a></span>
 
 	<!-- JS -->
+	<script src="<%=basePath %>js/jquery.js"></script>
 	<script src="<%=basePath %>js/bootstrap.js"></script>
 	<!-- Bootstrap -->
 	<script src="<%=basePath %>js/imageloaded.js"></script>
@@ -340,49 +305,8 @@ border:solid#000 1px;
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
-<!-- 	<script type="text/javascript" src="js/picture/show_picture.js"></script> -->
-	<script type="text/javascript">
-	var xmlhttp;
-	function loadXMLDoc(url, cfunc) {
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-		xmlhttp.open("POST", url, false);
-		xmlhttp.onreadystatechange = cfunc;
-		xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
-		xmlhttp.send();
-	}
-	//获取应用绝对路径
-	var localObj = window.location;
-
-	var contextPath = localObj.pathname.split("/")[1];
-
-	var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
-
-	var server_context=basePath;
-	function deleteuser(){
-		var name = document.getElementById("name").value;
-		//alert(name);
-		var url = server_context+"/Delete?name="+name;
-		loadXMLDoc(url, function() {
-			
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				resultstring = xmlhttp.responseText;//json 字符串
-				if(resultstring=="success"){
-					alert("删除成功");
-					//parent.location.reload();
-					window.close();
-				}else{
-					alert("删除失败");
-					
-				}
-			}
-		});
-	}
-	</script>
+	<script src="<%=basePath %>js/manage/search_lipei.js"></script>
+	
 	<!-- Main js file -->
 </body>
 </html>

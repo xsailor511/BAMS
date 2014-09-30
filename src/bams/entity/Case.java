@@ -6,8 +6,8 @@ public class Case {
 	private String baoxiandanhao;
 	private String username;
 	private String tel;
-	private boolean mark;
-	
+	private int mark;
+	private String shigujingguo;
 	public int getId() {
 		return id;
 	}
@@ -32,11 +32,18 @@ public class Case {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public boolean isMark() {
+	
+	public int getMark() {
 		return mark;
 	}
-	public void setMark(boolean mark) {
+	public void setMark(int mark) {
 		this.mark = mark;
+	}
+	public String getShigujingguo() {
+		return shigujingguo;
+	}
+	public void setShigujingguo(String shigujingguo) {
+		this.shigujingguo = shigujingguo;
 	}
 	
 }

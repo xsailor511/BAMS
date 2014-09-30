@@ -11,6 +11,7 @@ import org.apache.commons.fileupload.*;
 import org.apache.commons.fileupload.servlet.*;  
 import org.apache.commons.fileupload.disk.*;  
 
+import bams.entity.Case;
 import bams.entity.Picture;
 import bams.service.PictureService;
 import bams.util.StringUtil;
@@ -27,6 +28,7 @@ public class UploadPictureServlet extends HttpServlet
     String name;
     String basePath;
     String relativePath;
+    String baodanhao;
     // 初始化  
     public void init(ServletConfig config) throws ServletException
     {  
@@ -50,6 +52,7 @@ public class UploadPictureServlet extends HttpServlet
         throws IOException, ServletException
     {
     	response.setContentType("text/plain;charset=UTF-8");
+    	Case c = new Case();
     	String path = request.getContextPath();
     	basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     	name = (String)request.getSession().getAttribute("name");
@@ -72,11 +75,20 @@ public class UploadPictureServlet extends HttpServlet
             @SuppressWarnings("unchecked")
 			List<FileItem> fileItems = upload.parseRequest(request);
             Iterator<FileItem> iter = fileItems.iterator();
-            while(iter.hasNext())  
+           
+            while(iter.hasNext())
             {  
                 FileItem item = (FileItem)iter.next();
                 String fieldname = item.getFieldName();
                 System.out.println("field name:"+fieldname);
+                String value = item.getString("UTF-8");
+				  if(fieldname.equals("baodanhao")){
+					  c.setBaoxiandanhao(value);
+				  }else if(fieldname.equals("shigujingguo")){
+					  c.setShigujingguo(value);
+				  }else if(fieldname.equals("tel")){
+					  c.setTel(value);
+				  }
                 if(fieldname.equals("commonfile"))
                 {  
                 	System.out.println("处理file ...");
@@ -87,6 +99,7 @@ public class UploadPictureServlet extends HttpServlet
                 	
                 	FileItem item2 = (FileItem)iter.next();
                 	processFormField(item2,picture);
+                	picture.setBaodanhao(baodanhao);
                     picturelist.add(picture);
                 }else if(fieldname.equals("description")){
                     System.out.println("处理text ...");
@@ -99,11 +112,19 @@ public class UploadPictureServlet extends HttpServlet
             		picturelist.remove(j);//图片为空则不会添加到数据库，如果填写说明，那么说明也是无效的。
             	}
             }
-            if(service.addPictures(picturelist)){
-            	this.getServletContext().getRequestDispatcher("/success.jsp").forward(request, response);
-            }else{
-            	this.getServletContext().getRequestDispatcher("/error.jsp").forward(request, response);
-            }
+            c.setUsername(name);
+            if(service.addCase(c)){
+            	if(service.addPictures(picturelist)){
+                	this.getServletContext().getRequestDispatcher("/success.jsp").forward(request, response);
+                }else{
+                	request.setAttribute("errMsg", "报案成功，但是照片添加失败，详细信息联系我们");
+                	this.getServletContext().getRequestDispatcher("/error.jsp").forward(request, response);
+                }
+    		}else{
+    			request.setAttribute("errMsg", "理赔报案失败，请重新提交");
+    			request.getRequestDispatcher("/error.jsp").forward(request, response);
+    		}
+            
             //pw.close();
         }catch(Exception e){  
             System.out.println("使用 fileupload 包时发生异常 ...");  

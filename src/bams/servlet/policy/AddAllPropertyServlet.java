@@ -69,6 +69,7 @@ public class AddAllPropertyServlet extends HttpServlet {
 		double qitajine = Double.parseDouble(request.getParameter("qitajine"));
 		double cunhuojine = Double.parseDouble(request.getParameter("cunhuojine"));
 		double baoxianfei = Double.parseDouble(request.getParameter("baoxianfei"));
+		double feilv = Double.parseDouble(request.getParameter("feilv"));
 		String baoxianjinexiaoji = request.getParameter("baoxianjinexiaoji");
 		String fujiatiaokuan = request.getParameter("fujiatiaokuan");
 		String tebieyueding = request.getParameter("tebieyueding");
@@ -120,7 +121,7 @@ public class AddAllPropertyServlet extends HttpServlet {
 		allproperty.setEnd_time(end_time);
 		allproperty.setJiaofeishijian(jiaofeishijian);
 		allproperty.setToubaoriqi(toubaoriqi);
-
+		allproperty.setFeilv(feilv);
 		String zhengyichuli = "";
 		String zhengyichuli_ok = request.getParameter("zhengyichuli");
 		if(zhengyichuli_ok.equals("zhongcai")){

@@ -38,8 +38,8 @@ public class PolicyDAOImpl implements PolicyDAO {
 				+ "youzhengbianma,beibaoxianrenzuzhijigou,fangwujine,jiqishebeijine,qitajine,cunhuojine,"
 				+ "baoxianfei,baoxianjinexiaoji,start_time,end_time,baoxianfeichina,jiaofeishijian,"
 				+ "fujiatiaokuan,tebieyueding,zhengyichuli,toubaofujian,toubaofujianshuliang,shifoutouguo,"
-				+ "lipeijilu,toubaorenqianzhang,toubaoriqi,username,tag)"
-				                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "lipeijilu,toubaorenqianzhang,toubaoriqi,username,tag,feilv)"
+				                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ps = connection.prepareStatement(sql);
 		
 		ps.setString(1, allproperty.getToubaorenmingcheng());
@@ -74,6 +74,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 		ps.setString(29, allproperty.getToubaoriqi());
 		ps.setString(30, allproperty.getUsername());
 		ps.setString(31, allproperty.getTag());
+		ps.setDouble(32, allproperty.getFeilv());
 		try {
 			ps.executeUpdate();
 			
@@ -92,8 +93,8 @@ public class PolicyDAOImpl implements PolicyDAO {
 		String sql = "insert into employerduty(toubaorenmingcheng,toubaorendizhi,toubaorenlianxiren,toubaorendianhua,"
 				+ "beibaoxianrenmingcheng,beibaoxianrendizhi,yingyexingzhi,beizuzhijigoudaima,canjiashehuibaoxian,"
 				+ "guyuangongzhong,guyuanrenshu,peichangsiwang,peichangyiliao,baoxianfei,start_time,end_time,tebieyueding,"
-				+ "fufeiriqi,sifaguanxia,zhengyichuli,toubaorenqianzhang,toubaoriqi,username,tag)"
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "fufeiriqi,sifaguanxia,zhengyichuli,toubaorenqianzhang,toubaoriqi,username,tag,baoxianfeilv)"
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ps = connection.prepareStatement(sql);
 		
 		ps.setString(1, employerduty.getToubaorenmingcheng());
@@ -120,6 +121,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 		ps.setString(22, employerduty.getToubaoriqi());
 		ps.setString(23, employerduty.getUsername());
 		ps.setString(24, employerduty.getTag());
+		ps.setDouble(25, employerduty.getBaoxianfeilv());
 		try {
 			ps.executeUpdate();
 			
@@ -138,8 +140,8 @@ public class PolicyDAOImpl implements PolicyDAO {
 		String sql = "insert into freight(fax_from,fax_to,beibaoxianren,fapiaohao,fapiaoriqi,jinkouhetonghao,"
 				+ "xinyongzhenghao,baozhuangshuliang,baoxianhuowumingcheng,biaoji,jiagetiaojian,fapiaojine,"
 				+ "baoxianjine,baoxianfei,chuanming,jianzaonianfen,chuanqi,qiyunriqi,qiyungang,via,mudigang,"
-				+ "chengbaoxianbie,note,toubaorenqianzhang,tianbiaoriqi,username,tag) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ "chengbaoxianbie,note,toubaorenqianzhang,tianbiaoriqi,username,tag,feilv) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ps = connection.prepareStatement(sql);
 		
 		ps.setString(1, freight.getFax_from());
@@ -169,6 +171,7 @@ public class PolicyDAOImpl implements PolicyDAO {
 		ps.setString(25, freight.getTianbiaoriqi());
 		ps.setString(26, freight.getUsername());
 		ps.setString(27, freight.getTag());
+		ps.setDouble(28, freight.getFeilv());
 		try {
 			ps.executeUpdate();
 			
