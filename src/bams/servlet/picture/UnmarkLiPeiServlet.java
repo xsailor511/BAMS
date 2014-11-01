@@ -1,7 +1,6 @@
 package bams.servlet.picture;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,20 +16,6 @@ public class UnmarkLiPeiServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Constructor of the object.
-	 */
-	public UnmarkLiPeiServlet() {
-		super();
-	}
-
-	/**
-	 * Destruction of the servlet. <br>
-	 */
-	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
-	}
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -52,15 +37,17 @@ public class UnmarkLiPeiServlet extends HttpServlet {
 			id = Integer.parseInt(str_id);
 		}
 		PictureService service = new PictureService();
-		PrintWriter out = response.getWriter();
+		System.out.println("un mark id  "+id);
 		if(service.unmarkCase(id)){
-			out.write("success");
+			request.getRequestDispatcher("/servlet/DeleteReplyCaseServlet?case_id="+id)
+			.forward(request, response);
 		}else{
-			out.write("failed");
+			request.setAttribute("errMsg", "unmark case failed");
+			request.getRequestDispatcher("/error.jsp")
+			.forward(request, response);
 		}
 		
-		out.flush();
-		out.close();
+	
 	}
 
 	/**
@@ -77,15 +64,6 @@ public class UnmarkLiPeiServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		doGet(request, response);
-	}
-
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
-	public void init() throws ServletException {
-		// Put your code here
 	}
 
 }

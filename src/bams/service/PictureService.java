@@ -2,6 +2,7 @@ package bams.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import bams.dao.PictureDAO;
@@ -48,13 +49,13 @@ public class PictureService {
 	}
 	
 	
-	public List<Picture> listPictureByUser(String picture_name){
+	public List<Picture> listPictureByUser(String picture_name,int start){
 		Connection connection = null;
 		List<Picture> pictures = null;
 		try {
 			connection = Database.getConnection();
 			pictureDAO.setConnection(connection);
-			pictures = pictureDAO.listPictureByUser(picture_name);
+			pictures = pictureDAO.listPictureByUser(picture_name,start);
 			return pictures;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -101,14 +102,14 @@ public class PictureService {
 		
 		return result;
 	}
-	public List<Case> listAllCase(int start){
+	public List<Case> listAllCase(int start,int mark){
 		Connection connection = null;
 		List<Case> cases = null;
 		try {
 			connection = Database.getConnection();
 			pictureDAO.setConnection(connection);
-			cases = pictureDAO.listAllCase(start);
-			return cases;
+			cases = pictureDAO.listAllCase(start,mark);
+			//return cases;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
@@ -116,6 +117,23 @@ public class PictureService {
 		}
 		return cases;
 	}
+	
+	public List<Case> listCaseByUser(String username, int start, int mark) {
+		Connection connection = null;
+		List<Case> cases = null;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			cases = pictureDAO.listCaseByUser(username, start, mark);
+			//return cases;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		return cases;
+	}
+	
 	public List<Case> queryCaseByShigu(String shigu){
 		Connection connection = null;
 		List<Case> cases = null;
@@ -181,7 +199,55 @@ public class PictureService {
 		}
 		return result;
 	}
+	public List<Picture> listPictureByBaoxiandanhao(String baoxiandanhao) {
+		List<Picture> pictures= new ArrayList<Picture>();
+		Connection connection = null;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			pictures = pictureDAO.listPictureByBaoxiandanhao(baoxiandanhao);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		return pictures;
+	}
 	
+	public boolean deletePictureByBaoxiandanhao(String policynum) {
+		Connection connection = null;
+		boolean result = false;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			result = pictureDAO.deletePictureByBaoxiandanhao(policynum);
+			Database.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			Database.rollback();
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		return result;
+	}
+	
+	
+	public boolean checkCase(String baoxiandanhao) {
+		Connection connection = null;
+		boolean result = false;
+		try {
+			connection = Database.getConnection();
+			pictureDAO.setConnection(connection);
+			result = pictureDAO.checkCase(baoxiandanhao);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			Database.releaseConnection(connection);
+		}
+		return result;
+	}
 	public PictureDAO getPictureDAO() {
 		return pictureDAO;
 	}

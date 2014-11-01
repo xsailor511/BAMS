@@ -10,7 +10,7 @@ public interface PolicyIndexDAO {
 	
 	public boolean addPolicyIndex(PolicyIndex policyIndex)throws Exception;
 	
-	public List<PolicyIndex> getPolicyIndexByUserName(String username)throws Exception;
+	public List<PolicyIndex> getPolicyIndexByUserName(String username,int start)throws Exception;
 	
 	public List<PolicyIndex> listAllPolicyIndex(int start)throws Exception;
 	

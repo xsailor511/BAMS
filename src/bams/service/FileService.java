@@ -50,13 +50,13 @@ public class FileService {
 		return result;
 		
 	}
-	public List<File> listAllFiles(){
+	public List<File> listAllFiles(int start){
 		Connection connection = null;
 		List<File> filelist = null;
 		try {
 			connection = Database.getConnection();
 			fileDAO.setConnection(connection);
-			filelist = fileDAO.listAllFiles();
+			filelist = fileDAO.listAllFiles(start);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -82,6 +82,21 @@ public class FileService {
 			Database.releaseConnection(connection);
 		}
 		return result;
+	}
+	
+	public List<File> searchFile(String key) {
+		Connection connection = null;
+		List<File> filelist = null;
+		try {
+			connection = Database.getConnection();
+			fileDAO.setConnection(connection);
+			filelist = fileDAO.searchFile(key);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Database.releaseConnection(connection);
+		}
+		return filelist;
 	}
 	
 }

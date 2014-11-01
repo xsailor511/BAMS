@@ -1,7 +1,6 @@
 package bams.servlet.picture;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,21 +17,6 @@ public class MarkLiPeiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Constructor of the object.
-	 */
-	public MarkLiPeiServlet() {
-		super();
-	}
-
-	/**
-	 * Destruction of the servlet. <br>
-	 */
-	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
-	}
-
-	/**
 	 * The doGet method of the servlet. <br>
 	 *
 	 * This method is called when a form has its tag value method equals to get.
@@ -45,22 +29,22 @@ public class MarkLiPeiServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		String str_id = request.getParameter("id");
+		//response.setContentType("text/html");
+		String str_id = request.getParameter("case_id");
 		int id = 0;
 		if(str_id!=null){
 			id = Integer.parseInt(str_id);
 		}
 		PictureService service = new PictureService();
-		PrintWriter out = response.getWriter();
+		
 		if(service.markCase(id)){
-			out.write("success");
+			request.getRequestDispatcher("/success.jsp").forward(request, response);
 		}else{
-			out.write("failed");
+			request.setAttribute("errMsg", "回复失败");
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 		
-		out.flush();
-		out.close();
+		
 	}
 
 	/**
@@ -75,17 +59,7 @@ public class MarkLiPeiServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		doGet(request, response);
-	}
-
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
-	public void init() throws ServletException {
-		// Put your code here
 	}
 
 }

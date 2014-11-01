@@ -1,7 +1,6 @@
 package bams.servlet.picture;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -50,13 +49,26 @@ public class ManageLiPeiServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PictureService service = new PictureService();
 		String str_start = request.getParameter("start");
+		String page = request.getParameter("page");
+		int mark = 0;
+		if(page.equals("replyed")){
+			mark = 1;
+		}else if(page.equals("unreply")){
+			mark = 0;
+		}
 		int start = 0 ;
 		if(null!=str_start){
 			start = Integer.parseInt(str_start);
 		}
-		List<Case> caselist = service.listAllCase(start);
+		List<Case> caselist = service.listAllCase(start,mark);
 		request.setAttribute("caselist", caselist);
-		request.getRequestDispatcher("/jsp/manage/lipeibaoanguanli.jsp?start="+start).forward(request, response);
+		String url = "";
+		if(mark == 1){
+			url = "/jsp/manage/lipeibaoanreplyed.jsp?start="+start;
+		}else{
+			url = "/jsp/manage/lipeibaoanunreply.jsp?start="+start;
+		}
+		request.getRequestDispatcher(url).forward(request, response);
 
 	}
 

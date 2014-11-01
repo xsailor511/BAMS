@@ -48,7 +48,7 @@ public class SearchPolicyServlet extends HttpServlet {
 
 		String username = (String)request.getSession().getAttribute("name");
 		PolicyIndexService service = new PolicyIndexService();
-		List<PolicyIndex> policyindexlist = service.getPolicyIndexByUserName(username);
+		List<PolicyIndex> policyindexlist = service.getPolicyIndexByUserName(username,0);
 		
 		if(null!=policyindexlist){
 			request.setAttribute("policyindexlist", policyindexlist);

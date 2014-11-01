@@ -17,15 +17,19 @@ public interface PictureDAO {
 	
 	public Picture getPicture(String picture_name)throws Exception;
 	
-	public List<Picture> listPictureByUser(String picture_name)throws Exception;
-	
+	public List<Picture> listPictureByUser(String picture_name, int start)throws Exception;
+	public List<Picture> listPictureByBaoxiandanhao(String baoxiandanhao);
 	
 	public boolean addCase(Case mycase);
-	public List<Case> listAllCase(int start);
+	public List<Case> listAllCase(int start,int mark);
+	public List<Case> listCaseByUser(String username,int start,int mark);
 	public List<Case> queryCaseByShigu(String shigu);
 	public boolean markCase(int id);
 	public boolean unmarkCase(int id);
 	public Case getCase(int id);
+	public boolean checkCase(String baoxiandanhao);
+	
+	public boolean deletePictureByBaoxiandanhao(String policynum);
 	
 	public Connection getConnection()throws Exception;
 	

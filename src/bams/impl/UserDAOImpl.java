@@ -189,6 +189,7 @@ public class UserDAOImpl implements UserDAO {
 				user.setRealname(rs.getString("realname"));
 				user.setSocialid(rs.getString("socialid"));
 				user.setEmail(rs.getString("email"));
+				user.setGoal(rs.getInt("goal"));
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

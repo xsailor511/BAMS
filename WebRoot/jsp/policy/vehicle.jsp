@@ -108,7 +108,7 @@ border:solid#000 1px;
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a  class="open br-red"><i
+					<li><a style="color:blue" class="open br-red"><i
 							class="icon-home"></i>机动车投保单</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
@@ -429,7 +429,7 @@ border:solid#000 1px;
   <tr>
     <td>车船税</td>
     <td colspan="7" style="text-align:left" >&nbsp;RMB
-    <input type="text" name="chechuanshui" id="chechuanshui"></td>
+    <input type="text" name="chechuanshui" id="chechuanshui" onfocus="calByPaiqiliang()"></td>
     <td colspan="2">人民币</td>
   </tr>
   <tr>
@@ -472,80 +472,7 @@ border:solid#000 1px;
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="<%=basePath %>http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
 		<!-- Foot ends -->
 
 	</div>
@@ -692,28 +619,58 @@ border:solid#000 1px;
 			alert("新车购置价必须是数字");
 			return false;
 		}
+		if(xinchejiage*1<0){
+			alert("新车购置价必须大于0");
+			return false;
+		}
 		if(isNaN(zhengbeizhiliang)){
 			alert("整备质量必须是数字");
+			return false;
+		}
+		if(zhengbeizhiliang*1<0){
+			alert("整备质量必须大于0");
 			return false;
 		}
 		if(isNaN(hedingzaike)){
 			alert("核定载客必须是数字");
 			return false;
 		}
+		if(hedingzaike*1<0){
+			alert("核定载客必须大于0");
+			return false;
+		}
 		if(isNaN(paiqiliang)){
 			alert("排气量(L)必须是数字");
+			return false;
+		}
+		if(paiqiliang*1<0){
+			alert("排气量(L)必须大于0");
 			return false;
 		}
 		if(isNaN(shangyebaoxianfeiheji)){
 			alert("商业保险费合计必须是数字");
 			return false;
 		}
+		if(shangyebaoxianfeiheji*1<0){
+			alert("商业保险费合计必须大于0");
+			return false;
+		}
 		if(isNaN(chechuanshui)){
 			alert("车船税必须是数字");
 			return false;
 		}
+		
+		if(chechuanshui*1<0){
+			alert("车船税必须大于0");
+			return false;
+		}
+		
 		if(isNaN(heji)){
 			alert("合计费用必须是数字");
+			return false;
+		}
+		if(heji*1<0){
+			alert("合计费用必须大于0");
 			return false;
 		}
 		var xianbie = document.getElementsByName("xianbie");
@@ -739,6 +696,40 @@ border:solid#000 1px;
 				}
 				
 			}
+		}
+		
+	}
+	
+	
+	function calByPaiqiliang(){
+		var paiqiliang = document.getElementById("paiqiliang").value;
+		var chechuanshui = document.getElementById("chechuanshui");
+		if(isEmpty(paiqiliang)){
+			alert("请输入排气量");
+			chechuanshui.value = "";
+			return false;
+		}
+		if(paiqiliang*1<0){
+			alert("排气量必须大于0");
+			chechuanshui.value = "";
+			return false;
+		}
+		var test = 0;
+		var pnum = paiqiliang*1;
+		if(pnum-1.0<=test){
+			chechuanshui.value = 240;
+		}else if(pnum-1.6<=test){
+			chechuanshui.value = 360;
+		}else if(pnum-2.0<=test){
+			chechuanshui.value = 420;
+		}else if(pnum-2.5<=test){
+			chechuanshui.value = 900;
+		}else if(pnum-3.0<=test){
+			chechuanshui.value = 1800;
+		}else if(pnum-4.0<=test){
+			chechuanshui.value = 3000;
+		}else if(pnum-4.0>0){
+			chechuanshui.value = 4500;
 		}
 		
 	}

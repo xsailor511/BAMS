@@ -113,14 +113,12 @@ margin-right: auto;
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a  class="open br-red"><i
-							class="icon-home"></i>理赔报案</a> <!-- Sub menu markup 
-              <ul>
-                <li><a href="<%=basePath %>#">Submenu #1</a></li>
-                <li><a href="<%=basePath %>#">Submenu #2</a></li>
-                <li><a href="<%=basePath %>#">Submenu #3</a></li>
-              </ul>--></li>
-
+					<li><a  class="open br-red" style="color:blue"><i
+							class="icon-home"></i>理赔报案</a> </li>
+					<li><a  class="br-blue" href="<%=basePath %>servlet/ListCaseByUserServlet?start=0&page=unreply&username=<%=session_name %>" >
+					<i class="icon-user"></i>未回复</a></li>
+					<li><a  class="br-blue" href="<%=basePath %>servlet/ListCaseByUserServlet?start=0&page=replyed&username=<%=session_name %>" >
+					<i class="icon-user"></i>已回复</a></li>
 
 				</ul>
 				
@@ -142,7 +140,7 @@ margin-right: auto;
 <div class="fileupload">
    <form name="uploadForm" method="POST" enctype="MULTIPART/FORM-DATA" action="<%=basePath %>servlet/UploadPictureServlet" onsubmit="return checkForm(this)">
         <div id="baodan">
-        <p>保险单号：<input type="text" id="baodanhao" name="baodanhao" /></p>
+        <p>保险单号：<input type="text" id="baodanhao" name="baodanhao" onblur="checkBaoxiandanhao()" /></p><div id="bao_message"></div>
         <p>联系电话：<input type="text" id="tel" name="tel" /></p>
         </div>
         <div id="shigu">
@@ -169,80 +167,7 @@ margin-right: auto;
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="<%=basePath %>http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
 		<!-- Foot ends -->
 
 	</div>
@@ -269,6 +194,7 @@ margin-right: auto;
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	<script src="<%=basePath %>js/xmlhttp.js"></script>
 	<script type="text/javascript">
 var count = 1;
 var fileinput = document.getElementById("fileinput");
@@ -288,8 +214,8 @@ fileinput.appendChild(firsttext);
 
 function addNewFileInput(){
 	count ++;
-	if(count>=10){
-		alert("最多添加9个应用");
+	if(count>=4){
+		alert("每次最多添加3个图片");
 	}else{
 		var fileinput = document.getElementById("fileinput");
 		fileinput.appendChild(document.createElement("br"));
@@ -384,6 +310,10 @@ function checkForm(form){
 		alert("保险单号不能为空!");
 		return false;
 	}
+	if(!checkBaoxiandanhao()){
+		alert("保险单号已经存在!");
+		return false;
+	}
 }
 	function isEmpty(str){
 		if(str==null || str.length==0)
@@ -391,7 +321,39 @@ function checkForm(form){
 		else 
 			return false;
 	}
-
+	
+	function checkBaoxiandanhao(){
+    	var baoxiandanhao = document.getElementById("baodanhao").value;
+    	var bao_message = document.getElementById("bao_message");
+    	var url = server_context+'/servlet/CheckCaseServlet?baoxiandanhao='+baoxiandanhao;
+    	if(isEmpty(baoxiandanhao)){
+			bao_message.innerHTML = "<font color='blue' >请填写保单号</font>";
+			return false;
+		}
+    	var result = false;
+    	loadXMLDoc(url, function() {
+			//alert("readState:"+xmlhttp.readyState+" status:"+xmlhttp.status);
+			
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				resultstring = xmlhttp.responseText;//json 字符串
+				//alert(resultstring);
+				if(resultstring=="exsit"){
+					bao_message.innerHTML = "<font color='red' >该保单号已经存在</font>";
+					result = false;
+				}else if(resultstring=="none"){
+					bao_message.innerHTML = "<font color='blue' >该保单号可以使用</font>";
+					result = true;
+				}else{
+					alert("检查失败");
+					resul = false;
+				}
+				//
+				
+				
+			}
+		});
+    	return result ;
+    }
 </script>
 	
 	<!-- Main js file -->

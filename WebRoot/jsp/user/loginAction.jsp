@@ -17,8 +17,8 @@ String path = request.getContextPath();
   <body >
   <center>
   <%
-  	String name=request.getParameter("name");
-  	String password=request.getParameter("password");
+  	//String name=request.getParameter("name");
+  	//String password=request.getParameter("password");
   	UserService userService=new UserService();
   	String session_name=(String)session.getAttribute("name");
   	String url = "";

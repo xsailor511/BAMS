@@ -30,12 +30,12 @@ public class PolicyIndexService {
 		return result;
 	}
 	
-	public List<PolicyIndex> getPolicyIndexByUserName(String username){
+	public List<PolicyIndex> getPolicyIndexByUserName(String username, int start){
 		Connection connection = null;
 		try {
 			connection = Database.getConnection();
 			policyIndexDAO.setConnection(connection);
-			return policyIndexDAO.getPolicyIndexByUserName(username);
+			return policyIndexDAO.getPolicyIndexByUserName(username,start);
 		} catch (Exception e) {
 			
 			e.printStackTrace();

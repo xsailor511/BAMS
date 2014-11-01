@@ -50,13 +50,12 @@ if(null==role_int){
   <![endif]-->
 <style type="text/css">
 #result {text-align:center;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;} 
-#result ul {width:680px;height:165px;list-style:none}
+#result ul {width:630px;height:165px;list-style:none}
 
 #result li.id {border:1px solid #000;border-top:1px solid #000;float:left;width:62px;height:33px;text-align:center;line-height:33px}
-#result li.baoxiandanhao {border:1px solid #000;border-top:1px solid #000;float:left;width:232px;height:33px;text-align:center;line-height:33px}
+#result li.baoxiandanhao {border:1px solid #000;border-top:1px solid #000;float:left;width:332px;height:33px;text-align:center;line-height:33px}
 #result li.username {border:1px solid #000;border-top:1px solid #000;float:left;width:112px;height:33px;text-align:center;line-height:33px}
-#result li.tel {border:1px solid #000;border-top:1px solid #000;float:left;width:102px;height:33px;text-align:center;line-height:33px}
-#result li.button {border:1px solid #000;border-top:1px solid #000;float:left;width:132px;height:33px;text-align:center;line-height:33px} 
+#result li.see {border:1px solid #000;border-top:1px solid #000;float:left;width:102px;height:33px;text-align:center;line-height:33px}
 
 .mybutton{
 width:38px;height:18px;line-height:18px;border:0;margin:-4px 0 0 0px;background:#D28EFF;
@@ -146,19 +145,12 @@ height:15px;
 			<div class="s-content">
 
 				<ul id="nav">
-					<!-- Main menu with font awesome icon -->
-					<li ><a href="<%=basePath %>jsp/home/bams_manager.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
-					<li><a href="<%=basePath %>servlet/ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
-
-					<li><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" class="br-blue"><i
-							class="icon-user"></i> 批量打印word文档</a></li>
-					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
-							class="icon-user"></i> 文件上传</a></li>
-					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue"><i
-							class="icon-user"></i> 费率管理</a></li>
-					<li><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0" class="br-blue"><i
-							class="icon-user"></i> 理赔报案管理</a></li>
-					<li><a class="br-blue"><i class="icon-user"></i><font color="blue"> 理赔报案查询</font></a></li>
+				<li><a  class="br-blue" style="color:blue" >
+					<i class="icon-user"></i>理赔报案查询</a></li>
+					<li><a  class="br-blue" href="<%=basePath %>servlet/ManageLiPeiServlet?start=0&page=unreply" >
+					<i class="icon-user"></i>理赔报案未回复</a></li>
+					<li><a  class="br-blue" href="<%=basePath %>servlet/ManageLiPeiServlet?start=0&page=replyed">
+					<i class="icon-user"></i>理赔报案已回复</a></li>
 				</ul>
 				
 			</div>
@@ -193,7 +185,7 @@ height:15px;
   </tr>
 </table>
 
-<br/><hr/><font color='blue'>查询结果</font>
+<br/><hr/><font color='blue'>查询结果，只显示未回复</font>
 <div id="result">
 
 </div>
@@ -205,80 +197,7 @@ height:15px;
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="<%=basePath %>http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
 		<!-- Foot ends -->
 
 	</div>
@@ -305,6 +224,7 @@ height:15px;
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	<script src="<%=basePath %>js/xmlhttp.js"></script>
 	<script src="<%=basePath %>js/manage/search_lipei.js"></script>
 	
 	<!-- Main js file -->

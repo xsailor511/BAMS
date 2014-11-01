@@ -1,34 +1,7 @@
 /**
  * @author xsailor
  */
-var xmlhttp;
-function loadXMLDoc(url, cfunc) {
-	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp = new XMLHttpRequest();
-	} else {// code for IE6, IE5
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
 
-	xmlhttp.open("POST", url, false);
-	xmlhttp.onreadystatechange = cfunc;
-	xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
-	xmlhttp.send();
-}
-function isEmpty(str){
-	if(str==null || str.trim().length==0)
-		return true;
-	else 
-		return false;
-}
-
-//获取应用绝对路径
-var localObj = window.location;
-
-var contextPath = localObj.pathname.split("/")[1];
-
-var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
-
-var server_context=basePath;
 function search(){
 	
 	
@@ -66,6 +39,8 @@ function changeContent(resultstring){
 	"<tr>"+
 	"<th scope='col'>编号</th>"+
 	"<th scope='col'>用户名</th>"+
+	"<th scope='col'>积分</th>"+
+	"<th scope='col'>修改积分</th>"+
 	"<th scope='col'>查看</th>"+
 	"</tr>";
 	
@@ -75,9 +50,44 @@ function changeContent(resultstring){
 	mytable = mytable + "<tr>"+
 	"<td align='center'>"+resultobj.id+"</td>"+
 	"<td align='center'>"+resultobj.name+"</td>"+
+	"<td align='center'>"+"<input type='text' id="+resultobj.id+" value="+resultobj.goal+" style='width:50px;height:15px;margin-top:7px' /></td>"+
+	"<td align='center'>"+"<input type='button' value='修改积分' onclick=updategoal('"+resultobj.id+"','"+resultobj.name+"','"+resultobj.goal+"') "+" /></td>"+
 	"<td align='center'>"+"<a href="+server_context+"/servlet/GetUserServlet?name="+resultobj.name+" target='_blank'><font color='blue' >查看</font></a></td>"+
 	"</tr>";
 
 	mytable = mytable + "</table>";
 	resultdiv.innerHTML = mytable;
+}
+
+function updategoal(id,name,oldgoal){
+	var goal = document.getElementById(id).value;
+	if(goal==oldgoal){
+		return ;
+	}
+	if(isNaN(goal)){
+		alert("积分必须是整数");
+		document.getElementById(id).value = oldgoal;
+		return false;
+	}
+	if(goal*1<0){
+		alert("积分必须大于0");
+		document.getElementById(id).value = oldgoal;
+		return false;
+	}
+	
+	goal = (goal*1).toFixed(0);
+	var url = server_context+"/servlet/UpdateUserGoalServlet?goal="+goal+"&name="+name;
+	loadXMLDoc(url, function() {
+		
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			resultstring = xmlhttp.responseText;//json 字符串
+			if(resultstring=="success"){
+				alert("更新成功");
+				document.getElementById(id).value = goal;
+			}else{
+				alert("更新失败");
+				
+			}
+		}
+	});
 }

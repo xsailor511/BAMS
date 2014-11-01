@@ -30,7 +30,10 @@ if(null==role_int){
 <meta name="author" content="">
 
 
+<script src="<%=basePath %>jsp/manage/js/jquery2222.js"></script>
+<script src="<%=basePath %>jsp/manage/js/jquery.fancybox-1.3.4.js"></script>
 
+<script src="<%=basePath %>jsp/manage/js/jquery.mousewheel-3.0.4.js"></script>
 <!-- Stylesheets -->
 <link rel="stylesheet" href="<%=basePath %>style/bootstrap.css" >
 <!-- Font awesome icon -->
@@ -136,19 +139,8 @@ height:15px;
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li ><a href="<%=basePath %>jsp/home/bams_manager.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
-					<li><a  class="open br-red"><i class="icon-home"></i> <font color="blue">所有用户</font></a></li>
-
-					<li><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" class="br-blue"><i
-							class="icon-user"></i> 批量打印word文档</a></li>
-					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
-							class="icon-user"></i> 文件上传</a></li>
-					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue"><i
-							class="icon-user"></i> 费率管理</a></li>
-				   <li><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0" class="br-blue"><i
-							class="icon-user"></i> 理赔报案管理</a></li>
-					<li><a href="<%=basePath %>jsp/manage/lipeibaoanchaxun.jsp" class="br-blue"><i
-							class="icon-user"></i> 理赔报案查询</a></li>
+					<li ><a href="<%=basePath %>jsp/manage/search_user.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
+					<li><a style="color:blue" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
 				</ul>
 				
 			</div>
@@ -189,7 +181,7 @@ height:15px;
 	if(null!=str_start)
 		start = Integer.parseInt(str_start);
 	int pageSize = 10;
-	int pageCount = start/10+1;
+	int pageCount = start/pageSize+1;
   Iterator<User> it = list.iterator();
   int rowCount = 0 ;
   while(it.hasNext()){
@@ -204,9 +196,9 @@ height:15px;
     <td align="center"><input type="checkbox" name="mycheck" id="mycheck" />
     <label for="mycheck"></label></td>
     <td align="center"><%=name %></td>
-    <td colspan="2" align="center" valign="middle"><label for="xsailor_goal"></label>
-    <input name="xsailor_goal" type="text" id="xsailor_goal<%=rowCount %>" value="<%=goal %>" style="width:50px;height:15px" value="22"/>&nbsp;&nbsp;</td>
-    <td align="center"><input type="button" name="goal_set_button" id="goal_set_button" value="确认修改" onclick="updategoal('<%=rowCount %>','<%=name %>')"/></td>
+    <td colspan="2" align="center" valign="middle">
+    <input name="xsailor_goal" type="text" id="xsailor_goal<%=rowCount %>" value="<%=goal %>" style="width:50px;height:15px;margin-top:7px" value="22"/>&nbsp;&nbsp;</td>
+    <td align="center"><input type="button" name="goal_set_button" id="goal_set_button" value="修改积分" onclick="updategoal('<%=rowCount %>','<%=name %>','<%=goal%>')"/></td>
     <td align="center"><div id='<%=id%>'></div><a href="javascript:void(0)" onclick="deleteuser('<%=name %>','<%=rowCount %>')">
     <font style="color:red">删除</font></a>
     <input type= "hidden" name= "username" value= "<%=name%>">
@@ -258,80 +250,7 @@ if(list.size()<pageSize){
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="<%=basePath %>http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
 		<!-- Foot ends -->
 
 	</div>
@@ -358,33 +277,13 @@ if(list.size()<pageSize){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	<script src="<%=basePath %>js/xmlhttp.js"></script>
 	<!-- Main js file -->
 	<script type="text/javascript">
-	var xmlhttp;
-	function loadXMLDoc(url, cfunc) {
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-		xmlhttp.open("POST", url, false);
-		xmlhttp.onreadystatechange = cfunc;
-		xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
-		xmlhttp.send();
-	}
-
-	//获取应用绝对路径
-	var localObj = window.location;
-
-	var contextPath = localObj.pathname.split("/")[1];
-
-	var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
-
-	var server_context=basePath;
+	
 	function deleteuser(name,rowCount){
 		//alert("test");
-		var url = server_context+"/Delete?name="+name;
+		var url = server_context+"/servlet/Delete?name="+name;
 		loadXMLDoc(url, function() {
 			
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -451,8 +350,23 @@ if(list.size()<pageSize){
 		}
 	}
 	
-	function updategoal(id,name){
+	function updategoal(id,name,oldgoal){
 		var goal = document.getElementById('xsailor_goal'+id).value;
+		if(goal==oldgoal){
+			return ;
+		}
+		if(isNaN(goal)){
+			alert("积分必须是整数");
+			document.getElementById('xsailor_goal'+id).value = oldgoal;
+			return false;
+		}
+		if(goal*1<0){
+			alert("积分必须大于0");
+			document.getElementById('xsailor_goal'+id).value = oldgoal;
+			return false;
+		}
+		
+		goal = (goal*1).toFixed(0);
 		var url = server_context+"/servlet/UpdateUserGoalServlet?goal="+goal+"&name="+name;
 		loadXMLDoc(url, function() {
 			
@@ -460,6 +374,7 @@ if(list.size()<pageSize){
 				resultstring = xmlhttp.responseText;//json 字符串
 				if(resultstring=="success"){
 					alert("更新成功");
+					document.getElementById('xsailor_goal'+id).value = goal;
 				}else{
 					alert("更新失败");
 					

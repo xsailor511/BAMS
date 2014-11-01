@@ -18,8 +18,6 @@ String path = request.getContextPath();
 			url = basePath+"jsp/home/economy_home.jsp";
 		}else if(role==4){
 			url = basePath+"jsp/home/agent_home.jsp";
-		}else if(role==5){
-			url = basePath+"jsp/home/bams_manager.jsp";
 		}else if(role==6){
 			url = basePath+"jsp/home/mail_home.jsp";
 		}
@@ -146,8 +144,8 @@ function isEmpty(str){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a  class="open br-red"><i
-							class="icon-home"></i><font color="blue"> 登陆</font></a> <!-- Sub menu markup 
+					<li><a  class="open br-red" style="color:blue"><i
+							class="icon-home"></i>登陆</a> <!-- Sub menu markup
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>
@@ -178,18 +176,18 @@ function isEmpty(str){
 				<div class="container-fluid">
 
 					<!-- Element -->
-					<div class="box-body">
-						<div class="flexslider" style="background:#CCDDFF;color:black;height:520px">
+					<div class="box-body"  style="background:#CCDDFF;color:black;height:520px">
+<!-- 						<div class="flexslider"> -->
 							
   <span id="error_message"></span>
   	<form name="loginForm" method="post" action="<%=basePath %>Login" onsubmit="return checkForm(this)">
   	<br/>
   	<br/>
   	<br/>
-    <table width="50%"  border="0" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC">
-      <caption>
-      <span class="style1">   <font color="blue">登 录</font></span><br>
-      </caption>
+    <table width="50%"  border="0" style=" border:1px solid #191970;" cellpadding="0" cellspacing="1" align="center" >
+    <tr >
+    <td colspan="3" align="center"  style="font-size: 20px"><font color="blue">登录</font></td>
+  </tr>
       <tr align="left">
         <th width="40%" height="35" align="center" scope="row">用户名:</th>
         <td width="60%"><input name="name" type="text" id="name"  style="width: 180px;height: 20px"></td>
@@ -207,7 +205,6 @@ function isEmpty(str){
 					  <option value="3">经济服务</option>
 					  <option value="4">代理人</option>
 					  <option value="6">企业邮政</option>
-					  <option value="5">管理员</option>
 					  </select>
 						</td>
   </tr>
@@ -221,7 +218,7 @@ function isEmpty(str){
 						</div>
 
 						
-					</div>
+<!-- 					</div> -->
 				</div>
 			</div>
 			<hr />
@@ -229,80 +226,7 @@ function isEmpty(str){
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="<%=basePath %>#">链接一</a></li>
-									<li><a href="<%=basePath %>#">链接二</a></li>
-									<li><a href="<%=basePath %>#">链接三</a></li>
-									<li><a href="<%=basePath %>#">链接四</a></li>
-									<li><a href="<%=basePath %>#">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="<%=basePath %>#">链接一</a></li>
-									<li><a href="<%=basePath %>#">链接二</a></li>
-									<li><a href="<%=basePath %>#">链接三</a></li>
-									<li><a href="<%=basePath %>#">链接四</a></li>
-									<li><a href="<%=basePath %>#">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="<%=basePath %>#">链接一</a></li>
-								<li><a href="<%=basePath %>#">链接二</a></li>
-								<li><a href="<%=basePath %>#">链接三</a></li>
-								<li><a href="<%=basePath %>#">链接四</a></li>
-								<li><a href="<%=basePath %>#">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="<%=basePath %>#">链接一</a></li>
-								<li><a href="<%=basePath %>#">链接二</a></li>
-								<li><a href="<%=basePath %>#">链接三</a></li>
-								<li><a href="<%=basePath %>#">链接四</a></li>
-								<li><a href="<%=basePath %>#">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
 		<!-- Foot ends -->
 
 	</div>

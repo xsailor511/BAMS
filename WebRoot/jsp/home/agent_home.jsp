@@ -124,8 +124,8 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a  class="open br-red"><i
-							class="icon-home"></i><font color="blue">代理人专区</font></a> <!-- Sub menu markup 
+					<li><a style="color:blue" class="open br-red"><i
+							class="icon-home"></i>代理人专区</a> <!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>
@@ -137,12 +137,13 @@ if(null==role_int){
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 						<li><a href="<%=basePath %>jsp/user/lipeibaoan.jsp" target="_blank">理赔报案</a></li>
-							<li><a href="<%=basePath %>servlet/SearchPolicyServlet" target="_blank">保单查询</a></li>
-							<li><a href="<%=basePath %>servlet/ListAllFileServlet" target="_blank">资料下载</a></li>
+							<li><a href="<%=basePath %>jsp/user/searchpolicy.jsp" target="_blank">保单查询</a></li>
+							<li><a href="<%=basePath %>servlet/ListAllFileServlet?start=0" target="_blank">资料下载</a></li>
 							<li><a href="<%=basePath %>jsp/user/lipeizixun.jsp" target="_blank">理赔咨询</a></li>
 						</ul></li>
-					
 					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
+							class="icon-user"></i> 核心流程</a></li>
+					<li><a href="<%=basePath %>servlet/ListGoodsServlet?start=0" target="_blank" class="br-blue"><i
 							class="icon-user"></i> 积分兑换</a></li>
 					
 				</ul>
@@ -269,27 +270,7 @@ if(null==role_int){
 </div>
 </div>
 
-<a name="economy"></a>
-<hr>
-<div class="section">
-<div class="description">经纪业务专区</div>
-<div class="content">
-<div class="policy">
-<div class="image"></div>
-<div class="showtext"></div>
-</div>
-<div class="policy">
-<div class="image"></div>
-<div class="showtext"></div>
-</div>
-<div class="policy">
-<div class="image"><a href="<%=basePath%>jsp/policy/enterprisepackagehint.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
-<div class="showtext"><a href="<%=basePath%>jsp/policy/enterprisepackagehint.jsp" target="_blank"><font color="blue">中小企业一揽子保险委托书</font></a></div>
-</div>
 
-</div>
-</div>
 
 						
 					</div>
@@ -300,85 +281,12 @@ if(null==role_int){
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="<%=basePath %>http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
+						
 		<!-- Foot ends -->
 
 	</div>
-
-	<div class="clearfix"></div>
 
 	<!-- Main content ends -->
 

@@ -3,34 +3,7 @@
 /**
 	 * @author xsailor
 	 */
-	var xmlhttp;
-	function loadXMLDoc(url, cfunc) {
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-		xmlhttp.open("POST", url, false);
-		xmlhttp.onreadystatechange = cfunc;
-		xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
-		xmlhttp.send();
-	}
-	function isEmpty(str){
-		if(str==null || str.trim().length==0)
-			return true;
-		else 
-			return false;
-	}
-
-	//获取应用绝对路径
-	var localObj = window.location;
-
-	var contextPath = localObj.pathname.split("/")[1];
-
-	var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
-
-	var server_context=basePath;
+	
 	
 	function search(){
 		
@@ -66,21 +39,22 @@
 		var resultdiv = document.getElementById("result");
 		var myhtml = "<ul>"+
 		"<li class='id'>编号</li>"+
-		"<li class='baoxiandanhao'>保险单号</li>"+
+		
 		"<li class='username'>用户名</li>"+
-		"<li class='tel'>电话</li>"+
-		"<li class='button' >操作</li>";
+		"<li class='baoxiandanhao'>保险单号</li>"+
+		"<li class='see'>回复</li>";
 		var obj1 = eval ("(" + resultstring + ")");
 		for(var j=0;j<obj1.length;j++){
 			myhtml = myhtml+"<li class='id' >"+obj1[j].id+"</li>";
-			myhtml = myhtml+"<li class='baoxiandanhao' >"+obj1[j].baoxiandanhao+"</li>";
 			myhtml = myhtml+"<li class='username' >"+obj1[j].username+"</li>";
-			myhtml = myhtml+"<li class='tel' >"+obj1[j].tel+"</li>";
-			if(obj1[j].mark=1){
-				myhtml = myhtml+"<li class='button' id='input"+obj1[j].id+"' >已受理&nbsp;|&nbsp;"+"<input type='button' class='mybutton' value='取消' onclick='unmark("+obj1[j].id+")' />"+"</li>";
-			}else{
-				myhtml = myhtml+"<li class='button' id='input"+obj1[j].id+"' >未受理&nbsp;|&nbsp;"+"<input type='button' class='mybutton' value='受理' onclick='mark("+obj1[j].id+")' />"+"</li>";
-			}
+			myhtml = myhtml+"<li class='baoxiandanhao' >"+obj1[j].baoxiandanhao+"</li>";
+			
+			myhtml = myhtml+"<li class='see' ><a style='color:blue' href="+server_context+"/servlet/GetCaseServlet?id="+obj1[j].id+" target='_blank'>回复</a></li>";
+//			if(obj1[j].mark==1){
+//				myhtml = myhtml+"<li class='button' id='input"+obj1[j].id+"' >已受理&nbsp;|&nbsp;"+"<input type='button' class='mybutton' value='取消' onclick='unmark("+obj1[j].id+")' />"+"</li>";
+//			}else{
+//				myhtml = myhtml+"<li class='button' id='input"+obj1[j].id+"' >未受理&nbsp;|&nbsp;"+"<input type='button' class='mybutton' value='受理' onclick='mark("+obj1[j].id+")' />"+"</li>";
+//			}
 			
 		}
 		myhtml = myhtml+"</ul>";

@@ -28,7 +28,7 @@ public class FeilvService {
 		}
 		return list;
 	}
-	public boolean alertFeilv(int id,double feilv){
+	public boolean alertFeilv(int id,int feilv){
 		Connection connection = null;
 		
 		boolean result = false;

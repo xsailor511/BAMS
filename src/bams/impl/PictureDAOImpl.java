@@ -40,10 +40,11 @@ public class PictureDAOImpl implements PictureDAO {
 		boolean result = false;
 		try {
 			ps = connection
-					.prepareStatement("Insert into user(picture_name,picture_url,picture_owner) values(?,?,?)");
+					.prepareStatement("Insert into user(picture_name,picture_url,picture_owner,baoxiandanhao) values(?,?,?,?)");
 			ps.setString(1, picture.getPicture_name());
 			ps.setString(2, picture.getPicture_url());
 			ps.setString(3, picture.getPicture_owner());
+			ps.setString(4, picture.getBaodanhao());
 			ps.executeUpdate();
 			result = true;
 		} catch (Exception e) {
@@ -70,6 +71,7 @@ public class PictureDAOImpl implements PictureDAO {
 				picture.setPicture_name(rs.getString("picture_name"));
 				picture.setPicture_owner(rs.getString("picture_owner"));
 				picture.setPicture_url(rs.getString("picture_url"));
+				picture.setBaodanhao(rs.getString("baoxiandanhao"));
 				picture.setId(rs.getInt("id"));
 			}
 		} catch (Exception e) {
@@ -84,14 +86,15 @@ public class PictureDAOImpl implements PictureDAO {
 	}
 
 	@Override
-	public List<Picture> listPictureByUser(String username) throws Exception {
-		String sql = "select * from picture where picture_owner=?";
+	public List<Picture> listPictureByUser(String username,int start) throws Exception {
+		String sql = "select * from picture where picture_owner=? group by baoxiandanhao limit ?,10";
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		List<Picture> pictures= new ArrayList<Picture>();
 		try {
 			ps = connection.prepareStatement(sql);
 			ps.setString(1, username);
+			ps.setInt(2, start);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				Picture picture = new Picture();
@@ -99,6 +102,7 @@ public class PictureDAOImpl implements PictureDAO {
 				picture.setPicture_name(rs.getString("picture_name"));
 				picture.setPicture_owner("picture_owner");
 				picture.setPicture_url(rs.getString("picture_url"));
+				picture.setBaodanhao(rs.getString("baoxiandanhao"));
 				pictures.add(picture);
 			}
 		} catch (Exception e) {
@@ -186,14 +190,15 @@ public class PictureDAOImpl implements PictureDAO {
 	}
 
 	@Override
-	public List<Case> listAllCase(int start) {
+	public List<Case> listAllCase(int start,int mark) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<Case> caselist = new ArrayList<Case>();
-		String sql = "select * from bams.case limit ?,10";
+		String sql = "select * from bams.case where mark=? limit ?,10";
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setInt(1, start);
+			ps.setInt(1, mark);
+			ps.setInt(2, start);
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
@@ -219,7 +224,7 @@ public class PictureDAOImpl implements PictureDAO {
 	public List<Case> queryCaseByShigu(String shigu) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select * from bams.case where shigujingguo like '%"+shigu+"%'";
+		String sql = "select * from bams.case where mark=0 and shigujingguo like '%"+shigu+"%'";
 		List<Case> caselist = new ArrayList<Case>();
 		try {
 			ps = connection.prepareStatement(sql);
@@ -309,6 +314,113 @@ public class PictureDAOImpl implements PictureDAO {
 			closeStatement(ps);
 		}
 		return result;
+	}
+
+	@Override
+	public List<Picture> listPictureByBaoxiandanhao(String baoxiandanhao) {
+		PreparedStatement ps = null;
+		String sql = "select * from picture where baoxiandanhao=? ";
+		ResultSet rs = null;
+		List<Picture> pictures= new ArrayList<Picture>();
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, baoxiandanhao);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				Picture picture = new Picture();
+				picture.setId(rs.getInt("id"));
+				picture.setPicture_name(rs.getString("picture_name"));
+				picture.setPicture_owner("picture_owner");
+				picture.setPicture_url(rs.getString("picture_url"));
+				picture.setBaodanhao(rs.getString("baoxiandanhao"));
+				pictures.add(picture);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeResultSet(rs);
+			closeStatement(ps);
+		}
+		
+		
+		return pictures;
+		
+	}
+
+	@Override
+	public boolean deletePictureByBaoxiandanhao(String policynum) {
+		PreparedStatement ps = null;
+		boolean result = false;
+		String sql = "delete from bams.picture where baoxiandanhao=?";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, policynum);
+			ps.executeUpdate();
+			
+			result = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeStatement(ps);
+		}
+		
+		return result;
+	}
+
+	@Override
+	public boolean checkCase(String baoxiandanhao) {
+		PreparedStatement ps = null;
+		boolean result = false;
+		ResultSet rs = null;
+		String sql = "select * from bams.case where baoxiandanhao=?";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, baoxiandanhao);
+			rs = ps.executeQuery();
+			if(rs.next())
+				result = true;
+			else
+				result = false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeStatement(ps);
+			closeResultSet(rs);
+		}
+		return result;
+	}
+
+
+	@Override
+	public List<Case> listCaseByUser(String username, int start, int mark) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Case> caselist = new ArrayList<Case>();
+		String sql = "select * from bams.case where username=? and mark=? limit ?,10";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setInt(2, mark);
+			ps.setInt(3, start);
+			rs = ps.executeQuery();
+			
+			while(rs.next()){
+				Case c = new Case();
+				c.setBaoxiandanhao(rs.getString("baoxiandanhao"));
+				c.setId(rs.getInt("id"));
+				c.setMark(rs.getInt("mark"));
+				c.setUsername(rs.getString("username"));
+				c.setTel(rs.getString("tel"));
+				c.setShigujingguo(rs.getString("shigujingguo"));
+				caselist.add(c);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			closeResultSet(rs);
+			closeStatement(ps);
+		}
+		return caselist;
 	}
 
 	

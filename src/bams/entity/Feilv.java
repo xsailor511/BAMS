@@ -9,7 +9,7 @@ public class Feilv {
 	
 	private int id;
 	private String description;
-	private double feilv;
+	private int feilv;
 	public int getId() {
 		return id;
 	}
@@ -22,10 +22,10 @@ public class Feilv {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public double getFeilv() {
+	public int getFeilv() {
 		return feilv;
 	}
-	public void setFeilv(double feilv) {
+	public void setFeilv(int feilv) {
 		this.feilv = feilv;
 	}
 	

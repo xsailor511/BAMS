@@ -46,17 +46,22 @@ public class ListAllFileServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Integer role_int = (Integer)request.getSession().getAttribute("role");
+		String start_str = request.getParameter("start");
+		int start=0;
+		if(start_str!=null){
+			start = Integer.parseInt(start_str);
+		}
 		int role = role_int.intValue();
 		FileService service = new FileService();
-		List<File> filelist = service.listAllFiles();
+		List<File> filelist = service.listAllFiles(start);
 		request.setAttribute("filelist", filelist);
 		if(role==5){
 			this.getServletContext()
-		  	.getRequestDispatcher("/jsp/manage/upload.jsp")
+		  	.getRequestDispatcher("/jsp/manage/filemanage.jsp?start="+start)
 		  	.forward(request,response);
 		}else{
 			this.getServletContext()
-		  	.getRequestDispatcher("/jsp/user/download.jsp")
+		  	.getRequestDispatcher("/jsp/user/download.jsp?start="+start)
 		  	.forward(request,response);
 		}
 		

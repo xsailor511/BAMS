@@ -39,79 +39,7 @@ String path = request.getContextPath();
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
-<script language="javascript">
-	function checkForm(form){
-		if(isEmpty(form.name.value) || isEmpty(form.password.value) || 
-				isEmpty(form.confirmPassword.value) || isEmpty(form.email.value) || 
-				isEmpty(form.phone.value) || isEmpty(form.socialid.value)||isEmpty(form.realname.value) ){
-			alert("请将必填项填写完整!");
-			return false;
-		}
-		if(form.password.value!=form.confirmPassword.value){
-			alert("两次密码不匹配!");
-			return false;
-		}
-		if(form.password.value.length<6 || form.password.value.length>16){
-			alert("密码长度不得少于6个字符，不得多于16个字符！");
-			return false;
-		}
-		if(form.socialid.value.length!=18){
-			alert("身份证号码不符合！");
-			return false;
-		}
-		if(form.phone.value.length!=11){//18769780000
-			alert("电话号码不符合！");
-			return false;
-		}
-		 var regex=/^[0-9A-Za-z_]{4,15}$/;
-		 if(!regex.test(form.name.value)){
-			 alert("用户的用户名只包含大小写英文、数字和下划线。同时用户名长度在4-15之间");
-			 return false;
-		 }
-			 
-	     var email = document.getElementById("email").value;
-	     if(!emailFormatCheck(email))
-	     {
-	         document.getElementById("spanEmail").innerHTML = "<font color='red'>请输入邮箱的正确形式！</font>";
-	         document.getElementById("email").value="";
-	         return false;
-	     }
-		
-		return true;
-	}
-	
-	function emailFormatCheck(email){
-	    if ((email.length > 128) || (email.length < 6)) {
-	        return false;
-	    }
-	    var format = /^[A-Za-z0-9+]+[A-Za-z0-9\.\_\-+]*@([A-Za-z0-9\-]+\.)+[A-Za-z0-9]+$/;
-	    if (!email.match(format)) {
-	        return false;
-	    }
-	    return true;
-	}
-	
-	function isEmpty(str){
-		if(str==null || str.length==0)
-			return true;
-		else 
-			return false;
-	}
-	function checkName(){
-		var name=document.userRegisterForm.name.value;
-		if(name.length>0){
-			 var url="checkName.jsp?name=" +name; //转向网页的地址;
-			  var name="检查用户名";				//网页名称，可为空;
-			  var iWidth=300;                          //弹出窗口的宽度;
-			  var iHeight=200;                        //弹出窗口的高度;
-			  var iTop = (window.screen.availHeight-30-iHeight)/2;       //获得窗口的垂直位置;
-			  var iLeft = (window.screen.availWidth-10-iWidth)/2;           //获得窗口的水平位置;
-			  window.open(url,name,'height='+iHeight+',,innerHeight='+iHeight+',width='+iWidth+',innerWidth='+iWidth+',top='+iTop+',left='+iLeft+',toolbar=no,menubar=no,scrollbars=auto,resizeable=no,location=no,status=no');
 
-		
-		}
-	}
-</script>
 
 </head>
 
@@ -182,11 +110,11 @@ String path = request.getContextPath();
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a  class="open br-red"><i
-							class="icon-home"></i> <font color="blue">注册</font></a> </li>
+					<li><a style="color:blue" class="open br-red"><i
+							class="icon-home"></i>注册</a> </li>
 
 					<li><a href="<%=basePath %>jsp/user/login.jsp" class="br-blue"><i
-							class="icon-user"></i> 登陆</a></li>
+							class="icon-user"></i>登陆</a></li>
 
 				</ul>
 				<div class="s-widget">
@@ -205,24 +133,26 @@ String path = request.getContextPath();
 		<!-- Mainbar starts -->
 		<div class="mainbar">
 
-			<div class="matter">
-				<div class="container-fluid">
+<!-- 			<div class="matter"> -->
+<!-- 				<div class="container-fluid"> -->
 
 					<!-- Element -->
-					<div class="box-body">
-						<div class="flexslider" style="background:#CCDDFF;color:black;height:520px">
+				<div class="box-body" style="background:#CCDDFF;color:black;height:520px"> 
+<!-- 						<div class="flexslider" > -->
 							
   
 <form name="userRegisterForm" method="post" action="<%=basePath %>Register" onsubmit="return checkForm(this)">
-<table width="80%"  border="0" align="center" cellpadding="2" cellspacing="0" >
-<caption>
-<font color="blue" style="font-size: 20px">用户注册</font><br></caption>
+<table width="80%"  border="0" align="center" style=" border:1px solid #191970;" cellpadding="0" cellspacing="1" >
+
+<tr >
+    <td colspan="3" align="center"><font color="blue" style="font-size: 20px">用户注册</font></td>
+  </tr>
   <tr>
     <td width="20%" align="right">用户名:</td>
     <td width="30%" valign="bottom">
-      <input name="name" type="text" id="name" size="20"  style="width: 180px;height: 20px"></td>
-    <td width="45%">*
-        <input name="checkUser" type="button" value="查看是否被占用" onclick="checkName();">
+      <input name="name" type="text" id="name" size="20"  style="width: 180px;height: 20px" onblur="checkName()" ></td>
+    <td width="45%">
+        <div id="name_message">*</div>
     </td>
   </tr>
   <tr >
@@ -230,7 +160,7 @@ String path = request.getContextPath();
   </tr>
   <tr><td align="right">密　码:</td>
     <td><input name="password" type="password" id="password" size="20"  style="width: 180px;height: 20px"></td>
-    <td>*(密码长度为6～16位，区分字母大小写。登录密码可以由字母、数字、特殊字符组成。)</td>
+    <td>*</td>
   </tr>
   <tr >
     <td height="40" align="right">密码确认:</td>
@@ -283,88 +213,15 @@ String path = request.getContextPath();
 						</div>
 
 						
-					</div>
-				</div>
-			</div>
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 			<hr />
 		</div>
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="#">链接一</a></li>
-									<li><a href="#">链接二</a></li>
-									<li><a href="#">链接三</a></li>
-									<li><a href="#">链接四</a></li>
-									<li><a href="#">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="#">链接一</a></li>
-									<li><a href="#">链接二</a></li>
-									<li><a href="#">链接三</a></li>
-									<li><a href="#">链接四</a></li>
-									<li><a href="#">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="#">链接一</a></li>
-								<li><a href="#">链接二</a></li>
-								<li><a href="#">链接三</a></li>
-								<li><a href="#">链接四</a></li>
-								<li><a href="#">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="#">链接一</a></li>
-								<li><a href="#">链接二</a></li>
-								<li><a href="#">链接三</a></li>
-								<li><a href="#">链接四</a></li>
-								<li><a href="#">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="#">http://www.ybztc.com</a> - Collect from
-							<a href="http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
 		<!-- Foot ends -->
 
 	</div>
@@ -391,6 +248,107 @@ String path = request.getContextPath();
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	<script src="<%=basePath %>js/xmlhttp.js"></script>
+	
+	<script language="javascript">
+	function checkForm(form){
+		if(isEmpty(form.name.value) || isEmpty(form.password.value) || 
+				isEmpty(form.confirmPassword.value) || isEmpty(form.email.value) || 
+				isEmpty(form.phone.value) || isEmpty(form.socialid.value)||isEmpty(form.realname.value) ){
+			alert("请将必填项填写完整!");
+			return false;
+		}
+		if(!checkName()){
+	    	alert("该用户名已经存在");
+	    	return false;
+	 	}
+		
+		if(form.password.value!=form.confirmPassword.value){
+			alert("两次密码不匹配!");
+			return false;
+		}
+		if(form.password.value.length<6 || form.password.value.length>16){
+			alert("密码长度不得少于6个字符，不得多于16个字符！");
+			return false;
+		}
+		if(form.socialid.value.length!=18){
+			alert("身份证号码不符合！");
+			return false;
+		}
+		if(form.phone.value.length!=11){//18769780000
+			alert("电话号码不符合！");
+			return false;
+		}
+		 var regex=/^[0-9A-Za-z_]{4,15}$/;
+		 if(!regex.test(form.name.value)){
+			 alert("用户的用户名只包含大小写英文、数字和下划线。同时用户名长度在4-15之间");
+			 return false;
+		 }
+			 
+	     var email = document.getElementById("email").value;
+	     if(!emailFormatCheck(email))
+	     {
+	         document.getElementById("spanEmail").innerHTML = "<font color='red'>请输入邮箱的正确形式！</font>";
+	         document.getElementById("email").value="";
+	         return false;
+	     }
+	     
+		return true;
+	}
+	
+	function emailFormatCheck(email){
+	    if ((email.length > 128) || (email.length < 6)) {
+	        return false;
+	    }
+	    var format = /^[A-Za-z0-9+]+[A-Za-z0-9\.\_\-+]*@([A-Za-z0-9\-]+\.)+[A-Za-z0-9]+$/;
+	    if (!email.match(format)) {
+	        return false;
+	    }
+	    
+	   
+	    return true;
+	}
+	
+	function isEmpty(str){
+		if(str==null || str.length==0)
+			return true;
+		else 
+			return false;
+	}
+	function checkName(){
+		var name=document.userRegisterForm.name.value;
+		var name_message = document.getElementById("name_message");
+		var url = server_context+'/CheckUsernameServlet?name='+name;
+		//alert(server_context);
+		if(isEmpty(name)){
+			name_message.innerHTML = "<font color='blue' >请填写用户名</font>";
+			return false;
+		}
+		var result = false; 
+		loadXMLDoc(url, function() {
+			//alert("readState:"+xmlhttp.readyState+" status:"+xmlhttp.status);
+			
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				resultstring = xmlhttp.responseText;//json 字符串
+				//alert(resultstring);
+				if(resultstring=="exsit"){
+					name_message.innerHTML = "<font color='red' >该用户已经存在</font>";
+					result = false;
+				}else if(resultstring=="none"){
+					name_message.innerHTML = "<font color='blue' >该用户可以使用</font>";
+					result = true;
+				}else{
+					alert("检查失败");
+					result = false;
+				}
+				//
+				
+				
+			}
+		});
+		return result;
+	}
+</script>
 	<!-- Main js file -->
 </body>
 </html>

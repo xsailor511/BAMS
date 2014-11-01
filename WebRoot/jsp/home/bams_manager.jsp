@@ -48,20 +48,14 @@ if(null==role_int){
 <!--[if lt IE 9]>
   <script src="<%=basePath %>js/html5shim.js"></script>
   <![endif]-->
-<style type="text/css">
-table{
-border-collapse:collapse;
-border:1px;
-}
-table td{
-border:solid#000 1px;
-}
+<style type="text/css"> 
 
-input.user_goal{
-width:50px;
-height:15px;
-}
-</style>
+#main {text-align:center;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;MARGIN-top: 10px;} 
+#main ul {width:605px;height:165px;list-style:none}
+#main li.caidan {border:1px solid #000;border-right:0px solid #000;float:left;width:150px;height:33px;text-align:center;line-height:33px} 
+#main li.last {border:1px solid #000;border-top:1px solid #000;float:left;width:150px;height:33px;text-align:center;line-height:33px} 
+
+</style> 
 <!-- Favicon -->
 <link rel="shortcut icon" href="<%=basePath %>img/favicon/favicon.png">
 </head>
@@ -134,19 +128,29 @@ height:15px;
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li ><a class="open br-red"><i class="icon-home"></i><font color="blue">查找用户</font> </a></li>
-					<li><a href="<%=basePath %>servlet/ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
-
-					<li><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" class="br-blue"><i
-							class="icon-user"></i> 批量打印word文档</a></li>
-					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
-							class="icon-user"></i> 文件上传</a></li>
-					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue"><i
-							class="icon-user"></i> 费率管理</a></li>
-					<li><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0" class="br-blue"><i
-							class="icon-user"></i> 理赔报案管理</a></li>
-					<li><a href="<%=basePath %>jsp/manage/lipeibaoanchaxun.jsp" class="br-blue"><i
-							class="icon-user"></i> 理赔报案查询</a></li>
+					<li ><a style="color:blue" class="open br-red">
+					<i class="icon-home"></i>管理员 </a></li>
+					<li ><a href="<%=basePath %>jsp/manage/search_user.jsp" target="_blank" class="open br-red">
+					<i class="icon-home"></i>用户管理 </a></li>
+					
+					<li><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" class="br-blue" target="_blank"><i
+							class="icon-user"></i>下载保单</a></li>
+					<li><a href="<%=basePath %>servlet/ListAllFileServlet?start=0" class="br-blue" target="_blank"><i
+							class="icon-user"></i>文件管理</a></li>
+					
+					<li><a href="<%=basePath %>servlet/ListAllFeilvServlet" class="br-blue" target="_blank"><i
+							class="icon-user"></i>费率管理</a></li>
+					<li><a href="<%=basePath %>jsp/manage/lipeibaoanchaxun.jsp" class="br-blue" target="_blank"><i
+							class="icon-user"></i>理赔报案管理</a></li>
+					<li><a  class="br-blue" href="<%=basePath %>servlet/ListOrderServlet?start=0&page=undeal" target="_blank">
+					<i class="icon-user"></i>订单管理</a></li>
+					<li><a  class="br-blue" href="<%=basePath %>servlet/ListGoodsServlet?start=0" target="_blank">
+					<i class="icon-user"></i>商品管理</a></li>
+					<li><a  class="br-blue" href="<%=basePath %>jsp/manage/query_question.jsp" target="_blank">
+					<i class="icon-user"></i>咨询管理</a></li>
+					<li><a  class="br-blue" href="<%=basePath %>servlet/ListAllCaseDealServlet?start=0" target="_blank">
+					<i class="icon-user"></i>保单管理</a></li>
+					
 				</ul>
 				
 			</div>
@@ -165,25 +169,37 @@ height:15px;
 					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
 <!-- 						<div class="flexslider"> -->
 <!-- 						</div> -->
-					<table width="100%" border="1">
-  <tr>
-    <td colspan="2" align="center">输入用户名</td>
-  </tr>
-  <tr>
-    <td width="49%" align="right">用户名:</td>
-    <td width="51%"  style="align:left;valign:bottom">
-    <input type="text" name="name" id="name" style="margin-top:10px" onkeypress="if (event.keyCode == 13) search();"/>
-    <label for="name_email"></label>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center"><input type="button" name="search_button" id="search_button" value="查询" onclick="search()"/></td>
-  </tr>
-</table>
+					<div id="main">
+					<h4>快捷入口</h4>
+<ul>
+<li class="caidan"><a href="<%=basePath %>jsp/manage/search_user.jsp" target="_blank" style="color:blue">查找用户</a></li>
+<li class="caidan"><a href="<%=basePath %>servlet/ListAllUserServlet" target="_blank" style="color:blue" >所有用户</a></li> 
+<li class="caidan"><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" target="_blank" style="color:blue">下载word保单</a></li>
+<li class="last"><a href="<%=basePath %>servlet/ListAllFileServlet?start=0" target="_blank" style="color:blue">文件管理</a></li>
 
-<br/><hr/><font color='blue'>查询结果</font>
-<div id="result">
+<li class="caidan"><a href="<%=basePath %>jsp/manage/upload.jsp" target="_blank" style="color:blue">文件上传</a></li> 
+<li class="caidan"><a href="<%=basePath %>servlet/ListAllFeilvServlet" target="_blank" style="color:blue">费率管理</a></li>
+<li class="caidan"><a href="<%=basePath %>jsp/manage/lipeibaoanchaxun.jsp" target="_blank" style="color:blue">理赔报案查询</a></li>
+<li class="last"><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0&page=unreply" target="_blank" style="color:blue">理赔报案未回复</a></li>
 
+<li class="caidan"><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0&page=unreply" target="_blank" style="color:blue">理赔报案已回复</a></li>
+<li class="caidan"><a href="<%=basePath %>servlet/ListOrderServlet?start=0&page=undeal" target="_blank" style="color:blue">未受理订单</a></li> 
+<li class="caidan"><a href="<%=basePath %>servlet/ListOrderServlet?start=0&page=dealed" target="_blank" style="color:blue">已受理订单</a></li> 
+<li class="last"><a href="<%=basePath %>servlet/ListGoodsServlet?start=0" target="_blank" style="color:blue">商品管理</a></li>
+
+<li class="caidan"><a href="<%=basePath %>jsp/manage/addgoods.jsp" target="_blank" style="color:blue">添加商品</a></li>
+<li class="caidan"><a href="<%=basePath %>servlet/ListAllQuestionServlet?start=0&page=unreply" target="_blank" style="color:blue">咨询未回复</a></li>
+<li class="caidan"><a href="<%=basePath %>jsp/manage/query_question.jsp" target="_blank" style="color:blue">咨询查询</a></li>
+<li class="last"><a href="<%=basePath %>servlet/ListAllQuestionServlet?start=0&page=replyed" target="_blank" style="color:blue">咨询已回复</a></li>
+
+<li class="caidan"><a href="<%=basePath %>servlet/ListAllCaseDealServlet?start=0" target="_blank" style="color:blue">保单管理</a></li>
+<li class="caidan"><a href="<%=basePath %>jsp/manage/addcasedeal.jsp" target="_blank" style="color:blue">保单上传</a></li>
+<li class="caidan"><a href="" target="_blank" style="color:blue"></a></li>
+<li class="last"><a href="" target="_blank" style="color:blue"></a></li>
+
+
+
+</ul>
 </div>
 					</div>
 				</div>
@@ -193,80 +209,7 @@ height:15px;
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="<%=basePath %>http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
 		<!-- Foot ends -->
 
 	</div>
@@ -293,6 +236,7 @@ height:15px;
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	<script src="<%=basePath %>js/xmlhttp.js"></script>
 	<script src="<%=basePath %>js/manage/search_user.js"></script>
 	<!-- Main js file -->
 </body>

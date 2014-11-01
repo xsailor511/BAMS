@@ -6,6 +6,7 @@ package bams.servlet.user;
 import java.io.IOException;
 //import java.io.PrintWriter;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,10 +39,12 @@ public class LoginServlet extends HttpServlet {
 	      	HttpSession session=request.getSession();
 	       // PrintWriter out = response.getWriter();
 	      	if(userService.login(role,name,password)){
+	      		
 	      		session.setAttribute("role",role);
 	    	  	session.setAttribute("name",name);
+	    	  	
 	    	  	this.getServletContext()
-	    	  	.getRequestDispatcher("/jsp/user/loginAction.jsp?name="+name+"&password="+password)
+	    	  	.getRequestDispatcher("/jsp/user/loginAction.jsp")
 	    	  	.forward(request,response);
 		        //out.println("<center><font color='blue'>你已登录成功！</font></center>");
 	      	}else{

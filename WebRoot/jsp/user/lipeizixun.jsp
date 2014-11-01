@@ -6,15 +6,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 String session_name = (String)session.getAttribute("name");
 Integer role_int = (Integer)session.getAttribute("role");
 String url = basePath+"jsp/user/login.jsp";//then go back to login page
-if(null==role_int){
+if(null==role_int||null==session_name){
 	response.setHeader("refresh","0;URL="+url) ;
-}else{
-	int role = role_int.intValue();
-	if(null==session_name){//if the user is not login or a manager.
-		
-		response.setHeader("refresh","0;URL="+url) ;
-		//response.sendRedirect(basePath+"jsp/user/login.jsp");
-	}
 }
 
 %>
@@ -99,8 +92,12 @@ if(null==role_int){
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a  class="open br-red"><i
-							class="icon-home"></i>理赔咨询</a> <!-- Sub menu markup 
+					<li><a  class="open br-red" style="color:blue"><i class="icon-home" ></i>理赔咨询</a></li>
+					<li><a href="<%=basePath %>servlet/ListQuestionByUserServlet?start=0&tag=unreply&key=<%=session_name %>" class="open br-red"><i
+							class="icon-home"></i>未回复</a></li>
+					<li><a href="<%=basePath %>servlet/ListQuestionByUserServlet?start=0&tag=replyed&key=<%=session_name %>" class="open br-red"><i
+							class="icon-home"></i>已回复</a>
+							<!-- Sub menu markup 
               <ul>
                 <li><a href="<%=basePath %>#">Submenu #1</a></li>
                 <li><a href="<%=basePath %>#">Submenu #2</a></li>
@@ -124,18 +121,17 @@ if(null==role_int){
 
 					<!-- Element -->
 					<div class="box-body" style="background:#CCDDFF;color:black;height:520px">
-						
-					<div class="s-widget">
-					<h6>咨询热线</h6>
-					<p>TEL:0532-88886666</p>
-					<p>qq：346543534</p>
-					<p>邮箱：235435@145.com</p>
-					<p>8:30-24:00(周一到周五)</p>
-					<p>9:00-18:00(周六到周日)</p>
-					<p></p>
-				</div>
-					
-
+					<form action="<%=basePath%>servlet/AddQuestionServlet" onsubmit="return checkForm()">
+					<p>标&nbsp;&nbsp;&nbsp;题：<input type="text" id="title" name="title" ></p>
+					<p>单&nbsp;&nbsp;&nbsp;位：<input type="text" id="company" name="company" ></p>
+					<p>联系人：<input type="text" id="people" name="people" ></p>
+					<p>电&nbsp;&nbsp;&nbsp;话：<input type="text" id="tel" name="tel" ></p>
+					<p>传&nbsp;&nbsp;&nbsp;真：<input type="text" id="fax" name="fax" ></p>
+					<p>邮&nbsp;&nbsp;&nbsp;箱：<input type="text" id="email" name="email" ></p>
+					<p>具体咨询内容:</p>
+					<p><textarea cols="10" rows="5" style="width:535px" name="content" id="content" ></textarea></p>
+					<input type="submit" value="提交" />
+					</form>
 						
 					</div>
 				</div>
@@ -145,80 +141,7 @@ if(null==role_int){
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="<%=basePath %>http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
 		<!-- Foot ends -->
 
 	</div>
@@ -245,7 +168,74 @@ if(null==role_int){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
+	<script type="text/javascript">
+	function isEmpty(str){
+		if(str==null || str.trim().length==0)
+			return true;
+		else 
+			return false;
+	}
 	
+	function emailFormatCheck(email){
+	    if ((email.length > 128) || (email.length < 6)) {
+	        return false;
+	    }
+	    var format = /^[A-Za-z0-9+]+[A-Za-z0-9\.\_\-+]*@([A-Za-z0-9\-]+\.)+[A-Za-z0-9]+$/;
+	    if (!email.match(format)) {
+	        return false;
+	    }
+	    return true;
+	}
+	
+	function checkForm(){
+		var title = document.getElementById("title").value;
+		var company = document.getElementById("company").value;
+		var people = document.getElementById("people").value;
+		var tel = document.getElementById("tel").value;
+		var fax = document.getElementById("fax").value;
+		var email = document.getElementById("email").value;
+		var content = document.getElementById("content").value;
+		
+		if(isEmpty(title)){
+			alert("标题不能为空");
+			return false;
+		}
+		if(isEmpty(company)){
+			alert("单位不能为空");
+			return false;
+		}
+		if(isEmpty(people)){
+			alert("联系人不能为空");
+			return false;
+		}
+		if(isEmpty(fax)){
+			alert("传真不能为空");
+			return false;
+		}
+		//alert("tset");
+		if(isEmpty(email)){
+			alert("邮箱不能为空");
+			return false;
+		}
+		
+		if(isEmpty(content)){
+			alert("内容不能为空");
+			return false;
+		}
+		
+		if(tel.length!=11){
+			alert("电话号码长度为11位，不能为空");
+			return false;
+		}
+		if(!emailFormatCheck(email)){
+			alert("邮箱格式不对");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	</script>
 	
 	<!-- Main js file -->
 </body>

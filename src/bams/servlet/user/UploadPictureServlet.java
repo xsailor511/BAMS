@@ -53,6 +53,7 @@ public class UploadPictureServlet extends HttpServlet
     {
     	response.setContentType("text/plain;charset=UTF-8");
     	Case c = new Case();
+    	
     	String path = request.getContextPath();
     	basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
     	name = (String)request.getSession().getAttribute("name");
@@ -66,7 +67,7 @@ public class UploadPictureServlet extends HttpServlet
             // threshold 极限、临界值，即硬盘缓存 1M  
             diskFactory.setSizeThreshold(4 * 1024);
             // repository 贮藏室，即临时文件目录  
-            diskFactory.setRepository(new File(tempPath));  
+            diskFactory.setRepository(new File(tempPath));
           
             ServletFileUpload upload = new ServletFileUpload(diskFactory);  
             // 设置允许上传的最大文件大小 4M  
@@ -83,6 +84,7 @@ public class UploadPictureServlet extends HttpServlet
                 System.out.println("field name:"+fieldname);
                 String value = item.getString("UTF-8");
 				  if(fieldname.equals("baodanhao")){
+					  baodanhao = value;
 					  c.setBaoxiandanhao(value);
 				  }else if(fieldname.equals("shigujingguo")){
 					  c.setShigujingguo(value);
@@ -156,15 +158,18 @@ public class UploadPictureServlet extends HttpServlet
        // System.out.println("before===="+getEncoding(filename));//GB2312
         //filename = new String(filename.getBytes(getEncoding(filename)), "UTF-8");
         //System.out.println("完整的文件名：" + filename);//UTF-8. we think that gb2312 is included in UTF-8, but how can this happen?
-        
+        if(null==filename||"".equals(filename) ){
+        	System.out.println("文件名为空 ...");
+            return;  
+        }
         int index = filename.lastIndexOf(".");
-       String suffix = filename.substring(index);
+        String suffix = filename.substring(index);
  
         long fileSize = item.getSize();  
  
-        if("".equals(filename) && fileSize == 0)
+        if(fileSize == 0)
         {             
-            System.out.println("文件名为空 ...");  
+            System.out.println("文件为空 ...");
             return;  
         }
         Date dt = new Date(System.currentTimeMillis());

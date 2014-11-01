@@ -54,7 +54,7 @@ if(null==role_int){
 #main {text-align:center;MARGIN-RIGHT: auto; MARGIN-LEFT: auto;} 
 #main ul {width:520px;height:165px;list-style:none}
 #main li.description {border:1px solid #000;border-top:1px solid #000;float:left;width:306px;height:33px;text-align:center;line-height:33px} 
-#main li.input {border:1px solid #000;border-top:1px solid #000;float:left;width:102px;height:33px;text-align:center;line-height:33px}
+#main li.input {border-bottom:1px solid #000;border-top:1px solid #000;float:left;width:102px;height:33px;text-align:center;line-height:33px}
 #main li.button {border:1px solid #000;border-top:1px solid #000;float:left;width:102px;height:33px;text-align:center;line-height:33px} 
 #main li.b {border-bottom:1px solid #ccc} 
 #main li.r {border-right:1px solid #ccc}
@@ -139,19 +139,9 @@ height:25px;
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li ><a href="<%=basePath %>jsp/home/bams_manager.jsp" class="open br-red"><i class="icon-home"></i>查找用户 </a></li>
-					<li><a href="<%=basePath %>servlet/ListAllUserServlet" class="open br-red"><i class="icon-home"></i> 所有用户</a></li>
 
-					<li><a href="<%=basePath %>servlet/ListAllPolicyIndexServlet?start=0" class="br-blue"><i
-							class="icon-user"></i> 批量打印word文档</a></li>
-					<li><a href="<%=basePath %>servlet/ListAllFileServlet" class="br-blue"><i
-							class="icon-user"></i> 文件上传</a></li>
-					<li><a class="br-blue"><i
-							class="icon-user"></i><font color="blue">费率管理</font></a></li>
-					<li><a href="<%=basePath %>servlet/ManageLiPeiServlet?start=0" class="br-blue"><i
-							class="icon-user"></i> 理赔报案管理</a></li>
-					<li><a href="<%=basePath %>jsp/manage/lipeibaoanchaxun.jsp" class="br-blue"><i
-							class="icon-user"></i> 理赔报案查询</a></li>
+					<li><a style="color:blue" class="br-blue"><i class="icon-user"></i>费率管理</a></li>
+					
 				</ul>
 				
 			</div>
@@ -182,7 +172,7 @@ List<Feilv> feilvlist= (List)request.getAttribute("feilvlist");
 for(int i=0;i<feilvlist.size();i++){
 	int id = feilvlist.get(i).getId();
 	String description = feilvlist.get(i).getDescription();
-	double feilv = feilvlist.get(i).getFeilv();
+	int feilv = feilvlist.get(i).getFeilv();
 
 
 %>
@@ -207,80 +197,7 @@ for(int i=0;i<feilvlist.size();i++){
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->
-		<div class="foot">
-			<div class="container-fluid">
-				<div class="row-fluid">
-					<div class="span4">
-						<div class="fwidget">
-
-							<div class="col-l">
-
-								<h6>下载</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="col-r">
-								<h6>产品导读</h6>
-								<ul>
-									<li><a href="<%=basePath %>">链接一</a></li>
-									<li><a href="<%=basePath %>">链接二</a></li>
-									<li><a href="<%=basePath %>">链接三</a></li>
-									<li><a href="<%=basePath %>">链接四</a></li>
-									<li><a href="<%=basePath %>">链接五</a></li>
-								</ul>
-							</div>
-
-							<div class="clearfix"></div>
-
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>行业新闻</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="span4">
-						<div class="fwidget">
-							<h6>友情链接</h6>
-							<ul>
-								<li><a href="<%=basePath %>">链接一</a></li>
-								<li><a href="<%=basePath %>">链接二</a></li>
-								<li><a href="<%=basePath %>">链接三</a></li>
-								<li><a href="<%=basePath %>">链接四</a></li>
-								<li><a href="<%=basePath %>">链接五</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="row-fluid">
-					<div class="span12">
-						<hr class="visible-desktop">
-						<div class="copy">
-							Copyright 2014 &copy; - <a href="<%=basePath %>#">http://www.ybztc.com</a> - Collect from
-							<a href="<%=basePath %>http://www.ybztc.com" title="银保直通车" target="_blank">银保直通车</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+		<jsp:include page="/jsp/user/some_url.jsp"></jsp:include>
 		<!-- Foot ends -->
 
 	</div>
@@ -307,7 +224,8 @@ for(int i=0;i<feilvlist.size();i++){
 	<script src="<%=basePath %>js/jquery.flexslider-min.js"></script>
 	<!-- Flexslider -->
 	<script src="<%=basePath %>js/custom.js"></script>
-	<script src="<%=basePath %>js/manage/search_user.js"></script>
+	<script src="<%=basePath %>js/xmlhttp.js"></script>
+	
 	<script type="text/javascript">
 	function isEmpty(str){
 		if(str==null || str.trim().length==0)
@@ -316,28 +234,7 @@ for(int i=0;i<feilvlist.size();i++){
 			return false;
 	}
 	
-	var xmlhttp;
-	function loadXMLDoc(url, cfunc) {
-		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-			xmlhttp = new XMLHttpRequest();
-		} else {// code for IE6, IE5
-			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-		xmlhttp.open("POST", url, false);
-		xmlhttp.onreadystatechange = cfunc;
-		xmlhttp.setRequestHeader("context-type", "text/html;charset=UTF-8");
-		xmlhttp.send();
-	}
-
-	//获取应用绝对路径
-	var localObj = window.location;
-
-	var contextPath = localObj.pathname.split("/")[1];
-
-	var basePath = localObj.protocol+"//"+localObj.host+"/"+contextPath;
-
-	var server_context=basePath;
+	
 	
 	function alterValue(id, feilv){
 		var new_feilv = document.getElementById("feilv"+id).value;
@@ -350,6 +247,17 @@ for(int i=0;i<feilvlist.size();i++){
 			alert("费率必须是数字");
 			document.getElementById("feilv"+id).value = feilv;
 			return;
+		}
+		if(new_feilv*1<0){
+			alert("费率必须大于0");
+			document.getElementById("feilv"+id).value = feilv;
+			return ;
+		}
+		var temp = (new_feilv*1).toFixed(0);
+		if(new_feilv*1-temp>0){
+			alert("费率是千分制整数");
+			document.getElementById("feilv"+id).value = feilv;
+			return ;
 		}
 		if(new_feilv==feilv){
 			return ;

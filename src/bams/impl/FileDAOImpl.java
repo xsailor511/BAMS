@@ -84,13 +84,14 @@ public class FileDAOImpl implements FileDAO {
 	}
 
 	@Override
-	public List<File> listAllFiles() {
+	public List<File> listAllFiles(int start) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select * from file";
+		String sql = "select * from file limit ?,10";
 		List<File> filelist = new ArrayList<File>();
 		try {
 			ps = connection.prepareStatement(sql);
+			ps.setInt(1, start);
 			rs = ps.executeQuery();
 			while(rs.next()){
 				File file = new File();
@@ -148,6 +149,33 @@ public class FileDAOImpl implements FileDAO {
 				sqle.printStackTrace();
 			}
 		}
+	}
+
+
+
+	@Override
+	public List<File> searchFile(String key) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from file where filename like '%"+key+"%'";
+		List<File> filelist = new ArrayList<File>();
+		try {
+			ps = connection.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				File file = new File();
+				file.setFilename(rs.getString("filename"));
+				file.setFileurl(rs.getString("fileurl"));
+				file.setId(rs.getInt("id"));
+				filelist.add(file);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeResultSet(rs);
+			closeStatement(ps);
+		}
+		return filelist;
 	}
 
 }

@@ -48,7 +48,7 @@ public class FeilvDAOImpl implements FeilvDAO {
 				Feilv feilv = new Feilv();
 				feilv.setId(rs.getInt("id"));
 				feilv.setDescription(rs.getString("description"));
-				feilv.setFeilv(rs.getDouble("feilv"));
+				feilv.setFeilv(rs.getInt("feilv"));
 				feilvlist.add(feilv);
 			}
 		} catch (SQLException e) {
@@ -61,13 +61,13 @@ public class FeilvDAOImpl implements FeilvDAO {
 	}
 
 	@Override
-	public boolean alertFeilv(int id,double feilv) {
+	public boolean alertFeilv(int id,int feilv) {
 		PreparedStatement ps = null;
 		boolean mark = false;
 		String sql = "update feilv set feilv=? where id=?";
 		try {
 			ps = connection.prepareStatement(sql);
-			ps.setDouble(1, feilv);
+			ps.setInt(1, feilv);
 			ps.setInt(2, id);
 			ps.executeUpdate();
 		    mark = true;
@@ -94,12 +94,13 @@ public class FeilvDAOImpl implements FeilvDAO {
 			if(rs.next()){
 				feilv.setId(id);
 				feilv.setDescription(rs.getString("description"));
-				feilv.setFeilv(rs.getDouble("feilv"));
+				feilv.setFeilv(rs.getInt("feilv"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
-			
+			closeStatement(ps);
+			closeResultSet(rs);
 		}
 		return feilv.getFeilv();
 	}
@@ -138,11 +139,13 @@ public class FeilvDAOImpl implements FeilvDAO {
 			ps = connection.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()){
-				feilvs.add(rs.getDouble("feilv")+"");
+				feilvs.add(rs.getInt("feilv")+"");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			closeStatement(ps);
+			closeResultSet(rs);
 		}
 		
 		

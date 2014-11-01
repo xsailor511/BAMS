@@ -62,15 +62,10 @@
         <servlet-name>Search</servlet-name>
         <servlet-class>bams.servlet.user.SearchServlet</servlet-class>
     </servlet>
-  <servlet>
-    <servlet-name>AddPictureServlet</servlet-name>
-    
-    <servlet-class>bams.servlet.picture.AddPictureServlet</servlet-class>
-    
-  </servlet>
+  
   <servlet>
     <servlet-name>ListPictureByUserServlet</servlet-name>
-    <servlet-class>bams.servlet.picture.ListPictureByUserServlet</servlet-class>
+    <servlet-class>bams.servlet.user.ListPictureByUserServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AddAllPropertyServlet</servlet-name>
@@ -121,22 +116,21 @@
   <servlet>
     <servlet-name>UploadPictureServlet</servlet-name>
     <servlet-class>bams.servlet.user.UploadPictureServlet</servlet-class>
-    
-    <init-param>
-            <param-name>filepath</param-name> 
-            <param-value>file/user/upload_image</param-value>
-        </init-param> 
-        <init-param> 
-            <param-name>temppath</param-name> 
-            <param-value>temp</param-value> 
-        </init-param>
+	<init-param>
+		<param-name>filepath</param-name> 
+		<param-value>file/user/upload_image</param-value>
+	</init-param> 
+	<init-param> 
+		<param-name>temppath</param-name> 
+		<param-value>temp</param-value> 
+	</init-param>
   </servlet>
   <servlet>
     <servlet-name>UploadFileServlet</servlet-name>
     <servlet-class>bams.servlet.user.UploadFileServlet</servlet-class>
     <init-param>
             <param-name>filepath</param-name> 
-            <param-value>file/manager</param-value>
+            <param-value>file/manager/files</param-value>
         </init-param> 
         <init-param> 
             <param-name>temppath</param-name> 
@@ -148,7 +142,7 @@
     <servlet-class>bams.servlet.user.FileDownLoadServlet</servlet-class>
         <init-param>
      <param-name>filepath</param-name> 
-            <param-value>file/manager</param-value>
+            <param-value>file/manager/files</param-value>
         </init-param> 
         <init-param> 
             <param-name>temppath</param-name> 
@@ -172,7 +166,7 @@
     <servlet-class>bams.servlet.user.DeleteFileServlet</servlet-class>
     <init-param>
      <param-name>filepath</param-name> 
-            <param-value>file/manager</param-value>
+            <param-value>file/manager/files</param-value>
         </init-param> 
         <init-param> 
             <param-name>temppath</param-name> 
@@ -217,11 +211,11 @@
   </servlet>
   <servlet>
     <servlet-name>ListAllFeilvServlet</servlet-name>
-    <servlet-class>bams.servlet.picture.ListAllFeilvServlet</servlet-class>
+    <servlet-class>bams.servlet.feilv.ListAllFeilvServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AlterFeilvServlet</servlet-name>
-    <servlet-class>bams.servlet.picture.AlterFeilvServlet</servlet-class>
+    <servlet-class>bams.servlet.feilv.AlterFeilvServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AllPropertyFeilvServlet</servlet-name>
@@ -255,6 +249,212 @@
     <servlet-name>UnmarkLiPeiServlet</servlet-name>
     <servlet-class>bams.servlet.picture.UnmarkLiPeiServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CheckUsernameServlet</servlet-name>
+    <servlet-class>bams.servlet.user.CheckUsernameServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddGoodsServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.AddGoodsServlet</servlet-class>
+	<init-param>
+		<param-name>filepath</param-name> 
+		<param-value>file/manager/image</param-value>
+	</init-param> 
+	<init-param> 
+		<param-name>temppath</param-name> 
+		<param-value>temp</param-value> 
+	</init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>ListGoodsServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.ListGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetGoodsServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.GetGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteGoodsServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.DeleteGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddOrderServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.AddOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ListOrderServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.ListOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MarkOrderServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.MarkOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UnmarkOrderServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.UnmarkOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetOrderServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.GetOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateGoodsServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.UpdateGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchFileServlet</servlet-name>
+    <servlet-class>bams.servlet.user.SearchFileServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ListPolicyIndexByUser</servlet-name>
+    <servlet-class>bams.servlet.user.ListPolicyIndexByUser</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddQuestionServlet</servlet-name>
+    <servlet-class>bams.servlet.wiki.AddQuestionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetQuestionServlet</servlet-name>
+    <servlet-class>bams.servlet.wiki.GetQuestionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ListQuestionByUserServlet</servlet-name>
+    <servlet-class>bams.servlet.wiki.ListQuestionByUserServlet</servlet-class>
+  </servlet>
+ 
+  <servlet>
+    <servlet-name>ListAllQuestionServlet</servlet-name>
+    <servlet-class>bams.servlet.wiki.ListAllQuestionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddAnswerServlet</servlet-name>
+    <servlet-class>bams.servlet.wiki.AddAnswerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetAnswerServlet</servlet-name>
+    <servlet-class>bams.servlet.wiki.GetAnswerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MarkQuestionServlet</servlet-name>
+    <servlet-class>bams.servlet.wiki.MarkQuestionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddCaseDealServlet</servlet-name>
+    <servlet-class>bams.servlet.deal.AddCaseDealServlet</servlet-class>
+    
+    <init-param>
+		<param-name>filepath</param-name> 
+		<param-value>file/user/upload_image</param-value>
+	</init-param> 
+	<init-param> 
+		<param-name>temppath</param-name> 
+		<param-value>temp</param-value> 
+	</init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>GetCaseDealServlet</servlet-name>
+    <servlet-class>bams.servlet.deal.GetCaseDealServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteCaseDealServlet</servlet-name>
+    <servlet-class>bams.servlet.deal.DeleteCaseDealServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ListCaseDealByUserServlet</servlet-name>
+    <servlet-class>bams.servlet.deal.ListCaseDealByUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ListAllCaseDealServlet</servlet-name>
+    <servlet-class>bams.servlet.deal.ListAllCaseDealServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckBaoServlet</servlet-name>
+    <servlet-class>bams.servlet.deal.CheckBaoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetCaseServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.GetCaseServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckCaseServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.CheckCaseServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteAnswerServlet</servlet-name>
+    <servlet-class>bams.servlet.wiki.DeleteAnswerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UnmarkQuestionServlet</servlet-name>
+    <servlet-class>bams.servlet.wiki.UnmarkQuestionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ListOrderByUserServlet</servlet-name>
+    <servlet-class>bams.servlet.goal.ListOrderByUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ManagerLoginServlet</servlet-name>
+    <servlet-class>bams.util.ManagerLoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteReplyCaseServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.DeleteReplyCaseServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddReplyCaseServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.AddReplyCaseServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetReplyCaseServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.GetReplyCaseServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ListCaseByUserServlet</servlet-name>
+    <servlet-class>bams.servlet.picture.ListCaseByUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchCaseDealServlet</servlet-name>
+    <servlet-class>bams.servlet.deal.SearchCaseDealServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -311,10 +511,7 @@
         <servlet-name>Search</servlet-name>
         <url-pattern>/servlet/Search</url-pattern>
     </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AddPictureServlet</servlet-name>
-    <url-pattern>/servlet/AddPictureServlet</url-pattern>
-  </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>ListPictureByUserServlet</servlet-name>
     <url-pattern>/servlet/ListPictureByUserServlet</url-pattern>
@@ -443,6 +640,156 @@
     <servlet-name>UnmarkLiPeiServlet</servlet-name>
     <url-pattern>/servlet/UnmarkLiPeiServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckUsernameServlet</servlet-name>
+    <url-pattern>/CheckUsernameServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddGoodsServlet</servlet-name>
+    <url-pattern>/servlet/AddGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListGoodsServlet</servlet-name>
+    <url-pattern>/servlet/ListGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetGoodsServlet</servlet-name>
+    <url-pattern>/servlet/GetGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteGoodsServlet</servlet-name>
+    <url-pattern>/servlet/DeleteGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddOrderServlet</servlet-name>
+    <url-pattern>/servlet/AddOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListOrderServlet</servlet-name>
+    <url-pattern>/servlet/ListOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MarkOrderServlet</servlet-name>
+    <url-pattern>/servlet/MarkOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UnmarkOrderServlet</servlet-name>
+    <url-pattern>/servlet/UnmarkOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetOrderServlet</servlet-name>
+    <url-pattern>/servlet/GetOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateGoodsServlet</servlet-name>
+    <url-pattern>/servlet/UpdateGoodsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchFileServlet</servlet-name>
+    <url-pattern>/servlet/SearchFileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListPolicyIndexByUser</servlet-name>
+    <url-pattern>/servlet/ListPolicyIndexByUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddQuestionServlet</servlet-name>
+    <url-pattern>/servlet/AddQuestionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetQuestionServlet</servlet-name>
+    <url-pattern>/servlet/GetQuestionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListQuestionByUserServlet</servlet-name>
+    <url-pattern>/servlet/ListQuestionByUserServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ListAllQuestionServlet</servlet-name>
+    <url-pattern>/servlet/ListAllQuestionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddAnswerServlet</servlet-name>
+    <url-pattern>/servlet/AddAnswerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetAnswerServlet</servlet-name>
+    <url-pattern>/servlet/GetAnswerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MarkQuestionServlet</servlet-name>
+    <url-pattern>/servlet/MarkQuestionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddCaseDealServlet</servlet-name>
+    <url-pattern>/servlet/AddCaseDealServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetCaseDealServlet</servlet-name>
+    <url-pattern>/servlet/GetCaseDealServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteCaseDealServlet</servlet-name>
+    <url-pattern>/servlet/DeleteCaseDealServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListCaseDealByUserServlet</servlet-name>
+    <url-pattern>/servlet/ListCaseDealByUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListAllCaseDealServlet</servlet-name>
+    <url-pattern>/servlet/ListAllCaseDealServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckBaoServlet</servlet-name>
+    <url-pattern>/servlet/CheckBaoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetCaseServlet</servlet-name>
+    <url-pattern>/servlet/GetCaseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckCaseServlet</servlet-name>
+    <url-pattern>/servlet/CheckCaseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteAnswerServlet</servlet-name>
+    <url-pattern>/servlet/DeleteAnswerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UnmarkQuestionServlet</servlet-name>
+    <url-pattern>/servlet/UnmarkQuestionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListOrderByUserServlet</servlet-name>
+    <url-pattern>/servlet/ListOrderByUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManagerLoginServlet</servlet-name>
+    <url-pattern>/ManagerLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteReplyCaseServlet</servlet-name>
+    <url-pattern>/servlet/DeleteReplyCaseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddReplyCaseServlet</servlet-name>
+    <url-pattern>/servlet/AddReplyCaseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetReplyCaseServlet</servlet-name>
+    <url-pattern>/servlet/GetReplyCaseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListCaseByUserServlet</servlet-name>
+    <url-pattern>/servlet/ListCaseByUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchCaseDealServlet</servlet-name>
+    <url-pattern>/servlet/SearchCaseDealServlet</url-pattern>
+  </servlet-mapping>
+  
   
 	 <session-config>
 	    <session-timeout>120</session-timeout>

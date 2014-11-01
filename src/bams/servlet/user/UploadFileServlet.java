@@ -13,7 +13,7 @@ import org.apache.commons.fileupload.disk.*;
 import bams.service.FileService;
  
 // Servlet 文件上传  
-public class UploadFileServlet extends HttpServlet  
+public class UploadFileServlet extends HttpServlet
 {  
     /**
 	 * 
@@ -21,7 +21,7 @@ public class UploadFileServlet extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	private String filePath;    // 文件存放目录  
     private String tempPath;    // 临时文件目录  
-    List<bams.entity.File> filelist = new ArrayList<bams.entity.File>();
+    
     String basePath;
     String relativePath;
     // 初始化  
@@ -45,6 +45,7 @@ public class UploadFileServlet extends HttpServlet
     public void doPost(HttpServletRequest request, HttpServletResponse response)  
         throws IOException, ServletException
     {
+    	List<bams.entity.File> filelist = new ArrayList<bams.entity.File>();
         response.setContentType("text/plain;charset=UTF-8");
         String path = request.getContextPath();
     	basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -66,8 +67,8 @@ public class UploadFileServlet extends HttpServlet
             // 解析HTTP请求消息头  
             @SuppressWarnings("unchecked")
 			List<FileItem> fileItems = upload.parseRequest(request);
-            Iterator<FileItem> iter = fileItems.iterator();  
-            while(iter.hasNext())  
+            Iterator<FileItem> iter = fileItems.iterator();
+            while(iter.hasNext())
             {  
                 FileItem item = (FileItem)iter.next();
                 System.out.println("field name:"+item.getFieldName());
@@ -77,7 +78,7 @@ public class UploadFileServlet extends HttpServlet
                     processFormField(item);
                 }else{  
                     System.out.println("处理上传的文件 ...");
-                    processUploadFile(item);  
+                    processUploadFile(item,filelist);  
                 }  
             }// end while()
             
@@ -111,11 +112,15 @@ public class UploadFileServlet extends HttpServlet
     }  
       
     // 处理上传的文件  
-    private void processUploadFile(FileItem item)  
+    private void processUploadFile(FileItem item, List<bams.entity.File> filelist)
         throws Exception  
     {  
         // 此时的文件名包含了完整的路径，得注意加工一下 
         String filename = item.getName();
+        if(null==filename||filename.equals("")){
+        	 System.out.println("文件名为空 ...");
+             return;
+        }
        // filename = new String(filename.getBytes("gbk"), "UTF-8");
         System.out.println("完整的文件名：" + filename);
         int index = filename.lastIndexOf("\\");
@@ -123,9 +128,9 @@ public class UploadFileServlet extends HttpServlet
  
         long fileSize = item.getSize();
  
-        if("".equals(filename) && fileSize == 0)
+        if(fileSize == 0)
         {             
-            System.out.println("文件名为空 ...");
+            System.out.println("文件为空 ...");
             return;
         }
  
