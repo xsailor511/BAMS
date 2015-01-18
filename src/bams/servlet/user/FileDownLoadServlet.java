@@ -38,7 +38,7 @@ public class FileDownLoadServlet extends HttpServlet {
 		String filename = request.getParameter("filename");
 		//filename = encodingFileName(filename);
 		filename = new String(filename.getBytes("ISO-8859-1"), "utf-8");
-		download(filePath + "\\" + filename, request, response);
+		download(filePath + "/" + filename, request, response);
 	}
 
 	public HttpServletResponse download(String path,

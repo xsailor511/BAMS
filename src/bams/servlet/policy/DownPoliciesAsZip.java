@@ -103,7 +103,7 @@ public class DownPoliciesAsZip extends HttpServlet {
 		for(int i=0;i<tags.length;i++){
 			PolicyIndex policyindex = s.getPolicyIndexByTag(tags[i]);
 			String tablename = policyindex.getTablename();
-			String policyname = policyindex.getPolicyname()+".doc";
+			String policyname = policyindex.getPolicyname()+".xml";
 			service.setPolicyname(policyname);
 			filepaths[i] = getData(tablename,service,tags[i]);
 		}

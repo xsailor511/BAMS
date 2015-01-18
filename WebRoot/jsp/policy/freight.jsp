@@ -219,7 +219,7 @@ border:solid#000 1px;
     <input type="text" name="fapiaojine" id="fapiaojine"></td>
   </tr>
   <tr>
-    <td colspan="2"><p>费率</p>
+    <td colspan="2"><p>费率‰</p>
     <p>INSURANCE RATE</p></td>
     <td colspan="3">&nbsp;
     <input type="text" name="feilv" id="feilv" value="<%=feilv %>" readonly="readonly"/></td>

@@ -151,8 +151,8 @@ if(null==role_int){
 							
 <!-- 						</ul></li> -->
 					
-					<li><a href="<%=basePath %>aboutus.html" class="br-blue"><i
-							class="icon-user"></i> 核心流程</a></li>
+					<li><a href="<%=basePath %>jsp/home/gold_shuoming.jsp" target="_blank" class="br-blue"><i
+							class="icon-user"></i> 统保说明</a></li>
 					<li><a href="<%=basePath %>servlet/ListGoodsServlet?start=0" target="_blank" class="br-blue"><i
 							class="icon-user"></i> 积分兑换</a></li>
 					
@@ -206,13 +206,13 @@ if(null==role_int){
 <div class="content">
 <div class="policy">
 <div class="image"><a href="<%=basePath%>jsp/policy/employerdutyhint.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
+<img alt="test" src="<%=basePath %>img/policy/employer_duty.jpg" width="100%"></a></div>
 <div class="showtext"><a href="<%=basePath%>jsp/policy/employerdutyhint.jsp" target="_blank"><font color="blue">雇主责任保险</font></a></div>
 </div>
 <div class="policy">
 <div class="image">
 <a href="<%=basePath%>jsp/policy/freighthint.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
+<img alt="test" src="<%=basePath %>img/policy/freight.jpg" width="100%">
 </a>
 </div>
 <div class="showtext"><a href="<%=basePath%>jsp/policy/freighthint.jsp" target="_blank"><font color="blue">货运险</font></a></div>
@@ -220,7 +220,7 @@ if(null==role_int){
 <div class="policy">
 <div class="image">
 <a href="<%=basePath%>jsp/policy/allpropertyhint.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
+<img alt="test" src="<%=basePath %>img/policy/enterprise.jpg" width="100%">
 </a>
 </div>
 <div class="showtext">
@@ -240,7 +240,7 @@ if(null==role_int){
 <div class="policy">
 <div class="image">
 <a href="<%=basePath%>jsp/policy/familyhint.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
+<img alt="test" src="<%=basePath %>img/policy/family.jpg" width="100%">
 </a>
 </div>
 <div class="showtext"><a href="<%=basePath%>jsp/policy/familyhint.jsp" target="_blank"><font color="blue">家庭综合保险</font></a></div>
@@ -248,7 +248,7 @@ if(null==role_int){
 <div class="policy">
 <div class="image">
 <a href="<%=basePath%>jsp/policy/vehiclehint.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%">
+<img alt="test" src="<%=basePath %>img/policy/car.jpg" width="100%">
 </a>
 </div>
 <div class="showtext">

@@ -144,6 +144,8 @@ if(null==role_int){
 					
 					<li><a href="<%=basePath %>jsp/user/finance_service.jsp" target="_blank" class="br-blue"><i
 							class="icon-user"></i>经纪人服务一览表</a></li>
+					<li><a href="<%=basePath %>jsp/home/economy_shuoming.jsp" target="_blank" class="br-blue"><i
+							class="icon-user"></i> 统保说明</a></li>
 					<li><a href="<%=basePath %>servlet/ListGoodsServlet?start=0" target="_blank" class="br-blue"><i
 							class="icon-user"></i> 积分兑换</a></li>
 					
@@ -202,7 +204,7 @@ if(null==role_int){
 </div>
 <div class="policy">
 <div class="image"><a href="<%=basePath%>jsp/policy/enterprisepackagehint.jsp" target="_blank">
-<img alt="test" src="<%=basePath %>img/test2.jpg" width="100%"></a></div>
+<img alt="test" src="<%=basePath %>img/policy/package.jpg" width="100%"></a></div>
 <div class="showtext"><a href="<%=basePath%>jsp/policy/enterprisepackagehint.jsp" target="_blank"><font color="blue">中小企业一揽子保险委托书</font></a></div>
 </div>
 

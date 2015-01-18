@@ -241,7 +241,7 @@ border:solid#000 1px;
     <input type="text" name="peichangyiliao" id="yiliao5"></td>
   </tr>
   <tr>
-    <td >保险费率</td>
+    <td >保险费率‰</td>
     <td colspan="6" style="text-align:left">&nbsp;
     <input type="text" name="baoxianfeilv" id="baoxianfeilv" value="<%=feilv%>" readonly="readonly"></td>
   </tr>

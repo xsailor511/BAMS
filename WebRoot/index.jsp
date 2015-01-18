@@ -72,6 +72,7 @@ String path = request.getContextPath();
 
 <body>
 
+
 	<!-- Navbar starts -->
 
 	<div class="navbar navbar-fixed-top">
@@ -141,12 +142,7 @@ String path = request.getContextPath();
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
 					<li><a style="color:blue" href="<%=basePath %>index.jsp" class="open br-red"><i
-							class="icon-home"></i>主页</a> <!-- Sub menu markup 
-              <ul>
-                <li><a href="#">Submenu #1</a></li>
-                <li><a href="#">Submenu #2</a></li>
-                <li><a href="#">Submenu #3</a></li>
-              </ul>--></li>
+							class="icon-home"></i>主页</a> </li>
 
 					
 					<li><a href="<%=basePath %>jsp/user/login.jsp" class="br-blue"><i
@@ -197,6 +193,7 @@ String path = request.getContextPath();
 
 						<h4>银保直通车</h4>
 						 <p>简介：银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内</p>
+						 <div id='mybrowser'></div>
 					</div>
 				</div>
 			</div>
@@ -233,5 +230,17 @@ String path = request.getContextPath();
 	<!-- Flexslider -->
 	<script src="js/custom.js"></script>
 	<!-- Main js file -->
+	
+	<script type="text/javascript">
+//alert("test");
+var browser=navigator.appName;
+var b_version=navigator.appVersion;
+var version=parseFloat(b_version);
+if(browser=="Microsoft Internet Explorer"){
+	
+	document.getElementById("mybrowser").innerHTML = "<font color='red'>如果页面有问题，请使用IE8及以后的版本浏览器，或者任何非IE浏览器</font>";
+}
+
+</script>
 </body>
 </html>

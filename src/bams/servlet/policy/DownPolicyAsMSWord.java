@@ -87,7 +87,7 @@ public class DownPolicyAsMSWord extends HttpServlet {
 		DataToWordService service = new DataToWordService();
 		service.setDownloadPath(tempPath+"/");//下载文件临时文件夹
 		service.setTemplateWordPath(filePath+"/");//word 模板存放文件夹
-		String ffname = policyindex.getPolicyname()+".doc";
+		String ffname = policyindex.getPolicyname()+".xml";
 		service.setPolicyname(ffname);
 		boolean mark = false;
 		//查看待下载的文件是否已经存在
