@@ -192,7 +192,7 @@ for(int i=0;i<feilvlist.size();i++){
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

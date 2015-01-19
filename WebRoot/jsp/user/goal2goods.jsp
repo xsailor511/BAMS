@@ -234,7 +234,7 @@ if(goodslist.size()<pageSize){
 					
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

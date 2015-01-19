@@ -216,7 +216,7 @@ String path = request.getContextPath();
 <!-- 					</div> -->
 <!-- 				</div> -->
 <!-- 			</div> -->
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

@@ -172,7 +172,7 @@ width:38px;height:18px;line-height:18px;border:0;margin:-4px 0 0 0px;background:
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

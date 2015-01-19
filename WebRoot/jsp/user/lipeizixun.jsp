@@ -136,7 +136,7 @@ if(null==role_int||null==session_name){
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

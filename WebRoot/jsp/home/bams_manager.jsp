@@ -204,7 +204,7 @@ if(null==role_int){
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

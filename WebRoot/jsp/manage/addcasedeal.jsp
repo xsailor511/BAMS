@@ -163,7 +163,7 @@ margin-right: auto;
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

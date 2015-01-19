@@ -946,7 +946,7 @@ font-family:宋体'>期内服务与索赔</span></b></p>
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

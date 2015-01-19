@@ -208,7 +208,7 @@ for(int i=0;i<filelist.size();i++){
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

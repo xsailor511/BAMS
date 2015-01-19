@@ -213,7 +213,7 @@ for(int i=0;i<questionlist.size();i++){
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

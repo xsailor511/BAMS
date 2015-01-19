@@ -431,7 +431,7 @@ border:solid#000 1px;
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

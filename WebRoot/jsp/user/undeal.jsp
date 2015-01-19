@@ -228,7 +228,7 @@ if(orderlist.size()<pageSize){
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

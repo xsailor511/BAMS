@@ -205,7 +205,7 @@ CaseDeal casedeal = (CaseDeal)request.getAttribute("casedeal");
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 

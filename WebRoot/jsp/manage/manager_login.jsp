@@ -199,7 +199,7 @@ function isEmpty(str){
 <!-- 					</div> -->
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 
