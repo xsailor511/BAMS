@@ -99,27 +99,7 @@ String path = request.getContextPath();
 	<!-- Navbar ends -->
 
 <!-- Sliding box starts -->
-	<div class="slide-box">
-		<div class="bor"></div>
-		<div class="padd">
-			<div class="slide-box-button">
-				<i class="icon-chevron-left"></i>
-			</div>
-			<h5>欢迎</h5>
-			银保直通车为您服务。
-
-			<hr />
-
-			<div class="social">
-				<a href="#"><i class="icon-facebook facebook"></i></a> 
-				<a href="#"><i class="icon-twitter twitter"></i></a> 
-				<a href="#"><i class="icon-linkedin linkedin"></i></a> 
-				<a href="#"><i class="icon-google-plus google-plus"></i></a> 
-				<a href="#"><i class="icon-pinterest pinterest"></i></a>
-			</div>
-
-		</div>
-	</div>
+	
 
 	<!-- Sliding box ends -->
 
@@ -141,14 +121,13 @@ String path = request.getContextPath();
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a style="color:blue" href="<%=basePath %>index.jsp" class="open br-red"><i
-							class="icon-home"></i>主页</a> </li>
+					<li><a style="color:blue" href="<%=basePath %>index.jsp" class="br-red"><i class="icon-home"></i>主页</a> </li>
 
 					
 					<li><a href="<%=basePath %>jsp/user/login.jsp" class="br-blue"><i
 							class="icon-user"></i> 登陆</a></li>
 					<li><a href="<%=basePath %>jsp/user/userRegister.jsp" class="br-blue"><i
-							class="icon-user"></i> 注册</a></li>
+							class="icon-plus"></i> 注册</a></li>
 <!-- 					<li><a href="<%=basePath %>error.jsp" class="br-blue"><i -->
 <!-- 							class="icon-user"></i> 更多</a></li> -->
 				</ul>
@@ -191,13 +170,13 @@ String path = request.getContextPath();
 							</ul>
 						</div>
 
-						<h4>银保直通车</h4>
-						 <p>简介：银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内银保直通车是国内</p>
+						<h4>易宝通</h4>
+						 <p>简介：易宝通是国内好的在线保险投保网站</p>
 						 <div id='mybrowser'></div>
 					</div>
 				</div>
 			</div>
-			<hr />
+			
 		</div>
 		<!-- Mainbar ends -->
 
