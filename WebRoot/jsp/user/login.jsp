@@ -6,10 +6,12 @@ String path = request.getContextPath();
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 	String session_name = (String)session.getAttribute("name");
+	Integer str_role = (Integer)session.getAttribute("role");
 	String url = "";
+	int role = str_role.intValue();
 	if(session_name!=null){
-		Integer str_role = (Integer)session.getAttribute("role");
-		int role = str_role.intValue();
+		
+		
 		if(role==1){
 			url = basePath+"jsp/home/gold_home.jsp";
 		}else if(role==2){
@@ -21,7 +23,10 @@ String path = request.getContextPath();
 		}else if(role==6){
 			url = basePath+"jsp/home/mail_home.jsp";
 		}
-		response.setHeader("refresh","0;URL="+url) ;
+		if(role!=5){
+			response.setHeader("refresh","0;URL="+url) ;
+		}
+		
 	}
 %>
 <html>
