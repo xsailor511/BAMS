@@ -29,6 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					<div class="span4">
 						<div class="fwidget">
+						<div class="col-l">
 							<h6>友情链接</h6>
 							<ul>
 								<li><a href="http://www.circ.gov.cn/web/site0/">中国保险监督管理委员会</a></li>
@@ -37,9 +38,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<li><a href="www.12306.cn">中国铁路客户服务中心</a></li>
 								<li><a href="http://www.cbrc.gov.cn/index.html">中国银行业监督管理委员会</a></li>
 							</ul>
+							</div>
+							
+								<div class="col-r">
+								<h6></h6>
+								<ul>
+									
+								</ul>
+							</div>
 						</div>
 					</div>
-
+<div class="span4">
+						<div class="fwidget">
+							<h6>咨询方式</h6>
+								<ul>
+									<li>TEL:0532-88886666</li>
+									<li>E-mail:xxxxxx@153.com</li>
+									<li>QQ:845420</li>
+									<li>8:30-24:00(周一到周五)</li>
+									<li>9:00-18:00(周六到周日)</li>
+								</ul>
+						</div>
+					</div>
 				</div>
 
 				<div class="row-fluid">

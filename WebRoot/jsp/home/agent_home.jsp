@@ -22,7 +22,7 @@ if(null==role_int){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>代理人主页</title>
+<title><%=session.getAttribute("name") %>-代理人之家</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -80,32 +80,6 @@ if(null==role_int){
 
 	<!-- Navbar ends -->
 
-
-	<!-- Sliding box starts -->
-	<div class="slide-box">
-		<div class="bor"></div>
-		<div class="padd">
-			<div class="slide-box-button">
-				<i class="icon-chevron-left"></i>
-			</div>
-			<h5>欢迎</h5>
-			银保直通车为您服务。
-
-			<hr />
-
-			<div class="social">
-				<a href="<%=basePath %>"><i class="icon-facebook facebook"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-twitter twitter"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-linkedin linkedin"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-google-plus google-plus"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-pinterest pinterest"></i></a>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Sliding box ends -->
-
 	<!-- Main content starts -->
 
 	<div class="content">
@@ -147,13 +121,7 @@ if(null==role_int){
 							class="icon-user"></i> 积分兑换</a></li>
 					
 				</ul>
-				<div class="s-widget">
-					<h6>咨询热线</h6>
-					<p>TEL:0532-88886666</p>
-					<p>8:30-24:00(周一到周五)</p>
-					<p>9:00-18:00(周六到周日)</p>
-					<p></p>
-				</div>
+				
 			</div>
 
 
@@ -168,26 +136,9 @@ if(null==role_int){
 
 					<!-- Element -->
 					<div class="box-body" style="background:#CCDDFF;color:black">
-						<div class="flexslider" >
-							<ul class="slides">
-								<!-- Each slide should be enclosed inside li tag. -->
-
-								<!-- Slide #1 -->
-								<li>
-									<!-- Image --> <img src="<%=basePath %>img/photos/s1.jpg" alt="" /> <!-- Caption -->
-								</li>
-
-								<!-- Slide #2 -->
-								<li><img src="<%=basePath %>img/photos/s2.jpg" alt="" />
-								</li>
-
-								<li><img src="<%=basePath %>img/photos/s3.jpg" alt="" />
-								</li>
-							</ul>
-						</div>
+						
 <!-- 						<a name="geren"></a> -->
 
-<br/>
 
 <h4>在线投保专区</h4>
 <hr/>

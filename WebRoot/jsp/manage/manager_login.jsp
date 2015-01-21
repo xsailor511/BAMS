@@ -12,8 +12,9 @@ String path = request.getContextPath();
 		int role = str_role.intValue();
 		if(role==5){
 			url = basePath+"jsp/home/bams_manager.jsp";
+			response.setHeader("refresh","0;URL="+url) ;
 		}
-		response.setHeader("refresh","0;URL="+url) ;
+		
 	}
 %>
 <html>
@@ -79,7 +80,6 @@ function isEmpty(str){
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="<%=basePath %>login.html">投保必读</a></li>
 						
 						<li><a href="<%=basePath %>jsp/user/userRegister.jsp">注册</a></li>
 						
@@ -92,31 +92,6 @@ function isEmpty(str){
 	</div>
 
 	<!-- Navbar ends -->
-
-<!-- Sliding box starts -->
-	<div class="slide-box">
-		<div class="bor"></div>
-		<div class="padd">
-			<div class="slide-box-button">
-				<i class="icon-chevron-left"></i>
-			</div>
-			<h5>欢迎</h5>
-			银保直通车为您服务。
-
-			<hr />
-
-			<div class="social">
-				<a href="<%=basePath %>#"><i class="icon-facebook facebook"></i></a> 
-				<a href="<%=basePath %>#"><i class="icon-twitter twitter"></i></a> 
-				<a href="<%=basePath %>#"><i class="icon-linkedin linkedin"></i></a> 
-				<a href="<%=basePath %>#"><i class="icon-google-plus google-plus"></i></a> 
-				<a href="<%=basePath %>#"><i class="icon-pinterest pinterest"></i></a>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Sliding box ends -->
 
 	<!-- Main content starts -->
 
@@ -146,13 +121,7 @@ function isEmpty(str){
 
 					
 				</ul>
-				<div class="s-widget">
-					<h6>咨询热线</h6>
-					<p>TEL:0532-88886666</p>
-					<p>8:30-24:00(周一到周五)</p>
-					<p>9:00-18:00(周六到周日)</p>
-					<p></p>
-				</div>
+				
 			</div>
 
 

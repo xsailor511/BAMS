@@ -10,7 +10,7 @@ String path = request.getContextPath();
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>银保直通车</title>
+<title>易宝通</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -117,13 +117,7 @@ String path = request.getContextPath();
 							class="icon-user"></i>登陆</a></li>
 
 				</ul>
-				<div class="s-widget">
-					<h6>咨询热线</h6>
-					<p>TEL:0532-88886666</p>
-					<p>8:30-24:00(周一到周五)</p>
-					<p>9:00-18:00(周六到周日)</p>
-					<p></p>
-				</div>
+				
 			</div>
 
 
@@ -210,14 +204,15 @@ String path = request.getContextPath();
   </tr>
 </table>
 </form>
-						</div>
 
 						
+</div>
+						</div>
 <!-- 					</div> -->
 <!-- 				</div> -->
 <!-- 			</div> -->
 			
-		</div>
+		
 		<!-- Mainbar ends -->
 
 		<!-- Foot starts -->

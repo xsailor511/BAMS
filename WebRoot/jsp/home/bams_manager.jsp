@@ -85,30 +85,7 @@ if(null==role_int){
 	<!-- Navbar ends -->
 
 
-	<!-- Sliding box starts -->
-	<div class="slide-box">
-		<div class="bor"></div>
-		<div class="padd">
-			<div class="slide-box-button">
-				<i class="icon-chevron-left"></i>
-			</div>
-			<h5>欢迎</h5>
-			银保直通车为您服务。
-
-			<hr />
-
-			<div class="social">
-				<a href="<%=basePath %>"><i class="icon-facebook facebook"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-twitter twitter"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-linkedin linkedin"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-google-plus google-plus"></i></a> 
-				<a href="<%=basePath %>"><i class="icon-pinterest pinterest"></i></a>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Sliding box ends -->
+	
 
 	<!-- Main content starts -->
 

@@ -230,7 +230,7 @@ a.btn, .btn{
 /* Columns */
 
 .col-l{
-	width: 47.5%;
+	width: 50%;
 	float: left;
 }
 
@@ -1374,7 +1374,9 @@ background-image:none;
 padding:0px;
 margin: 0px;
 }
-
+.flexslider ul li img{
+	height:400px;
+}
 .flexslider{
 margin-top:0px;
 margin-bottom:10px;
@@ -1673,8 +1675,8 @@ footer{
    }
    .col-r{
 	   	width: 100%;	
-	   	float: none;
-	   	margin: 10px 0px 5px 0px;
+	   	float: right;
+	   	margin: 10px 0px 5px 100px;
    }	
 }
 

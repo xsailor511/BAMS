@@ -10,7 +10,7 @@ String path = request.getContextPath();
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>银保直通车</title>
+<title>易宝通</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -121,7 +121,7 @@ String path = request.getContextPath();
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a style="color:blue" href="<%=basePath %>index.jsp" class="br-red"><i class="icon-home"></i>主页</a> </li>
+					<li><a style="color:blue" href="<%=basePath %>index.jsp" class="br-red"><i class="icon-home"></i>首页</a> </li>
 
 					
 					<li><a href="<%=basePath %>jsp/user/login.jsp" class="br-blue"><i
@@ -131,13 +131,7 @@ String path = request.getContextPath();
 <!-- 					<li><a href="<%=basePath %>error.jsp" class="br-blue"><i -->
 <!-- 							class="icon-user"></i> 更多</a></li> -->
 				</ul>
-				<div class="s-widget">
-					<h6>咨询热线</h6>
-					<p>TEL:0532-88886666</p>
-					<p>8:30-24:00(周一到周五)</p>
-					<p>9:00-18:00(周六到周日)</p>
-					<p></p>
-				</div>
+				
 			</div>
 
 
@@ -158,7 +152,7 @@ String path = request.getContextPath();
 
 								<!-- Slide #1 -->
 								<li>
-									<!-- Image --> <img src="img/photos/s1.jpg" alt="" /> <!-- Caption -->
+									<!-- Image --> <img src="img/photos/s1.jpg" alt=""  /> <!-- Caption -->
 								</li>
 
 								<!-- Slide #2 -->
