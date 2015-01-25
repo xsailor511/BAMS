@@ -63,11 +63,10 @@ if(null==role_int){
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="<%=basePath %>login.html">投保必读</a></li>
+						
 						<li class="dropdown"><a href="<%=basePath %>#" class="dropdown-toggle"
 							data-toggle="dropdown"><%=session.getAttribute("name") %><b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=basePath %>contactus.html">联系我们</a></li>
 								<li><a href="<%=basePath %>servlet/Logout">注销</a></li>
 							</ul></li>
 
@@ -115,8 +114,6 @@ if(null==role_int){
 							<li><a href="<%=basePath %>servlet/ListAllFileServlet?start=0" target="_blank">资料下载</a></li>
 							<li><a href="<%=basePath %>jsp/user/lipeizixun.jsp" target="_blank">理赔咨询</a></li>
 						</ul></li>
-					<li><a href="<%=basePath %>jsp/home/agent_shuoming.jsp" target="_blank" class="br-blue"><i
-							class="icon-user"></i> 统保说明</a></li>
 					<li><a href="<%=basePath %>servlet/ListGoodsServlet?start=0" target="_blank" class="br-blue"><i
 							class="icon-user"></i> 积分兑换</a></li>
 					

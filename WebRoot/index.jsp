@@ -10,7 +10,7 @@ String path = request.getContextPath();
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>易宝通</title>
+<title>易保通</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -85,7 +85,6 @@ String path = request.getContextPath();
 					<ul class="nav pull-right">
 						<li><a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a></li>
 						<li><a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a></li>
-						<li><a href="login.html">投保必读</a></li>
 						<li><a href="<%=basePath %>jsp/user/login.jsp">登录</a></li>
 						<li><a href="<%=basePath %>jsp/user/userRegister.jsp">注册</a></li>
 
@@ -164,8 +163,13 @@ String path = request.getContextPath();
 							</ul>
 						</div>
 
-						<h4>易宝通</h4>
-						 <p>简介：易宝通是国内好的在线保险投保网站</p>
+						<h4>易保通</h4>
+						<div style="font-size:15px">
+						 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;易保通作为集中国内外一流保险经纪公司，提供专业保险经纪服务的，经过多年的稳健发展，不仅拥有600多名高素质的风险管理和保险经纪专业人才，
+						 形成了于风险管理和保险经纪为一体的专业团队，而且凭借优质服务赢得了良好的市场口碑，成为了保险经纪行业的领军网站。</p>
+						 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;易保通目前业务范围已覆盖到国家机关、金融机构、航空航天、石油化工、电力能源、水利水电、电信邮电、交通运输、
+						 工业制造、冶金矿产、工程建筑、商业外贸、医药卫生、烟草酿酒、文化教育、旅游环保、农业养殖等领域，客户数量已超过3000家。</p>
+						 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;易保通愿同我们的客户一同成长，为客户提供全方位、专业的保险经纪服务。</p></div>
 						 <div id='mybrowser'></div>
 					</div>
 				</div>

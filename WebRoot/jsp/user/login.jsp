@@ -8,10 +8,10 @@ String path = request.getContextPath();
 	String session_name = (String)session.getAttribute("name");
 	Integer str_role = (Integer)session.getAttribute("role");
 	String url = "";
-	int role = str_role.intValue();
+	
 	if(session_name!=null){
 		
-		
+		int role = str_role.intValue();
 		if(role==1){
 			url = basePath+"jsp/home/gold_home.jsp";
 		}else if(role==2){
@@ -23,17 +23,17 @@ String path = request.getContextPath();
 		}else if(role==6){
 			url = basePath+"jsp/home/mail_home.jsp";
 		}
-		if(role!=5){
-			response.setHeader("refresh","0;URL="+url) ;
+		if(role==5){
+			url = basePath+"jsp/manage/manager_login.jsp";
 		}
-		
+		response.setHeader("refresh","0;URL="+url) ;
 	}
 %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title>易宝通</title>
+<title>登陆易保通</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -92,9 +92,9 @@ function isEmpty(str){
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="<%=basePath %>login.html">投保必读</a></li>
 						
-						<li><a href="<%=basePath %>jsp/user/userRegister.jsp">注册</a></li>
+						
+						
 						
 
 
@@ -106,30 +106,7 @@ function isEmpty(str){
 
 	<!-- Navbar ends -->
 
-<!-- Sliding box starts -->
-	<div class="slide-box">
-		<div class="bor"></div>
-		<div class="padd">
-			<div class="slide-box-button">
-				<i class="icon-chevron-left"></i>
-			</div>
-			<h5>欢迎</h5>
-			银保直通车为您服务。
 
-			<hr />
-
-			<div class="social">
-				<a href="<%=basePath %>#"><i class="icon-facebook facebook"></i></a> 
-				<a href="<%=basePath %>#"><i class="icon-twitter twitter"></i></a> 
-				<a href="<%=basePath %>#"><i class="icon-linkedin linkedin"></i></a> 
-				<a href="<%=basePath %>#"><i class="icon-google-plus google-plus"></i></a> 
-				<a href="<%=basePath %>#"><i class="icon-pinterest pinterest"></i></a>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Sliding box ends -->
 
 	<!-- Main content starts -->
 
@@ -201,7 +178,7 @@ function isEmpty(str){
 						<select name="role" style="width: 195px;height: 30px">
 					  <option value ="1" selected = "selected">企业黄金</option>
 					  <option value ="2">银行</option>
-					  <option value="3">经济服务</option>
+					  <option value="3">经纪服务</option>
 					  <option value="4">代理人</option>
 					  <option value="6">企业邮政</option>
 					  </select>

@@ -8,9 +8,9 @@ String path = request.getContextPath();
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <!-- Title and other stuffs -->
-<title>易宝通</title>
+<title>新用户注册</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -55,8 +55,8 @@ String path = request.getContextPath();
 				</div>
 				<div class="nav-collapse collapse">
 					<ul class="nav pull-right">
-						<li><a href="login.html">投保必读</a></li>
-						<li><a href="<%=basePath %>jsp/user/login.jsp">登录</a></li>
+						
+						
 
 
 					</ul>
@@ -67,30 +67,7 @@ String path = request.getContextPath();
 
 	<!-- Navbar ends -->
 
-<!-- Sliding box starts -->
-	<div class="slide-box">
-		<div class="bor"></div>
-		<div class="padd">
-			<div class="slide-box-button">
-				<i class="icon-chevron-left"></i>
-			</div>
-			<h5>欢迎</h5>
-			银保直通车为您服务。
 
-			<hr />
-
-			<div class="social">
-				<a href="#"><i class="icon-facebook facebook"></i></a> 
-				<a href="#"><i class="icon-twitter twitter"></i></a> 
-				<a href="#"><i class="icon-linkedin linkedin"></i></a> 
-				<a href="#"><i class="icon-google-plus google-plus"></i></a> 
-				<a href="#"><i class="icon-pinterest pinterest"></i></a>
-			</div>
-
-		</div>
-	</div>
-
-	<!-- Sliding box ends -->
 
 	<!-- Main content starts -->
 
@@ -198,6 +175,12 @@ String path = request.getContextPath();
 						<td>*(选择合适的用户身份)</td>
   </tr>
   <tr>
+  <td colspan="3" align="center">
+  <input type="checkbox" name="yonghuxieyi" id="yonghuxieyi" />&nbsp;&nbsp;
+  我已阅读并同意<a href="<%=basePath %>jsp/user/yonghuxieyi.jsp" target="_blank"  ><font color='blue'>《易保通用户注册协议》</font></a>
+  </td>
+  </tr>
+  <tr>
     <td colspan="3" align="center">
       <input type="submit" name="Submit" value="提交" style="width: 100px;height: 30px">
 	</td>
@@ -287,7 +270,12 @@ String path = request.getContextPath();
 	         document.getElementById("email").value="";
 	         return false;
 	     }
-	     
+	     var yonghuxieyi = document.getElementById("yonghuxieyi");
+	     //alert(yonghuxieyi);
+	     if(!yonghuxieyi.checked){
+	    	 alert("请同意用户协议");
+	    	 return false;
+	     }
 		return true;
 	}
 	
@@ -343,6 +331,23 @@ String path = request.getContextPath();
 		});
 		return result;
 	}
+	
+// 	function conform(){
+// 		var url = server_context+"/file/manager/files/yonghuxieyi.txt";
+// 		loadXMLDoc(url, function() {
+// 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+// 				resultstring = xmlhttp.responseText;
+// 				var result = confirm(resultstring);
+// 				if(result){
+// 					document.getElementById("yonghuxieyi").checked = true;
+					
+// 				}else{
+// 					document.getElementById("yonghuxieyi").checked = false;
+// 				}
+// 			}
+// 		});
+		
+// 	}
 </script>
 	<!-- Main js file -->
 </body>

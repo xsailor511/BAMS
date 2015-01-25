@@ -66,8 +66,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="span12">
 						
 						<div class="copy">
-							Copyright 2015 &copy; - <a href="#" style="color:#17324d;">http://www.ybt.com</a> - Collect from
-							<a href="http://www.ybt.com" title="易宝通" target="_blank" style="color:#17324d;">易宝通</a>
+							Copyright 2015 &copy; - <a href="#" style="color:#17324d;">http://www.ybtoon.com</a> - Collect from
+							<a href="http://www.ybtoon.com" title="易保通" target="_blank" style="color:#17324d;">易保通</a>
 						</div>
 					</div>
 				</div>
