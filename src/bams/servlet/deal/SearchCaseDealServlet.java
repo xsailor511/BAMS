@@ -32,9 +32,10 @@ public class SearchCaseDealServlet extends HttpServlet {
 
 		String username = (String)request.getSession().getAttribute("name");
 		String key = request.getParameter("key");
+		String keytype = request.getParameter("keytype");
 		
 		CaseDealService cds = new CaseDealService();
-		CaseDeal cd = cds.searchCaseDeal(username, key);
+		CaseDeal cd = cds.searchCaseDeal(username, key,keytype);
 		String result = "";
 		request.setAttribute("casedeal", cd);
 		if(null==cd.getPolicyname()||cd.getPolicyname().equals("")){

@@ -22,7 +22,7 @@ if(null==role_int){
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <!-- Title and other stuffs -->
-<title><%=session.getAttribute("name") %>-经济服务专区</title>
+<title><%=session.getAttribute("name") %>-经纪服务专区</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -110,11 +110,11 @@ if(null==role_int){
 								class="icon-chevron-right"></i></span></a>
 						<ul>
 						<li><a href="<%=basePath %>jsp/user/lipeibaoan.jsp" target="_blank">理赔报案</a></li>
-							<li><a href="<%=basePath %>jsp/user/searchpolicy.jsp" target="_blank">保单查询</a></li>
+							<li><a href="<%=basePath %>servlet/ListCaseDealByUserServlet?username=<%=session_name %>&start=0" target="_blank">所有保单</a></li>
 							<li><a href="<%=basePath %>servlet/ListAllFileServlet?start=0" target="_blank">资料下载</a></li>
 							<li><a href="<%=basePath %>jsp/user/lipeizixun.jsp" target="_blank">理赔咨询</a></li>
 						</ul></li>
-					<li><a href="<%=basePath %>jsp/user/finance_service.jsp" target="_blank" class="br-blue"><i
+					<li><a href="<%=basePath %>jsp/user/baoxianjingjijianjie.jsp" target="_blank" class="br-blue"><i
 							class="icon-user"></i>保险经纪简介</a></li>
 					<li><a href="<%=basePath %>jsp/user/finance_service.jsp" target="_blank" class="br-blue"><i
 							class="icon-user"></i>保险经纪服务一览表</a></li>

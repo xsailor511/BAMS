@@ -108,13 +108,13 @@ public class CaseDealService {
 		return result;
 	}
 	
-	public CaseDeal searchCaseDeal(String username, String baoxiandanhao) {
+	public CaseDeal searchCaseDeal(String username, String baoxiandanhao,String keytype) {
 		CaseDeal cd = null;
 		Connection connection = null;
 		try {
 			connection = Database.getConnection();
 			dealDAO.setConnection(connection);
-			cd = dealDAO.searchCaseDeal(username, baoxiandanhao);
+			cd = dealDAO.searchCaseDeal(username, baoxiandanhao, keytype);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{

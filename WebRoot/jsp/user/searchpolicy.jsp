@@ -139,10 +139,16 @@ height:15px;
 					<form action="<%=basePath %>servlet/SearchCaseDealServlet" name="myform" onsubmit="return checkForm()">	
 <table width="100%" border="1">
   <tr>
-    <td colspan="2" align="center">输入保单号</td>
+    <td colspan="2" align="center">输入查询条件</td>
   </tr>
   <tr>
-    <td width="49%" align="right">保单号:<input type="hidden" value="query" name="tag"/></td>
+    <td width="49%" align="right">
+    <select name="keytype" style="width: 100px;height: 30px;margin-top:9px;">
+					  <option value ="1" selected = "selected">保单号码</option>
+					  <option value ="2">身份证号码</option>
+					  <option value="3">手机号码</option>
+					  </select>
+					  <input type="hidden" value="query" name="tag"/></td>
     <td width="51%"  style="align:left;valign:bottom">
      <%
     String oldkey = "";

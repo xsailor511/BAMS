@@ -109,8 +109,6 @@ border:solid#000 1px;
 
 				<ul id="nav">
 					<!-- Main menu with font awesome icon -->
-					<li><a class="br-blue" href="<%=basePath %>jsp/user/searchpolicy.jsp">
-					<i class="icon-user"></i>保单查询</a></li>
 					<li><a  class="br-blue" style="color:blue" >
 					<i class="icon-user"></i>所有保单</a></li>
 

@@ -204,7 +204,7 @@ public class CaseDealDAOImpl implements CaseDealDAO {
 		return result;
 	}
 	@Override
-	public CaseDeal searchCaseDeal(String username, String baoxiandanhao) {
+	public CaseDeal searchCaseDeal(String username, String baoxiandanhao,String keytype) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "select * from bams.casedeal where username=? and policynum=?";
